@@ -37,7 +37,7 @@ Key | Description
 -debug | Turn on all logging output up to tracing
 -stdout | Send logging output to stdout
 -log | Path to a log file
--production | Changes TSAK settings to be tuned to a production mode. For example, switch log format from text to json
+-production | Changes TSAK settings to be tuned to a production mode. 
 
 ## Usage
 
