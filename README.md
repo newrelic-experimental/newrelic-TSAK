@@ -25,7 +25,10 @@ To build the tool from the sources, please refer "Building" section of this docu
 
 ## Getting Started
 
->[Simple steps to start working with the software similar to a "Hello World"]
+```bash
+tsak -help
+```
+Is always a good start. Please familiarize youself with the existing command line keys.
 
 ## Usage
 
@@ -33,7 +36,11 @@ To build the tool from the sources, please refer "Building" section of this docu
 
 ## Building
 
->[**Optional** - Include this section if users will need to follow specific instructions to build the software from source. Be sure to include any third party build dependencies that need to be installed separately. Remove this section if it's not needed.]
+TSAK will bring all golang modules that it requires automatically during the build process. All, except one, you have to assist building *"github.com/Keysight/clipsgo"*. After you check-out most recent *clipsgo* module source code from https://github.com/Keysight/clipsgo. Check out this module to your GOPATH then cd to the root directory of the module and issue command
+```bash
+make clips
+```
+This will download and build CLIPS library. Copy libclips.a and libclips.so to the directory listed in your LD_LIBRARY_PATH, for example */usr/local/lib*. In Linux OS, you may need to issue *ldconfig* after you copy the file. Then build your TSAK code as usual. Dependency on external *libclips* shared library is only external dependency as of now.
 
 
 ## Support
