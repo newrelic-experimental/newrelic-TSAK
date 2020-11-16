@@ -14,7 +14,10 @@ The development of TSAK is ongoing with scheduled monthly releases.
 
 ## Installation
 
-> [Include a step-by-step procedure on how to get your code installed. Be sure to include any third-party dependencies that need to be installed separately]
+As of current, there is no process of generating and provision of the binary packages. After TSAK binary is generated, please place it to */usr/local/bin* or other location of your desire. There is no pre-defined places of where TSAK is looking for it's scripts, so pick the place most appropriate to them, with permissions that allow user under which you will execute TSAK to read them. If you are planning to use "net/icmp" module, you may consider to elevate privileges, as use of the ICMP requires that.
+
+To build the tool from the sources, please refer "Building" section of this document.
+
 
 ## Getting Started
 
