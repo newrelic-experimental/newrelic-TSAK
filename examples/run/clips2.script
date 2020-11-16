@@ -1,0 +1,3 @@
+stdlib = import("stdlib")
+
+stdlib.To(stdlib.CLIPS, '(batch* "./examples/clips/answer1.clips")')

@@ -1,0 +1,7 @@
+stdlib = import("stdlib")
+
+stdlib.To(stdlib.CLIPS, '(assert (answer 41))')
+stdlib.To(stdlib.CLIPS, '(facts)')
+stdlib.To(stdlib.CLIPS, '(load "./examples/clips/add_to_answer_and_keep.clp")')
+stdlib.To(stdlib.CLIPS, '(run)')
+stdlib.To(stdlib.CLIPS, '(facts)')

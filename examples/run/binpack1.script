@@ -1,0 +1,19 @@
+fmt = import("fmt")
+bp = import("parse/bin")
+
+format = []string{"4s", "Q", "I", "H", "?"}
+data = []interface{"TSAK", 42, 41, 40, true}
+packer = bp.New()
+fmt.Println("Original data is", data)
+size, err = packer.CalcSize(format)
+fmt.Println("Projected binary size is", size)
+pdata, err = packer.Pack(format, data)
+if err != nil {
+  fmt.Println("Error in pack", err)
+}
+fmt.Println("Binary data is", pdata)
+udata, err = packer.UnPack(format, pdata)
+if err != nil {
+  fmt.Println("Error in unpack", err)
+}
+fmt.Println("Unpacked binary data is", udata)

@@ -1,0 +1,6 @@
+log = import("tlog")
+
+log.Trace("Test trace", {"answer":42})
+log.Info("Test info", {"answer":42})
+log.Warning("Test warning", {"answer":42})
+log.Error("Test error", {"answer":42})

@@ -1,0 +1,14 @@
+
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+
+for ! stdlib.ExitRequested() {
+  for stdlib.Len(stdlib.OUTCH) > 0 {
+    data = stdlib.From(stdlib.OUTCH)
+    log.SendEvent(data)
+    fmt.Println("RECEIVED IN OUT", stdlib.String(data))
+  }
+  time.Sleep(1 * time.Second)
+}

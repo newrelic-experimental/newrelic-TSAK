@@ -1,0 +1,10 @@
+stdlib = import("stdlib")
+time = import("time")
+
+stdlib.To(stdlib.CLIPS, '(assert (answer answer 41 TRUE))')
+stdlib.To(stdlib.CLIPS, '(facts)')
+stdlib.To(stdlib.CLIPS, '(load "./examples/clips/add_to_answer.clp")')
+stdlib.To(stdlib.CLIPS, '(run)')
+stdlib.To(stdlib.CLIPS, '(facts)')
+stdlib.To(stdlib.CLIPS, '(exportallfacts (VAR INCH 0))')
+time.Sleep(3 * time.Second)

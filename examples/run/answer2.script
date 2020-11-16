@@ -1,0 +1,5 @@
+fmt = import("fmt")
+
+var facts = map[string]interface{}
+facts["answer"] = 42
+fmt.Println(facts)

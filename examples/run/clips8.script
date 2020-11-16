@@ -1,0 +1,5 @@
+stdlib = import("stdlib")
+
+
+stdlib.To(stdlib.CLIPS, '(var answer 42)')
+stdlib.To(stdlib.CLIPS, '(printout t "The answer is " (getvar answer) crlf)')

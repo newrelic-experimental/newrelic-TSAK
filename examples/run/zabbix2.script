@@ -1,0 +1,20 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+log = import("tlog")
+time = import("time")
+zabbix = import("zabbix")
+
+
+proxy = zabbix.Proxy("Zabbix proxy", "10.0.0.162", 10051)
+resp, err = proxy.GetConfig()
+if err != nil {
+  fmt.Println("Error", err)
+} else {
+  // fmt.Println("Got from Zabbix", resp.Hosts)
+  for k,v in resp.Hosts {
+    fmt.Printf("HOST '%f' '%s' '%s'\n",k,v.Name,v.Host)
+      for v1 in v.Items {
+        fmt.Printf("   ITEM %f %f %s\n", v1.Itemid, v1.Type, v1.Key_)
+      }
+  }
+}

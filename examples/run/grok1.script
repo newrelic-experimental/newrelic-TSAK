@@ -1,0 +1,16 @@
+fmt = import("fmt")
+grok = import("parse/grok")
+
+
+parser, err = grok.New(map[string]string{
+  "KEY": `\A(\w+)`,
+  "VALUE": `.*`,
+  "KEYVALUE": `%{KEY:key} = %{VALUE:value}`,
+})
+data, _ = parser.ParseString("%{KEYVALUE}", `ANSWER = 42`)
+
+if err != nil {
+  fmt.Println(err)
+}
+
+fmt.Println("The ",data['key'],"is",data['value'] )

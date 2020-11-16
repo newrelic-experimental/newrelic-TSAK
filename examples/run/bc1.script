@@ -1,0 +1,11 @@
+fmt = import("fmt")
+bc = import("bc")
+stdlib = import("stdlib")
+
+
+db, _ = bc.Open("/tmp/a")
+db.Put("answer", "42")
+db.Sync()
+value, _ = db.Get("answer")
+fmt.Println("The answer stored in DB is ", stdlib.String(value))
+db.Close()

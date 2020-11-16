@@ -1,0 +1,5 @@
+fmt = import("fmt")
+
+fmt.Println("Hello world")
+fmt.Println("The answer is ", ANSWER)
+fmt.Println("Not an answer is ", NO_ANSWER)

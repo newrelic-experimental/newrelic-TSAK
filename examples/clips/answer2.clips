@@ -1,0 +1,3 @@
+(deftemplate Answer (slot answer) (slot answeristrue))
+(assert (Answer (answer 42) (answeristrue TRUE)))
+(facts)

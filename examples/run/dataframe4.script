@@ -1,0 +1,6 @@
+fmt = import("fmt")
+df = import("dataframe")
+stat = import("num/stat")
+
+s1 = df.NewSeriesFloat64("float", nil, 10.0,20.0,30.0,40.0)
+fmt.Println("Mean value for the series of data is", stat.Mean(s1.Values, nil))

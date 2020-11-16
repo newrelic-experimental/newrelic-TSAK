@@ -1,0 +1,8 @@
+fmt = import("fmt")
+sysinfo = import("sysinfo")
+
+fmt.Println(fmt.Sprintf("Hostname %s", sysinfo.Host().Hostname))
+fmt.Println(fmt.Sprintf("IP %v", sysinfo.Host().IPs))
+fmt.Println(fmt.Sprintf("OS %v", sysinfo.Host().OS.Name))
+fmt.Println(fmt.Sprintf("OS %v", sysinfo.Host().OS.Version))
+fmt.Println(fmt.Sprintf("ID %v", sysinfo.Host().UniqueID))

@@ -1,0 +1,7 @@
+stdlib = import("stdlib")
+time = import("time")
+
+stdlib.To(stdlib.CLIPS, '(batch* "./examples/clips/answer2.clips")')
+stdlib.To(stdlib.CLIPS, '(facts)')
+stdlib.To(stdlib.CLIPS, '(exportassertedfacts (VAR INCH 0))')
+time.Sleep(3 * time.Second)

@@ -1,0 +1,36 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+os = import("os")
+net = import("net")
+snmp = import("snmp")
+log = import("tlog")
+time = import("time")
+
+
+addr ,_ = net.ResolveUDPAddr("udp","127.0.0.1:9162")
+conn , err = net.ListenUDP("udp", addr)
+
+buf = make([]byte, 3000)
+if err == nil {
+  c = 0
+  for ! stdlib.ExitRequested() {
+    conn.SetReadDeadline(time.Now().Add(1 * time.Second))
+    n, addr, err = conn.ReadFromUDP(buf)
+    fmt.Println(c)
+    if err {
+      fmt.Printf("%s\n", err)
+      continue
+    }
+    if len(buf) > 0 {
+      msg = buf[:n]
+      res = snmp.ParseTrap(conn, buf, n)
+      for x,y in res.VarBinds {
+        fmt.Println(x,y)
+      }
+      c += 1
+    }
+  }
+  conn.Close()
+}
+
+log.Trace("We are done here")

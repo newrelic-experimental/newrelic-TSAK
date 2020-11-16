@@ -1,0 +1,18 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+djson = import("djson")
+
+
+id = stdlib.UUID()
+c = 0
+for ! stdlib.ExitRequested() {
+  // log.Trace(id, {"count":c})
+  j = djson.New()
+  j.Set(c, "count")
+  fmt.Printf("SEND TO PROC: %s\n", j.String())
+  stdlib.To(stdlib.INCH, j.String())
+  time.Sleep(1 * time.Second)
+  c += 1
+}

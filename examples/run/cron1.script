@@ -1,0 +1,9 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+
+
+func Hi() {
+  fmt.Println("Hi!")
+}
+
+stdlib.Cron("@every 1s", Hi)

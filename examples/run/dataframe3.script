@@ -1,0 +1,14 @@
+fmt = import("fmt")
+df = import("dataframe")
+
+s1 = df.NewSeriesInt64("int", nil, 1,2,3,4)
+s2 = df.NewSeriesFloat64("float", nil, 10.0,20.0,30.0,40.0)
+f = df.New(s1, s2)
+iter = f.ValuesIterator()
+for {
+  row, vals, _ = iter(df.SeriesIdx)
+  if row == nil {
+    break
+  }
+  fmt.Println(vals)
+}

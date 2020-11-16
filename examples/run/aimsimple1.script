@@ -1,0 +1,39 @@
+fmt = import("fmt")
+brain = import("ai/ml/simple")
+
+trainData = [][][]float64{
+  [[0.2, 0.4, 0.0, 0.0, 0.5],[0]],
+  [[0.2, 0.4, 2.0, 2.3, 0.5],[1]],
+  [[2.2, 2.4, 2.0, 2.3, 2.5],[0]],
+  [[2.2, 2.4, 0.0, 0.3, 2.5],[1]],
+  [[2.2, 2.4, 0.0, 2.3, 2.5],[0]],
+  [[0.2, 0.4, 3.0, 0.0, 0.5],[0]],
+  [[0.2, 0.5, 3.0, 0.3, 0.5],[0]],
+  [[0.2, 3.5, 2.0, 2.3, 0.5],[1]],
+  [[0.2, 0.5, 1.0, 1.3, 1.5],[1]],
+  [[2.0, 1.5, 1.3, 0.9, 0.5],[0]],
+}
+
+fmt.Println("Training dataset", trainData)
+ff = brain.New(5,7,1)
+ff.Configure(1000, 0.6, 0.4, true)
+if ff.Configured() {
+  fmt.Println("Neural net was succesfully configured")
+}
+err = ff.Train(trainData)
+fmt.Println("Testing trained Net on test dataset")
+ff.Test(trainData)
+res = ff.Update([0.2, 0.4, 0.0, 0.0, 0.5])
+fmt.Println("Evaluating known data",res)
+res = ff.Update([0.2, 2.4, 2.0, 0.0, 0.5])
+fmt.Println("Evaluating data with spike",res)
+res = ff.Update([3.2, 2.4, 0.0, 0.0, 0.5])
+fmt.Println("Evaluating data with down curve spike",res)
+res = ff.Update([0.0, 0.4, 0.0, 2.5, 0.5])
+fmt.Println("Evaluating data with short spike",res)
+res = ff.Update([0.0, 0.5, 0.7, 1.0, 1.5])
+fmt.Println("Evaluating data with raise curve",res)
+res = ff.Update([3.0, 2.5, 1.7, 1.0, 0.7])
+fmt.Println("Evaluating data with downslope curve",res)
+res = ff.Update([0.0, 1.5, 2.7, 1.3, 0.7])
+fmt.Println("Evaluating data with bell curve",res)

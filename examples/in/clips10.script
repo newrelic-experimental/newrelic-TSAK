@@ -1,0 +1,9 @@
+stdlib = import("stdlib")
+time = import("time")
+clips = import("clips")
+fmt = import("fmt")
+
+clips.Eval(stdlib.INCH, "life.universe.everything", "(+ 41 1)")
+fmt.Println("The Answer on life, universe, everything is ", clips.eval("(+ 41 1)"))
+
+time.Sleep(3 * time.Second)

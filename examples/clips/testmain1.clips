@@ -1,0 +1,7 @@
+(trace "Greetings from CLIPS Main function")
+(defglobal ?*bottles* = 12)
+(loop-for-count (?c 12) do
+  (printout t ?*bottles* " bottles of beer on the wall. Take one down, pass it around " )
+  (bind ?*bottles* (- ?*bottles* 1))
+  (printout t ?*bottles* " of bottles of beer on the wall" crlf)
+)

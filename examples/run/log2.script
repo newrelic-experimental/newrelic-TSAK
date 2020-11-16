@@ -1,0 +1,3 @@
+log = import("tlog")
+
+log.Event("TsakEvent", {"answer":42, "eventSource":"log2.script"})

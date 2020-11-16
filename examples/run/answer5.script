@@ -1,0 +1,4 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+
+fmt.Println("Generated UUID:", stdlib.UUID())

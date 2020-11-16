@@ -1,0 +1,15 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+
+id = stdlib.UUID()
+c = 0
+for ! stdlib.ExitRequested() {
+  for stdlib.Len(stdlib.OUTCH) > 0 {
+    data = stdlib.From(stdlib.OUTCH)
+    fmt.Println("RECEIVED IN OUT", stdlib.String(data))
+  }
+  time.Sleep(1 * time.Second)
+  log.Trace("OUT() is cooled down")
+}

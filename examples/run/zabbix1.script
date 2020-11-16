@@ -1,0 +1,14 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+log = import("tlog")
+time = import("time")
+zabbix = import("zabbix")
+
+
+proxy = zabbix.Proxy("Zabbix proxy", "10.0.0.162", 10051)
+resp, err = proxy.SendHeartbeat()
+if err != nil {
+  fmt.Println("Error", err)
+} else {
+  fmt.Println("Got from Zabbix", resp.JSON)
+}

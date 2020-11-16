@@ -1,0 +1,15 @@
+fmt = import("fmt")
+grok = import("parse/grok")
+
+
+parser, err = grok.New(map[string]string{})
+
+data, _ = parser.ParseString("%{COMMONAPACHELOG}", `127.0.0.1 - - [23/Apr/2014:22:58:32 +0200] "GET /index.php HTTP/1.1" 404 207`)
+
+if err != nil {
+  fmt.Println(err)
+}
+
+for k in data {
+  fmt.Println( "The key is", k, "and value is",data[k] )
+}

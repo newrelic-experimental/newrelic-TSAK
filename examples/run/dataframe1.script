@@ -1,0 +1,7 @@
+fmt = import("fmt")
+df = import("dataframe")
+
+s1 = df.NewSeriesInt64("int", nil, 1,2,3,4)
+s2 = df.NewSeriesFloat64("float", nil, 1.0,2.0,3.0,4.0)
+f = df.New(s1, s2)
+fmt.Println(f.Table())

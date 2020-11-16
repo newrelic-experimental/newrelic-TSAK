@@ -1,0 +1,7 @@
+fmt = import("fmt")
+snmp = import("snmp")
+
+snmp.LoadAll("/usr/share/snmp/mibs")
+fmt.Println("OID for IF-MIB::ifOperStatus.4", snmp.OID("IF-MIB::ifOperStatus.4"))
+fmt.Println("OID for SNMPv2-MIB::sysORUpTime", snmp.OID("SNMPv2-MIB::sysORUpTime"))
+fmt.Println("SYMB for 1.3.6.1.2.1.2.2.1.8.4", snmp.SYMBOL("1.3.6.1.2.1.2.2.1.8.4"))

@@ -1,0 +1,11 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+faker = import("faker")
+
+num = faker.Number()
+fmt.Println("6 digit number", stdlib.Int(num.Number(6)))
+fmt.Println("18 digit number", num.NumberInt64(18))
+fmt.Println("Decimal number", num.Decimal(8,5))
+fmt.Println("Integer between 0 and 100", num.Between(0,100))
+fmt.Println("Some positive", num.Positive(1000000))
+fmt.Println("Some negative", num.Negative(-1000000))

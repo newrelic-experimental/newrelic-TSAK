@@ -1,0 +1,17 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+netaddr = import("netaddr")
+
+ip, _ = netaddr.IP("10.0.0.162")
+fmt.Println("IP address",ip.String())
+fmt.Println("IP address version", ip.Version())
+fmt.Println("Next IP address", ip.Next())
+
+net, _ = netaddr.Net("192.168.0.0/24")
+fmt.Println("Network", net)
+fmt.Println("Network size", net.Len())
+fmt.Println("Netmask", net.Netmask().String())
+fmt.Println("Network", net.Network().String())
+for i in netaddr.Range(net) {
+  fmt.Println("  ",i," in ", net)
+}

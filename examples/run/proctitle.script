@@ -1,0 +1,12 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+log = import("tlog")
+time = import("time")
+
+c = 0
+for ! stdlib.ExitRequested() {
+  stdlib.SetProcTitle(fmt.Sprintf("TSAK: test application: %d", c))
+  c = c + 1
+  time.Sleep(time.Second * 2)
+  log.Trace("Here we go")
+}

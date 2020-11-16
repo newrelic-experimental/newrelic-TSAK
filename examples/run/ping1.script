@@ -1,0 +1,6 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+icmp = import("net/icmp")
+
+addr, rtt, _ = icmp.Ping("www.google.com", icmp.ALL)
+fmt.Println("Google is reachable in", rtt, "at", addr)

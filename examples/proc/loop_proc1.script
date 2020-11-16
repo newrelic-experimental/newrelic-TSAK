@@ -1,0 +1,16 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+
+id = stdlib.UUID()
+c = 0
+for ! stdlib.ExitRequested() {
+  for stdlib.Len(stdlib.INCH) > 0 {
+    data = stdlib.From(stdlib.INCH)
+    fmt.Println("RECEIVED IN PROC", stdlib.String(data))
+    stdlib.To(stdlib.OUTCH, data)
+  }
+  time.Sleep(1 * time.Second)
+  log.Trace("PROC() is cooled down")
+}

@@ -1,0 +1,14 @@
+fmt = import("fmt")
+djson = import("djson")
+time = import("time")
+stdlib = import("stdlib")
+
+
+j = djson.New()
+j.Set(stdlib.Answer, "answer")
+fmt.Println("Original JSON",j.String())
+j2buf = j.String()
+fmt.Println("Sent to buffer",j2buf)
+j2 = djson.Parse(j2buf)
+j2.Set(time.Now().Unix(), "stamp")
+fmt.Println("Copy of JSON",j2.String())

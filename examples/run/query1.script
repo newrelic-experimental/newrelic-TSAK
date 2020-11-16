@@ -1,0 +1,9 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+
+res = stdlib.Query("FROM Metric SELECT * where cpu='all'")
+for c in res {
+  fmt.Println(c.S("zabbix.key"))
+}

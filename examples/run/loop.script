@@ -1,0 +1,12 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+
+id = stdlib.UUID()
+c = 0
+for ! stdlib.ExitRequested() {
+  log.Trace(id, {"count":c})
+  time.Sleep(1 * time.Second)
+  c += 1
+}

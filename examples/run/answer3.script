@@ -1,0 +1,5 @@
+// ./bin/darwin/tsak_eval -cmd ./examples/answer3.script -cfg ./config.examples/tsak_eval.conf
+
+fmt = import("fmt")
+
+fmt.Println("ID of the process:", ID)

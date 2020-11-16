@@ -1,0 +1,11 @@
+fmt = import("fmt")
+df = import("dataframe")
+
+s1 = df.NewSeriesInt64("int", nil, 1,2,3,4)
+s2 = df.NewSeriesFloat64("float", nil, 10.0,20.0,30.0,40.0)
+f = df.New(s1, s2)
+c = 0
+for c < f.NRows() {
+  fmt.Println(c, f.Row(c, false, df.SeriesIdx))
+  c += 1
+}

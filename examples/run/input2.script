@@ -1,0 +1,19 @@
+fmt = import("fmt")
+os = import("os")
+bufio = import("bufio")
+strings = import("strings")
+json = import("djson")
+
+s = bufio.New(os.Stdin)
+
+buf = ""
+if bufio.CanRead(os.Stdin, 5) {
+  if s.Scan() {
+    buf = strings.TrimSpace(s.Text())
+  }
+  out = json.New()
+  out.Set(buf, "value")
+  fmt.Println(out.String())
+} else {
+  fmt.Println("TIMEOUT")
+}

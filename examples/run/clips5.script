@@ -1,0 +1,4 @@
+stdlib = import("stdlib")
+
+stdlib.To(stdlib.FACTS, '(now (Now))')
+stdlib.To(stdlib.CLIPS, '(facts)')
