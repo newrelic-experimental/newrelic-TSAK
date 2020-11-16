@@ -25,10 +25,11 @@ To build the tool from the sources, please refer "Building" section of this docu
 
 ## Getting Started
 
+Consider running TSAK like this:
 ```bash
 tsak -help
 ```
-Is always a good start. Please familiarize yourself with the existing command line keys. Here is a "Cheat sheet" for some command line keys that you may find most helpful:
+As it is always a good start. You shall familiarize yourself with the existing command line keys. Here is a "Cheat sheet" for some command line keys that you may find most helpful:
 
 ### Logs and debugging
 
@@ -40,6 +41,13 @@ Key | Description
 -stdout | Send logging output to stdout
 -log | Path to a log file
 -production | Changes TSAK settings to be tuned to a production mode.
+-logage | TSAK will rotate log file when reached maximum age
+-logsize | TSAK will rotate the log when reached maximum size
+-tracern | If given, will send a traces to New Relic as log entries.
+-error | Clip log output to errors
+-warning | Clip log output to warnings
+-info | Clip log output to info
+
 
 ### Establishing the conversion pipeline
 
@@ -51,6 +59,52 @@ Key | Description
 -proc | Path to the script which will be running as "Processing stage"
 -out | Path to the script which will be running as a "Feeder"
 
+### NewRelic related command line parameters
+
+This group of command line parameters will help you to set-up communication with New Relic SaaS service
+
+Key | Description
+----|------------
+-nrapi | New Relic API key for insert operations
+-nrapiq | New Relic API key for query operations
+-account | You New Relic account number
+-evtapi | URL for Event API endpoint
+-logapi | URL for Log API endpoint
+-queryapi | URL for Query API endpoint
+-metricapi | URL for Metric API endpoint
+
+### Generic application command line parameters
+
+This group of command line parameters, controlling generic behavior of the TSAK application
+
+Key | Description
+----|------------
+-production | Changes TSAK settings to be tuned to a production mode.
+-name | Will specify a name for the TSAK application
+-id | Unique identifier for the application
+-conf | Path to the TSAK-script file, which will be pre-executed to all TSAK virual machines
+-run | Path to the "exclusive" TSAK script. If you are running TSAK in "exclusive mode", all other scripts in -in/-proc/-out will be ignored.
+-clips | Path to the CLIPS main script. If provided, CLIPS thread is executed in "exclusive mode", and terminates TSAK after script is finished.
+
+And this example will demonstrate you how you can run a script in exclusive mode:
+```bash
+tsak -stdout -production -debug  -name "helloworld" -conf ./config.example/tsak.conf -run ./examples/run/helloworld.script
+```
+This script will load configuration file *./config.example/tsak.conf* to all TSAK VM's, then executed TSAK script *./examples/run/helloworld.script*
+
+```golang
+fmt = import("fmt")
+
+fmt.Println("Hello world")
+fmt.Println("The answer is ", ANSWER)
+fmt.Println("Not an answer is ", NO_ANSWER)
+```
+and script output as expected is
+```
+Hello world
+The answer is  42
+Not an answer is  41
+```
 
 ## Usage
 
