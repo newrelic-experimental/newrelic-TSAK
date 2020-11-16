@@ -99,7 +99,7 @@ fmt.Println("Hello world")
 fmt.Println("The answer is ", ANSWER)
 fmt.Println("Not an answer is ", NO_ANSWER)
 ```
-and script output as expected is
+and the script output as expected is
 ```
 Hello world
 The answer is  42
@@ -108,7 +108,19 @@ Not an answer is  41
 
 ## Usage
 
->[**Optional** - Include more thorough instructions on how to use the software. This section might not be needed if the Getting Started section is enough. Remove this section if it's not needed.]
+![TRAPD architecture](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/images/snmptrapd.png)
+
+Here is more complicated example of the TSAK use. This is a functioning SNMP trap server. It does have all three components, such as:
+
+1. [Protocol component](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/trapd/in.script) - SNMP server which listens the UDP port, accepts and parses the packet.
+2. [Processing component](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/trapd/proc.script) - Resolving OID to Symbol using MIB's
+3. [Feeder component](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/trapd/out.script) - sending events to the New Relic.
+
+Run the TSAK-powered snmptrapd in foreground:
+```bash
+tsak -stdout -production -nrapi (New Relic Insert API key) -account (New Relic account number) -name "trapd" -in ./examples/trapd/in.script -out ./examples/trapd/out.script -proc ./examples/trapd/proc.script
+```
+When application is started, you can send a simulated SNMP traps using [that](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/trapd/sendatrap.sh) script
 
 ## Building
 
