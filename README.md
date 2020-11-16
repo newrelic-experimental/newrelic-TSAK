@@ -141,6 +141,8 @@ If you never worked with CLIPS, start with study of the standard CLIPS documenta
 
 ## Support
 
+First, there are [exhaustive list](https://github.com/newrelic-experimental/newrelic-TSAK/tree/main/examples) of TSAK-script samples, bundled with TSAK source code. [Here is a description]() of what some of those scripts are demonstrating. 
+
 New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR DEDICATED SUPPORT. Issues and contributions should be reported to the project here on GitHub.
 
 We encourage you to bring your experiences and questions to the [Explorers Hub](https://discuss.newrelic.com) where our community members collaborate on solutions and new ideas.
