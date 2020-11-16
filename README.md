@@ -28,7 +28,16 @@ To build the tool from the sources, please refer "Building" section of this docu
 ```bash
 tsak -help
 ```
-Is always a good start. Please familiarize youself with the existing command line keys.
+Is always a good start. Please familiarize yourself with the existing command line keys. Here is a "Cheat sheet" for some command line keys that you may find most helpful:
+
+### Logs and debugging
+
+Key | Description
+----|------------
+-debug | Turn on all logging output up to tracing
+-stdout | Send logging output to stdout
+-log | Path to a log file
+-production | Changes TSAK settings to be tuned to a production mode. For example, switch log format from text to json
 
 ## Usage
 
@@ -40,7 +49,7 @@ TSAK will bring all golang modules that it requires automatically during the bui
 ```bash
 make clips
 ```
-This will download and build CLIPS library. Copy libclips.a and libclips.so to the directory listed in your LD_LIBRARY_PATH, for example */usr/local/lib*. In Linux OS, you may need to issue *ldconfig* after you copy the file. Then build your TSAK code as usual. Dependency on external *libclips* shared library is only external dependency as of now.
+This will download and build CLIPS library. Copy libclips.a and libclips.so from *clips_source* to the directory listed in your LD_LIBRARY_PATH, for example */usr/local/lib*. Optionally, you may consider to copy a binary *clips* from the same directory *clips_source* to any directory in your PATH, for example */usr/local/bin*. This CLIPS shell is a great learning tool to get you familiarize with CLIPS. In Linux OS, you may need to issue *ldconfig* after you copy the file. Then build your TSAK code as usual. Dependency on external *libclips* shared library is only external dependency as of now.
 
 
 ## Support
