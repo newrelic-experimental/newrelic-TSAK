@@ -32,12 +32,25 @@ Is always a good start. Please familiarize yourself with the existing command li
 
 ### Logs and debugging
 
+This group of command line parameters will get you a loggin output from the TSAK application itself and from the TSAK scripts.
+
 Key | Description
 ----|------------
 -debug | Turn on all logging output up to tracing
 -stdout | Send logging output to stdout
 -log | Path to a log file
--production | Changes TSAK settings to be tuned to a production mode. 
+-production | Changes TSAK settings to be tuned to a production mode.
+
+### Establishing the conversion pipeline
+
+This group of command line parameters will help you to define a conversion pipeline.
+
+Key | Description
+----|------------
+-in | Path to the script which will be running at "Protocol side"
+-proc | Path to the script which will be running as "Processing stage"
+-out | Path to the script which will be running as a "Feeder"
+
 
 ## Usage
 
