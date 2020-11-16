@@ -130,6 +130,14 @@ make clips
 ```
 This will download and build CLIPS library. Copy libclips.a and libclips.so from *clips_source* to the directory listed in your LD_LIBRARY_PATH, for example */usr/local/lib*. Optionally, you may consider to copy a binary file *clips* from the same directory *clips_source* to any directory in your PATH, for example */usr/local/bin*. This CLIPS shell is a great learning tool to get you familiarize with CLIPS. In Linux OS, you may need to issue *ldconfig* after you copy the file. Then build your TSAK code as usual. Dependency on external *libclips* shared library is only external dependency as of now.
 
+## Getting started with CLIPS Rule-Based expert system
+
+TSAK provide you with a programmatic access to an Expert System shell from your scripts. You can convert telemetry to facts, load facts to an Expert System, run the rules and exporting facts to the pipeline converted to a JSON.
+
+If you never worked with CLIPS, start with study of the standard CLIPS documentations:
+
+1. [User Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_ug.pdf) - the very first steps in understanding on how to creat and operate of an Expert Sytem shell. What are the facts, rules, how to create and run your processing.
+2. [Basic Programming Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_bpg.pdf) - the next step after you done with [User Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_ug.pdf). [Basic Programming Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_bpg.pdf) is an excellent source of the in-depth information on CLIPS shell programming.
 
 ## Support
 
