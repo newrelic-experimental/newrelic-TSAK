@@ -33,6 +33,7 @@ func Init() {
   flag.StringVar(&conf.Logapi, "logapi", "https://log-api.newrelic.com/log/v1", "LOG API endpoint")
   flag.StringVar(&conf.Evtapi, "evtapi", "https://insights-collector.newrelic.com/v1/accounts/%s/events", "EVT API endpoint")
   flag.StringVar(&conf.Queryapi, "queryapi", "https://insights-api.newrelic.com/v1/accounts/%s/query?nrql=%s", "Query API endpoint")
+  flag.StringVar(&conf.Metricapi, "metricapi", "https://metric-api.newrelic.com/metric/v1", "Metric API endpoint")
   flag.IntVar(&conf.Maxsize, "logsize", 100, "Maximum size of the log file in Mb")
   flag.IntVar(&conf.Maxage, "logage", 7, "Maximum age of the logfile in days")
   flag.StringVar(&conf.In, "in", "", "Name of the script for the input")

@@ -18,6 +18,7 @@ var Nrapi string
 var Nrapiq string
 var Logapi string
 var Evtapi string
+var Metricapi string
 var Queryapi string
 var In string
 var Proc string

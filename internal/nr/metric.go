@@ -26,7 +26,7 @@ func Metric(mname string, _type string, value interface{}, ctx logrus.Fields) {
   }
   payload.Set(time.Now().UnixNano() / int64(time.Millisecond), "timestamp")
   if conf.Nrapi != "" {
-    metrics(conf.Nrapi, conf.Evtapi, true, []byte(payload.String()))
+    metrics(conf.Nrapi, conf.Metricapi, true, []byte(payload.String()))
   }
 }
 
