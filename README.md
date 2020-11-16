@@ -1,8 +1,16 @@
 [![New Relic Experimental header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#new-relic-experimental)
 
-# TSAK [build badges go here when available]
+# TSAK
 
->[Brief description - what is the project and value does it provide? How often should users expect to get releases? How is versioning set up? Where does this project want to go?]
+TSAK - as translated as a "Telemetry Swiss Army Knife", the instrument designed to aide the development of following category of tools:
+* Telemetry stream converters and translators.
+* On-host Telemetry acquisition and processing.
+* Generic programmable data converision tool.
+* Rule-Based Expert system shell, geared towards telemetry data processing.
+* To be a part of telemetry processing pipeline
+* To generate a simulated telemetry data for Monitoring and Observability systems development, testing, training and teaching and POC demonstrations.
+
+The development of TSAK is ongoing with scheduled monthly releases.
 
 ## Installation
 
