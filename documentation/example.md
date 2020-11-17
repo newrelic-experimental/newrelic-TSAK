@@ -33,6 +33,7 @@ TSAK tool is tightly integrated with New Relic SaaS services. You can transparen
 Script | Description
 ----|------------
 [out.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/trapd/out.script) | How to send a pre-formed events to a New Relic with one line of the code
+[query1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/query1.script) | Send an NRQL query and parse result
 
 ## Network and SNMP scripts
 
@@ -42,6 +43,7 @@ Script | Description
 ----|------------
 [trapd.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/trapd.script) | Listening for SNMP trap packets and prinis VarBind from received packets
 [mibparse2.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/mibparse2.script) | Loads all MIB files and resove OID to Symbol and Symbol to OID.
+[ping1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/ping1.script) | Sends ICMP packet to destination host and handles the ICMP Echo, returning RTT time. So, basically your common *ping* available from the TSAK script. Note, you have to be _root_, to run this script.
 
 
 ## Data management and AI scripts
@@ -52,7 +54,9 @@ Script | Description
 ----|------------
 [djson.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/djson.script) | Demonstrates on how you can create, and parse JSON data
 [input1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/input1.script) | Show you, how you can read data from STDIN and generate JSON with that data
-[ping1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/ping1.script) | Sends ICMP packet to destination host and handles the ICMP Echo, returning RTT time. So, basically your common *ping* available from the TSAK script. Note, you have to be _root_, to run this script.
+[stat1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/stat1.script) | How to do a statistical computations.
+[aimsimple1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/aimsimple1.script) | Create and train a Neural Net, then find the patterns in your telemetry samples.
+
 
 
 ## CLIPS examples
@@ -63,3 +67,4 @@ Script | Description
 ----|------------
 [clips5.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/clips5.script) | Demonstrates you how you can push the facts and commands through different pipelines from the script to CLIPS
 [clips6.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/clips6.script) | How to submin the facts, load rules and run the rules processing.
+[testmain1.clips](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/clips/testmain1.clips) | That is what is your "exclusive main" CLIPS script may look like.
