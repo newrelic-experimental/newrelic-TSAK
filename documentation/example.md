@@ -2,7 +2,7 @@
 
 # Here, you will find a description of the some of sample TSAK scripts
 
-Nothing demonstrates system capabilities better, than a collection of the sample scripts and solutions. We are striving to bring as much examples, which demonstrates TSAK system, as possible. Most of those scripts are designed to be running in "exclusive run" mode, when they are passed as a value to a *-run* command line parameter.
+Nothing demonstrates system capabilities better, than a [collection of the sample scripts](https://github.com/newrelic-experimental/newrelic-TSAK/tree/main/examples) and solutions. We are striving to bring as much examples, which demonstrates TSAK system, as possible. Most of those scripts are designed to be running in "exclusive run" mode, when they are passed as a value to a *-run* command line parameter.
 
 ## Basic scripts
 
