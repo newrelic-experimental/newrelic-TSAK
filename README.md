@@ -139,9 +139,16 @@ If you never worked with CLIPS, start with study of the standard CLIPS documenta
 1. [User Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_ug.pdf) - the very first steps in understanding on how to creat and operate of an Expert Sytem shell. What are the facts, rules, how to create and run your processing.
 2. [Basic Programming Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_bpg.pdf) - the next step after you done with [User Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_ug.pdf). [Basic Programming Guide](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/clips/clips_bpg.pdf) is an excellent source of the in-depth information on CLIPS shell programming.
 
+## Continue to Learn
+
+First, there are [exhaustive list](https://github.com/newrelic-experimental/newrelic-TSAK/tree/main/examples) of TSAK-script samples, bundled with TSAK source code. [Here is a description](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/example.md) of what some of those scripts are demonstrating.
+
+Next, consider to go through the ["Telemetry Swiss Army Knife in 10 minutes"](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/presentations/Telemetry%20Swiss%20Army%20Knife%20in%2010%20minutes/Telemetry%20Swiss%20Army%20Knife%20in%2010%20minutes.pdf) presentation deck.
+
+Link to a proper Documentation will be published when we get the documenting of the TSAK going.
+
 ## Support
 
-First, there are [exhaustive list](https://github.com/newrelic-experimental/newrelic-TSAK/tree/main/examples) of TSAK-script samples, bundled with TSAK source code. [Here is a description](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/documentation/example.md) of what some of those scripts are demonstrating. 
 
 New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR DEDICATED SUPPORT. Issues and contributions should be reported to the project here on GitHub.
 
