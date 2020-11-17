@@ -130,6 +130,19 @@ make clips
 ```
 This will download and build CLIPS library. Copy libclips.a and libclips.so from *clips_source* to the directory listed in your LD_LIBRARY_PATH, for example */usr/local/lib*. Optionally, you may consider to copy a binary file *clips* from the same directory *clips_source* to any directory in your PATH, for example */usr/local/bin*. This CLIPS shell is a great learning tool to get you familiarize with CLIPS. In Linux OS, you may need to issue *ldconfig* after you copy the file. Then build your TSAK code as usual. Dependency on external *libclips* shared library is only external dependency as of now.
 
+The build process of the TSAK itelf are very straightforward. Just check out the source code, change directory to the root of the TSAK source code and run *make*
+
+```bash
+➜  newrelic-TSAK git:(main) ✗ make
+=== newrelic-TSAK === [ deps             ]: Installing package dependencies required by the project...
+=== newrelic-TSAK === [ tools-compile    ]: building tools:
+=== newrelic-TSAK === [ tools            ]: Installing tools required by the project...
+go: finding module for package github.com/goreleaser/goreleaser
+go: found github.com/goreleaser/goreleaser in github.com/goreleaser/goreleaser v0.147.2
+=== newrelic-TSAK === [ compile          ]: building commands:
+=== newrelic-TSAK === [ compile          ]:     ./bin/darwin/tsak
+```
+
 ## Getting started with CLIPS Rule-Based expert system
 
 TSAK provide you with a programmatic access to an Expert System shell from your scripts. You can convert telemetry to facts, load facts to an Expert System, run the rules and exporting facts to the pipeline converted to a JSON.

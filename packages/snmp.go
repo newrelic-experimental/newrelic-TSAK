@@ -23,6 +23,14 @@ func UnmarshalTrap(sock *net.IPConn, b []byte, n int) snmplib.Trap {
   return varbinds
 }
 
+func UnmarshalTrap3(users []snmplib.V3user, sock *net.IPConn, b []byte, n int) snmplib.Trap {
+  snmp := snmplib.NewSNMPOnConn("", "", snmplib.SNMPv3, 2*time.Second, 5, sock)
+  msg := b[:n]
+  snmp.TrapUsers = users
+  varbinds, _ := snmp.ParseTrap(msg)
+  return varbinds
+}
+
 func InitAndLoadAll(mibdirpath string) int {
   log.Trace(fmt.Sprintf("Loading and initializing MIB modules from: %s", mibdirpath))
   c := 0
@@ -55,6 +63,7 @@ func InitAndLoadAll(mibdirpath string) int {
 func init() {
   env.Packages["snmp"] = map[string]reflect.Value{
     "ParseTrap":  reflect.ValueOf(UnmarshalTrap),
+    "ParseTrap3":  reflect.ValueOf(UnmarshalTrap3),
     "InitMib":    reflect.ValueOf(snmp.InitMib),
     "LoadModule": reflect.ValueOf(snmp.LoadModule),
     "LoadAll":    reflect.ValueOf(InitAndLoadAll),
@@ -67,6 +76,7 @@ func init() {
     "ParseOID":   reflect.ValueOf(snmplib.MustParseOid),
   }
   env.PackageTypes["snmp"] = map[string]reflect.Type{
-    "SNMP":          reflect.TypeOf(snmplib.SNMP{}),
+    "SNMP":           reflect.TypeOf(snmplib.SNMP{}),
+    "V3user":         reflect.TypeOf(snmplib.V3user{}),
   }
 }

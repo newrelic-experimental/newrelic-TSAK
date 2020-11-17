@@ -22,6 +22,7 @@ func Event(msg string, ctx logrus.Fields) {
 }
 
 func Metric(mname string, _type string, value interface{}, ctx logrus.Fields) {
+  Log().WithFields(ctx).Trace(fmt.Sprintf("Metric[%s](%s)=%v", mname, _type, value))
   nr.Metric(mname, _type, value, ctx)
 }
 
