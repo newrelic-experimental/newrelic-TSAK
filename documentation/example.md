@@ -21,6 +21,9 @@ The core of the TSAK application is a in-line processing of the data, which flow
 
 Script | Description
 ----|------------
+[loop_in1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/in/loop_in1.script) | Generate and send to a PROC thread a test JSON data with counter every second
+[loop_proc1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/proc/loop_proc1.script) | Processor, receiving data from the channel, prints and send to "OUT"
+[loop_out1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/out/loop_out1.script) | Receives the data from Processor and prints them.
 
 
 ## New Relic related scripts
@@ -29,9 +32,7 @@ TSAK tool is tightly integrated with New Relic SaaS services. You can transparen
 
 Script | Description
 ----|------------
-[loop_in1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/in/loop_in1.script) | Generate and send to a PROC thread a test JSON data with counter every second
-[loop_proc1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/proc/loop_proc1.script) | Processor, receiving data from the channel, prints and send to "OUT"
-[loop_out1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/out/loop_out1.script) | Receives the data from Processor and prints them.
+[out.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/trapd/out.script) | How to send a pre-formed events to a New Relic with one line of the code
 
 ## Network and SNMP scripts
 
