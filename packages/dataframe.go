@@ -8,6 +8,7 @@ import (
 
 func init() {
   env.Packages["dataframe"] = map[string]reflect.Value{
+    "Series":                         reflect.ValueOf(dataframe.NewSeriesFloat64),
     "NewSeriesInt64":                 reflect.ValueOf(dataframe.NewSeriesInt64),
     "NewSeriesFloat64":               reflect.ValueOf(dataframe.NewSeriesFloat64),
     "NewSeriesString":                reflect.ValueOf(dataframe.NewSeriesString),
