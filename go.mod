@@ -25,6 +25,7 @@ require (
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/orkunkaraduman/go-tcpserver v0.0.0-20181226112016-a897b4eaa9c6
 	github.com/pebbe/zmq4 v1.2.1
+	github.com/pion/dtls v1.5.4 // indirect
 	github.com/prologic/bitcask v0.3.6
 	github.com/robfig/cron v1.2.0
 	github.com/rocketlaunchr/dataframe-go v0.0.0-20201007021539-67b046771f0b
