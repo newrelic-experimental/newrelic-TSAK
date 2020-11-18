@@ -41,7 +41,8 @@ Those scripts demonstrates on how you can interact with network services
 
 Script | Description
 ----|------------
-[trapd.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/trapd.script) | Listening for SNMP trap packets and prinis VarBind from received packets
+[trapd.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/trapd.script) | Listening for SNMP trap packets and prints VarBind from received packets
+[trapd3.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/trapd3.script) | Listening for SNMPv3 trap packets and prints VarBind from received packets. Pay attention on user initialization as a part of SNMPv3 authentication.
 [mibparse2.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/mibparse2.script) | Loads all MIB files and resove OID to Symbol and Symbol to OID.
 [ping1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/ping1.script) | Sends ICMP packet to destination host and handles the ICMP Echo, returning RTT time. So, basically your common *ping* available from the TSAK script. Note, you have to be _root_, to run this script.
 
