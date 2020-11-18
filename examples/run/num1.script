@@ -1,0 +1,8 @@
+fmt = import("fmt")
+norm = import("num/norm")
+
+fmt.Println("Original array",[]float64{2.2, 2.4, 0.0, 0.3, 2.5})
+std = norm.Standartize([]float64{2.2, 2.4, 0.0, 0.3, 2.5})
+nrm = norm.Normalize([]float64{2.2, 2.4, 0.0, 0.3, 2.5})
+fmt.Println("Standartized array", std)
+fmt.Println("Normalized array", nrm)
