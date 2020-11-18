@@ -57,6 +57,8 @@ Script | Description
 [input1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/input1.script) | Show you, how you can read data from STDIN and generate JSON with that data
 [stat1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/stat1.script) | How to do a statistical computations.
 [aimsimple1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/aimsimple1.script) | Create and train a Neural Net, then find the patterns in your telemetry samples.
+[num1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/run/num1.script) | How to standartize and normalize a vector of floats
+
 
 
 
