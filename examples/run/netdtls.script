@@ -1,0 +1,11 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+net = import("net")
+log = import("tlog")
+dtls = import("net/dtls")
+
+listen, err = dtls.New("127.0.0.1", 60001, "./example/certificates/server.pem", "./example/certificates/server.pub.pem")
+conn, err = listen.Accept()
+data = conn.Read()
+con.Close()
+log.Trace("We are done here")
