@@ -25,6 +25,10 @@ func UUID() string {
 func String(src []byte) string {
   return string(src)
 }
+func StdlibBytes(src string) []byte {
+  return []byte(src)
+}
+
 
 func Int(n string) int32 {
   res, err := strconv.Atoi(n)
@@ -54,6 +58,7 @@ func init() {
     "FACTS":          reflect.ValueOf(piping.FACTS),
     "EVAL":           reflect.ValueOf(piping.EVAL),
     "String":         reflect.ValueOf(String),
+    "Bytes":          reflect.ValueOf(StdlibBytes),
     "Query":          reflect.ValueOf(nr.Query),
     "Int":            reflect.ValueOf(Int),
   }

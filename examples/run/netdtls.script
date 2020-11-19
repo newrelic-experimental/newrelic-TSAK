@@ -6,10 +6,15 @@ dtls = import("net/dtls")
 os = import("os")
 
 fmt.Println("Current directory", os.Getwd() )
-listen, err = dtls.New("127.0.0.1", 60001, "./examples/certificates/server.pem", "./examples/certificates/server.pub.pem")
+listen = dtls.New("127.0.0.1", 60001, "./examples/certificates/server.pem", "./examples/certificates/server.pub.pem")
 conn, err = listen.Accept()
-buf = make([]byte, 3000)
-conn.Read(buf) 
-fmt.Printf("Data received", stdlib.String(buf))
-con.Close()
+if err != nil {
+  fmt.Println("ACCEPT",err)
+} else {
+  fmt.Println("Connection accepted, trying to read")
+  buf = make([]byte, 3000)
+  conn.Read(buf)
+  fmt.Printf("Data received", stdlib.String(buf))
+  conn.Close()
+}
 log.Trace("We are done here")

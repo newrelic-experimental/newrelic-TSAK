@@ -16,8 +16,7 @@ import (
 
 func UDPDTLSNew(bindip string, port int, srvCert, srvPub string) net.Listener {
   addr := &net.UDPAddr{IP: net.ParseIP(bindip), Port: port}
-  ctx, cancel := context.WithCancel(context.Background())
-  defer cancel()
+  ctx := context.TODO()
   certificate, err := util.LoadKeyAndCertificate(srvCert, srvPub)
   if err != nil {
     log.Trace(fmt.Sprintf("DTLS.error: %v", err))
