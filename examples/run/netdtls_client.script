@@ -1,0 +1,12 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+net = import("net")
+log = import("tlog")
+dtls = import("net/dtls")
+os = import("os")
+
+fmt.Println("Current directory", os.Getwd() )
+conn, err = dtls.Dial("127.0.0.1", 60001, "./examples/certificates/client.pem", "./examples/certificates/client.pub.pem")
+conn.Write([]byte{"Hello DTLS!"})
+con.Close()
+log.Trace("We are done here")

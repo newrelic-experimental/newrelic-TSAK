@@ -5,6 +5,7 @@ go 1.15
 require (
 	cloud.google.com/go v0.58.0 // indirect
 	github.com/Jeffail/gabs v1.4.0
+	github.com/Microsoft/go-winio v0.4.15 // indirect
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
 	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
 	github.com/elastic/go-sysinfo v1.4.0
@@ -16,10 +17,12 @@ require (
 	github.com/google/uuid v1.1.2
 	github.com/goreleaser/goreleaser v0.147.2 // indirect
 	github.com/hallidave/mibtool v0.2.0
+	github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5 // indirect
 	github.com/k-sone/snmpgo v3.2.0+incompatible
 	github.com/karrick/godirwalk v1.16.1
 	github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
 	github.com/kr/text v0.2.0 // indirect
+	github.com/lib/pq v1.1.1 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect

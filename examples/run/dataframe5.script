@@ -1,0 +1,5 @@
+fmt = import("fmt")
+df = import("dataframe")
+
+df1 = df.FromCSV("./examples/data/timeseriesapirps.csv")
+fmt.Println(df1.Table())
