@@ -1,0 +1,10 @@
+fmt = import("fmt")
+dct = import("num/ft/dct")
+
+data = []float64{0, 0.1, 0.0, 0.2, 0.0, 2.3, 0.0, 0.5, 1.5, 2.5, 2.5, 1.3, 0.3, 0.0, 0,4, 0.0}
+fmt.Println("Original data", data)
+fmt.Println("Original data size", len(data))
+ft = dct.New(len(data))
+dst = make([]float64, len(data))
+ft.Transform(dst, data)
+fmt.Println("Transformed", dst)

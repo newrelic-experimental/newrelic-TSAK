@@ -6,6 +6,67 @@ import (
   stat "gonum.org/v1/gonum/stat"
 )
 
+func StatSmoothMovingAverageWeightless(p []float64, win int64) []float64 {
+  var c, w, pmin, pmax int64
+  var m float64
+  res := make([]float64, len(p))
+  c = 0
+  pmin = 0
+  pmax = 0
+  for c <= int64(len(p)) {
+    w = win
+    pmin = c - w
+    if pmin < 0 {
+      w = 1
+      pmin = c
+    }
+    pmax = c + w
+    if pmax > int64(len(p)) {
+        pmax = int64(len(p))
+        w = int64(len(p)) - c
+        pmin = c - w
+    }
+    subp := p[pmin:pmax]
+    if len(subp) == 0 {
+      c += 1
+      continue
+    }
+    m = stat.Mean(subp, nil)
+    res[c] = m
+    c += 1
+  }
+  return res
+}
+
+func StatSmoothWeightless(p []float64, win int64) []float64 {
+  var c, w, pmin, pmax int64
+  var m float64
+  res := make([]float64, len(p))
+  c = 0
+  pmin = 0
+  pmax = 0
+  for range p {
+    w = win
+    pmin = c - w
+    if pmin < 0 {
+      pmin = 0
+    }
+    pmax = c + w
+    if pmax > int64(len(p)) {
+        pmax = int64(len(p))
+    }
+    subp := p[pmin:pmax]
+    if len(subp) == 0 {
+      c += 1
+      continue
+    }
+    m = stat.Mean(subp, nil)
+    res[c] = m
+    c += 1
+  }
+  return res
+}
+
 func init() {
   env.Packages["num/stat"] = map[string]reflect.Value{
     "Bhattacharyya":                reflect.ValueOf(stat.Bhattacharyya),
@@ -38,6 +99,8 @@ func init() {
     "StdErr":                       reflect.ValueOf(stat.StdErr),
     "StdScore":                     reflect.ValueOf(stat.StdScore),
     "Variance":                     reflect.ValueOf(stat.Variance),
+    "Smooth":                       reflect.ValueOf(StatSmoothMovingAverageWeightless),
+    "SmoothStatic":                       reflect.ValueOf(StatSmoothWeightless),
   }
   env.PackageTypes["num/stat"] = map[string]reflect.Type{
 

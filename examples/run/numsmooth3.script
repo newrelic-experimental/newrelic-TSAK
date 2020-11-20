@@ -1,0 +1,18 @@
+fmt = import("fmt")
+df = import("dataframe")
+stat = import("num/stat")
+
+data = []float64{0, 0.1, 0.0, 0.2, 0.0, 2.3, 3.0, 3.5, 3.5, 4.5, 4.5, 5.3, 6.3, 7.0, 8, 4.5, 6, 10.0, 12.2, 14.4, 15.3}
+fmt.Println("Original data", data)
+dataSeries = df.Series("data", nil)
+for v in data {
+  dataSeries.Append(v)
+}
+fmt.Println(dataSeries.AsciiGraph())
+res = stat.SmoothStatic(data, 2)
+fmt.Println("Smoothed data with window 2", res)
+dataSeries2 = df.Series("dataS", nil)
+for v in res {
+  dataSeries2.Append(v)
+}
+fmt.Println(dataSeries2.AsciiGraph())
