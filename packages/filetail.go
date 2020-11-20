@@ -7,7 +7,7 @@ import (
   "time"
   "reflect"
   "github.com/mattn/anko/env"
-  "github.com/papertrail/go-tail/follower"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/follower"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
 )
 

@@ -46,6 +46,7 @@ func housekeeper() {
   c := 0
   for ! signal.ExitRequested() {
     time.Sleep(HOUSE_EVERY)
+    cron.Run()
     if c > REPORT_EVERY {
       log.Trace("Running housekeeper")
       housekeeperReport()
