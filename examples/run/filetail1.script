@@ -1,0 +1,15 @@
+fmt = import("fmt")
+tail = import("file/tail")
+time = import("time")
+stdlib = import("stdlib")
+
+
+f = tail.New("/tmp/test")
+if f != nil {
+  for ! stdlib.ExitRequested() {
+    lines = tail.Watch(f)
+    for l in lines {
+      fmt.Println(l.String())
+    }
+  }
+}

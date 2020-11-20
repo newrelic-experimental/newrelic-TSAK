@@ -10,6 +10,7 @@ require (
 	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
+	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
@@ -27,6 +28,7 @@ require (
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/orkunkaraduman/go-tcpserver v0.0.0-20181226112016-a897b4eaa9c6
+	github.com/papertrail/go-tail v0.0.0-20180509224916-973c153b0431
 	github.com/pebbe/zmq4 v1.2.1
 	github.com/pion/dtls/v2 v2.0.3
 	github.com/prologic/bitcask v0.3.6
