@@ -1,0 +1,16 @@
+fmt = import("fmt")
+ringbuffer = import("stdlib/ringbuffer")
+
+ring = ringbuffer.New(10)
+c = 20
+for c >= 0 {
+	fmt.Println("Pushing 20 elements into an empty ring", c, ring.Add(c))
+	c -= 1
+}
+fmt.Println("Last of previous successful add", ring.Get(0))
+c = 40
+for c >= 20 {
+	fmt.Println("Pushing 20 elements in full ring", c, ring.Push(c))
+	c -= 1
+}
+fmt.Println("Last of the previous push", ring.Get(0))
