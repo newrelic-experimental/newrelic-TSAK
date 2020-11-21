@@ -35,6 +35,7 @@ func InitScript() {
   for k, _ := range e {
     Define(k, "ANSWER", 42)
     Define(k, "ID", conf.ID)
+    Define(k, "VMNAME", k)
   }
 
 }

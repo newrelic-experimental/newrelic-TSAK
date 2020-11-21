@@ -1,0 +1,11 @@
+fmt = import("fmt")
+
+if VMNAME == "in" {
+  fmt.Println("This code will be executed in PROTOCOL VM")
+} else if VMNAME == "proc" {
+  fmt.Println("This code will be executed in PROCESSING VM")
+} else if VMNAME == "out" {
+  fmt.Println("This code will be executed in FEEDER VM")
+} else {
+  fmt.Println("This code will be executed in some other VM")
+}
