@@ -1,11 +1,17 @@
 fmt = import("fmt")
+time = import("time")
 
 if VMNAME == "in" {
   fmt.Println("This code will be executed in PROTOCOL VM")
+  time.Sleep(40*time.Second)
 } else if VMNAME == "proc" {
   fmt.Println("This code will be executed in PROCESSING VM")
+  time.Sleep(40*time.Second)
 } else if VMNAME == "out" {
-  fmt.Println("This code will be executed in FEEDER VM")
+  fmt.Println("This code will be executed in FEEDER VM which now will be sleeping for 40 seconds so you can see a housekeeper executions")
+  time.Sleep(40*time.Second)
+} else if VMNAME == "house" {
+  fmt.Println("This code will be executed periodically by housekeeper")
 } else {
   fmt.Println("This code will be executed in some other VM")
 }
