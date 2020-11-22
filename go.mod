@@ -35,6 +35,7 @@ require (
 	github.com/robfig/cron v1.2.0
 	github.com/rocketlaunchr/dataframe-go v0.0.0-20201007021539-67b046771f0b
 	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/shirou/gopsutil/v3 v3.20.10
 	github.com/sirupsen/logrus v1.7.0
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect

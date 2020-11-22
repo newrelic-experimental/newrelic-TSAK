@@ -1,0 +1,46 @@
+fmt = import("fmt")
+system = import("stdlib/system")
+date = import("stdlib/dateparse")
+
+date.TZ("America/Los_Angeles")
+
+mem, _ = system.Memory()
+cpu, _ = system.Cpu()
+cpuuse, _ = system.CpuUtil(true)
+partitions, _ = system.Partitions(true)
+fmt.Println("Virtual Memory info", mem.String())
+for i in cpu {
+  fmt.Println("CPU info", i.String())
+}
+for i in cpuuse {
+  fmt.Println("CPU use", i.String())
+}
+for i in partitions {
+  fmt.Println("Partition", i.String())
+}
+rootUse, _ = system.Disk("/")
+fmt.Println("Partition use", rootUse.String())
+temp, _ = system.Temperature()
+for i in temp {
+  fmt.Println("Sensor", i.String())
+}
+fmt.Println("System boot time", date.Local(fmt.Sprintf("%d", system.BootTime()[0])))
+fmt.Println("System boot time", system.Uptime())
+fmt.Println("System host ID", system.HostID())
+fmt.Println("System architecture", system.Architecture())
+fmt.Println("System kernel info", system.Kernel())
+fmt.Println("System platform info", system.Platform())
+fmt.Println("System virtualization info", system.Virtualization())
+proc, _ = system.Processes()
+for p in proc {
+  fmt.Println("PROCESS CPU use, CPU percent, MemoryInfo", p, p.CPUPercent(), p.CPUPercent(), p.MemoryInfo())
+}
+conn, _ = system.Connections("tcp4")
+for c in conn {
+  fmt.Println("TCP4 connections", c)
+}
+
+intr, _ = system.Interfaces("tcp4")
+for i in intr {
+  fmt.Println("NET interfaces", i)
+}
