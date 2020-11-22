@@ -27,3 +27,4 @@ var Conf string
 var Run string
 var House string
 var Clips string
+var Script string

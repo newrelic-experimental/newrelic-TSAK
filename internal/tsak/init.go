@@ -12,6 +12,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/clips"
   "github.com/google/uuid"
   "github.com/erikdubbelboer/gspt"
+  "github.com/common-nighthawk/go-figure"
 )
 
 func Init() {
@@ -40,12 +41,30 @@ func Init() {
   flag.StringVar(&conf.Proc, "proc", "", "Name of the script for the processing")
   flag.StringVar(&conf.Out, "out", "", "Name of the script for the output")
   flag.StringVar(&conf.Run, "run", "", "Name of the exclusive run script (-in/-out/-proc will be ignored)")
+  flag.StringVar(&conf.Script, "script", "", "If passed, this script will be used as 'universal script' and will be passed to -in/-out/-proc/-housekeeper")
   flag.StringVar(&conf.Conf, "conf", "", "Configuration file")
   flag.StringVar(&conf.House, "housekeeper", "", "Housekeeper periodic script")
   flag.StringVar(&conf.Clips, "clips", "", "Name of non-exclusive main script executed in CLIPS environment")
   flag.Parse()
+  if ! conf.Production {
+    banner := figure.NewFigure("TSAK :> ", "", true)
+    banner.Print()
+    fmt.Println()
+  }
   gspt.SetProcTitle(fmt.Sprintf("TSAK: %s[%s]", conf.Name, conf.ID))
+  if conf.Script != "" {
+    conf.In     = conf.Script
+    conf.Out    = conf.Script
+    conf.Proc   = conf.Script
+    conf.House  = conf.Script
+  }
   log.InitLog()
+  if conf.Script != "" {
+    log.Trace(fmt.Sprintf("Universal script %s will be used for -in/-out/-proc/-housekeeper"))
+  }
+  if ! conf.Production {
+    log.Trace(RunVerification())
+  }
   signal.InitSignal()
   script.InitScript()
   clips.InitClips()

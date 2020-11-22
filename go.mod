@@ -7,6 +7,7 @@ require (
 	github.com/Jeffail/gabs v1.4.0
 	github.com/Microsoft/go-winio v0.4.15 // indirect
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
+	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
 	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
 	github.com/elastic/go-sysinfo v1.4.0
