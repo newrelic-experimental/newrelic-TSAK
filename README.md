@@ -14,7 +14,7 @@ TSAK - as translated as a "Telemetry Swiss Army Knife", the instrument designed 
 * To be a part of telemetry processing pipeline
 * To generate a simulated telemetry data for Monitoring and Observability systems development, testing, training and teaching and POC demonstrations.
 
-The development of TSAK is ongoing with scheduled monthly releases.
+The development of TSAK is ongoing with scheduled monthly releases. Please check of ["What's new"](documentation/images/whatsnew.md)
 
 ## Installation
 
