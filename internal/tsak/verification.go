@@ -28,6 +28,12 @@ var wisdom = []string{
   "What is your planet number in tentura ? What's yours galaxy number in spiral ? Think !",
   "If there is no color differentiation of one's pants, there is no future!",
   "Time is relative ! Understand ?",
+  "I'll tell everybody, what's have brought to this planet that bufoon PeZhe...",
+  "Fiddler, we have chosen a direction and we are going...",
+  "Mommy, Mommy what we are going to do ? Kuuu ....",
+  "Shut up! You do not have an aural skills.",
+  "Patsak do not cheat another patsak. This is not pretty, dear.",
+  "Heavens, heavens never seen such a shameful patsak, like you, fiddler. I am very deeeply grieving.",
 }
 
 func RunVerification() string {

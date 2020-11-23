@@ -1,0 +1,10 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+cache = import("stdlib/cache")
+
+cache = cache.Get("mycache", 10240)
+cache.SetBig(stdlib.Bytes("Answer"), stdlib.Bytes("42"))
+res = cache.GetBig(nil, stdlib.Bytes("Answer"))
+strRes = stdlib.String(res)
+fmt.Println("Buffer from the cache",res)
+fmt.Println("String representation", strRes)
