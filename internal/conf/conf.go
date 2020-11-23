@@ -28,3 +28,4 @@ var Run string
 var House string
 var Clips string
 var Script string
+var Ver = "0.2-pre1"

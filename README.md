@@ -14,7 +14,7 @@ TSAK - as translated as a "Telemetry Swiss Army Knife", the instrument designed 
 * To be a part of telemetry processing pipeline
 * To generate a simulated telemetry data for Monitoring and Observability systems development, testing, training and teaching and POC demonstrations.
 
-The development of TSAK is ongoing with scheduled monthly releases.
+The development of TSAK is ongoing with scheduled monthly releases. Please check of ["What's new"](documentation/whatsnew.md)
 
 Current in-development version is [0.2-pre1](https://github.com/newrelic-experimental/newrelic-TSAK/tree/0.2-pre1)
 
@@ -35,7 +35,7 @@ As it is always a good start. You shall familiarize yourself with the existing c
 
 ### Logs and debugging
 
-This group of command line parameters will get you a loggin output from the TSAK application itself and from the TSAK scripts.
+This group of command line parameters will get you a logs output from the TSAK application itself and from the TSAK scripts.
 
 Key | Description
 ----|------------

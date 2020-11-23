@@ -47,7 +47,7 @@ func Init() {
   flag.StringVar(&conf.Clips, "clips", "", "Name of non-exclusive main script executed in CLIPS environment")
   flag.Parse()
   if ! conf.Production {
-    banner := figure.NewFigure("TSAK :> ", "", true)
+    banner := figure.NewFigure(fmt.Sprintf("TSAK %s:> ", conf.Ver), "", true)
     banner.Print()
     fmt.Println()
   }
