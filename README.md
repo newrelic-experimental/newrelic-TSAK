@@ -60,6 +60,7 @@ Key | Description
 -in | Path to the script which will be running at "Protocol side"
 -proc | Path to the script which will be running as "Processing stage"
 -out | Path to the script which will be running as a "Feeder"
+-script | Path to the script which will be considered as "universal script" and automatically will be passed to -in/-out/-proc/-heartbeat
 
 ### NewRelic related command line parameters
 
