@@ -16,7 +16,7 @@ TSAK - as translated as a "Telemetry Swiss Army Knife", the instrument designed 
 
 The development of TSAK is ongoing with scheduled monthly releases.
 
-Current in-development version is [0.2-pre1](https://github.com/newrelic-experimental/newrelic-TSAK/tree/0.2-pre1)
+Current in-development version is [0.2-pre2](https://github.com/newrelic-experimental/newrelic-TSAK/tree/0.2-pre2)
 
 ## Installation
 
