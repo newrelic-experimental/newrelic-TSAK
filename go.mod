@@ -23,6 +23,7 @@ require (
 	github.com/hallidave/mibtool v0.2.0
 	github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5 // indirect
 	github.com/k-sone/snmpgo v3.2.0+incompatible
+	github.com/kamildrazkiewicz/go-flow v0.0.0-20170919072006-2a1d885f8ce4
 	github.com/karrick/godirwalk v1.16.1
 	github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
 	github.com/kr/text v0.2.0 // indirect

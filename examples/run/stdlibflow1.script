@@ -1,0 +1,37 @@
+fmt = import("fmt")
+flow = import("stdlib/flow")
+
+func one(r)  {
+fmt.Println("Here it goes for one()")
+	return 1, nil
+}
+
+func two(r)  {
+fmt.Println("Here it goes for two()")
+	return 2, nil
+}
+
+func three(r)  {
+fmt.Println("Here it goes for three()")
+	return 3, nil
+}
+
+func four(r)  {
+fmt.Println("Here it goes for four()")
+	return 4, nil
+}
+
+f = flow.New()
+
+f = f.Add("step one", nil, one)
+f = f.Add("step two", []string{"step one"}, two)
+f = f.Add("step three", []string{"step one"}, three)
+f = f.Add("step four", []string{"step two", "step three"}, four)
+res, err = f.Do()
+if err == nil {
+	for k,v in res {
+		fmt.Println("Flow",k,"returned", v)
+	}
+} else {
+	fmt.Println("flow error", err)
+}
