@@ -24,6 +24,13 @@ Script | Description
 [loop_in1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/in/loop_in1.script) | Generate and send to a PROC thread a test JSON data with counter every second
 [loop_proc1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/proc/loop_proc1.script) | Processor, receiving data from the channel, prints and send to "OUT"
 [loop_out1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/main/examples/out/loop_out1.script) | Receives the data from Processor and prints them.
+[stdlibflow1.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/0.2-pre2/examples/run/stdlibflow1.script) | Create functional in-app pipelines with dependencies
+[stdlibflow2.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/0.2-pre2/examples/run/stdlibflow2.script) | Execute functions in parallel and return the values.
+[stdlibflow3.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/0.2-pre2/examples/run/stdlibflow3.script) | Execute functions in parallel and return first n values
+[stdlibflow4.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/0.2-pre2/examples/run/stdlibflow4.script) | Execute functions in parallel and return last n values
+[stdlibflow5.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/0.2-pre2/examples/run/stdlibflow5.script) | Execute functions as a pipe, passing output of one function as parameter to another.
+[stdlibflow6.script](https://github.com/newrelic-experimental/newrelic-TSAK/blob/0.2-pre2/examples/run/stdlibflow6.script) | Retry execution of the function n times, stop retry if function returns a value or return an error.
+
 
 
 ## New Relic related scripts
