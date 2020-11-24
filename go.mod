@@ -7,6 +7,7 @@ require (
 	github.com/Jeffail/gabs v1.4.0
 	github.com/Microsoft/go-winio v0.4.15 // indirect
 	github.com/VictoriaMetrics/fastcache v1.5.7
+	github.com/aaronjan/hunch v1.1.2
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43

@@ -1,0 +1,31 @@
+fmt = import("fmt")
+time = import("time")
+flow = import("stdlib/flow")
+errors = import("errors")
+
+func one(ctx, n)  {
+fmt.Println("Here it goes for one()")
+	time.Sleep(2*time.Second)
+	return "Hello ", nil
+}
+
+func two(ctx, n)  {
+fmt.Println("Here it goes for two()")
+	time.Sleep(4*time.Second)
+	return n+"World ", nil
+}
+
+func three(ctx, n)  {
+fmt.Println("Here it goes for three()")
+	time.Sleep(6*time.Second)
+	return n+"!", nil
+}
+
+
+res, err = flow.Pipe(one, two, three)
+
+if err == nil {
+	fmt.Println("function() returned:", res)
+} else {
+	fmt.Println("flow error", err)
+}
