@@ -1,0 +1,101 @@
+fmt = import("fmt")
+norm = import("num/norm")
+stat = import("num/stat")
+df = import("dataframe")
+brain = import("ai/ml/simple")
+
+func DrawGraph(data) {
+  dataSeries = df.Series("data", nil, data...)
+  fmt.Println(dataSeries.AsciiGraph())
+}
+
+func Predict(data, trainingData) {
+  ff = brain.New(20,20,2)
+  ff.Configure(1000, 0.6, 0.4, true)
+  tres = ff.Train(trainData)
+  if len(tres) == 0 {
+    return [0.0, false]
+  }
+  res = ff.Update(data)
+  fmt.Println(res)
+  if res[0] > 0.9 {
+    return [res[0], "PROBLEM", true]
+  } else {
+    return [res[0], "OK", false]
+  }
+}
+
+// First, let's define a data samples
+data1 = []float64{0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0.01, 0, 0, 0, 0, 0} // This is all zero
+data2 = []float64{0.1, 5, 0, 0, 4, 0, 2, 0, 0, 4, 0, 0, 3, 0, 0, 3, 0, 4, 0, 0} // This data with spikes
+data3 = []float64{0.1, 0.2, 0.5, 0.7, 0.9, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.6, 0.5, 0.4, 0.3, 0.1} // This data with plateu
+data4 = []float64{0.1, 0.2, 0.5, 0.7, 0.9, 1.0, 1.0, 2.0, 3.0, 4.0, 3.0, 2.0, 1.0, 1.0, 1.0, 0.6, 0.5, 0.4, 0.3, 0.1} // This data with larger spike
+data5 = []float64{0.1, 0.2, 0.5, 0.7, 0.9, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.1, 2.4, 2.7, 3.3, 3.4, 3.7, 3.9, 4.1, 4.2} // This data with upswing
+data6 = []float64{5.1, 4.9, 4.5, 3.7, 3.5, 3.3, 3.1, 2.9, 2.7, 2.4, 2.2, 2.1, 1.9, 1.7, 1.5, 1.2, 0.7, 0.6, 0.2, 0.1} // This data with downswing
+data7 = []float64{5.1, 4.9, 4.5, 3.7, 3.5, 3.3, 3.1, 0.9, 0.7, 0.4, 0.2, 0.1, 0.9, 1.2, 1.5, 1.7, 1.9, 2.6, 3.2, 4.1} // This data with drop and raise
+
+// Then define a training samples
+tdata1 = []float64{0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} // This is all zero
+tdata2 = []float64{0.1, 4, 0, 0, 5, 0, 1, 0, 0, 5, 0, 5, 0, 0, 4, 0, 0, 3, 0, 4} // This data with spikes
+tdata3 = []float64{0.01, 0.1, 0.2, 0.5, 0.7, 1.5, 1.4, 1.6, 1.4, 1.3, 1.5, 1.3, 1.4, 1.3, 1.4, 0.8, 0.4, 0.4, 0.2, 0.001} // This data with plateu
+tdata4 = []float64{0.3, 0.1, 0.2, 0.6, 0.95, 1.0, 1.3, 2.0, 4.0, 5.0, 3.5, 2.5, 1.4, 1.3, 1.0, 0.7, 0.3, 0.2, 0.1, 0.1} // This data with larger spike
+tdata5 = []float64{0.2, 0.4, 0.5, 0.9, 1.0, 1.1, 1.2, 1.6, 1.8, 1.9, 2.3, 2.4, 2.5, 2.7, 2.9, 3.4, 3.5, 4.0, 4.1, 4.5} // This data with upswing
+tdata6 = []float64{4.1, 3.9, 3.5, 2.7, 2.5, 2.3, 2.1, 1.9, 1.7, 1.4, 1.2, 1.1, 0.9, 0.8, 0.5, 0.2, 0.2, 0.1, 0.1, 0.01} // This data with downswing
+tdata7 = []float64{6.1, 5.9, 5.5, 4.7, 3.5, 3.1, 3.1, 1.0, 0.4, 0.3, 0.2, 0.2, 0.4, 1.5, 2.5, 3.7, 3.9, 4.6, 5.2, 6.1} // This data with drop and raise
+
+fmt.Println("Building training data for a neural net")
+trainData = [][][]float64{
+  [norm.Normalize(tdata1),[1,0]],
+  [norm.Normalize(tdata2),[0,1]],
+  [norm.Normalize(tdata3),[1,1]],
+  [norm.Normalize(tdata4),[0,0]],
+  [norm.Normalize(tdata5),[1,1]],
+  [norm.Normalize(tdata6),[1,0]],
+  [norm.Normalize(tdata7),[0,0]],
+}
+
+fmt.Println("This is an original dataset")
+DrawGraph(data1)
+DrawGraph(data2)
+DrawGraph(data3)
+DrawGraph(data4)
+DrawGraph(data5)
+DrawGraph(data6)
+DrawGraph(data7)
+
+fmt.Println("Normalizing datasets")
+ndata1 = norm.Normalize(data1)
+ndata2 = norm.Normalize(data2)
+ndata3 = norm.Normalize(data3)
+ndata4 = norm.Normalize(data4)
+ndata5 = norm.Normalize(data5)
+ndata6 = norm.Normalize(data6)
+ndata7 = norm.Normalize(data7)
+
+fmt.Println("Smoothing datasets")
+sdata1 = stat.SmoothStatic(ndata1,3)
+sdata2 = stat.SmoothStatic(ndata2,3)
+sdata3 = stat.SmoothStatic(ndata3,3)
+sdata4 = stat.SmoothStatic(ndata4,3)
+sdata5 = stat.SmoothStatic(ndata5,3)
+sdata6 = stat.SmoothStatic(ndata6,3)
+sdata7 = stat.SmoothStatic(ndata7,3)
+
+fmt.Println("This is an normalized and smoothed dataset")
+DrawGraph(sdata1)
+DrawGraph(sdata2)
+DrawGraph(sdata3)
+DrawGraph(sdata4)
+DrawGraph(sdata5)
+DrawGraph(sdata6)
+DrawGraph(sdata7)
+
+fmt.Println("Datasets and training data are ready. Training & Predicting.")
+
+fmt.Println("Result for Zeros", Predict(sdata1, trainData))
+fmt.Println("Result for Spikes", Predict(sdata2, trainData))
+fmt.Println("Result for Plateu", Predict(sdata3, trainData))
+fmt.Println("Result for Spike", Predict(sdata4, trainData))
+fmt.Println("Result for Up", Predict(sdata5, trainData))
+fmt.Println("Result for Down", Predict(sdata6, trainData))
+fmt.Println("Result for Down&Up", Predict(sdata7, trainData))

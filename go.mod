@@ -20,7 +20,7 @@ require (
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/uuid v1.1.2
-	github.com/goreleaser/goreleaser v0.147.2 // indirect
+	github.com/goreleaser/goreleaser v0.149.0 // indirect
 	github.com/hallidave/mibtool v0.2.0
 	github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5 // indirect
 	github.com/k-sone/snmpgo v3.2.0+incompatible
@@ -50,7 +50,7 @@ require (
 	gonum.org/v1/gonum v0.7.0
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
-	gopkg.in/yaml.v2 v2.3.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200605160147-a5ece683394c // indirect
 	syreclabs.com/go/faker v1.2.2
 )

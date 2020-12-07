@@ -23,3 +23,10 @@ for v in res2 {
   dataSeries3.Append(v)
 }
 fmt.Println(dataSeries3.AsciiGraph())
+res3 = stat.Smooth(data, 1)
+fmt.Println("Smoothed data with window 1", res3)
+dataSeries3 = df.Series("dataS3", nil)
+for v in res3 {
+  dataSeries3.Append(v)
+}
+fmt.Println(dataSeries3.AsciiGraph())
