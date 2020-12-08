@@ -1,0 +1,92 @@
+fmt = import("fmt")
+norm = import("num/norm")
+stat = import("num/stat")
+df = import("dataframe")
+brain = import("ai/ml/simple")
+
+func DrawGraph(data) {
+  dataSeries = df.Series("data", nil, data...)
+  fmt.Println(dataSeries.AsciiGraph())
+}
+
+func Predict(data, trainingData, border) {
+  ff = brain.New(20,20,1)
+  ff.Configure(1000, 0.6, 0.4, false)
+  tres = ff.Train(trainData)
+  if len(tres) == 0 {
+    return [0.0, false]
+  }
+  res = ff.Update(data)
+  if res[0] > border {
+    return [res[0], "PROBLEM", true]
+  } else {
+    return [res[0], "OK", false]
+  }
+}
+
+
+data = []float64{0, 0.1, 0, 0.2, 0, 2.3, 0, 0.5, 1.5, 2.5, 2.5, 1.3, 0.3, 0, 0, 4, 0, 0.2, 0.4, 0.3} // This is all zero
+
+// Then define a training samples
+tdata1 = []float64{0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} // This is all zero
+tdata2 = []float64{0.1, 4, 0, 0, 5, 0, 1, 0, 0, 5, 0, 5, 0, 0, 4, 0, 0, 3, 0, 4} // This data with spikes
+tdata3 = []float64{0.01, 0.1, 0.2, 0.5, 0.7, 1.5, 1.4, 1.6, 1.4, 1.3, 1.5, 1.3, 1.4, 1.3, 1.4, 0.8, 0.4, 0.4, 0.2, 0.001} // This data with plateu
+tdata4 = []float64{0.3, 0.1, 0.2, 0.6, 0.95, 1.0, 1.3, 2.0, 4.0, 5.0, 3.5, 2.5, 1.4, 1.3, 1.0, 0.7, 0.3, 0.2, 0.1, 0.1} // This data with larger spike
+tdata5 = []float64{0.2, 0.4, 0.5, 0.9, 1.0, 1.1, 1.2, 1.6, 1.8, 1.9, 2.3, 2.4, 2.5, 2.7, 2.9, 3.4, 3.5, 4.0, 4.1, 4.5} // This data with upswing
+tdata6 = []float64{4.1, 3.9, 3.5, 2.7, 2.5, 2.3, 2.1, 1.9, 1.7, 1.4, 1.2, 1.1, 0.9, 0.8, 0.5, 0.2, 0.2, 0.1, 0.1, 0.01} // This data with downswing
+tdata7 = []float64{6.1, 5.9, 5.5, 4.7, 3.5, 3.1, 3.1, 1.0, 0.4, 0.3, 0.2, 0.2, 0.4, 1.5, 2.5, 3.7, 3.9, 4.6, 5.2, 6.1} // This data with drop and raise
+tdata8 = []float64{6.1, 5.9, 5.5, 3.7, 2.5, 1.1, 0.1, 0.5, 1.4, 2.3, 3.2, 4.2, 3.4, 2.5, 1.5, 0.7, 1.9, 2.6, 3.2, 4.1}
+tdata9 = []float64{0, 0, 2, 3, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 3, 2, 1, 0, 1, 2}
+tdata10 = []float64{0, 0, 0, 0.5, 0, 2, 0, 0.2, 2.5, 3.5, 4.5, 2.3, 0.1, 0, 0, 1.5, 0, 1.2, 0.4, 0.3}
+tdata11 = []float64{0, 0, 1, 0, 2, 3, 0, 0, 3.5, 7.5, 7.5, 1.3, 0, 0, 0, 2, 2, 0, 0.4, 0.3}
+tdata12 = []float64{0, 0, 1, 1, 2, 0, 0, 0, 3.5, 3.5, 3.5, 1.3, 0, 0, 0, 1, 1, 0, 0.4, 0.3}
+
+
+
+
+
+fmt.Println("Building training data for a neural net")
+trainData = [][][]float64{
+  [norm.Normalize(tdata1),[0]],
+  [norm.Normalize(tdata2),[0]],
+  [norm.Normalize(tdata3),[0]],
+  [norm.Normalize(tdata4),[0]],
+  [norm.Normalize(tdata5),[0]],
+  [norm.Normalize(tdata6),[0]],
+  [norm.Normalize(tdata7),[0]],
+  [norm.Normalize(tdata8),[1]],
+  [norm.Normalize(tdata9),[1]],
+  [norm.Normalize(tdata10),[1]],
+  [norm.Normalize(tdata11),[1]],
+  [norm.Normalize(tdata12),[1]],
+}
+
+fmt.Println("This is an original dataset")
+DrawGraph(data)
+
+
+fmt.Println("Normalizing datasets")
+ndata = norm.Normalize(data)
+
+
+fmt.Println("Smoothing datasets")
+sdata1 = stat.SmoothStatic(ndata,1)
+sdata2 = stat.SmoothStatic(ndata,2)
+sdata3 = stat.SmoothStatic(ndata,3)
+
+
+fmt.Println("This is an normalized dataset")
+DrawGraph(ndata)
+fmt.Println("This is an smoothed dataset")
+DrawGraph(sdata1)
+DrawGraph(sdata2)
+DrawGraph(sdata3)
+
+fmt.Println("Running predicament for normalized")
+fmt.Println(Predict(ndata, trainData, 0.5))
+fmt.Println("Running predicament for smoothed S=1")
+fmt.Println(Predict(sdata1, trainData, 0.5))
+fmt.Println("Running predicament for smoothed S=2")
+fmt.Println(Predict(sdata2, trainData, 0.5))
+fmt.Println("Running predicament for smoothed S=3")
+fmt.Println(Predict(sdata3, trainData, 0.5))

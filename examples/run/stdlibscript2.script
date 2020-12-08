@@ -1,0 +1,15 @@
+fmt = import("fmt")
+script = import("stdlib/script")
+
+size, err = script.File("README.md").CountLines()
+if err == nil {
+  fmt.Println("There are",size,"lines in README.md")
+} else {
+  fmt.Println("Ouch!", err)
+}
+size, err = script.File("README.md").Match("golang").CountLines()
+if err == nil {
+  fmt.Println("There are",size,"lines in README.md matching 'golang'")
+} else {
+  fmt.Println("Ouch!", err)
+}

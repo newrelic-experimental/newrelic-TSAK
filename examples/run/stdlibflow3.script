@@ -1,0 +1,52 @@
+fmt = import("fmt")
+time = import("time")
+flow = import("stdlib/flow")
+errors = import("errors")
+
+x = 21
+
+func one(r)  {
+fmt.Println("Here it goes for one()")
+	time.Sleep(2*time.Second)
+	return 2*x, nil
+}
+
+func two(r)  {
+fmt.Println("Here it goes for two()")
+	time.Sleep(4*time.Second)
+	return 4*x, nil
+}
+
+func three(r)  {
+fmt.Println("Here it goes for three()")
+	time.Sleep(6*time.Second)
+	return 6*x, nil
+}
+
+func boom(r)  {
+fmt.Println("Here it goes for boom()")
+	return x, errors.New("boom!")
+}
+
+
+fmt.Println("Should be BOOM !!!")
+res, err = flow.First(2, boom, one, two, three)
+
+if err == nil {
+	for v in res {
+		fmt.Println("function() returned", v)
+	}
+} else {
+	fmt.Println("flow error", err)
+}
+
+fmt.Println("Should not be BOOM !!!")
+res, err = flow.First(2, one, two, three)
+
+if err == nil {
+	for v in res {
+		fmt.Println("function() returned", v)
+	}
+} else {
+	fmt.Println("flow error", err)
+}

@@ -1,0 +1,8 @@
+fmt = import("fmt")
+script = import("stdlib/script")
+
+func prepend(line, out) {
+  out.WriteString(">>> "+line+"\n")
+}
+
+script.Echo("hello\nworld\n").EachLine(prepend).Stdout()

@@ -1,0 +1,13 @@
+fmt = import("fmt")
+e = import("os/exec")
+stdlib = import("stdlib")
+strings = import("strings")
+
+out, _ = e.Command("/bin/ls", "-l", "/")
+res = stdlib.String(out.Output()[0])
+for line in strings.Split(res, '\n') {
+  r = strings.Split(line, " ")
+  if len(r) > 2 {
+    fmt.Println(r[len(r)-1:])
+  }
+}

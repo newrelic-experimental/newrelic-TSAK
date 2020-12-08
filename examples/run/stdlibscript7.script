@@ -1,0 +1,7 @@
+fmt = import("fmt")
+script = import("stdlib/script")
+
+dirs, err = script.FindFiles(".").Dirname().Match(".git").Freq().Stdout()
+if err != nil {
+  fmt.Println("Ouch!", err)
+}

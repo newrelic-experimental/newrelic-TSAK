@@ -1,6 +1,7 @@
 package packages
 
 import (
+  "fmt"
   "time"
   "reflect"
   "strconv"
@@ -11,7 +12,10 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/cron"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/teris-io/shortid"
 )
+
 
 func NowMilliseconds() int64 {
     return time.Now().UnixNano() / int64(time.Millisecond)
@@ -39,6 +43,15 @@ func Int(n string) int32 {
   }
 }
 
+func StdlibShortID() *shortid.Shortid {
+  sid, err := shortid.New(1, shortid.DefaultABC, uint64(time.Now().UTC().UnixNano()))
+  if err != nil {
+    log.Error(fmt.Sprintf("UniqID.error: %s", err))
+    return nil
+  }
+  return sid
+}
+
 func init() {
   env.Packages["stdlib"] = map[string]reflect.Value{
     "Answer":         reflect.ValueOf(42),
@@ -61,5 +74,6 @@ func init() {
     "Bytes":          reflect.ValueOf(StdlibBytes),
     "Query":          reflect.ValueOf(nr.Query),
     "Int":            reflect.ValueOf(Int),
+    "UniqID":         reflect.ValueOf(StdlibShortID),
   }
 }
