@@ -1,0 +1,9 @@
+fmt = import("fmt")
+script = import("stdlib/script")
+
+uname, err = script.IfExists("/usr/bin/uname").Exec("/usr/bin/uname -a").String()
+if err == nil {
+  fmt.Println(uname)
+} else {
+  fmt.Println("Ouch!", err)
+}

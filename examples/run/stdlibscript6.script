@@ -1,0 +1,11 @@
+fmt = import("fmt")
+script = import("stdlib/script")
+
+n, err = script.ListFiles("/").Match("home").CountLines()
+if err == nil {
+  if n > 0 {
+    fmt.Println("/home exists")
+  }
+} else {
+  fmt.Println("Ouch!", err)
+}

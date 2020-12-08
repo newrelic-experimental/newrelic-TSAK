@@ -1,0 +1,13 @@
+//
+// cat README.md on stdin of this TSAk script
+// cat README.md| ./bin/darwin/tsak  -stdout  -debug  -name "helloworld" -conf ./config.example/tsak.conf -run ./examples/run/stdlibscript3.script
+//
+fmt = import("fmt")
+script = import("stdlib/script")
+
+size, err = script.Stdin().Match("golang").CountLines()
+if err == nil {
+  fmt.Println("There are",size,"lines read from STDIN matching 'golang'")
+} else {
+  fmt.Println("Ouch!", err)
+}
