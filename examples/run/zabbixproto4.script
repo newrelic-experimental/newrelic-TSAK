@@ -1,0 +1,25 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+time = import("time")
+net = import("net")
+ioutil = import("io/ioutil")
+zabbix = import("protocols/zabbix")
+
+zpkt_req = zabbix.Request("proxy config", "Zabbix proxy", true)
+zpkt_succ = zabbix.Response("success", "5.2.0", true)
+fmt.Println("Request", zpkt_req)
+c, err = net.DialTimeout("tcp", "10.0.0.162:10051", time.Second*60)
+if err == nil {
+  c.Write(zpkt_req)
+  res, err = ioutil.ReadAll(c)
+  if err == nil {
+    hdr = res[:13]
+    data = res[13:]
+    pkt = zabbix.ParsePacket(hdr, data)
+    fmt.Println("Response:", pkt.String())
+    c.Write(zpkt_succ)
+  }
+  c.Close()
+} else {
+  fmt.Println("Ouch:", err)
+}

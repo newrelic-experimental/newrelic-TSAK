@@ -11,11 +11,14 @@ import (
 type Client struct {
 	Host string
 	Port int
+	Conn *net.TCPConn
+	Compress bool
+	Connected bool
 }
 
 // Client constructor.
 func NewClient(host string, port int) (c *Client) {
-	c = &Client{Host: host, Port: port}
+	c = &Client{Host: host, Port: port, Compress: true, Connected: false}
 	return
 }
 
@@ -50,6 +53,11 @@ func (c *Client) connect() (conn *net.TCPConn, err error) {
 		Error error
 	}
 
+	if c.Connected {
+		conn = c.Conn
+		return
+	}
+
 	// Open connection to Zabbix host
 	iaddr, err := c.getTCPAddr()
 	if err != nil {
@@ -74,6 +82,8 @@ func (c *Client) connect() (conn *net.TCPConn, err error) {
 		}
 
 		conn = resp.Conn
+		c.Connected = true
+		c.Conn = resp.Conn
 	}
 
 	return
@@ -94,14 +104,13 @@ func (c *Client) read(conn *net.TCPConn) (res []byte, err error) {
 // Client method, sends packet to Zabbix.
 func (c *Client) Send(packet *Packet) (res []byte, err error) {
 	var buffer []byte
+
 	conn, err := c.connect()
 	if err != nil {
 		return
 	}
-	defer conn.Close()
-
 	// Fill buffer
-	if ! packet.IsCompress {
+	if ! c.Compress {
 		buffer = append(c.getHeader(), packet.DataLen()...)
 		buffer = append(buffer, packet.Data...)
 	} else {
@@ -120,4 +129,14 @@ func (c *Client) Send(packet *Packet) (res []byte, err error) {
 
 	res, err = c.read(conn)
 	return
+}
+
+func (c *Client) Success() {
+	
+}
+
+func (c *Client) Close() {
+	if c.Connected {
+		c.Conn.Close()
+	}
 }

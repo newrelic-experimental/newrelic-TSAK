@@ -2,7 +2,7 @@ stdlib = import("stdlib")
 fmt = import("fmt")
 log = import("tlog")
 time = import("time")
-zabbix = import("zabbix")
+zabbix = import("zabbix/proxy")
 
 
 proxy = zabbix.Proxy("Zabbix proxy", "10.0.0.162", 10051)

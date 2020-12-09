@@ -1,0 +1,14 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+time = import("time")
+zabbix = import("protocols/zabbix")
+djson = import("djson")
+
+pkt = djson.New()
+pkt.Set("Zabbix proxy", "host")
+pkt.Set("proxy heartbeat", "request")
+
+zpkt = zabbix.Packet(pkt.String(), false)
+zpktc = zabbix.Packet(pkt.String(), true)
+fmt.Println("Uncompressed packet", zpkt)
+fmt.Println("Compressed packet", zpktc)

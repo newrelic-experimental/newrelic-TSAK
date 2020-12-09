@@ -58,3 +58,16 @@ func (p *Packet) Decompress() bool {
 	}
 	return true
 }
+
+func AnyByteCompress(data []byte) (cdata []byte, dataLen1 []byte, dataLen2 []byte) {
+	var buf bytes.Buffer
+	dataLen1 =  make([]byte, 4)
+	dataLen2 =  make([]byte, 4)
+	binary.LittleEndian.PutUint32(dataLen1, uint32(len(data)))
+	w := zlib.NewWriter(&buf)
+	w.Write(data)
+	w.Close()
+	cdata = buf.Bytes()
+	binary.LittleEndian.PutUint32(dataLen2, uint32(len(cdata)))
+	return
+}

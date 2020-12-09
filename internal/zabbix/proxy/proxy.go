@@ -26,6 +26,7 @@ func (proxy *Proxy) SendHeartbeat() (response *ProxyResponse, err error) {
 	packet := proxy.NewGenericPacket(`proxy heartbeat`, 0)
 	var res []byte
 	res, err = proxy.Client.Send(packet)
+	defer proxy.Client.Close()
 	if err != nil {
 		return
 	}
@@ -48,6 +49,7 @@ func (proxy *Proxy) SendHostAvailability(data []*AvailabilityData) (response *Pr
 
 	var res []byte
 	res, err = proxy.Client.Send(packet)
+	defer proxy.Client.Close()
 	if err != nil {
 		return
 	}
@@ -70,6 +72,7 @@ func (proxy *Proxy) SendHistory(data []*HistoryData) (response *ProxyResponse, e
 
 	var res []byte
 	res, err = proxy.Client.Send(packet)
+	defer proxy.Client.Close()
 	if err != nil {
 		return
 	}
@@ -92,6 +95,7 @@ func (proxy *Proxy) GetConfig() (config *ProxyConfig, err error) {
 
 	var res []byte
 	res, err = proxy.Client.Send(packet)
+	defer proxy.Client.Close()
 	if err != nil {
 		return
 	}
@@ -105,6 +109,7 @@ func (proxy *Proxy) DiscoverConfig() (config *ProxyConfigDiscovered, err error) 
 
 	var res []byte
 	res, err = proxy.Client.Send(packet)
+	defer proxy.Client.Close()
 	if err != nil {
 		return
 	}

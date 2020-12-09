@@ -3,18 +3,18 @@ package packages
 import (
   "reflect"
   "github.com/mattn/anko/env"
-  zbxproxy "github.com/newrelic-experimental/newrelic-TSAK/internal/zabbix/proxy"
+  zabbix "github.com/newrelic-experimental/newrelic-TSAK/internal/zabbix"
 )
 
 func init() {
-  env.Packages["zabbix"] = map[string]reflect.Value{
-    "Proxy":      reflect.ValueOf(zbxproxy.NewProxy),
+  env.Packages["protocols/zabbix"] = map[string]reflect.Value{
+    "Packet":           reflect.ValueOf(zabbix.MakePacket),
+    "Request":          reflect.ValueOf(zabbix.MakeReq),
+    "Response":         reflect.ValueOf(zabbix.MakeResp),
+    "PayloadSize":      reflect.ValueOf(zabbix.GetPayloadSize),
+    "ParsePacket":      reflect.ValueOf(zabbix.ParsePacket),
   }
-  env.PackageTypes["zabbix"] = map[string]reflect.Type{
-    "Proxy":                reflect.TypeOf(zbxproxy.Proxy{}),
-    "ProxyConfig":          reflect.TypeOf(zbxproxy.ProxyConfig{}),
-    "ProxyResponse":        reflect.TypeOf(zbxproxy.ProxyResponse{}),
-    "ProxyConfigResponse":  reflect.TypeOf(zbxproxy.ProxyConfigResponse{}),
-    "ProxyConfigDiscovered":  reflect.TypeOf(zbxproxy.ProxyConfigDiscovered{}),
+  env.PackageTypes["protocols/zabbix"] = map[string]reflect.Type{
+
   }
 }

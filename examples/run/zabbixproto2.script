@@ -1,0 +1,16 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+time = import("time")
+zabbix = import("protocols/zabbix")
+
+zpkt_req = zabbix.Request("proxy heartbeat", "Zabbix proxy", false)
+zpkt_rsp = zabbix.Response("success", "5.2.0", true)
+fmt.Println("Request", zpkt_req)
+fmt.Println("Response", zpkt_rsp)
+hdr = zpkt_rsp[:13]
+data = zpkt_rsp[13:]
+fmt.Println("Packet size", zabbix.PayloadSize(zpkt_rsp[:13]))
+pkt = zabbix.ParsePacket(hdr, data)
+fmt.Println("Packet payload is", pkt.String())
+fmt.Println("Responce is", pkt.Search("response").String())
+fmt.Println("Is success:", "\"success\"" == pkt.Search("response").String())

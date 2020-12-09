@@ -5,4 +5,6 @@ import (
 )
 
 
-func GetLogLine()
+func GetLogLine(r *bufio.Reader) (string, error) {
+
+}
