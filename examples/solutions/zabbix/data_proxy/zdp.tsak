@@ -12,56 +12,11 @@ ioutil  = import("io/ioutil")
 
 C = 0
 
-func twoWay(dst, zpkt) {
-  c, err = net.DialTimeout("tcp", dst, time.Second*TIMEOUT)
-  if err == nil {
-    c.Write(zpkt)
-    res, err = ioutil.ReadAll(c)
-    pkt = nil
-    if err == nil {
-      pkt = zabbix.Parse(res)
-    } else {
-      log.Trace("ZABBIX 3-way reading error", {"error":err, "destination":dst})
-      c.Close()
-      return false
-    }
-    if pkt == nil {
-      log.Trace("ZABBIX 3-way JSON parsing error", {"error":err, "destination":dst})
-      return false
-    }
-    c.Close()
-    return "\"success\"" == pkt.Search("response").String()
-  } else {
-    log.Trace("ZABBIX 3-way network error", {"error":err, "destination":dst})
-  }
-  return false
-}
-
-func threeWay(dst, zpkt, zconfirmation) {
-  c, err = net.DialTimeout("tcp", dst, time.Second*TIMEOUT)
-  if err == nil {
-    c.Write(zpkt)
-    res, err = ioutil.ReadAll(c)
-    pkt = nil
-    if err == nil {
-      pkt = zabbix.Parse(res)
-      c.Write(zconfirmation)
-    }
-    c.Close()
-    return pkt
-  } else {
-    log.Trace("ZABBIX 3-way network error", {"error":err, "destination":dst})
-  }
-  return nil
-}
-
-
-
 
 func ServerHB() {
   log.Trace("Server heartbeat")
   snd = zabbix.Request("proxy heartbeat", PROXYNAME, COMPRESS)
-  if ! twoWay(SERVER, snd) {
+  if ! zabbix.TwoWay(SERVER, snd, TIMEOUT) {
     log.Trace("ZABBIX server heartbeat failed", {"proxy":PROXYNAME, "server":SERVER})
   } else {
     log.Trace("ZABBIX server heartbeat OK")
@@ -79,35 +34,46 @@ if VMNAME == "in" {
       log.Trace("15-th iteration of data acquisition started")
       C = 0
     }
+    dataA.Acquire(stdlib.TODO(), 1)
     snd = zabbix.Request("proxy data", PROXYNAME, COMPRESS)
     rsp = zabbix.Response("success", VERSION, COMPRESS)
-    res = threeWay(PROXY, snd, rsp)
+    res = zabbix.ThreeWay(PROXY, snd, rsp, TIMEOUT)
     if res != nil {
-      stdlib.To(stdlib.INCH, res.String())
       if DATAFORWARD {
         dataCH <- res.String()
       }
     }
+    dataA.Release(1)
   }
 
   func DataForward() {
-    if DATAFORWARD {
-      // Do an actual data forwarding
+    // if ! dataS.TryAcquire(1) {
+    //   fmt.Println("DF0")
+    //   return
+    // }
+    dataS.Acquire(stdlib.TODO(), 1)
+    for len(dataCH) > 0 {
       data = djson.Parse(<-dataCH)
-      zpkt = zabbix.Data("proxy data", data.String(), PROXYNAME, COMPRESS)
-      res  = twoWay(SERVER, zpkt)
-      if ! res {
-        log.Trace("ZABBIX data forwarding delivery failed")
+      if DATAFORWARD {
+        // Do an actual data forwarding
+        zpkt = zabbix.Data("proxy data", data.String(), PROXYNAME, COMPRESS)
+        res  = zabbix.TwoWay(SERVER, zpkt, TIMEOUT)
+        if ! res {
+          log.Trace("ZABBIX data forwarding delivery failed")
+        }
       }
+      stdlib.To(stdlib.INCH, data.String())
     }
+    dataS.Release(1)
   }
   func ConfAcq() {
     log.Trace("Configuration acquisition started")
     snd = zabbix.Request("proxy config", PROXYNAME, COMPRESS)
     rsp = zabbix.Response("success", VERSION, COMPRESS)
-    res = threeWay(SERVER, snd, rsp)
+    res = zabbix.ThreeWay(SERVER, snd, rsp, TIMEOUT)
     if res != nil {
       confCH <- res.String()
+      stdlib.To(stdlib.INCH, res.String())
     } else {
       log.Trace("ZABBIX server failed to provide a proxy configuration", {"proxy":PROXYNAME, "server":SERVER})
     }
@@ -117,7 +83,7 @@ if VMNAME == "in" {
     log.Trace("Configuration delivery started")
     conf = djson.Parse(<-confCH)
     zpkt = zabbix.Data("proxy config", conf.String(), PROXYNAME, COMPRESS)
-    res  = twoWay(PROXY, zpkt)
+    res  = zabbix.TwoWay(PROXY, zpkt, TIMEOUT)
     if res {
       log.Trace("ZABBIX proxy configuration delivery OK")
     } else {
@@ -127,13 +93,15 @@ if VMNAME == "in" {
   //
   // Set-up CRONTAB functions
   //
-  confCH = make(chan string)
-  dataCH = make(chan string)
+  confCH = make(chan string, DISTCHANNELS)
+  dataCH = make(chan string, DISTCHANNELS)
+  dataA = stdlib.Semaphore(1)
+  dataS = stdlib.Semaphore(1)
   stdlib.Cron(CONFACQCRON,      ConfAcq)
   stdlib.Cron(CONFDELIVERYCRON, ConfDelivery)
-  stdlib.Cron(DATAACQCRON,      DataAcq)
-  stdlib.Cron(DATAACQCRON,      DataForward)
   stdlib.Cron(SERVERHBCRON,     ServerHB)
+  stdlib.Cron(DATAACQCRON,      DataAcq)
+  stdlib.Cron(DATAFORWARDCRON,  DataForward)
   for ! stdlib.ExitRequested() {
     time.Sleep(INLOOPWAIT * time.Second)
   }

@@ -1,0 +1,22 @@
+fmt = import("fmt")
+time = import("time")
+stdlib = import("stdlib")
+
+
+func Hi1() {
+  s.Acquire(stdlib.TODO(), 1)
+  fmt.Println("Hi from 1!")
+  time.Sleep(3*time.Second)
+  s.Release(1)
+}
+
+func Hi2() {
+  s.Acquire(stdlib.TODO(), 1)
+  fmt.Println("Hi from 2!")
+  s.Release(1)
+}
+s = stdlib.Semaphore(1)
+stdlib.Cron("@every 1s", Hi1)
+stdlib.Cron("@every 1s", Hi2)
+
+time.Sleep(10*time.Second)

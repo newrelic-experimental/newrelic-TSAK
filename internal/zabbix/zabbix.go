@@ -3,10 +3,13 @@ package zabbix
 import (
   "fmt"
   "bytes"
+  "net"
+  "time"
   "compress/zlib"
   "encoding/binary"
   "io/ioutil"
   "github.com/Jeffail/gabs"
+  "github.com/sirupsen/logrus"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
 )
 
@@ -134,4 +137,82 @@ func ParsePacket(header, data []byte) *gabs.Container {
       return nil
     }
   }
+}
+
+func ParseRaw(data []byte) []byte {
+  if len(data) < 13 {
+    log.Trace("ZABBIX packet is malformed")
+    return nil
+  }
+  payload := data[13:]
+  return payload
+}
+
+func OneWay(dst string, zpkt []byte, timeout uint64) []byte {
+  c, err := net.DialTimeout("tcp", dst, time.Second*time.Duration(timeout))
+  defer c.Close()
+  if err == nil {
+    c.Write(zpkt)
+    res, err := ioutil.ReadAll(c)
+    if err == nil {
+      return res
+    } else {
+      log.Trace("ZABBIX 1-way read error", logrus.Fields{
+        "error": err,
+        "destination": dst,
+      })
+    }
+  } else {
+    log.Trace("ZABBIX 1-way network error", logrus.Fields{
+      "error": err,
+      "destination": dst,
+    })
+  }
+  return nil
+}
+
+func TwoWay(dst string, zpkt []byte, timeout uint64) bool {
+  var pkt *gabs.Container
+  c, err := net.DialTimeout("tcp", dst, time.Second*time.Duration(timeout))
+  defer c.Close()
+  if err == nil {
+    c.Write(zpkt)
+    res, err := ioutil.ReadAll(c)
+    pkt = nil
+    if err == nil {
+      pkt = Parse(res)
+    } else {
+      log.Trace("ZABBIX 3-way reading error", logrus.Fields{"error":err, "destination":dst})
+      return false
+    }
+    if pkt == nil {
+      log.Trace("ZABBIX 3-way JSON parsing error", logrus.Fields{"error":err, "destination":dst})
+      return false
+    }
+    return "\"success\"" == pkt.Search("response").String()
+  } else {
+    log.Trace("ZABBIX 3-way network error", logrus.Fields{"error":err, "destination":dst})
+  }
+  return false
+}
+
+func ThreeWay(dst string, zpkt []byte, zconfirmation []byte, timeout uint64) *gabs.Container {
+  var pkt *gabs.Container
+  c, err := net.DialTimeout("tcp", dst, time.Second*time.Duration(timeout))
+  defer c.Close()
+  if err == nil {
+    c.Write(zpkt)
+    res, err := ioutil.ReadAll(c)
+    pkt = nil
+    if err == nil {
+      pkt = Parse(res)
+      c.Write(zconfirmation)
+    } else {
+      log.Trace("ZABBIX 3-way parsing error", logrus.Fields{"error":err, "destination":dst})
+    }
+    return pkt
+  } else {
+    log.Trace("ZABBIX 3-way network error", logrus.Fields{"error":err, "destination":dst})
+  }
+  return nil
 }

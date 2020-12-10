@@ -5,6 +5,7 @@ import (
   "time"
   "reflect"
   "strconv"
+  "context"
   "github.com/google/uuid"
   "github.com/mattn/anko/env"
   "github.com/erikdubbelboer/gspt"
@@ -14,6 +15,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
   "github.com/teris-io/shortid"
+  "golang.org/x/sync/semaphore"
 )
 
 
@@ -52,6 +54,14 @@ func StdlibShortID() *shortid.Shortid {
   return sid
 }
 
+func StdlibSemaphore(n uint64) *semaphore.Weighted {
+  return semaphore.NewWeighted(int64(n))
+}
+
+func StdlibTODO() context.Context {
+  return context.TODO()
+}
+
 func init() {
   env.Packages["stdlib"] = map[string]reflect.Value{
     "Answer":         reflect.ValueOf(42),
@@ -75,5 +85,10 @@ func init() {
     "Query":          reflect.ValueOf(nr.Query),
     "Int":            reflect.ValueOf(Int),
     "UniqID":         reflect.ValueOf(StdlibShortID),
+    "Semaphore":      reflect.ValueOf(StdlibSemaphore),
+    "TODO":           reflect.ValueOf(StdlibTODO),
+  }
+  env.PackageTypes["stdlib"] = map[string]reflect.Type{
+    "WeightedSemaphore":     reflect.TypeOf(semaphore.Weighted{}),
   }
 }

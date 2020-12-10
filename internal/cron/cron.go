@@ -1,10 +1,10 @@
 package cron
 
 import (
-  "github.com/robfig/cron"
+  rcron "github.com/robfig/cron"
 )
 
-var tcron = cron.New()
+var tcron = rcron.New()
 
 func Start() {
   tcron.Start()
@@ -17,6 +17,7 @@ func Stop() {
 func AddToCron(c_spec string, fun func()) {
   tcron.AddFunc(c_spec, fun)
 }
+
 
 func Run() {
   tcron.Run()
