@@ -80,8 +80,8 @@ func MakeReq(resp string, host string, compress bool) []byte {
   return MakePacket(pkt.String(), compress)
 }
 
-func MakeData(req string, data string, compress bool) []byte {
-  return MakePacket(fmt.Sprintf(`{"request" : "%s", "data" : [%s]}`, req, data), compress)
+func MakeData(req string, data string, host string, compress bool) []byte {
+  return MakePacket(fmt.Sprintf(`{"request" : "%s", "host" : "%s", "data" : [%s]}`, req, host, data), compress)
 }
 
 func GetPayloadSize(header []byte) (uint32, bool) {

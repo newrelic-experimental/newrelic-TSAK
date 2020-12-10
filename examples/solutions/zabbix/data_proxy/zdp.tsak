@@ -56,13 +56,7 @@ func threeWay(dst, zpkt, zconfirmation) {
 }
 
 
-func DataAcq() {
-  C += 1
-  if C > 15 {
-    log.Trace("15-th iteration of data acquisition started")
-    C = 0
-  }
-}
+
 
 func ServerHB() {
   log.Trace("Server heartbeat")
@@ -79,7 +73,34 @@ if VMNAME == "in" {
   //
   // Data/Configuration acquisition
   //
+  func DataAcq() {
+    C += 1
+    if C > 15 {
+      log.Trace("15-th iteration of data acquisition started")
+      C = 0
+    }
+    snd = zabbix.Request("proxy data", PROXYNAME, COMPRESS)
+    rsp = zabbix.Response("success", VERSION, COMPRESS)
+    res = threeWay(PROXY, snd, rsp)
+    if res != nil {
+      stdlib.To(stdlib.INCH, res.String())
+      if DATAFORWARD {
+        dataCH <- res.String()
+      }
+    }
+  }
 
+  func DataForward() {
+    if DATAFORWARD {
+      // Do an actual data forwarding
+      data = djson.Parse(<-dataCH)
+      zpkt = zabbix.Data("proxy data", data.String(), PROXYNAME, COMPRESS)
+      res  = twoWay(SERVER, zpkt)
+      if ! res {
+        log.Trace("ZABBIX data forwarding delivery failed")
+      }
+    }
+  }
   func ConfAcq() {
     log.Trace("Configuration acquisition started")
     snd = zabbix.Request("proxy config", PROXYNAME, COMPRESS)
@@ -95,7 +116,7 @@ if VMNAME == "in" {
   func ConfDelivery() {
     log.Trace("Configuration delivery started")
     conf = djson.Parse(<-confCH)
-    zpkt = zabbix.Data("proxy config", conf.String(), COMPRESS)
+    zpkt = zabbix.Data("proxy config", conf.String(), PROXYNAME, COMPRESS)
     res  = twoWay(PROXY, zpkt)
     if res {
       log.Trace("ZABBIX proxy configuration delivery OK")
@@ -107,9 +128,11 @@ if VMNAME == "in" {
   // Set-up CRONTAB functions
   //
   confCH = make(chan string)
+  dataCH = make(chan string)
   stdlib.Cron(CONFACQCRON,      ConfAcq)
   stdlib.Cron(CONFDELIVERYCRON, ConfDelivery)
   stdlib.Cron(DATAACQCRON,      DataAcq)
+  stdlib.Cron(DATAACQCRON,      DataForward)
   stdlib.Cron(SERVERHBCRON,     ServerHB)
   for ! stdlib.ExitRequested() {
     time.Sleep(INLOOPWAIT * time.Second)
@@ -121,6 +144,12 @@ if VMNAME == "in" {
   //
   time.Sleep(1 * time.Second)
   for ! stdlib.ExitRequested() {
+    for stdlib.Len(stdlib.INCH) > 0 {
+      data = stdlib.From(stdlib.INCH)
+      fmt.Println("RECEIVED IN PROC", len(stdlib.String(data)), "bytes")
+      // stdlib.To(stdlib.OUTCH, data)
+    }
+    log.Trace("PROC() is cooled down")
     time.Sleep(PROCLOOPWAIT * time.Second)
   }
 } else if VMNAME == "out" {
