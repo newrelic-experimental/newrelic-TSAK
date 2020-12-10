@@ -1,0 +1,141 @@
+//
+// TSAK Zabbix Data Proxy
+//
+fmt     = import("fmt")
+net     = import("net")
+zabbix  = import("protocols/zabbix")
+log     = import("tlog")
+stdlib  = import("stdlib")
+time    = import("time")
+djson   = import("djson")
+ioutil  = import("io/ioutil")
+
+C = 0
+
+func twoWay(dst, zpkt) {
+  c, err = net.DialTimeout("tcp", dst, time.Second*TIMEOUT)
+  if err == nil {
+    c.Write(zpkt)
+    res, err = ioutil.ReadAll(c)
+    pkt = nil
+    if err == nil {
+      pkt = zabbix.Parse(res)
+    } else {
+      log.Trace("ZABBIX 3-way reading error", {"error":err, "destination":dst})
+      c.Close()
+      return false
+    }
+    if pkt == nil {
+      log.Trace("ZABBIX 3-way JSON parsing error", {"error":err, "destination":dst})
+      return false
+    }
+    c.Close()
+    return "\"success\"" == pkt.Search("response").String()
+  } else {
+    log.Trace("ZABBIX 3-way network error", {"error":err, "destination":dst})
+  }
+  return false
+}
+
+func threeWay(dst, zpkt, zconfirmation) {
+  c, err = net.DialTimeout("tcp", dst, time.Second*TIMEOUT)
+  if err == nil {
+    c.Write(zpkt)
+    res, err = ioutil.ReadAll(c)
+    pkt = nil
+    if err == nil {
+      pkt = zabbix.Parse(res)
+      c.Write(zconfirmation)
+    }
+    c.Close()
+    return pkt
+  } else {
+    log.Trace("ZABBIX 3-way network error", {"error":err, "destination":dst})
+  }
+  return nil
+}
+
+
+func DataAcq() {
+  C += 1
+  if C > 15 {
+    log.Trace("15-th iteration of data acquisition started")
+    C = 0
+  }
+}
+
+func ServerHB() {
+  log.Trace("Server heartbeat")
+  snd = zabbix.Request("proxy heartbeat", PROXYNAME, COMPRESS)
+  if ! twoWay(SERVER, snd) {
+    log.Trace("ZABBIX server heartbeat failed", {"proxy":PROXYNAME, "server":SERVER})
+  } else {
+    log.Trace("ZABBIX server heartbeat OK")
+  }
+}
+
+
+if VMNAME == "in" {
+  //
+  // Data/Configuration acquisition
+  //
+
+  func ConfAcq() {
+    log.Trace("Configuration acquisition started")
+    snd = zabbix.Request("proxy config", PROXYNAME, COMPRESS)
+    rsp = zabbix.Response("success", VERSION, COMPRESS)
+    res = threeWay(SERVER, snd, rsp)
+    if res != nil {
+      confCH <- res.String()
+    } else {
+      log.Trace("ZABBIX server failed to provide a proxy configuration", {"proxy":PROXYNAME, "server":SERVER})
+    }
+  }
+
+  func ConfDelivery() {
+    log.Trace("Configuration delivery started")
+    conf = djson.Parse(<-confCH)
+    pkt = fmt.Sprintf("{\"request\" : \"proxy config\", \"data\" : [%s]}", conf.String())
+    zpkt = zabbix.Packet(pkt, COMPRESS)
+    res  = twoWay(PROXY, zpkt)
+    if res {
+      log.Trace("ZABBIX proxy configuration delivery OK")
+    } else {
+      log.Trace("ZABBIX proxy configuration delivery failed")
+    }
+  }
+  //
+  // Set-up CRONTAB functions
+  //
+  confCH = make(chan string)
+  stdlib.Cron(CONFACQCRON,      ConfAcq)
+  stdlib.Cron(CONFDELIVERYCRON, ConfDelivery)
+  stdlib.Cron(DATAACQCRON,      DataAcq)
+  stdlib.Cron(SERVERHBCRON,     ServerHB)
+  for ! stdlib.ExitRequested() {
+    time.Sleep(INLOOPWAIT * time.Second)
+  }
+
+} else if VMNAME == "proc" {
+  //
+  // Data processor
+  //
+  time.Sleep(1 * time.Second)
+  for ! stdlib.ExitRequested() {
+    time.Sleep(PROCLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "out" {
+  //
+  // Data delivery
+  //
+  time.Sleep(1 * time.Second)
+  for ! stdlib.ExitRequested() {
+    time.Sleep(OUTLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "house" {
+  //
+  // Housekeeper
+  //
+} else {
+  log.Trace("If you see this message, please open a bug report")
+}

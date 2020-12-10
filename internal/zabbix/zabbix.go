@@ -6,6 +6,7 @@ import (
   "encoding/binary"
   "io/ioutil"
   "github.com/Jeffail/gabs"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
 )
 
 func uncompressDataLen(data []byte) []byte {
@@ -18,10 +19,12 @@ func decompressJSON(data []byte) []byte {
 	buf := bytes.NewReader(data)
 	r, err := zlib.NewReader(buf)
 	if err != nil {
+    log.Trace("Error uncompressing ZABBIX JSON payload")
 		return nil
 	}
 	ndata, err := ioutil.ReadAll(r)
 	if err != nil {
+    log.Trace("Error reading ZABBIX JSON payload")
 		return nil
 	}
 	return ndata
@@ -76,8 +79,13 @@ func MakeReq(resp string, host string, compress bool) []byte {
   return MakePacket(pkt.String(), compress)
 }
 
+func MakeData() {
+  
+}
+
 func GetPayloadSize(header []byte) (uint32, bool) {
   if string(header[:4]) != "ZBXD" {
+    log.Trace("ZABBIX packet is missing it's signature")
     return 0, false
   }
   if header[4] == 1 {
@@ -85,13 +93,25 @@ func GetPayloadSize(header []byte) (uint32, bool) {
   } else if header[4] == 3 {
     return binary.LittleEndian.Uint32(header[5:9]), true
   } else {
+    log.Trace("Unknown flag in ZABBIX header")
     return 0, false
   }
+}
+
+func Parse(data []byte) *gabs.Container {
+  if len(data) < 13 {
+    log.Trace("ZABBIX packet is malformed")
+    return nil
+  }
+  hdr := data[:13]
+  payload := data[13:]
+  return ParsePacket(hdr, payload)
 }
 
 func ParsePacket(header, data []byte) *gabs.Container {
   size, compress := GetPayloadSize(header)
   if size == 0 {
+    log.Trace("Empty payload in ZABBIX packet")
     return nil
   }
   if compress {
