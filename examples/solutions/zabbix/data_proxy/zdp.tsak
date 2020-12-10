@@ -95,8 +95,7 @@ if VMNAME == "in" {
   func ConfDelivery() {
     log.Trace("Configuration delivery started")
     conf = djson.Parse(<-confCH)
-    pkt = fmt.Sprintf("{\"request\" : \"proxy config\", \"data\" : [%s]}", conf.String())
-    zpkt = zabbix.Packet(pkt, COMPRESS)
+    zpkt = zabbix.Data("proxy config", conf.String(), COMPRESS)
     res  = twoWay(PROXY, zpkt)
     if res {
       log.Trace("ZABBIX proxy configuration delivery OK")

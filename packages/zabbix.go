@@ -11,9 +11,10 @@ func init() {
     "Packet":           reflect.ValueOf(zabbix.MakePacket),
     "Request":          reflect.ValueOf(zabbix.MakeReq),
     "Response":         reflect.ValueOf(zabbix.MakeResp),
+    "Data":             reflect.ValueOf(zabbix.MakeData),
     "PayloadSize":      reflect.ValueOf(zabbix.GetPayloadSize),
     "ParsePacket":      reflect.ValueOf(zabbix.ParsePacket),
-    "Parse":            reflect.ValueOf(zabbix.Parse),  
+    "Parse":            reflect.ValueOf(zabbix.Parse),
   }
   env.PackageTypes["protocols/zabbix"] = map[string]reflect.Type{
 

@@ -1,6 +1,7 @@
 package zabbix
 
 import (
+  "fmt"
   "bytes"
   "compress/zlib"
   "encoding/binary"
@@ -79,8 +80,8 @@ func MakeReq(resp string, host string, compress bool) []byte {
   return MakePacket(pkt.String(), compress)
 }
 
-func MakeData() {
-  
+func MakeData(req string, data string, compress bool) []byte {
+  return MakePacket(fmt.Sprintf(`{"request" : "%s", "data" : [%s]}`, req, data), compress)
 }
 
 func GetPayloadSize(header []byte) (uint32, bool) {
