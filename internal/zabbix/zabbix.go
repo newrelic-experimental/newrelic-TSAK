@@ -5,6 +5,8 @@ import (
   "bytes"
   "net"
   "time"
+  "regexp"
+  "strings"
   "compress/zlib"
   "encoding/binary"
   "io/ioutil"
@@ -137,6 +139,24 @@ func ParsePacket(header, data []byte) *gabs.Container {
       return nil
     }
   }
+}
+
+func ParseKey(key string) (name string, args map[string]string) {
+  args = make(map[string]string)
+  name = ""
+  re := regexp.MustCompile(`^(.+)\[(.*)\]$`)
+  if ! re.MatchString(key) {
+    name = key
+    return
+  }
+  v := re.FindAllStringSubmatch(key, 2)
+  name = v[0][1]
+  if len(strings.TrimSpace(v[0][2])) > 0 {
+    for n, s := range strings.Split(v[0][2], ",") {
+      args[fmt.Sprintf("ARGS%v",n)] = strings.TrimSpace(s)
+    }
+  }
+  return
 }
 
 func ParseRaw(data []byte) []byte {

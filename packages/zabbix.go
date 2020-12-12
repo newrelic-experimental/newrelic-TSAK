@@ -16,6 +16,7 @@ func init() {
     "ParsePacket":      reflect.ValueOf(zabbix.ParsePacket),
     "ParseRaw":         reflect.ValueOf(zabbix.ParseRaw),
     "Parse":            reflect.ValueOf(zabbix.Parse),
+    "Key":              reflect.ValueOf(zabbix.ParseKey),
     "OneWay":           reflect.ValueOf(zabbix.OneWay),
     "TwoWay":           reflect.ValueOf(zabbix.TwoWay),
     "ThreeWay":         reflect.ValueOf(zabbix.ThreeWay),
