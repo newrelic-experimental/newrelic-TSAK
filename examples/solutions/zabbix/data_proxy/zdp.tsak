@@ -3,12 +3,16 @@
 //
 fmt     = import("fmt")
 net     = import("net")
+os      = import("os")
 zabbix  = import("protocols/zabbix")
 log     = import("tlog")
 stdlib  = import("stdlib")
 time    = import("time")
 djson   = import("djson")
 ioutil  = import("io/ioutil")
+bc      = import("bc")
+strconv = import("strconv")
+
 
 C = 0
 
@@ -29,12 +33,12 @@ if VMNAME == "in" {
   // Data/Configuration acquisition
   //
   func DataAcq() {
+    dataA.Acquire(stdlib.TODO(), 1)
     C += 1
     if C > 15 {
       log.Trace("15-th iteration of data acquisition started")
       C = 0
     }
-    dataA.Acquire(stdlib.TODO(), 1)
     snd = zabbix.Request("proxy data", PROXYNAME, COMPRESS)
     rsp = zabbix.Response("success", VERSION, COMPRESS)
     res = zabbix.ThreeWay(PROXY, snd, rsp, TIMEOUT)
@@ -47,10 +51,6 @@ if VMNAME == "in" {
   }
 
   func DataForward() {
-    // if ! dataS.TryAcquire(1) {
-    //   fmt.Println("DF0")
-    //   return
-    // }
     dataS.Acquire(stdlib.TODO(), 1)
     for len(dataCH) > 0 {
       data = djson.Parse(<-dataCH)
@@ -89,6 +89,10 @@ if VMNAME == "in" {
     } else {
       log.Trace("ZABBIX proxy configuration delivery failed")
     }
+    db, _ = bc.Open(CONFDBPATH)
+    db.Put("conf", conf.String())
+    db.Sync()
+    db.Close()
   }
   //
   // Set-up CRONTAB functions
@@ -110,22 +114,107 @@ if VMNAME == "in" {
   //
   // Data processor
   //
+  func ConfProcessor(pkt, dbhost, dbitem, dbitemh) {
+    size = len(pkt.String())
+    log.Trace(fmt.Sprintf("Configuration data %v bytes received", size))
+    hosts, _ = pkt.S("hosts", "data").Children()
+    items, _ = pkt.S("items", "data").Children()
+    for h in hosts {
+      host = h.Data()
+      if host[2] == 0 {
+        hostid = strconv.FormatUint(host[0], 10)
+        log.Trace(fmt.Sprintf("ZABBIX Conf.Host: %s->%s", hostid, host[1]))
+        dbhost.Put(hostid, host[1])
+      }
+    }
+    for i in items {
+      item = i.Data()
+      itemid = strconv.FormatUint(item[0], 10)
+      hostid = strconv.FormatUint(item[3], 10)
+      dbitem.Put(itemid, item[4])
+      dbitemh.Put(itemid, hostid)
+    }
+    dbhost.Sync()
+    dbitem.Sync()
+    dbitemh.Sync()
+  }
+
+  func DataProcessor(pkt, dbhost, dbitem, dbitemh) {
+
+    func ConvertValue(val) {
+      data, err = strconv.ParseFloat(val, 10)
+      if err == nil {
+        return data
+      }
+      data, err = strconv.ParseBool(val)
+      if err == nil {
+        return data
+      }
+      return data
+    }
+
+    data, _ = pkt.S("history data").Children()
+    for d in data {
+      telemetry = d.Data()
+      itemid = strconv.FormatUint(telemetry["itemid"], 10)
+      clock  = telemetry["clock"]
+      value  = ConvertValue(telemetry["value"])
+      _hostid, ok = dbitemh.Get(itemid)
+      if ok != nil {
+        continue
+      }
+      hostid = stdlib.String(_hostid)
+      _host, _   = dbhost.Get(hostid)
+      host = stdlib.String(_host)
+      _zitem, _  = dbitem.Get(itemid)
+      zitem = stdlib.String(_zitem)
+      j = djson.New()
+      j.Set(SOURCE,     "eventType")
+      j.Set(PROXYNAME,  "proxyName")
+      j.Set(value,      "value")
+      j.Set(host,       "hostname")
+      j.Set(zitem,      "item")
+      stdlib.To(stdlib.OUTCH, j.String())
+    }
+  }
+
+  dbhost, _ = bc.Open(HOSTDBPATH)
+  dbitem, _ = bc.Open(ITEMDBPATH)
+  dbitemh, _ = bc.Open(ITEMHDBPATH)
   time.Sleep(1 * time.Second)
   for ! stdlib.ExitRequested() {
     for stdlib.Len(stdlib.INCH) > 0 {
       data = stdlib.From(stdlib.INCH)
-      fmt.Println("RECEIVED IN PROC", len(stdlib.String(data)), "bytes")
-      // stdlib.To(stdlib.OUTCH, data)
+      pkt = djson.Parse(data)
+      if pkt.Exists("history data") {
+        // History data
+        DataProcessor(pkt, dbhost, dbitem, dbitemh)
+      } else if pkt.Exists("globalmacro") {
+        // Conf data
+        ConfProcessor(pkt, dbhost, dbitem, dbitemh)
+      } else {
+        log.Error("Unknown packet type on processor input")
+      }
     }
     log.Trace("PROC() is cooled down")
     time.Sleep(PROCLOOPWAIT * time.Second)
   }
+  log.Trace("PROC() syncing and closig databases")
+  dbhost.Sync()
+  dbitem.Sync()
+  dbhost.Close()
+  dbitem.Close()
+  log.Trace("PROC() databases are OK")
 } else if VMNAME == "out" {
   //
   // Data delivery
   //
   time.Sleep(1 * time.Second)
   for ! stdlib.ExitRequested() {
+    for stdlib.Len(stdlib.OUTCH) > 0 {
+      data = stdlib.From(stdlib.OUTCH)
+      fmt.Println(stdlib.String(data))
+    }
     time.Sleep(OUTLOOPWAIT * time.Second)
   }
 } else if VMNAME == "house" {

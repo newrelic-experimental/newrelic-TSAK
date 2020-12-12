@@ -1,0 +1,9 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+strconv = import("strconv")
+djson = import("djson")
+
+fmt.Println("Generated Num:", strconv.ParseFloat("3.14", 10))
+fmt.Println("Generated Num:", strconv.ParseFloat("true", 10))
+fmt.Println("Generated Num:", strconv.ParseFloat("<nil>", 10))
+fmt.Println("Generated Num:", strconv.ParseBool("true"))
