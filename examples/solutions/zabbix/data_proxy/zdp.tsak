@@ -178,9 +178,21 @@ if VMNAME == "in" {
     }
   }
 
-  dbhost, _ = bc.Open(HOSTDBPATH)
-  dbitem, _ = bc.Open(ITEMDBPATH)
-  dbitemh, _ = bc.Open(ITEMHDBPATH)
+  dbhost, err = bc.Open(HOSTDBPATH)
+  if err != nil {
+    log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", HOSTDBPATH, err))
+    stdlib.ExitRequest()
+  }
+  dbitem, err = bc.Open(ITEMDBPATH)
+  if err != nil {
+    log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", ITEMDBPATH, err))
+    stdlib.ExitRequest()
+  }
+  dbitemh, err = bc.Open(ITEMHDBPATH)
+  if err != nil {
+    log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", ITEMHDBPATH, err))
+    stdlib.ExitRequest()
+  }
   time.Sleep(1 * time.Second)
   for ! stdlib.ExitRequested() {
     for stdlib.Len(stdlib.INCH) > 0 {
