@@ -89,7 +89,11 @@ if VMNAME == "in" {
     } else {
       log.Trace("ZABBIX proxy configuration delivery failed")
     }
-    db, _ = bc.Open(CONFDBPATH)
+    db, err = bc.Open(CONFDBPATH)
+    if err != nil {
+      log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", CONFDBPATH, err))
+      return
+    }
     db.Put("conf", conf.String())
     db.Sync()
     db.Close()
