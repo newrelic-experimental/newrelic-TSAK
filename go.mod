@@ -15,6 +15,7 @@ require (
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
 	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
+	github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
 	github.com/fsnotify/fsnotify v1.4.9

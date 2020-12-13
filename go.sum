@@ -242,6 +242,7 @@ github.com/docker/go-units v0.4.0 h1:3uh0PgVws3nIA0Q+MwDC8yjEPf9zjRfZZWXZYDct3Tw
 github.com/docker/go-units v0.4.0/go.mod h1:fgPhTUdO+D/Jk86RDLlptpiXQzgHJF7gydDDbaIK4Dk=
 github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f h1:6J2BEFqmyXtTVs/X15+6hhdLqk9i+LHtvyt2cvjrMvM=
 github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f/go.mod h1:qYpr/lzZIoEWpzbsTHa3Tl9V+g2sN/MAjkIyEItb7/g=
+github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4 h1:qk/FSDDxo05wdJH28W+p5yivv7LuLYLRXPPD8KQCtZs=
 github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4/go.mod h1:HtrtbFcZ19U5GC7JDqmcUSB87Iq5E25KnS6fMYU6eOk=
 github.com/elastic/go-sysinfo v1.4.0 h1:LUnK6TNOuy8JEByuDzTAQH3iQ6bIywy55+Z+QlKNSWk=
 github.com/elastic/go-sysinfo v1.4.0/go.mod h1:i1ZYdU10oLNfRzq4vq62BEwD2fH8KaWh6eh0ikPT9F0=

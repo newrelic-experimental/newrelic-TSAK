@@ -48,7 +48,7 @@ func RunScript(ename string, fname string) string {
   log.Trace(fmt.Sprintf("Running %[1]s", fname))
   buf, err := ioutil.ReadFile(fname)
   if err != nil {
-    log.Error(fmt.Sprintf("Error reading %[1]s", fname))
+    log.Error(fmt.Sprintf("Error reading %[1]s: %[2]s", fname, err))
     return "FAIL"
   }
   script := string(buf)

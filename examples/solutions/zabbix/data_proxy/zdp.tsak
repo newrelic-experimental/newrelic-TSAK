@@ -46,6 +46,7 @@ if VMNAME == "in" {
       if DATAFORWARD {
         dataCH <- res.String()
       }
+      stdlib.To(stdlib.INCH, res.String())
     }
     dataA.Release(1)
   }
@@ -62,11 +63,11 @@ if VMNAME == "in" {
           log.Trace("ZABBIX data forwarding delivery failed")
         }
       }
-      stdlib.To(stdlib.INCH, data.String())
     }
     dataS.Release(1)
   }
   func ConfAcq() {
+    confA.Acquire(stdlib.TODO(), 1)
     log.Trace("Configuration acquisition started")
     snd = zabbix.Request("proxy config", PROXYNAME, COMPRESS)
     rsp = zabbix.Response("success", VERSION, COMPRESS)
@@ -77,9 +78,11 @@ if VMNAME == "in" {
     } else {
       log.Trace("ZABBIX server failed to provide a proxy configuration", {"proxy":PROXYNAME, "server":SERVER})
     }
+    confA.Release(1)
   }
 
   func ConfDelivery() {
+    confD.Acquire(stdlib.TODO(), 1)
     log.Trace("Configuration delivery started")
     conf = djson.Parse(<-confCH)
     zpkt = zabbix.Data("proxy config", conf.String(), PROXYNAME, COMPRESS)
@@ -97,6 +100,7 @@ if VMNAME == "in" {
     db.Put("conf", conf.String())
     db.Sync()
     db.Close()
+    confD.Release(1)
   }
   //
   // Set-up CRONTAB functions
@@ -105,6 +109,8 @@ if VMNAME == "in" {
   dataCH = make(chan string, DISTCHANNELS)
   dataA = stdlib.Semaphore(1)
   dataS = stdlib.Semaphore(1)
+  confA = stdlib.Semaphore(1)
+  confD = stdlib.Semaphore(1)
   stdlib.Cron(CONFACQCRON,      ConfAcq)
   stdlib.Cron(CONFDELIVERYCRON, ConfDelivery)
   stdlib.Cron(SERVERHBCRON,     ServerHB)
