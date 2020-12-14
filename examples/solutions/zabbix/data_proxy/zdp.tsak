@@ -12,6 +12,7 @@ djson   = import("djson")
 ioutil  = import("io/ioutil")
 bc      = import("bc")
 strconv = import("strconv")
+h       = import("convert/humanize")
 
 
 C = 0
@@ -21,9 +22,9 @@ func ServerHB() {
   log.Trace("Server heartbeat")
   snd = zabbix.Request("proxy heartbeat", PROXYNAME, COMPRESS)
   if ! zabbix.TwoWay(SERVER, snd, TIMEOUT) {
-    log.Trace("ZABBIX server heartbeat failed", {"proxy":PROXYNAME, "server":SERVER})
+    log.Error("ZABBIX server heartbeat failed", {"proxy":PROXYNAME, "server":SERVER})
   } else {
-    log.Trace("ZABBIX server heartbeat OK")
+    log.Info("ZABBIX server heartbeat OK")
   }
 }
 
@@ -60,7 +61,7 @@ if VMNAME == "in" {
         zpkt = zabbix.Data("proxy data", data.String(), PROXYNAME, COMPRESS)
         res  = zabbix.TwoWay(SERVER, zpkt, TIMEOUT)
         if ! res {
-          log.Trace("ZABBIX data forwarding delivery failed")
+          log.Error("ZABBIX data forwarding delivery failed")
         }
       }
     }
@@ -76,7 +77,7 @@ if VMNAME == "in" {
       confCH <- res.String()
       stdlib.To(stdlib.INCH, res.String())
     } else {
-      log.Trace("ZABBIX server failed to provide a proxy configuration", {"proxy":PROXYNAME, "server":SERVER})
+      log.Error("ZABBIX server failed to provide a proxy configuration", {"proxy":PROXYNAME, "server":SERVER})
     }
     confA.Release(1)
   }
@@ -88,9 +89,9 @@ if VMNAME == "in" {
     zpkt = zabbix.Data("proxy config", conf.String(), PROXYNAME, COMPRESS)
     res  = zabbix.TwoWay(PROXY, zpkt, TIMEOUT)
     if res {
-      log.Trace("ZABBIX proxy configuration delivery OK")
+      log.Info("ZABBIX proxy configuration delivery OK")
     } else {
-      log.Trace("ZABBIX proxy configuration delivery failed")
+      log.Error("ZABBIX proxy configuration delivery failed")
     }
     db, err = bc.Open(CONFDBPATH)
     if err != nil {
@@ -251,8 +252,14 @@ if VMNAME == "in" {
       N += 1
     }
     if N > 0 {
-      // fmt.Println(pkg.String())
-      log.Trace(fmt.Sprintf("ZABBIX.Out %v elements in batch", N))
+      sndres, err, resp = log.SendEvent(pkg.String())
+      if sndres {
+        usize = h.Bytes(len(pkg.String()))
+        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        log.Info(msg)
+      } else {
+        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+      }
     }
     time.Sleep(OUTLOOPWAIT * time.Second)
   }

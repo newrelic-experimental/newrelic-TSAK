@@ -31,7 +31,7 @@ func Metric(mname string, _type string, value interface{}, ctx logrus.Fields) {
 }
 
 func SendMetric(_payload []byte) bool {
-  return event(conf.Nrapi, conf.Metricapi, _payload)
+  return metrics(conf.Nrapi, conf.Metricapi, true, _payload)
 }
 
 func metrics(nrikey string, url string, compress bool, _payload []byte) bool {

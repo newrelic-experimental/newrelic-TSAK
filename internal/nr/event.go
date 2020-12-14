@@ -30,11 +30,25 @@ func Event(evttype string, ctx logrus.Fields) {
   }
 }
 
-func SendEvent(_payload []byte) bool {
-  return event(conf.Nrapi, conf.Evtapi, _payload)
+func SendEvent(_payload []byte) (bool, error, *gabs.Container) {
+  g, err := event(conf.Nrapi, conf.Evtapi, _payload)
+  if err != nil {
+    return false, err, nil
+  }
+  if g == nil {
+    return false, nil, nil
+  }
+  if ! g.Exists("success") {
+    return false, nil, g
+  }
+  val  := bool(g.Path("success").Data().(bool))
+  if err != nil {
+    return false, err, g
+  }
+  return val, nil, g
 }
 
-func event(nrikey, _url string, _payload []byte) bool {
+func event(nrikey, _url string, _payload []byte) (*gabs.Container, error) {
   var b bytes.Buffer
   url := fmt.Sprintf(_url, conf.Account)
   w := gzip.NewWriter(&b)
@@ -42,7 +56,7 @@ func event(nrikey, _url string, _payload []byte) bool {
   w.Close()
   req, err := http.NewRequest("POST", url, bytes.NewBuffer(b.Bytes()))
   if err != nil {
-    return false
+    return nil, err
   }
   req.Header.Set("X-Insert-Key", nrikey)
   req.Header.Set("Content-Type", "application/json")
@@ -51,9 +65,18 @@ func event(nrikey, _url string, _payload []byte) bool {
   resp, err := client.Do(req)
   defer resp.Body.Close()
   if err != nil {
-    return false
+    return nil, err
   } else {
-    ioutil.ReadAll(resp.Body)
+    body, err := ioutil.ReadAll(resp.Body)
+    if err == nil {
+      r, err := gabs.ParseJSON(body)
+      if err != nil {
+        return nil, err
+      }
+      return r, nil
+   } else {
+      return nil, err
+   }
   }
-  return true
+  return nil, err
 }
