@@ -49,6 +49,7 @@ require (
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
+	github.com/valyala/fasttemplate v1.2.1
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897 // indirect
 	golang.org/x/net v0.0.0-20201031054903-ff519b6c9102
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208

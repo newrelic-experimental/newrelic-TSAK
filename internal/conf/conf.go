@@ -28,7 +28,7 @@ var Run string
 var House string
 var Clips string
 var Script string
-var Ver = "0.3-pre1"
+var Ver = "0.3-pre2"
 var VerMaj = 0
 var VerMin = 3
-var VerPrerelease = 1
+var VerPrerelease = 2
