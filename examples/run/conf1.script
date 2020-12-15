@@ -1,0 +1,6 @@
+fmt = import("fmt")
+conf = import("conf")
+
+conf.NRAPI("NRAPIKEY")
+fmt.Println("We just set NRAPI Key:", conf.Nrapi())
+fmt.Println(fmt.Sprintf("Version: %s or %v.%v-pre%v", conf.Version, conf.VersionMajor, conf.VersionMinor, conf.VersionPrerelease))
