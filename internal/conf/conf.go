@@ -32,3 +32,4 @@ var Ver = "0.3-pre2"
 var VerMaj = 0
 var VerMin = 3
 var VerPrerelease = 2
+var Args []string

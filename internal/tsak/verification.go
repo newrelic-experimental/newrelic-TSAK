@@ -24,7 +24,7 @@ var wisdom = []string{
   "How can I brake after you've drunken all the brake fluid?",
   "Either you're giving us this Ketse right now, or we won't lay you on Earth for less than 8 matchboxes.",
   "Strainger in the ku ....",
-  "They took a women away and replace he with an automaton",
+  "They took a women away and replace her with an automaton",
   "What is your planet number in tentura ? What's yours galaxy number in spiral ? Think !",
   "If there is no color differentiation of one's pants, there is no future!",
   "Time is relative ! Understand ?",

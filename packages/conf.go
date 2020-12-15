@@ -33,6 +33,9 @@ func ConfAccount() string {
   return conf.Account
 }
 
+func ConfArgs() []string {
+  return conf.Args
+}
 
 func init() {
   env.Packages["conf"] = map[string]reflect.Value{
@@ -42,6 +45,7 @@ func init() {
     "Nrapiq":          reflect.ValueOf(ConfNrapiq),
     "ACCOUNT":         reflect.ValueOf(ConfACCOUNT),
     "Account":         reflect.ValueOf(ConfAccount),
+    "Args":            reflect.ValueOf(ConfArgs),
     "Version":         reflect.ValueOf(conf.Ver),
     "VersionMajor":    reflect.ValueOf(conf.VerMaj),
     "VersionMinor":    reflect.ValueOf(conf.VerMin),

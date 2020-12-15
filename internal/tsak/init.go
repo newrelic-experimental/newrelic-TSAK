@@ -68,6 +68,12 @@ func Init() {
   signal.InitSignal()
   script.InitScript()
   clips.InitClips()
+  if flag.NArg() > 0 {
+    log.Trace(fmt.Sprintf("%v positional arguments have been passed to TSAK", flag.NArg()))
+    for _, a := range flag.Args() {
+      conf.Args = append(conf.Args, a)
+    }
+  }
   log.Event("TsakEvent", logrus.Fields{
     "message":    "Application started",
     "evtc":       0,
