@@ -115,9 +115,10 @@ if VMNAME == "in" {
   stdlib.Cron(CONFACQCRON,      ConfAcq)
   stdlib.Cron(CONFDELIVERYCRON, ConfDelivery)
   stdlib.Cron(SERVERHBCRON,     ServerHB)
-  stdlib.Cron(DATAACQCRON,      DataAcq)
+  // stdlib.Cron(DATAACQCRON,      DataAcq)
   stdlib.Cron(DATAFORWARDCRON,  DataForward)
   for ! stdlib.ExitRequested() {
+    DataAcq()
     time.Sleep(INLOOPWAIT * time.Second)
   }
 
