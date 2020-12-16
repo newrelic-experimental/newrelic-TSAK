@@ -3,8 +3,10 @@ package piping
 import (
   "fmt"
   "bytes"
+  "github.com/sirupsen/logrus"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
-  // "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+  humanize "github.com/dustin/go-humanize"
   zmq "github.com/pebbe/zmq4"
 )
 
@@ -25,26 +27,57 @@ var zmqS = make(map[string]*zmq.Socket)
 var zmqCtx,_ = zmq.NewContext()
 var zmqErr int64
 
+var N   = make(map[int]int)
+var Nb  = make(map[int]int)
+var Ns  = make(map[int]int)
+
 func To(dst int, _data []byte) {
   var data = bytes.NewBuffer(_data)
-  log.Trace(fmt.Sprintf("Sending %d bytes to  pipeline %d", data.Len(), dst))
+  _, ok := Nb[dst]
+  if ! ok {
+    Nb[dst] = 0
+  }
+  Nb[dst] += data.Len()
+  _, ok = Ns[dst]
+  if ! ok {
+    Ns[dst] = 0
+  }
+  _, ok = N[dst]
+  if ! ok {
+    N[dst] = 0
+  }
   if dst == INCH {
     pipeIn <- data.String()
-    log.Trace(fmt.Sprintf("%d element in pipeline IN", len(pipeIn)))
+    Ns[dst] = len(pipeIn)
   } else if dst == OUTCH {
     pipeOut <- data.String()
-    log.Trace(fmt.Sprintf("%d element in pipeline OUT", len(pipeOut)))
+    Ns[dst] = len(pipeOut)
   } else if dst == CLIPS {
     clipsIn <- data.String()
-    log.Trace(fmt.Sprintf("%d element in pipeline CLIPS", len(clipsIn)))
+    Ns[dst] = len(clipsIn)
   } else if dst == FACTS {
     factsIn <- data.String()
-    log.Trace(fmt.Sprintf("%d element in pipeline FACTS", len(factsIn)))
+    Ns[dst] = len(factsIn)
   } else if dst == EVAL {
     evalIn <- data.String()
-    log.Trace(fmt.Sprintf("%d element in pipeline EVAL", len(factsIn)))
+    Ns[dst] = len(evalIn)
   } else {
     log.Error("Trying to send data to non-existent pipeline")
+  }
+  if N[dst] > conf.Every {
+    sNb := humanize.Bytes(uint64(Nb[dst]))
+    log.Trace("PIPELINE statistics", logrus.Fields{
+      "pipeline":       dst,
+      "submitted":      N[dst],
+      "bytes":          Nb[dst],
+      "bytesH":         sNb,
+      "elements":       Ns[dst],
+    })
+    N[dst]  = 0
+    Ns[dst] = 0
+    Nb[dst] = 0
+  } else {
+    N[dst] += 1
   }
 }
 

@@ -37,6 +37,15 @@ func ConfArgs() []string {
   return conf.Args
 }
 
+func ConfEVENTTYPE(val string) string {
+  conf.EventType = val
+  return conf.EventType
+}
+
+func ConfEventType() string {
+  return conf.EventType
+}
+
 func init() {
   env.Packages["conf"] = map[string]reflect.Value{
     "NRAPI":           reflect.ValueOf(ConfNRAPI),
@@ -45,6 +54,8 @@ func init() {
     "Nrapiq":          reflect.ValueOf(ConfNrapiq),
     "ACCOUNT":         reflect.ValueOf(ConfACCOUNT),
     "Account":         reflect.ValueOf(ConfAccount),
+    "EVENTTYPE":       reflect.ValueOf(ConfEVENTTYPE),
+    "EventType":       reflect.ValueOf(ConfEventType),
     "Args":            reflect.ValueOf(ConfArgs),
     "Version":         reflect.ValueOf(conf.Ver),
     "VersionMajor":    reflect.ValueOf(conf.VerMaj),

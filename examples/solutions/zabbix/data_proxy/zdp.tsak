@@ -126,10 +126,12 @@ if VMNAME == "in" {
   // Data processor
   //
   func ConfProcessor(pkt, dbhost, dbitem, dbitemh) {
+    log.Trace("PROC/ConfProcessor processor started")
     size = len(pkt.String())
     log.Trace(fmt.Sprintf("Configuration data %v bytes received", size))
     hosts, _ = pkt.S("hosts", "data").Children()
     items, _ = pkt.S("items", "data").Children()
+    log.Trace("Syncing HOST relations")
     for h in hosts {
       host = h.Data()
       if host[2] == 0 {
@@ -138,6 +140,7 @@ if VMNAME == "in" {
         dbhost.Put(hostid, host[1])
       }
     }
+    log.Trace("Syncing ITEM,ITEMH relations")
     for i in items {
       item = i.Data()
       itemid = strconv.FormatUint(item[0], 10)
@@ -145,9 +148,11 @@ if VMNAME == "in" {
       dbitem.Put(itemid, item[4])
       dbitemh.Put(itemid, hostid)
     }
+    log.Trace("Flushing CONFIGURATION data")
     dbhost.Sync()
     dbitem.Sync()
     dbitemh.Sync()
+    log.Trace("PROC/ConfProcessor processor done")
   }
 
   func DataProcessor(pkt, dbhost, dbitem, dbitemh) {
@@ -163,7 +168,7 @@ if VMNAME == "in" {
       }
       return data
     }
-
+    log.Trace("PROC/DataProcessor started")
     data, _ = pkt.S("history data").Children()
     for d in data {
       telemetry = d.Data()
@@ -192,6 +197,7 @@ if VMNAME == "in" {
       }
       stdlib.To(stdlib.OUTCH, j.String())
     }
+    log.Trace("PROC/DataProcessor finishes")
   }
 
   dbhost, err = bc.Open(HOSTDBPATH)

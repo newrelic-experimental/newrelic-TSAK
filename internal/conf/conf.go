@@ -28,6 +28,8 @@ var Run string
 var House string
 var Clips string
 var Script string
+var Every int
+var EventType string
 var Ver = "0.3-pre2"
 var VerMaj = 0
 var VerMin = 3

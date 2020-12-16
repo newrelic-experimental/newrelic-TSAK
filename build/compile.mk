@@ -7,9 +7,10 @@ BUILD_DIR  ?= ./bin/
 PROJECT_MODULE ?= $(shell $(GO) list -m)
 # $b replaced by the binary name in the compile loop, -s/w remove debug symbols
 # -extldflags \"-static\"
-LDFLAGS    ?= "-s -w -X main.version=$(PROJECT_VER) -X main.appName=$$b -X $(PROJECT_MODULE)/internal/client.version=$(PROJECT_VER) "
+LDFLAGS    ?= "-s -w -X main.version=$(PROJECT_VER) -X main.appName=$$b -X $(PROJECT_MODULE)/internal/client.version=$(PROJECT_VER) -linkmode external"
 SRCDIR     ?= .
 COMPILE_OS ?= darwin linux windows
+EXTLDFLAGS ?= "-static -L/usr/local/lib -lzmq -lclips"
 
 # Determine commands by looking into cmd/*
 COMMANDS   ?= $(wildcard ${SRCDIR}/cmd/*)
@@ -31,7 +32,7 @@ compile-all: deps-only
 		for os in $(COMPILE_OS); do \
 			echo "=== $(PROJECT_NAME) === [ compile          ]:     $(BUILD_DIR)$$os/$$b"; \
 			BUILD_FILES=`find $(SRCDIR)/cmd/$$b -type f -name "*.go"` ; \
-			GOOS=$$os $(GO) build -ldflags=$(LDFLAGS) -o $(BUILD_DIR)/$$os/$$b $$BUILD_FILES ; \
+			GOOS=$$os $(GO) build -a -ldflags=$(LDFLAGS) -o $(BUILD_DIR)/$$os/$$b $$BUILD_FILES ; \
 		done \
 	done
 
@@ -41,7 +42,7 @@ compile-only: deps-only
 	@for b in $(BINS); do \
 		echo "=== $(PROJECT_NAME) === [ compile          ]:     $(BUILD_DIR)$(GOOS)/$$b"; \
 		BUILD_FILES=`find $(SRCDIR)/cmd/$$b -type f -name "*.go"` ; \
-		GOOS=$(GOOS) $(GO) build -ldflags=$(LDFLAGS) -o $(BUILD_DIR)/$(GOOS)/$$b $$BUILD_FILES ; \
+		GOOS=$(GOOS) $(GO) build -ldflags=$(LDFLAGS)  -o $(BUILD_DIR)/$(GOOS)/$$b $$BUILD_FILES ; \
 	done
 
 # Override GOOS for these specific targets
