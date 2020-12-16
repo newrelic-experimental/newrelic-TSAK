@@ -1,0 +1,62 @@
+//
+// This -run script will form an event payload and send this event to New Relic
+//
+fmt       = import("fmt")
+conf      = import("conf")
+log       = import("tlog")
+djson     = import("djson")
+stdlib    = import("stdlib")
+system    = import("stdlib/system")
+
+if len(conf.Args()) < 2 {
+  log.Error("You have to specify logtype and a message")
+  return
+}
+
+C = 2
+pkt = djson.New()
+//
+// Let's form a standadt New Relic Log
+//
+id, _ = stdlib.UniqID().Generate()
+hostinfo, _ = system.HostInfo()
+pkt.Set(conf.EventType(),         "eventType")
+pkt.Set(stdlib.NowMilliseconds(), "timestamp")
+pkt.Set(conf.Args()[1],           "message")
+pkt.Set(id,                       "attributes", "id")
+pkt.Set("answer",                 "attributes", "name")
+pkt.Set(conf.Args()[0],           "attributes", "logtype")
+pkt.Set("shell",                  "attributes", "action")
+pkt.Set("shell",                  "attributes", "service")
+pkt.Set(hostinfo.Hostname,        "attributes", "host")
+pkt.Set(hostinfo.OS,              "attributes", "os")
+pkt.Set(hostinfo.Platform,        "attributes", "platform")
+pkt.Set(hostinfo.PlatformVersion, "attributes", "version")
+
+// Add pairs from command line
+for C+1 <= len(conf.Args()) {
+  pkt.Set(stdlib.ToValue(conf.Args()[C+1]), "attributes", conf.Args()[C])
+  C += 2
+}
+
+// Now, we shall create an array and add out event
+pkg = djson.New()
+pkg.Array()
+pkg.ArrayAppend(pkt.Data())
+
+// And send the event
+res, err, resp = log.SendLog(pkg.String())
+if ! res {
+  if err != nil {
+    log.Error(fmt.Sprintf("Sending error: %s", err))
+  } else {
+    log.Error("Unspecified error")
+  }
+} else {
+  uuid = resp.Path("requestId").Data()
+  if uuid == nil {
+    log.Error("New Relic does not return requestId")
+  } else {
+    fmt.Println(uuid)
+  }
+}

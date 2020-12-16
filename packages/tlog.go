@@ -16,6 +16,7 @@ func init() {
     "Event":      reflect.ValueOf(log.Event),
     "SendEvent":  reflect.ValueOf(nr.SendEvent),
     "SendMetric": reflect.ValueOf(nr.SendMetric),
+    "SendLog":    reflect.ValueOf(nr.SendLog),
     "Metric":     reflect.ValueOf(log.Metric),
   }
 }

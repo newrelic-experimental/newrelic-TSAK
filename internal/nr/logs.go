@@ -30,6 +30,44 @@ func Log(msg string, logtype string, ctx logrus.Fields) {
   }
 }
 
+func SendLog(_payload []byte) (bool, error, *gabs.Container) {
+  var payload []byte
+  var b bytes.Buffer
+  w := gzip.NewWriter(&b)
+  w.Write([]byte(_payload))
+  w.Close()
+  payload = []byte(b.Bytes())
+  url := conf.Logapi
+  req, err := http.NewRequest("POST", url, bytes.NewBuffer(payload))
+  if err != nil {
+    return false, err, nil
+  }
+  req.Header.Set("Api-Key", conf.Nrapi)
+  req.Header.Set("Content-Type", "application/gzip")
+  req.Header.Set("Content-Encoding", "gzip")
+  client := &http.Client{}
+  resp, err := client.Do(req)
+  defer resp.Body.Close()
+  if err != nil {
+    return false, err, nil
+  } else {
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+      return false, err, nil
+    } else {
+      r, err := gabs.ParseJSON(body)
+      if err != nil {
+        return false, err, nil
+      }
+      if ! r.Exists("requestId") {
+        return false, nil, r
+      }
+      return true, nil, r
+    }
+  }
+  return false, nil, nil
+}
+
 func logs(nrikey string, url string, compress bool, _payload []byte) bool {
   var payload []byte
   var b bytes.Buffer
