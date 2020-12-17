@@ -170,8 +170,8 @@ func ParseRaw(data []byte) []byte {
 
 func OneWay(dst string, zpkt []byte, timeout uint64) []byte {
   c, err := net.DialTimeout("tcp", dst, time.Second*time.Duration(timeout))
-  defer c.Close()
   if err == nil {
+    defer c.Close()
     c.Write(zpkt)
     res, err := ioutil.ReadAll(c)
     if err == nil {
@@ -194,8 +194,8 @@ func OneWay(dst string, zpkt []byte, timeout uint64) []byte {
 func TwoWay(dst string, zpkt []byte, timeout uint64) bool {
   var pkt *gabs.Container
   c, err := net.DialTimeout("tcp", dst, time.Second*time.Duration(timeout))
-  defer c.Close()
   if err == nil {
+    defer c.Close()
     c.Write(zpkt)
     res, err := ioutil.ReadAll(c)
     pkt = nil
@@ -219,8 +219,8 @@ func TwoWay(dst string, zpkt []byte, timeout uint64) bool {
 func ThreeWay(dst string, zpkt []byte, zconfirmation []byte, timeout uint64) *gabs.Container {
   var pkt *gabs.Container
   c, err := net.DialTimeout("tcp", dst, time.Second*time.Duration(timeout))
-  defer c.Close()
   if err == nil {
+    defer c.Close()
     c.Write(zpkt)
     res, err := ioutil.ReadAll(c)
     pkt = nil

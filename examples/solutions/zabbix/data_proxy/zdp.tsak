@@ -34,7 +34,7 @@ if VMNAME == "in" {
   // Data/Configuration acquisition
   //
   func DataAcq() {
-    dataA.Acquire(stdlib.TODO(), 1)
+    // dataA.Acquire(stdlib.TODO(), 1)
     C += 1
     if C > 15 {
       log.Trace("15-th iteration of data acquisition started")
@@ -49,7 +49,7 @@ if VMNAME == "in" {
       }
       stdlib.To(stdlib.INCH, res.String())
     }
-    dataA.Release(1)
+    // dataA.Release(1)
   }
 
   func DataForward() {
@@ -58,6 +58,7 @@ if VMNAME == "in" {
       data = djson.Parse(<-dataCH)
       if DATAFORWARD {
         // Do an actual data forwarding
+        log.Trace("Iteration of data forwarding started")
         zpkt = zabbix.Data("proxy data", data.String(), PROXYNAME, COMPRESS)
         res  = zabbix.TwoWay(SERVER, zpkt, TIMEOUT)
         if ! res {
