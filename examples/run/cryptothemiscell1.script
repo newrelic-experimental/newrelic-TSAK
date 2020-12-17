@@ -3,14 +3,18 @@ fmt = import("fmt")
 cell = import("crypto/themis/cell")
 
 scell, err = cell.WithPassword("helloworld")
+
 if err == nil {
   etxt, err = scell.Encrypt("Answer is 42", nil)
   if err == nil {
     fmt.Println("Encrypted data", etxt)
-    dtxt, err = scell.Decrypt(etxt, nil)
+    scelld, err = cell.WithPassword("helloworld")
     if err == nil {
-      fmt.Println("Decrypted string:", stdlib.String(dtxt))
-      fmt.Println("Decrypted data:", dtxt)
+      dtxt, err = scelld.Decrypt(etxt, nil)
+      if err == nil {
+        fmt.Println("Decrypted string:", stdlib.String(dtxt))
+        fmt.Println("Decrypted data:", dtxt)
+      }
     }
   }
 }
