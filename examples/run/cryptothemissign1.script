@@ -1,0 +1,30 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+msg = import("crypto/themis/message")
+key = import("crypto/themis/keys")
+
+akey, err = key.Assymmetric(key.TypeEC)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+
+pri = akey.Private
+pub = akey.Public
+
+ms1 = msg.New(pri, nil)
+ms2 = msg.New(nil, pub)
+
+msgsigned, err = ms1.Sign("Answer is 42!")
+fmt.Println("Signed message:", msgsigned)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+verified, err = ms2.Verify(msgsigned)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+fmt.Println("Message verified data", verified)
+fmt.Println("Message verified text", stdlib.String(verified))
