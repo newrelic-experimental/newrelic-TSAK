@@ -1,0 +1,21 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+cell = import("crypto/themis/cell")
+key = import("crypto/themis/keys")
+
+pkey, err = key.Symmetric()
+scell, err = cell.WithKeyAndToken(pkey)
+
+if err == nil {
+  etxt, token, err = scell.Encrypt("The answer is 42", nil)
+  if err == nil {
+    fmt.Println("Encrypted text is:", etxt)
+    fmt.Println("Token:", token)
+  }
+  scelld, err = cell.WithKeyAndToken(pkey)
+  dtxt, err = scelld.Decrypt(etxt, token, nil)
+  if err == nil {
+    fmt.Println("Decrypted data is:", dtxt)
+    fmt.Println("Decrypted text is:", stdlib.String(dtxt))
+  }
+}
