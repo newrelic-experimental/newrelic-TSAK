@@ -1,0 +1,38 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+msg = import("crypto/themis/message")
+key = import("crypto/themis/keys")
+
+akey, err = key.Assymmetric(key.TypeEC)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+bkey, err = key.Assymmetric(key.TypeEC)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+
+pri1 = akey.Private
+pri2 = bkey.Private
+pub1  = akey.Public
+pub2  = bkey.Public
+
+ms1 = msg.New(pri1, pub2)
+ms2 = msg.New(pri2, pub1)
+
+etxt, err = ms1.Wrap("Answer is 42!")
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+fmt.Println("Private key encrypted data", etxt)
+
+dtxt, err = ms2.Unwrap(etxt)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+fmt.Println("Public key decrypted data", dtxt)
+fmt.Println("Public key decrypted text", stdlib.String(dtxt))

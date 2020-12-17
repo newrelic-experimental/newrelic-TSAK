@@ -11,6 +11,6 @@ func init() {
     "New":                    reflect.ValueOf(message.New),
   }
   env.PackageTypes["crypto/themis/keys"] = map[string]reflect.Type{
-    "SecureMeaages":          reflect.TypeOf(message.SecureMessage{}),
+    "SecureMessage":          reflect.TypeOf(message.SecureMessage{}),
   }
 }
