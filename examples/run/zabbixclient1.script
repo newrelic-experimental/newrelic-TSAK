@@ -1,0 +1,16 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+zabbix = import("protocols/zabbix/client")
+
+val, err = zabbix.Get("10.0.0.162:10050", "agent.ping", 3)
+if err == nil {
+  fmt.Println("agent.ping returns", val)
+} else {
+  fmt.Println("Ouch!", err)
+}
+val, err = zabbix.Get("10.0.0.162:10050", "agent.version", 3)
+if err == nil {
+  fmt.Println("agent.version returns", val)
+} else {
+  fmt.Println("Ouch!", err)
+}

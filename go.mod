@@ -21,6 +21,7 @@ require (
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
 	github.com/fsnotify/fsnotify v1.4.9
+	github.com/fujiwara/go-zabbix-get v0.0.7 // indirect
 	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
@@ -51,6 +52,7 @@ require (
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
 	github.com/valyala/fasttemplate v1.2.1
+	github.com/vulogov/go-zabbix-get v0.0.7
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897 // indirect
 	golang.org/x/net v0.0.0-20201031054903-ff519b6c9102
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208

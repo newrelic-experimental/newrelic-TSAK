@@ -271,6 +271,8 @@ github.com/frankban/quicktest v1.5.0/go.mod h1:jaStnuzAqU1AJdCO0l53JDCJrVDKcS03D
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/fsnotify/fsnotify v1.4.9 h1:hsms1Qyu0jgnwNXIxa+/V/PDsU6CfLf6CNO8H7IWoS4=
 github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4IgpuI1SZQ=
+github.com/fujiwara/go-zabbix-get v0.0.7 h1:nC/1b21Hj/mr759S7SwcdQ0739WYb+ApECV2Tq5TQ44=
+github.com/fujiwara/go-zabbix-get v0.0.7/go.mod h1:s9aXPBPhDwGVt+fzC9sTk9/Nh1KfZEEiKBh5rPD7kTE=
 github.com/geoffgarside/ber v1.1.0 h1:qTmFG4jJbwiSzSXoNJeHcOprVzZ8Ulde2Rrrifu5U9w=
 github.com/geoffgarside/ber v1.1.0/go.mod h1:jVPKeCbj6MvQZhwLYsGwaGI52oUorHoHKNecGT85ZCc=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
@@ -794,6 +796,8 @@ github.com/valyala/fasttemplate v1.2.1 h1:TVEnxayobAdVkhQfrfes2IzOB6o+z4roRkPF52
 github.com/valyala/fasttemplate v1.2.1/go.mod h1:KHLXt3tVN2HBp8eijSv/kGJopbvo7S+qRAEEKiv+SiQ=
 github.com/valyala/quicktemplate v1.6.3/go.mod h1:fwPzK2fHuYEODzJ9pkw0ipCPNHZ2tD5KW4lOuSdPKzY=
 github.com/valyala/tcplisten v0.0.0-20161114210144-ceec8f93295a/go.mod h1:v3UYOV9WzVtRmSR+PDvWpU/qWl4Wa5LApYYX4ZtKbio=
+github.com/vulogov/go-zabbix-get v0.0.7 h1:uvV8hju8WXIw9vMM3x78h2LnwwnCvjmsKZllueXRhvQ=
+github.com/vulogov/go-zabbix-get v0.0.7/go.mod h1:liEH0gsaLMfZGkXygxV1pu1Oo4ZlnkdZEqAdQVebQMw=
 github.com/wcharczuk/go-chart v2.0.1+incompatible/go.mod h1:PF5tmL4EIx/7Wf+hEkpCqYi5He4u90sw+0+6FhrryuE=
 github.com/xanzy/go-gitlab v0.39.0 h1:7aiZ03fJfCdqoHFhsZq/SoVYp2lR91hfYWmiXLOU5Qo=
 github.com/xanzy/go-gitlab v0.39.0/go.mod h1:sPLojNBn68fMUWSxIJtdVVIP8uSBYqesTfDUseX11Ug=
