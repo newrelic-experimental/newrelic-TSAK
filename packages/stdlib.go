@@ -63,6 +63,9 @@ func StdlibSemaphore(n uint64) *semaphore.Weighted {
 func StdlibTODO() context.Context {
   return context.TODO()
 }
+func StdlibBG() context.Context {
+  return context.Background()
+}
 
 func init() {
   env.Packages["stdlib"] = map[string]reflect.Value{
@@ -89,6 +92,7 @@ func init() {
     "UniqID":         reflect.ValueOf(StdlibShortID),
     "Semaphore":      reflect.ValueOf(StdlibSemaphore),
     "TODO":           reflect.ValueOf(StdlibTODO),
+    "BACKGROUND":     reflect.ValueOf(StdlibBG),
     "ToValue":        reflect.ValueOf(stdlib.ToValue),
   }
   env.PackageTypes["stdlib"] = map[string]reflect.Type{

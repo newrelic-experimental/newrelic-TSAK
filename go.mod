@@ -9,6 +9,7 @@ require (
 	github.com/VictoriaMetrics/fastcache v1.5.7
 	github.com/aaronjan/hunch v1.1.2
 	github.com/akrylysov/pogreb v0.9.1
+	github.com/alitto/pond v1.4.0
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
 	github.com/bitfield/script v0.18.0
 	github.com/blacked/go-zabbix v0.0.0-20170118040903-3c6a95ec4fdc
@@ -29,6 +30,7 @@ require (
 	github.com/google/uuid v1.1.2
 	github.com/goreleaser/goreleaser v0.149.0 // indirect
 	github.com/hallidave/mibtool v0.2.0
+	github.com/hjson/hjson-go v3.1.0+incompatible
 	github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5 // indirect
 	github.com/k-sone/snmpgo v3.2.0+incompatible
 	github.com/kamildrazkiewicz/go-flow v0.0.0-20170919072006-2a1d885f8ce4
