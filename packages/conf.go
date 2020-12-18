@@ -57,6 +57,7 @@ func init() {
     "EVENTTYPE":       reflect.ValueOf(ConfEVENTTYPE),
     "EventType":       reflect.ValueOf(ConfEventType),
     "Args":            reflect.ValueOf(ConfArgs),
+    "ParseArgs":       reflect.ValueOf(conf.ParseArgs),
     "Version":         reflect.ValueOf(conf.Ver),
     "VersionMajor":    reflect.ValueOf(conf.VerMaj),
     "VersionMinor":    reflect.ValueOf(conf.VerMin),

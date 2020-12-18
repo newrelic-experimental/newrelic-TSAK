@@ -1,0 +1,5 @@
+fmt = import("fmt")
+conf = import("conf")
+
+fmt.Println("Current arguments are:",conf.Args())
+fmt.Println("Parsed arguments are:",conf.ParseArgs())
