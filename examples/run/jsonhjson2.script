@@ -1,0 +1,45 @@
+os = import("os")
+io = import("io/ioutil")
+fmt = import("fmt")
+djson  = import("djson")
+json = import("json/hjson")
+log = import("tlog")
+
+func ParseZabbixAgentConf(fn) {
+  res = djson.New()
+  res.Array()
+  data, err = io.ReadFile(fn)
+  if err != nil {
+    log.Error(fmt.Sprintf("Error reading Zabbix Agent DB file: %v", err))
+    return nil
+  }
+  g,err = json.Parse(data)
+  if err != nil {
+    log.Error(fmt.Sprintf("Error reading Zabbix Agent DB file: %v", err))
+    return nil
+  }
+  for q in g.Path("query").Data() {
+    row = djson.New()
+    row.Set(q.ip,   "ip")
+    row.Set(q.name, "name")
+    row.Set(q.key,  "key")
+    res.ArrayAppend(row.Data())
+  }
+  for h in g.Path("hosts").Data() {
+    for i in g.Path("items").Data() {
+      row = djson.New()
+      row.Set(h.ip,   "ip")
+      row.Set(h.name, "name")
+      row.Set(i,      "key")
+      res.ArrayAppend(row.Data())
+    }
+  }
+  return res
+}
+
+pkt = ParseZabbixAgentConf("./examples/solutions/zabbix/za/za.hostsdb")
+fmt.Println(pkt.String())
+
+for i in pkt.Data() {
+  fmt.Println(i)
+}
