@@ -13,4 +13,5 @@ for k,v in args {
 fmt.Println(zabbix.Key("some.key[ ]"))
 fmt.Println(zabbix.Key("some.other.key[]"))
 fmt.Println(zabbix.Key("some.other.key.with.empty.params[,,, ,,,]"))
-fmt.Println(zabbix.Key("some.other.key.with.non.empty.params[,,, \"boo\",,,]"))
+fmt.Println(zabbix.Key(`some.other.key.with.non.empty.params["a b c",d]`))
+fmt.Println(zabbix.Key(`some.other.key.with.non.empty.params[,,,"boo",,,]`))
