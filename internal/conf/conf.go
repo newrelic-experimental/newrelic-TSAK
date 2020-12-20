@@ -30,8 +30,8 @@ var Clips string
 var Script string
 var Every int
 var EventType string
-var Ver = "0.3-pre2"
+var Ver = "0.3-pre3"
 var VerMaj = 0
 var VerMin = 3
-var VerPrerelease = 2
+var VerPrerelease = 3
 var Args []string
