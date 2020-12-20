@@ -134,7 +134,6 @@ if VMNAME == "in" {
       }
       data = stdlib.From(stdlib.OUTCH)
       dpkt = djson.Parse(data)
-      fmt.Println(dpkt.String())
       pkg.ArrayAppend(dpkt.Data())
       N += 1
     }
