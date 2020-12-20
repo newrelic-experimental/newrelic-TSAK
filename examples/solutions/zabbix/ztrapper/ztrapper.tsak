@@ -1,0 +1,78 @@
+//
+// TSAK Zabbix Agent
+//
+fmt     = import("fmt")
+net     = import("net")
+os      = import("os")
+zproto  = import("protocols/zabbix")
+zabbix  = import("protocols/zabbix/client")
+log     = import("tlog")
+stdlib  = import("stdlib")
+time    = import("time")
+djson   = import("djson")
+json    = import("json/hjson")
+ioutil  = import("io/ioutil")
+bc      = import("bc")
+strconv = import("strconv")
+h       = import("convert/humanize")
+pond    = import("stdlib/pond")
+
+
+if VMNAME == "in" {
+  //
+  // Data/Configuration acquisition
+  //
+
+  for ! stdlib.ExitRequested() {
+    time.Sleep(INLOOPWAIT * time.Second)
+  }
+
+} else if VMNAME == "proc" {
+  //
+  // Data processor
+  //
+  for ! stdlib.ExitRequested() {
+    for stdlib.Len(stdlib.INCH) > 0 {
+      data = stdlib.From(stdlib.INCH)
+      pkt = djson.Parse(data)
+      stdlib.To(stdlib.OUTCH, pkt.String())
+    }
+    // log.Trace("PROC() is cooled down")
+    time.Sleep(PROCLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "out" {
+  //
+  // Data delivery
+  //
+  for ! stdlib.ExitRequested() {
+    N = 0
+    pkg = djson.New()
+    pkg.Array()
+    for stdlib.Len(stdlib.OUTCH) > 0 {
+      if N > INBATCH {
+        break
+      }
+      data = stdlib.From(stdlib.OUTCH)
+      dpkt = djson.Parse(data)
+      pkg.ArrayAppend(dpkt.Data())
+      N += 1
+    }
+    if N > 0 {
+      sndres, err, resp = log.SendEvent(pkg.String())
+      if sndres {
+        usize = h.Bytes(len(pkg.String()))
+        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        log.Info(msg)
+      } else {
+        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+      }
+    }
+    time.Sleep(OUTLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "house" {
+  //
+  // Housekeeper
+  //
+} else {
+  log.Trace("If you see this message, please open a bug report")
+}
