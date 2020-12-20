@@ -18,9 +18,9 @@ func ParseParamsInZabbixKey(key string, params string) (args map[string]string, 
 
   args = make(map[string]string)
   csvr := csv.NewReader(strings.NewReader(params))
+  csvr.TrimLeadingSpace = true
   record, err := csvr.Read()
   if err != nil {
-    fmt.Println("Ouch", err)
     return
   }
   found = false

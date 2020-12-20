@@ -4,6 +4,7 @@
 fmt     = import("fmt")
 net     = import("net")
 os      = import("os")
+zproto  = import("protocols/zabbix")
 zabbix  = import("protocols/zabbix/client")
 log     = import("tlog")
 stdlib  = import("stdlib")
@@ -89,6 +90,11 @@ if VMNAME == "in" {
         pkt.Set(data["key"],    "item")
         pkt.Set(data["name"],   "hostname")
         pkt.Set(value,          "value")
+        name, args = zproto.Key(data["key"])
+        pkt.Set(name,    "name")
+        for k,v in args {
+          pkt.Set(v, k)
+        }
         stdlib.To(stdlib.INCH,  pkt.String())
       })
       i++
@@ -128,6 +134,7 @@ if VMNAME == "in" {
       }
       data = stdlib.From(stdlib.OUTCH)
       dpkt = djson.Parse(data)
+      fmt.Println(dpkt.String())
       pkg.ArrayAppend(dpkt.Data())
       N += 1
     }
