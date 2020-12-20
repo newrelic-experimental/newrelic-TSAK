@@ -262,7 +262,7 @@ if VMNAME == "in" {
     }
     if N > 0 {
       sndres, err, resp = log.SendEvent(pkg.String())
-      if sndres {
+      if sndres && err == nil {
         usize = h.Bytes(len(pkg.String()))
         msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
         log.Info(msg)

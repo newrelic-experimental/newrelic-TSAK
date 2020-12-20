@@ -7,6 +7,12 @@ import (
   "encoding/csv"
 )
 
+var ZABBIXKEYS = `
+{
+
+}
+`
+
 func ParseParamsInZabbixKey(params string) (args map[string]string, err error) {
   var found bool
   args = make(map[string]string)

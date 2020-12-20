@@ -23,6 +23,7 @@ require (
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/fujiwara/go-zabbix-get v0.0.7 // indirect
+	github.com/ganbarodigital/go_glob v1.0.0
 	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
