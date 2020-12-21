@@ -22,7 +22,7 @@ if VMNAME == "in" {
   //
   // Data/Configuration acquisition
   //
-
+  
   for ! stdlib.ExitRequested() {
     time.Sleep(INLOOPWAIT * time.Second)
   }

@@ -7,12 +7,12 @@ import (
 )
 
 func init() {
-  env.Packages["zabbix/sender"] = map[string]reflect.Value{
+  env.Packages["protocols/zabbix/sender"] = map[string]reflect.Value{
     "New":              reflect.ValueOf(sender.NewSender),
     "Packet":           reflect.ValueOf(sender.NewPacket),
     "M":                reflect.ValueOf(sender.NewMetric),
   }
-  env.PackageTypes["zabbix/sender"] = map[string]reflect.Type{
+  env.PackageTypes["protocols/zabbix/sender"] = map[string]reflect.Type{
     "Metric":           reflect.TypeOf(sender.Metric{}),
   }
 }

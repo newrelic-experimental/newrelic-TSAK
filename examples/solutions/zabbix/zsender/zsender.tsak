@@ -1,0 +1,102 @@
+//
+// This -run script will form an event payload and send this event to New Relic
+//
+fmt       = import("fmt")
+time      = import("time")
+conf      = import("conf")
+log       = import("tlog")
+djson     = import("djson")
+stdlib    = import("stdlib")
+system    = import("stdlib/system")
+zabbix    = import("protocols/zabbix/sender")
+zproto    = import("protocols/zabbix")
+
+args, flags = conf.ParseArgs()
+ZABBIX, ok = flags["ZABBIX"]
+if ! ok {
+  ZABBIX = "localhost"
+}
+PROXY, ok = flags["PROXY"]
+if ! ok {
+  PROXY = "ZabbixProxy"
+}
+PORT, ok = flags["PORT"]
+if ! ok {
+  PORT = 10051
+} else {
+  PORT = stdlib.ToValue(PORT)
+}
+HOST, ok = flags["HOST"]
+if ! ok {
+  hostinfo, _ = system.HostInfo()
+  HOST = hostinfo.Hostname
+}
+KEY, ok = flags["KEY"]
+if ! ok {
+  log.Error("You have to supply a trapper key as a parameter to /KEY command line option")
+  return
+}
+VALUE, ok = flags["VALUE"]
+if ! ok {
+  log.Error("You have to supply a trapper value as a parameter to /VALUE command line option")
+  return
+}
+
+func SendDataToZabbix() {
+  m = make([]*zabbix.Metric, 1)
+  m[0] = zabbix.M(HOST, KEY, VALUE, time.Now().Unix())
+  pkt = zabbix.Packet(m)
+  zsender = zabbix.New(ZABBIX, PORT)
+  resp, err = zsender.Send(pkt)
+  if err != nil {
+    fmt.Error(fmt.Sprintf("Error message from Zabbix Server: %v", err))
+    return nil
+  } else {
+    res = zproto.ParseRaw(resp)
+    pktres = djson.Parse(res)
+    return pktres
+  }
+  return nil
+}
+
+func SendDataToNR(pktres) {
+  info = pktres.Path("info").Data()
+  zres = stdlib.ToValue(pktres.Path("response").Data())
+  pkt = djson.New()
+  id, _ = stdlib.UniqID().Generate()
+  hostinfo, _ = system.HostInfo()
+  pkt.Set(id,                       "id")
+  pkt.Set(stdlib.NowMilliseconds(), "timestamp")
+  pkt.Set(conf.EventType(),         "eventType")
+  pkt.Set(PROXY,                    "proxyName")
+  name, args = zproto.Key(KEY)
+  pkt.Set(name,                     "name")
+  pkt.Set(KEY,                      "item")
+  pkt.Set(zres,                     "zresponse")
+  pkt.Set(info,                     "zinfo")
+  for k,v in args {
+    pkt.Set(v, k)
+  }
+  pkt.Set(stdlib.ToValue(VALUE),    "value")
+  pkt.Set(HOST,                     "hostname")
+  pkg = djson.New()
+  pkg.Array()
+  pkg.ArrayAppend(pkt.Data())
+  res, err, resp = log.SendEvent(pkg.String())
+  if ! res {
+    if err != nil {
+      log.Error(fmt.Sprintf("Sending error: %s", err))
+    } else {
+      log.Error("Unspecified error")
+    }
+  } else {
+    fmt.Println(resp.Path("uuid").Data())
+  }
+}
+
+pktres = SendDataToZabbix()
+if pktres == nil {
+  fmt.Error("Can not send data to Zabbix Trapper. Failing.")
+  return
+}
+SendDataToNR(pktres)
