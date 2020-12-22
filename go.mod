@@ -42,7 +42,6 @@ require (
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
-	github.com/orkunkaraduman/go-tcpserver v0.0.0-20181226112016-a897b4eaa9c6
 	github.com/pebbe/zmq4 v1.2.1
 	github.com/pion/dtls/v2 v2.0.3
 	github.com/prologic/bitcask v0.3.6

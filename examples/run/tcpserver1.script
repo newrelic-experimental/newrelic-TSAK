@@ -1,0 +1,14 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+strings = import("strings")
+srv     = import("protocols/tcp/server")
+
+s9999 = srv.New("localhost:9999")
+s9999.OnNewClient(func (c) {
+    c.Send("Greeting from localhost:9999\n")
+})
+s9999.OnNewMessage(func (c, msg) {
+    s = stdlib.String(msg)
+    c.SendBytes(strings.ToUpper(s))
+})
+s9999.Listen(1, 4096, true)
