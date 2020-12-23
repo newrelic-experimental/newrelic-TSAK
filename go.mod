@@ -26,6 +26,8 @@ require (
 	github.com/fujiwara/go-zabbix-get v0.0.7 // indirect
 	github.com/ganbarodigital/go_glob v1.0.0
 	github.com/geoffgarside/ber v1.1.0 // indirect
+	github.com/goburrow/modbus v0.1.0
+	github.com/goburrow/serial v0.1.0 // indirect
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.2 // indirect
