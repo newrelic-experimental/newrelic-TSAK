@@ -1,0 +1,9 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+market  = import("nostdlib/finance/quote")
+
+newr, err = market.Ticker("NEWR")
+if err == nil {
+  fmt.Println("Symbol:", newr.Symbol)
+  fmt.Println("Market open/high/low/change:", newr.RegularMarketOpen, newr.RegularMarketDayHigh, newr.RegularMarketDayLow, newr.RegularMarketChange)
+}

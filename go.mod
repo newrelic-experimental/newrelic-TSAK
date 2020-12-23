@@ -45,11 +45,13 @@ require (
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pebbe/zmq4 v1.2.1
 	github.com/pion/dtls/v2 v2.0.3
+	github.com/piquette/finance-go v1.0.0
 	github.com/prologic/bitcask v0.3.6
 	github.com/robfig/cron v1.2.0
 	github.com/rocketlaunchr/dataframe-go v0.0.0-20201007021539-67b046771f0b
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/shirou/gopsutil/v3 v3.20.10
+	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
 	github.com/trivago/grok v1.0.0
