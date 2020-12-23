@@ -115,10 +115,18 @@ func Len(src int) int {
 
 func Shutdown() {
   log.Trace("Terminating Pipelines")
-  for k, v := range zmqS {
-    log.Trace(fmt.Sprintf("Closing ZMQ: %s", k))
-    v.Close()
+  if zmqS != nil {
+    log.Trace("Closing ZMQ sockets")
+    for k, v := range zmqS {
+      log.Trace(fmt.Sprintf("Closing ZMQ: %s", k))
+      if v != nil {
+        v.Close()
+      }
+    }
   }
-  zmqCtx.Term()
+  if zmqCtx != nil {
+    log.Trace("Terminating ZMQ context")
+    zmqCtx.Term()
+  }
   log.Trace("Pipelines are terminated")
 }

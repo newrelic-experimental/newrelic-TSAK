@@ -1,0 +1,10 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+forex   = import("nostdlib/finance/forex")
+
+useur, err = forex.Forex("USDEUR=X")
+quote = useur.Quote
+if err == nil {
+  fmt.Println("US-EUR trading open/high/low/price:", quote.RegularMarketOpen, quote.RegularMarketDayHigh, quote.RegularMarketDayLow, quote.RegularMarketPrice)
+
+}
