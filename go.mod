@@ -39,6 +39,7 @@ require (
 	github.com/karrick/godirwalk v1.16.1
 	github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
 	github.com/kr/text v0.2.0 // indirect
+	github.com/leekchan/accounting v1.0.0
 	github.com/lib/pq v1.1.1 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
