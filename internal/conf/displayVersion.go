@@ -16,6 +16,7 @@ func DisplayVersion() {
       []string{"TSAK version major", fmt.Sprintf("%v",VerMaj)},
       []string{"TSAK version minor", fmt.Sprintf("%v",VerMin)},
       []string{"TSAK version prerelease", fmt.Sprintf("%v",VerPrerelease)},
+      []string{"CLIPS version", "6.31"},
     }
   } else {
     data  = [][]string{
@@ -23,6 +24,7 @@ func DisplayVersion() {
       []string{"TSAK version major", fmt.Sprintf("%v",VerMaj)},
       []string{"TSAK version minor", fmt.Sprintf("%v",VerMin)},
       []string{"TSAK version prerelease", fmt.Sprintf("%v",VerPrerelease)},
+      []string{"CLIPS version", "6.31"},
       []string{"Host OS",           info.OS},
       []string{"Platform",          info.Platform},
       []string{"Platform family",   info.PlatformFamily},
