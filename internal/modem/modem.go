@@ -76,11 +76,11 @@ func (m *GSMModem) Expect(possibilities []string) (string, error) {
 }
 
 func (m *GSMModem) Send(command string) {
-	log.Println("--- Send:", m.transposeLog(command))
+	// log.Println("--- Send:", m.transposeLog(command))
 	m.Port.Flush()
 	_, err := m.Port.Write([]byte(command))
 	if err != nil {
-		log.Fatal(err)
+		fmt.Sprintf("Error in Send() to modem: %v", err)
 	}
 }
 

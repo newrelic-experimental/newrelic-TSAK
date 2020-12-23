@@ -56,6 +56,7 @@ require (
 	github.com/shirou/gopsutil/v3 v3.20.10
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
+	github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
