@@ -33,6 +33,7 @@ func DisplayVersion() {
     }
   }
   table := tablewriter.NewWriter(os.Stdout)
+  table.SetAlignment(tablewriter.ALIGN_LEFT)
   for _, v := range data {
     table.Append(v)
   }
