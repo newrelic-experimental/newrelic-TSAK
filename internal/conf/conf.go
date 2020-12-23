@@ -30,6 +30,7 @@ var Clips string
 var Script string
 var Every int
 var EventType string
+var IsVersion bool
 var Ver = "0.3-pre3"
 var VerMaj = 0
 var VerMin = 3
