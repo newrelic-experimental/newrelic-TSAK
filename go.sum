@@ -206,6 +206,8 @@ github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod h1:Q3SI9o4m/ZMn
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cnkei/gospline v0.0.0-20191204072713-842a72f86331/go.mod h1:DXXGDL64/wxXgBSgmGMEL0vYC0tdvpgNhkJrvavhqDM=
+github.com/codingsince1985/checksum v1.1.0 h1:hYebixS4t5k2hnG6mFVMVqMiGCVC8Dw0ywCXFpYpjmQ=
+github.com/codingsince1985/checksum v1.1.0/go.mod h1:oOS5kmF4DPKaeMAT7CCXcvakSB7s08Om5FdZTwV/CEk=
 github.com/colinmarc/hdfs/v2 v2.1.1/go.mod h1:M3x+k8UKKmxtFu++uAZ0OtDU8jR3jnaZIAc6yK4Ue0c=
 github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2 h1:tjT4Jp4gxECvsJcYpAMtW2I3YqzBTPuB67OejxXs86s=
 github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2/go.mod h1:mk5IQ+Y0ZeO87b858TlA645sVcEcbiX6YqP98kt+7+w=

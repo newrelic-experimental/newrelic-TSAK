@@ -14,6 +14,7 @@ require (
 	github.com/bitfield/script v0.18.0
 	github.com/blacked/go-zabbix v0.0.0-20170118040903-3c6a95ec4fdc
 	github.com/buger/jsonparser v1.0.0
+	github.com/codingsince1985/checksum v1.1.0
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2
 	github.com/cossacklabs/themis/gothemis v0.13.1
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43

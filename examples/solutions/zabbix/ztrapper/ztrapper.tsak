@@ -5,7 +5,7 @@ fmt     = import("fmt")
 net     = import("net")
 os      = import("os")
 zproto  = import("protocols/zabbix")
-zabbix  = import("protocols/zabbix/client")
+srv     = import("protocols/tcp/server")
 log     = import("tlog")
 stdlib  = import("stdlib")
 time    = import("time")
@@ -22,10 +22,16 @@ if VMNAME == "in" {
   //
   // Data/Configuration acquisition
   //
-  
-  for ! stdlib.ExitRequested() {
-    time.Sleep(INLOOPWAIT * time.Second)
-  }
+  trapper = srv.New(TRAPPER)
+  trapper.OnNewMessage(func (c, msg) {
+      pkt = zproto.Parse(msg)
+      if pkt == nil {
+        log.Error("Can not parse Zabbix message on trapper")
+        return
+      }
+      fmt.Println(pkt.String())
+  })
+  trapper.Listen(1, BUFSIZE, true)
 
 } else if VMNAME == "proc" {
   //

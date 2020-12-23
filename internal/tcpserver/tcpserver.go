@@ -15,6 +15,7 @@ import (
 type Client struct {
 	conn     net.Conn
   Bufsize  int64
+  MsgSize  int64
   IsText   bool
 	Server   *AServer
 }
@@ -26,6 +27,7 @@ type AServer struct {
 	onNewClientCallback      func(c *Client)
 	onClientConnectionClosed func(c *Client, err error)
 	onNewMessage             func(c *Client, message []byte)
+  onMessageHeader          func(c *Client, message []byte)
 }
 
 // Read client data from channel
@@ -86,7 +88,8 @@ func (s *AServer) OnClientConnectionClosed(callback func(c *Client, err error)) 
 	s.onClientConnectionClosed = callback
 }
 
-// Called when Client receives new messagem
+
+// Called when Client receives new message
 func (s *AServer) OnNewMessage(callback func(c *Client, message []byte)) {
 	s.onNewMessage = callback
 }

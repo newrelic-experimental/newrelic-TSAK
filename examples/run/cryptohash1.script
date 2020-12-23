@@ -1,0 +1,12 @@
+stdlib    = import("stdlib")
+fmt       = import("fmt")
+hash      = import("crypto/hash")
+
+md5, err = hash.MD5("README.md")
+if err == nil {
+  fmt.Println("MD5 hash of README.md is", md5)
+}
+sha256, err = hash.SHA256("README.md")
+if err == nil {
+  fmt.Println("SHA256 hash of README.md is", sha256)
+}
