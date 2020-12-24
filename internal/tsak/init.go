@@ -19,6 +19,7 @@ func Init() {
   uid, _ := uuid.NewUUID()
   flag.BoolVar(&conf.Nocolor, "nocolor", false, "Disable colors in terminal output")
   flag.BoolVar(&conf.IsVersion, "version", false, "Display TSAK version")
+  flag.StringVar(&conf.AppPath, "appdir", "/tmp", "Directory for an application and temporary files")
   flag.BoolVar(&conf.Debug, "debug", false, "Enable debug output")
   flag.BoolVar(&conf.Error, "error", false, "Enable ERROR outpout")
   flag.BoolVar(&conf.Warning, "warning", false, "Enable WARNING outpout")
@@ -26,6 +27,7 @@ func Init() {
   flag.BoolVar(&conf.Stdout, "stdout", false, "Send log entries to /dev/stdout as well")
   flag.BoolVar(&conf.TraceNR, "tracenr", false, "Send TSAK traces as logs to New Relic")
   flag.BoolVar(&conf.Production, "production", false, "Running Ushell in production mode")
+  flag.BoolVar(&conf.IsStop, "stop", false, "If -stop is passed, tsak will try to kill tsak process with same ID")
   flag.StringVar(&conf.Nrapi, "nrapi", os.Getenv("NEW_RELIC_LICENSE_KEY"), "New Relic Insert API key")
   flag.StringVar(&conf.Nrapiq, "nrapiq", os.Getenv("NEW_RELIC_Q_LICENSE_KEY"), "New Relic Query API key")
   flag.StringVar(&conf.Logfile, "log", "", "Name of the log file")
@@ -69,6 +71,13 @@ func Init() {
     conf.House  = conf.Script
   }
   log.InitLog()
+  log.Info(fmt.Sprintf("Application ID %v", conf.ID))
+  if conf.IsStop {
+    StopWithPid()
+    os.Exit(0)
+  } else {
+    StartWithPid()
+  }
   if conf.Script != "" {
     log.Trace(fmt.Sprintf("Universal script %s will be used for -in/-out/-proc/-housekeeper"))
   }

@@ -22,6 +22,7 @@ require (
 	github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
+	github.com/facebookgo/atomicfile v0.0.0-20151019160806-2de1f203e7d5
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/fujiwara/go-zabbix-get v0.0.7 // indirect
 	github.com/ganbarodigital/go_glob v1.0.0
