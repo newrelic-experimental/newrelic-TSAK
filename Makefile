@@ -24,4 +24,14 @@ include build/deps.mk
 include build/util.mk
 include build/release.mk
 
+build-install:
+	@echo "Preparing files in temporary directory"
+	@rm -rf ./tmp ./installbundles
+	@mkdir ./tmp ./installbundles
+	@cp ./bin/${GOOS}/tsak ./tmp
+	@cp ./install/setup.sh ./tmp
+	@cp /usr/local/lib/libclips.so ./tmp
+	@echo "Preparing installation bundle"
+	@makeself ./tmp ./installbundles/tsak-install-${GOOS}.sh "TSAK installation for ${GOOS}" ./setup.sh
+
 .PHONY: all build clean
