@@ -46,6 +46,7 @@ require (
 	github.com/lib/pq v1.1.1 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
+	github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/olekukonko/tablewriter v0.0.4
 	github.com/pebbe/zmq4 v1.2.1
@@ -71,6 +72,7 @@ require (
 	golang.org/x/sys v0.0.0-20201109165425-215b40eba54c
 	gonum.org/v1/gonum v0.7.0
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
+	gopkg.in/h2non/gentleman.v2 v2.0.4
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200605160147-a5ece683394c // indirect
