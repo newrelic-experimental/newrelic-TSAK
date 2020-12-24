@@ -1,0 +1,14 @@
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+slack   = import("protocols/slack")
+
+api = slack.New("insert an actual key here")
+attachment = make(slack.Attachment)
+attachment.Pretext = "Header of the attachment"
+attachment.Text = "Message in the attachment"
+channelID, timestamp, err = api.PostMessage("#bot-testing",
+slack.MsgOptionText("Greetings from TSAK ! ", false),
+slack.MsgOptionAttachments(attachment),
+slack.MsgOptionAsUser(true))
+
+fmt.Println("Responce",channelID, err)
