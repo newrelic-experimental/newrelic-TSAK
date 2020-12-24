@@ -31,8 +31,8 @@ var Script string
 var Every int
 var EventType string
 var IsVersion bool
-var Ver = "0.3-pre3"
+var Ver = "0.3-pre4"
 var VerMaj = 0
 var VerMin = 3
-var VerPrerelease = 3
+var VerPrerelease = 4
 var Args []string
