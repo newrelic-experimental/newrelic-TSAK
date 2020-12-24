@@ -47,6 +47,7 @@ func StopWithPid() {
       log.Trace(fmt.Sprintf("[%v] Searching for process PID=%v", N, pid))
       err := proc.Signal(syscall.SIGTERM)
       if err != nil {
+        os.Remove(pidfile.Pidfile)
         log.Trace(fmt.Sprintf("Process been killed PID=%v", pid))
         return
       }
@@ -54,6 +55,7 @@ func StopWithPid() {
     }
     proc, err := os.FindProcess(pid)
     if err != nil {
+      os.Remove(pidfile.Pidfile)
       log.Trace(fmt.Sprintf("Process finally gave up PID=%v", pid))
       return
     }
@@ -63,5 +65,6 @@ func StopWithPid() {
       log.Error(fmt.Sprintf("Error sending signal KILL to PID=%v: %v", pid, err))
       return
     }
+    os.Remove(pidfile.Pidfile)
   }
 }
