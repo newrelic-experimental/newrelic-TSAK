@@ -42,7 +42,7 @@ func StopWithPid() {
       return
     }
     N := 0
-    for N < 10 {
+    for N < 20 {
       time.Sleep(time.Second)
       log.Trace(fmt.Sprintf("[%v] Searching for process PID=%v", N, pid))
       err := proc.Signal(syscall.SIGTERM)
