@@ -63,7 +63,6 @@ if VMNAME == "in" {
         res.ArrayAppend(row.Data())
       }
     }
-    fmt.Println(res)
     return res
   }
   snmp.LoadAll(MIBSDB)
