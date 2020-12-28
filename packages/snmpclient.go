@@ -133,12 +133,12 @@ func SNMPv2cWalk(addr string, community string, _oid string, retry uint) snmpgo.
 }
 
 func init() {
-  env.Packages["snmp/client"] = map[string]reflect.Value{
+  env.Packages["protocols/snmp/client"] = map[string]reflect.Value{
     "Getv1":     reflect.ValueOf(SNMPv1Get),
     "Getv2c":    reflect.ValueOf(SNMPv2cGet),
     "Walk":      reflect.ValueOf(SNMPv2cWalk),
   }
-  env.PackageTypes["snmp/client"] = map[string]reflect.Type{
+  env.PackageTypes["protocols/snmp/client"] = map[string]reflect.Type{
     "VarBinds":          reflect.TypeOf(snmpgo.VarBind{}),
   }
 }

@@ -1,0 +1,49 @@
+//
+// This file contains instruction to Zabbix Agent TSAK instrument
+// about which hosts and which Zabbix Passive Agent keys it must query
+//
+{
+  // Here is information about hosts
+  // The "host:" section is a list of the dictionaries, containing information about
+  // hosts
+  hosts: [
+    // Each dictionary
+    {
+      // Shall have an attribute "name:" Which will be human-centric hostname
+      name: test1
+      // And "ip:" with value IP:PORT
+      ip:   10.0.0.162:10050
+    }
+
+  ]
+  // All hosts listed in "hosts:" section will be queried with those Zabbix keys
+  // Just a list With Zabbix Agent keys
+  items: [
+    agent.ping
+    agent.version
+  ]
+  // And in addition to above-mentioned host/item configuration
+  // You can specify the particular host to be queried in the "query:" section
+  // with specific Zabbix key
+  // For the  "query:" section
+  query: [
+    // the value is a list of dictionaries
+    {
+      // each dictionary is having a three attributes,
+      // the "name:", "ip:" which is having the same meaning as in "hosts:"
+      // and a "key:" which is Zabbix key that will be specifically queried
+      name:   test1
+      ip:     10.0.0.162:10050
+      key:    vfs.fs.size[/, pfree]
+    }
+    {
+      name:   test1
+      ip:     10.0.0.162:10050
+      key:    vfs.fs.size[/, pused]
+    }
+  ]
+}
+//
+// Format of this file is looks like it is a JSON, but it is not
+// It is http://hjson.org
+//

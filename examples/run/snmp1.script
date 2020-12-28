@@ -1,8 +1,8 @@
 stdlib = import("stdlib")
 fmt = import("fmt")
 nsnmp = import("snmp")
-snmp = import("snmp/client")
-log = import("tlog")
+snmp = import("protocols/snmp/client")
+log = import("protocols/tlog")
 
 nsnmp.InitMib("/usr/share/snmp/mibs")
 nsnmp.LoadModule("IF-MIB")

@@ -1,0 +1,158 @@
+//
+// TSAK Zabbix Agent
+//
+fmt     = import("fmt")
+net     = import("net")
+os      = import("os")
+zproto  = import("protocols/zabbix")
+zabbix  = import("protocols/zabbix/client")
+log     = import("tlog")
+stdlib  = import("stdlib")
+time    = import("time")
+djson   = import("djson")
+json    = import("json/hjson")
+ioutil  = import("io/ioutil")
+bc      = import("bc")
+strconv = import("strconv")
+h       = import("convert/humanize")
+pond    = import("stdlib/pond")
+
+
+if VMNAME == "in" {
+  //
+  // Data/Configuration acquisition
+  //
+  func ParseZabbixAgentConf(fn) {
+    res = djson.New()
+    res.Array()
+    data, err = ioutil.ReadFile(fn)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error reading Zabbix Agent DB file: %v", err))
+      return nil
+    }
+    g,err = json.Parse(data)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error reading Zabbix Agent DB file: %v", err))
+      return nil
+    }
+    for q in g.Path("query").Data() {
+      row = djson.New()
+      row.Set(q.ip,   "ip")
+      row.Set(q.name, "name")
+      row.Set(q.key,  "key")
+      res.ArrayAppend(row.Data())
+    }
+    for h in g.Path("hosts").Data() {
+      for i in g.Path("items").Data() {
+        row = djson.New()
+        row.Set(h.ip,   "ip")
+        row.Set(h.name, "name")
+        row.Set(i,      "key")
+        res.ArrayAppend(row.Data())
+      }
+    }
+    return res
+  }
+  pipeline = djson.MapPipe(PIPESIZE)
+  for ! stdlib.ExitRequested() {
+    time.Sleep(INLOOPWAIT * time.Second)
+    pool = pond.New(WORKERS, TASKS , pond.IdleTimeout(100 * time.Millisecond))
+    jobs = ParseZabbixAgentConf(HOSTDB)
+    if jobs == nil {
+      log.Error("Parsing of hosts database returned empty")
+      continue
+    }
+    // Then preload pipeline
+    c = 0
+    for i in jobs.Data() {
+      pipeline <- i
+      c++
+    }
+    log.Trace(fmt.Sprintf("Pipeline preloaded with %v jobs", c))
+    // Process pipeline
+    i=0
+    for i < c {
+      log.Trace(fmt.Sprintf("%v job submitted", i))
+      pool.Submit(func() {
+        li = i
+        if len(pipeline) == 0 {
+          log.Trace(fmt.Sprintf("%v exited due to an empty pipeline", li))
+          return
+        }
+        data = <- pipeline
+        log.Trace(fmt.Sprintf("Getting %v[%v]", data["ip"], data["key"]))
+        value, err = zabbix.Get(data["ip"], data["key"], TIMEOUT)
+        if err != nil {
+          log.Error(fmt.Sprintf("Error getting data from %v %s:", data["ip"], err))
+          return
+        }
+        pkt = djson.New()
+        pkt.Set(data["key"],    "item")
+        pkt.Set(data["name"],   "hostname")
+        pkt.Set(value,          "value")
+        name, args = zproto.Key(data["key"])
+        pkt.Set(name,    "name")
+        for k,v in args {
+          pkt.Set(v, k)
+        }
+        stdlib.To(stdlib.INCH,  pkt.String())
+      })
+      i++
+    }
+    log.Trace("Waiting for jobs to finish")
+    pool.StopAndWait()
+    log.Trace("All jobs are done")
+  }
+
+} else if VMNAME == "proc" {
+  //
+  // Data processor
+  //
+  for ! stdlib.ExitRequested() {
+    for stdlib.Len(stdlib.INCH) > 0 {
+      data = stdlib.From(stdlib.INCH)
+      pkt = djson.Parse(data)
+      pkt.Set(SOURCE,     "eventType")
+      pkt.Set(stdlib.NowMilliseconds(), "timestamp")
+      pkt.Set(PROXYNAME, "proxyName")
+      stdlib.To(stdlib.OUTCH, pkt.String())
+    }
+    // log.Trace("PROC() is cooled down")
+    time.Sleep(PROCLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "out" {
+  //
+  // Data delivery
+  //
+  for ! stdlib.ExitRequested() {
+    N = 0
+    pkg = djson.New()
+    pkg.Array()
+    for stdlib.Len(stdlib.OUTCH) > 0 {
+      if N > INBATCH {
+        break
+      }
+      data = stdlib.From(stdlib.OUTCH)
+      dpkt = djson.Parse(data)
+      pkg.ArrayAppend(dpkt.Data())
+      N += 1
+    }
+    if N > 0 {
+      sndres, err, resp = log.SendEvent(pkg.String())
+      if sndres {
+        usize = h.Bytes(len(pkg.String()))
+        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        log.Info(msg)
+      } else {
+        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+      }
+    }
+    time.Sleep(OUTLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "house" {
+  //
+  // Housekeeper
+  //
+} else {
+  log.Trace("If you see this message, please open a bug report")
+}
