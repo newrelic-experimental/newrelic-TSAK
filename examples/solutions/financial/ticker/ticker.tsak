@@ -55,10 +55,34 @@ if VMNAME == "in" {
   //
   // Data processor
   //
+  r = ring.New(HISTORYSIZE)
+  LAST=0.0
   for ! stdlib.ExitRequested() {
     for stdlib.Len(stdlib.INCH) > 0 {
       data = stdlib.From(stdlib.INCH)
       pkt = djson.Parse(data)
+      v = pkt.Path("value").Data()
+      if v != LAST {
+        err = r.Add(v)
+        if err != nil {
+          r.Push(v)
+        }
+        LAST = v
+      }
+      fmt.Println("V",v, r.Size())
+      if r.Size() == HISTORYSIZE {
+        d = make([]float64, HISTORYSIZE)
+        c = 0
+        for c < HISTORYSIZE {
+          val,err = r.Get(c)
+          if err != nil {
+            break
+          }
+          d[c] = val
+          c++
+        }
+        fmt.Println(d)
+      }
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
     time.Sleep(PROCLOOPWAIT * time.Second)

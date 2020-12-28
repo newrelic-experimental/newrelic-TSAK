@@ -12,6 +12,12 @@ GO            = go
 # The root module (from go.mod)
 PROJECT_MODULE  ?= $(shell $(GO) list -m)
 
+GEN_ARCH        ?= $(shell uname -i)
+GEN_KERNEL      ?= $(shell uname -r)
+GEN_KERNELNAME  ?= $(shell uname -s)
+
+
+
 #############################
 # Targets
 #############################
@@ -32,6 +38,6 @@ build-install:
 	@cp ./install/setup.sh ./tmp
 	@cp /usr/local/lib/libclips.so ./tmp
 	@echo "Preparing installation bundle"
-	@makeself ./tmp ./installbundles/tsak-install-${GOOS}.sh "TSAK installation for ${GOOS}" ./setup.sh
+	@makeself ./tmp ./installbundles/tsak-install-${GOOS}-${GEN_KERNELNAME}-${GEN_KERNEL}-${GEN_ARCH}.sh "TSAK installation for ${GOOS}" ./setup.sh
 
 .PHONY: all build clean
