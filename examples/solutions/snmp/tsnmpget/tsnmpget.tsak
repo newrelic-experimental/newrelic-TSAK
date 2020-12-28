@@ -1,45 +1,57 @@
 //
 // TSAK Zabbix Agent
 //
-fmt     = import("fmt")
-net     = import("net")
-os      = import("os")
-zproto  = import("protocols/zabbix")
-zabbix  = import("protocols/zabbix/client")
-log     = import("tlog")
-stdlib  = import("stdlib")
-time    = import("time")
-djson   = import("djson")
-json    = import("json/hjson")
-ioutil  = import("io/ioutil")
-bc      = import("bc")
-strconv = import("strconv")
-h       = import("convert/humanize")
-pond    = import("stdlib/pond")
+fmt       = import("fmt")
+net       = import("net")
+os        = import("os")
+snmp      = import("protocols/snmp")
+snmp_cli  = import("protocols/snmp/client")
+log       = import("tlog")
+stdlib    = import("stdlib")
+time      = import("time")
+djson    = import("djson")
+json      = import("json/hjson")
+ioutil    = import("io/ioutil")
+bc        = import("bc")
+strconv   = import("strconv")
+h         = import("convert/humanize")
+pond      = import("stdlib/pond")
 
 
 if VMNAME == "in" {
   //
   // Data/Configuration acquisition
   //
-  func ParseZabbixAgentConf(fn) {
+  func SNMPGET(h, oid) {
+    log.Trace(fmt.Sprintf("Getting %v[%v]", h, oid))
+    if SNMPVER == 1 {
+      // SNMP protocol ver 1
+      return snmp_cli.Getv1(h, SNMP_COMMUNITY, oid, 1)
+    } else if SNMPVER == 2 {
+      // SNMP protocol ver 1
+      return snmp_cli.Getv2c(h, SNMP_COMMUNITY, oid, 1)
+    } else {
+      return snmp_cli.Getv2c(h, SNMP_COMMUNITY, oid, 1)
+    }
+  }
+  func ParseSNMPAgentConf(fn) {
     res = djson.New()
     res.Array()
     data, err = ioutil.ReadFile(fn)
     if err != nil {
-      log.Error(fmt.Sprintf("Error reading Zabbix Agent DB file: %v", err))
+      log.Error(fmt.Sprintf("Error reading SNMP DB file: %v", err))
       return nil
     }
     g,err = json.Parse(data)
     if err != nil {
-      log.Error(fmt.Sprintf("Error reading Zabbix Agent DB file: %v", err))
+      log.Error(fmt.Sprintf("Error reading SNMP DB file: %v", err))
       return nil
     }
     for q in g.Path("query").Data() {
       row = djson.New()
       row.Set(q.ip,   "ip")
       row.Set(q.name, "name")
-      row.Set(q.key,  "key")
+      row.Set(q.oid,  "oid")
       res.ArrayAppend(row.Data())
     }
     for h in g.Path("hosts").Data() {
@@ -47,17 +59,19 @@ if VMNAME == "in" {
         row = djson.New()
         row.Set(h.ip,   "ip")
         row.Set(h.name, "name")
-        row.Set(i,      "key")
+        row.Set(i,      "oid")
         res.ArrayAppend(row.Data())
       }
     }
+    fmt.Println(res)
     return res
   }
+  snmp.LoadAll(MIBSDB)
   pipeline = djson.MapPipe(PIPESIZE)
   for ! stdlib.ExitRequested() {
     time.Sleep(INLOOPWAIT * time.Second)
     pool = pond.New(WORKERS, TASKS , pond.IdleTimeout(100 * time.Millisecond))
-    jobs = ParseZabbixAgentConf(HOSTDB)
+    jobs = ParseSNMPAgentConf(HOSTDB)
     if jobs == nil {
       log.Error("Parsing of hosts database returned empty")
       continue
@@ -80,21 +94,14 @@ if VMNAME == "in" {
           return
         }
         data = <- pipeline
-        log.Trace(fmt.Sprintf("Getting %v[%v]", data["ip"], data["key"]))
-        value, err = zabbix.Get(data["ip"], data["key"], TIMEOUT)
-        if err != nil {
-          log.Error(fmt.Sprintf("Error getting data from %v %s:", data["ip"], err))
-          return
-        }
+        fmt.Println(data)
+        oid = snmp.IsOID(data["oid"])
+        value = SNMPGET(data["ip"], oid)
         pkt = djson.New()
-        pkt.Set(data["key"],    "item")
+        pkt.Set(data["oid"],    "name")
         pkt.Set(data["name"],   "hostname")
-        pkt.Set(value,          "value")
-        name, args = zproto.Key(data["key"])
-        pkt.Set(name,    "name")
-        for k,v in args {
-          pkt.Set(v, k)
-        }
+        pkt.Set(oid,            "oid")
+        pkt.Set(stdlib.ToValue(value.String()), "value")
         stdlib.To(stdlib.INCH,  pkt.String())
       })
       i++
@@ -117,7 +124,6 @@ if VMNAME == "in" {
       pkt.Set(PROXYNAME, "proxyName")
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
-    // log.Trace("PROC() is cooled down")
     time.Sleep(PROCLOOPWAIT * time.Second)
   }
 } else if VMNAME == "out" {

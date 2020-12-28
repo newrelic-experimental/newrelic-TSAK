@@ -2,7 +2,7 @@ stdlib = import("stdlib")
 fmt = import("fmt")
 os = import("os")
 net = import("net")
-snmp = import("snmp")
+snmp = import("protocols/snmp")
 log = import("tlog")
 time = import("time")
 

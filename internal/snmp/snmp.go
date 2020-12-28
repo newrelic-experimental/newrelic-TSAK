@@ -38,6 +38,14 @@ func OID(sym string) string {
   return oid.String()
 }
 
+func IsOID(sym string) string {
+  oid, err := mibs.OID(sym)
+  if err != nil {
+    return sym
+  }
+  return oid.String()
+}
+
 func SYMBOL(oid string) string {
   tmp := strings.Split(oid, ".")
   values := make([]int, 0, len(tmp))

@@ -1,5 +1,5 @@
 fmt = import("fmt")
-snmp = import("snmp")
+snmp = import("protocols/snmp")
 
 snmp.LoadAll("/usr/share/snmp/mibs")
 fmt.Println("OID for IF-MIB::ifOperStatus.4", snmp.OID("IF-MIB::ifOperStatus.4"))
