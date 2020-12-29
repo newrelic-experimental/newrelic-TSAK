@@ -3,7 +3,9 @@ module github.com/newrelic-experimental/newrelic-TSAK
 go 1.15
 
 require (
+	cloud.google.com/go v0.72.0 // indirect
 	github.com/Jeffail/gabs v1.4.0
+	github.com/Microsoft/go-winio v0.4.16 // indirect
 	github.com/VictoriaMetrics/fastcache v1.5.7
 	github.com/aaronjan/hunch v1.1.2
 	github.com/akrylysov/pogreb v0.9.1
@@ -29,6 +31,7 @@ require (
 	github.com/goburrow/serial v0.1.0 // indirect
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
+	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/google/uuid v1.1.2
 	github.com/goreleaser/goreleaser v0.150.0 // indirect
 	github.com/hallidave/mibtool v0.2.0
@@ -40,6 +43,7 @@ require (
 	github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
 	github.com/kr/text v0.2.0 // indirect
 	github.com/leekchan/accounting v1.0.0
+	github.com/lib/pq v1.9.0 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 // indirect
@@ -56,12 +60,14 @@ require (
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
 	github.com/slack-go/slack v0.7.4
+	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
 	github.com/valyala/fasttemplate v1.2.1
 	github.com/vulogov/go-zabbix-get v0.0.7
+	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9 // indirect
 	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
 	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
 	golang.org/x/sys v0.0.0-20201207223542-d4d67f95c62d
@@ -70,5 +76,6 @@ require (
 	gopkg.in/h2non/gentleman.v2 v2.0.4
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
 	syreclabs.com/go/faker v1.2.2
 )

@@ -56,6 +56,7 @@ func Init() {
     banner.Print()
     fmt.Println()
     conf.DisplayVersion()
+    fmt.Println("A bit of TSAK wisdom: ", RunVerification())
     os.Exit(0)
   }
   if ! conf.Production {

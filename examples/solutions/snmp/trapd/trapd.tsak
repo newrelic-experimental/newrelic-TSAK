@@ -58,6 +58,7 @@ if VMNAME == "in" {
   //
   // Data processor
   //
+  snmp.LoadAll(MIBSDB)
   for ! stdlib.ExitRequested() {
     for stdlib.Len(stdlib.INCH) > 0 {
       data = stdlib.From(stdlib.INCH)
@@ -73,7 +74,7 @@ if VMNAME == "in" {
         pkt.Set(symb, "name")
       }
       fmt.Println(pkt.String())
-      stdlib.To(stdlib.INCH, pkt.String())
+      stdlib.To(stdlib.OUTCH, pkt.String())
     }
     time.Sleep(PROCLOOPWAIT * time.Second)
   }
