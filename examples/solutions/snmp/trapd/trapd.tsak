@@ -73,7 +73,6 @@ if VMNAME == "in" {
       } else {
         pkt.Set(symb, "name")
       }
-      fmt.Println(pkt.String())
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
     time.Sleep(PROCLOOPWAIT * time.Second)
