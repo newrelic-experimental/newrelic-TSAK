@@ -63,10 +63,10 @@ func event(nrikey, _url string, _payload []byte) (*gabs.Container, error) {
   req.Header.Set("Content-Encoding", "gzip")
   client := &http.Client{}
   resp, err := client.Do(req)
-  defer resp.Body.Close()
   if err != nil {
     return nil, err
   } else {
+    defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
     if err == nil {
       r, err := gabs.ParseJSON(body)

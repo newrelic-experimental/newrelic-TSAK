@@ -15,6 +15,7 @@ h       = import("convert/humanize")
 market  = import("nostdlib/finance/quote")
 ring    = import("stdlib/ringbuffer")
 conf    = import("conf")
+stat    = import("num/stat")
 
 
 if VMNAME == "in" {
@@ -47,7 +48,6 @@ if VMNAME == "in" {
     pkt.Set(stock.FiftyTwoWeekLow,                "fiftytwoWeekLow")
     pkt.Set(stock.FiftyTwoWeekHigh,               "fiftytwoWeekHigh")
     pkt.Set(stock.TwoHundredDayAverage,           "twohundreddayAvg")
-    fmt.Println(pkt)
     stdlib.To(stdlib.INCH, pkt.String())
   }
 
@@ -55,7 +55,27 @@ if VMNAME == "in" {
   //
   // Data processor
   //
+  func add2ring(r, v) {
+    err = r.Add(v)
+    if err != nil {
+      r.Push(v)
+    }
+  }
+  func exportRing(r) {
+    d = make([]float64, HISTORYSIZE)
+    c = 0
+    for c < HISTORYSIZE {
+      val,err = r.Get(c)
+      if err != nil {
+        break
+      }
+      d[c] = val
+      c++
+    }
+    return d
+  }
   r = ring.New(HISTORYSIZE)
+  rlast = ring.New(HISTORYSIZE)
   LAST=0.0
   for ! stdlib.ExitRequested() {
     for stdlib.Len(stdlib.INCH) > 0 {
@@ -63,25 +83,20 @@ if VMNAME == "in" {
       pkt = djson.Parse(data)
       v = pkt.Path("value").Data()
       if v != LAST {
-        err = r.Add(v)
-        if err != nil {
-          r.Push(v)
-        }
+        add2ring(r, v)
         LAST = v
       }
-      fmt.Println("V",v, r.Size())
-      if r.Size() == HISTORYSIZE {
-        d = make([]float64, HISTORYSIZE)
-        c = 0
-        for c < HISTORYSIZE {
-          val,err = r.Get(c)
-          if err != nil {
-            break
-          }
-          d[c] = val
-          c++
-        }
-        fmt.Println(d)
+      add2ring(rlast, v)
+      if rlast.Size() == HISTORYSIZE {
+        dlast = exportRing(rlast)
+        d     = exportRing(r)
+        pkt.Set(stat.Correlation(dlast, d, nil), "correlation100")
+        pkt.Set(stat.Covariance(dlast, d, nil), "covariance100")
+        pkt.Set(stat.HarmonicMean(dlast, nil), "hmean100")
+        pkt.Set(stat.Mean(dlast, nil), "mean100")
+        pkt.Set(stat.MeanStdDev(dlast, nil), "stddev100")
+        pkt.Set(stat.Variance(dlast, nil), "variance100")
+        fmt.Println(pkt)
       }
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
@@ -108,10 +123,10 @@ if VMNAME == "in" {
       sndres, err, resp = log.SendEvent(pkg.String())
       if sndres && err == nil {
         usize = h.Bytes(len(pkg.String()))
-        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        msg = fmt.Sprintf("TICKER.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
         log.Info(msg)
       } else {
-        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+        log.Error(fmt.Sprintf("TICKER.Out sending error: %s", err))
       }
     }
     time.Sleep(OUTLOOPWAIT * time.Second)

@@ -93,7 +93,6 @@ if VMNAME == "in" {
           return
         }
         data = <- pipeline
-        fmt.Println(data)
         oid = snmp.IsOID(data["oid"])
         value = SNMPGET(data["ip"], oid)
         pkt = djson.New()
@@ -146,10 +145,10 @@ if VMNAME == "in" {
       sndres, err, resp = log.SendEvent(pkg.String())
       if sndres {
         usize = h.Bytes(len(pkg.String()))
-        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        msg = fmt.Sprintf("SNMPGET.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
         log.Info(msg)
       } else {
-        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+        log.Error(fmt.Sprintf("SNMPGET.Out sending error: %s", err))
       }
     }
     time.Sleep(OUTLOOPWAIT * time.Second)

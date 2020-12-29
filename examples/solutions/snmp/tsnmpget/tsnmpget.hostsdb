@@ -1,6 +1,6 @@
 //
-// This file contains instruction to Zabbix Agent TSAK instrument
-// about which hosts and which Zabbix Passive Agent keys it must query
+// This file contains instruction to TSNMPGET TSAK instrument
+// about which hosts and which SNMP items it must query
 //
 {
   // Here is information about hosts
@@ -16,24 +16,24 @@
     }
 
   ]
-  // All hosts listed in "hosts:" section will be queried with those Zabbix keys
-  // Just a list With Zabbix Agent keys
+  // All hosts listed in "hosts:" section will be queried with those SNMP symbols or oid's
+  // Just a list With SNMP OID or Symbols
   items: [
     IF-MIB::ifOperStatus.1
     IF-MIB::ifInOctets.1
     IF-MIB::ifOutOctets.1
     IP-MIB::ipInReceives.0
   ]
-  // And in addition to above-mentioned host/item configuration
+  // And in addition to above-mentioned host/SNMP item configuration
   // You can specify the particular host to be queried in the "query:" section
-  // with specific Zabbix key
+  // with specific SNMP item
   // For the  "query:" section
   query: [
     // the value is a list of dictionaries
     {
       // each dictionary is having a three attributes,
       // the "name:", "ip:" which is having the same meaning as in "hosts:"
-      // and a "oid:" which is Zabbix key that will be specifically queried
+      // and a "oid:" which is SNMP item that will be specifically queried
       name:   snmptest1
       ip:     ec2-3-131-36-207.us-east-2.compute.amazonaws.com:10161
       oid:    SNMPv2-MIB::sysORUpTime.1
