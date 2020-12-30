@@ -100,12 +100,15 @@ if VMNAME == "in" {
         if val != math.NaN() {
           pkt.Set(val, "covarfiance100")
         }
+        val = stat.Skew(dlast, nil)
+        if val != math.NaN() {
+          pkt.Set(val, "skew100")
+        }
       }
       pkt.Set(stat.Mean(dlast, nil), "mean100")
       pkt.Set(stat.HarmonicMean(dlast, nil), "hmean100")
       pkt.Set(stat.StdDev(dlast, nil), "stddev100")
       pkt.Set(stat.Variance(dlast, nil), "variance100")
-      pkt.Set(stat.Skew(dlast, nil), "skew100")
       fmt.Println(pkt.String())
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
