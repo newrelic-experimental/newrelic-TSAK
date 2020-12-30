@@ -51,6 +51,14 @@ func Init() {
   flag.StringVar(&conf.House, "housekeeper", "", "Housekeeper periodic script")
   flag.StringVar(&conf.Clips, "clips", "", "Name of non-exclusive main script executed in CLIPS environment")
   flag.Parse()
+  if conf.In == "" && conf.Out == "" && conf.Proc == "" && conf.Script == "" && conf.Run == "" && ! conf.IsStop && ! conf.IsVersion {
+    banner := figure.NewFigure(fmt.Sprintf("TSAK %s:> ", conf.Ver), "", true)
+    banner.Print()
+    fmt.Println()
+    flag.PrintDefaults()
+    fmt.Println("ERROR: You did not specified any of the TSAK command-line parameters...")
+    os.Exit(0)
+  }
   if conf.IsVersion {
     banner := figure.NewFigure(fmt.Sprintf("TSAK %s:> ", conf.Ver), "", true)
     banner.Print()

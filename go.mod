@@ -8,6 +8,7 @@ require (
 	github.com/Microsoft/go-winio v0.4.16 // indirect
 	github.com/VictoriaMetrics/fastcache v1.5.7
 	github.com/aaronjan/hunch v1.1.2
+	github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af
 	github.com/akrylysov/pogreb v0.9.1
 	github.com/alitto/pond v1.4.0
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4

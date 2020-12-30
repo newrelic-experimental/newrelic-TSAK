@@ -33,8 +33,8 @@ var EventType string
 var AppPath string
 var IsVersion bool
 var IsStop bool
-var Ver = "0.3"
+var Ver = "0.4-pre1"
 var VerMaj = 0
-var VerMin = 3
-var VerPrerelease = 0
+var VerMin = 4
+var VerPrerelease = 1
 var Args []string
