@@ -100,7 +100,7 @@ func init() {
     "StdScore":                     reflect.ValueOf(stat.StdScore),
     "Variance":                     reflect.ValueOf(stat.Variance),
     "Smooth":                       reflect.ValueOf(StatSmoothMovingAverageWeightless),
-    "SmoothStatic":                       reflect.ValueOf(StatSmoothWeightless),
+    "SmoothStatic":                 reflect.ValueOf(StatSmoothWeightless),
   }
   env.PackageTypes["num/stat"] = map[string]reflect.Type{
 

@@ -16,6 +16,7 @@ market  = import("nostdlib/finance/quote")
 ring    = import("stdlib/ringbuffer")
 conf    = import("conf")
 stat    = import("num/stat")
+math    = import("math")
 
 
 if VMNAME == "in" {
@@ -87,17 +88,25 @@ if VMNAME == "in" {
         LAST = v
       }
       add2ring(rlast, v)
-      if rlast.Size() == HISTORYSIZE {
-        dlast = exportRing(rlast)
-        d     = exportRing(r)
-        pkt.Set(stat.Correlation(dlast, d, nil), "correlation100")
-        pkt.Set(stat.Covariance(dlast, d, nil), "covariance100")
-        pkt.Set(stat.HarmonicMean(dlast, nil), "hmean100")
-        pkt.Set(stat.Mean(dlast, nil), "mean100")
-        pkt.Set(stat.MeanStdDev(dlast, nil), "stddev100")
-        pkt.Set(stat.Variance(dlast, nil), "variance100")
-        fmt.Println(pkt)
+      log.Trace(fmt.Sprintf("%v:%v=%v", r.Size(), rlast.Size(), v))
+      dlast = exportRing(rlast)
+      d     = exportRing(r)
+      if r.Size() == HISTORYSIZE && rlast.Size() == HISTORYSIZE {
+        val = stat.Correlation(dlast, d, nil)
+        if val != math.NaN() {
+          pkt.Set(val, "correlation100")
+        }
+        val = stat.Covariance(dlast, d, nil)
+        if val != math.NaN() {
+          pkt.Set(val, "covarfiance100")
+        }
       }
+      pkt.Set(stat.Mean(dlast, nil), "mean100")
+      pkt.Set(stat.HarmonicMean(dlast, nil), "hmean100")
+      pkt.Set(stat.StdDev(dlast, nil), "stddev100")
+      pkt.Set(stat.Variance(dlast, nil), "variance100")
+      pkt.Set(stat.Skew(dlast, nil), "skew100")
+      fmt.Println(pkt.String())
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
     time.Sleep(PROCLOOPWAIT * time.Second)
