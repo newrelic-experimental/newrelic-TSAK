@@ -7,6 +7,7 @@
 bin/*
 installbundles/*
 tmp/*
+gvtest.png
 
 # Test binary, built with `go test -c`
 *.test

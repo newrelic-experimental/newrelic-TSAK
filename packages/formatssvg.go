@@ -10,7 +10,7 @@ func init() {
   env.Packages["formats/svg"] = map[string]reflect.Value{
     "New":          reflect.ValueOf(svg.New),
   }
-  env.PackageTypes["bc"] = map[string]reflect.Type{
+  env.PackageTypes["formats/svg"] = map[string]reflect.Type{
     "SVG":          reflect.TypeOf(svg.SVG{}),
   }
 }

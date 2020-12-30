@@ -1,0 +1,29 @@
+fmt       = import("fmt")
+os        = import("os")
+graphviz  = import("formats/gv")
+
+gv      = graphviz.New()
+g, err  = gv.Graph()
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+a, err = g.CreateNode("A")
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+b, err = g.CreateNode("B")
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+e, err = g.CreateEdge("A-B", a, b)
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+fmt.Println("Generating", "gvtest.png")
+err = gv.RenderFilename(g, graphviz.PNG, "gvtest.png")
+g.Close()
+gv.Close()
