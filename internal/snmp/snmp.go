@@ -30,6 +30,10 @@ func LoadModule(modname string) bool {
 }
 
 func OID(sym string) string {
+  if mibs == nil {
+    log.Error("MIBS database is not initialized")
+    return ""
+  }
   oid, err := mibs.OID(sym)
   if err != nil {
     log.Error(fmt.Sprintf("Error resolving OID %s: %s", sym, err))
@@ -38,7 +42,23 @@ func OID(sym string) string {
   return oid.String()
 }
 
+func IsOID(sym string) string {
+  if mibs == nil {
+    log.Error("MIBS database is not initialized")
+    return sym
+  }
+  oid, err := mibs.OID(sym)
+  if err != nil {
+    return sym
+  }
+  return oid.String()
+}
+
 func SYMBOL(oid string) string {
+  if mibs == nil {
+    log.Error("MIBS database is not initialized")
+    return ""
+  }
   tmp := strings.Split(oid, ".")
   values := make([]int, 0, len(tmp))
   for _, raw := range tmp {

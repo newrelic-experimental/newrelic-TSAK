@@ -1,0 +1,14 @@
+fmt = import("fmt")
+glob = import("parse/globbing")
+
+
+g1 = glob.New("vfs.fs.*")
+g2 = glob.New("agent.ping*")
+g3 = glob.New(`vfs.fs.size\[*,pfree\]`)
+
+
+fmt.Println("Is agent.ping is agent.ping ?", g2.Match("agent.ping"))
+fmt.Println("Is agent.version is agent.ping ?", g2.Match("agent.version"))
+fmt.Println("Is vfs.fs.size[\"/\",pfree] is what we are think ?", g1.Match("vfs.fs.size['/',pfree]"))
+fmt.Println("Is vfs.fs.size[\"/\",pfree] is what we are think ?", g3.Match("vfs.fs.size['/',pfree]"))
+fmt.Println("Is vfs.fs.size[\"/\",pused] is not what we are think ?", g3.Match("vfs.fs.size['/',pused]"))

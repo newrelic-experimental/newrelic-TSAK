@@ -1,0 +1,17 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+http    = import("protocols/http/client")
+h       = import("convert/humanize")
+
+client = http.New()
+client.URL("https://www.google.com")
+request = client.Request()
+res, err = request.Send()
+if err != nil {
+  fmt.Println("Ouch!", error)
+} else {
+  fmt.Println("Google gave us code:", res.StatusCode)
+  body = res.Bytes()
+  fmt.Println("Google front page size is ", h.Bytes(len(body)))
+  // fmt.Println(stdlib.String(body))
+}

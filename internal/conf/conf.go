@@ -28,4 +28,13 @@ var Run string
 var House string
 var Clips string
 var Script string
-var Ver = "0.2-pre2"
+var Every int
+var EventType string
+var AppPath string
+var IsVersion bool
+var IsStop bool
+var Ver = "0.3"
+var VerMaj = 0
+var VerMin = 3
+var VerPrerelease = 0
+var Args []string

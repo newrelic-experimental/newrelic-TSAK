@@ -1,0 +1,11 @@
+fmt = import("fmt")
+djson = import("djson")
+stdlib = import("stdlib")
+
+
+j = djson.New()
+j.Set(stdlib.Answer, "answer")
+jpipe = djson.Pipe(1024)
+jpipe <- j
+j2 = <- jpipe
+fmt.Println("Value of \"answer\" from the container received through pipe", j2.Path("answer").Data())

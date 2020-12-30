@@ -1,0 +1,49 @@
+//
+// This -run script will form an event payload and send this event to New Relic
+//
+fmt       = import("fmt")
+conf      = import("conf")
+log       = import("tlog")
+djson     = import("djson")
+stdlib    = import("stdlib")
+system    = import("stdlib/system")
+
+C = 0
+pkt = djson.New()
+//
+// Let's form a standadt New Relic Event
+//
+id, _ = stdlib.UniqID().Generate()
+hostinfo, _ = system.HostInfo()
+pkt.Set(id,                       "id")
+pkt.Set(0,                        "value")
+pkt.Set(conf.EventType(),         "eventType")
+pkt.Set(stdlib.NowMilliseconds(), "timestamp")
+pkt.Set("answer",                 "name")
+pkt.Set(hostinfo.Hostname,        "host")
+pkt.Set(hostinfo.OS,              "os")
+pkt.Set(hostinfo.Platform,        "platform")
+pkt.Set(hostinfo.PlatformVersion, "version")
+
+// Add pairs from command line
+for C+1 <= len(conf.Args()) {
+  pkt.Set(stdlib.ToValue(conf.Args()[C+1]), conf.Args()[C])
+  C += 2
+}
+
+// Now, we shall create an array and add out event
+pkg = djson.New()
+pkg.Array()
+pkg.ArrayAppend(pkt.Data())
+
+// And send the event
+res, err, resp = log.SendEvent(pkg.String())
+if ! res {
+  if err != nil {
+    log.Error(fmt.Sprintf("Sending error: %s", err))
+  } else {
+    log.Error("Unspecified error")
+  }
+} else {
+  fmt.Println(resp.Path("uuid").Data())
+}

@@ -1,0 +1,8 @@
+fmt = import("fmt")
+tpl = import("template/simple")
+
+kv  = {"answer":"42", "age":"51"}
+kv["thinking"] = "hard"
+tplsrc = "At the age [age], he declared that the answer is [answer]. And he was thinking [thinking]."
+tout = tpl.Template(tplsrc, "[", "]", kv)
+fmt.Println(tout)

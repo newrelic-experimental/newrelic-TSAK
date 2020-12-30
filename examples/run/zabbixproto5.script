@@ -1,0 +1,8 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+time = import("time")
+zabbix = import("protocols/zabbix")
+
+zpkt = zabbix.Packet("proxy.ping", false)
+res = zabbix.OneWay("10.0.0.162:10151", zpkt, 60)
+fmt.Println(res)

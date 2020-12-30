@@ -1,0 +1,25 @@
+
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+log = import("tlog")
+djson = import("djson")
+snmp = import("protocols/snmp")
+
+snmp.InitMib("/usr/share/snmp/mibs")
+snmp.LoadModule("IF-MIB")
+for ! stdlib.ExitRequested() {
+  for stdlib.Len(stdlib.INCH) > 0 {
+    data = stdlib.From(stdlib.INCH)
+    j = djson.Parse(stdlib.String(data))
+    oid, _  = j.Path("oid").Data()
+    symb = snmp.SYMBOL(oid)
+    if symb != "" {
+      j.Set(symb, "symbol")
+      fmt.Println(j.String())
+    }
+    j.Set("SNMPTRAP", "eventType")
+    stdlib.To(stdlib.OUTCH, j.String())
+  }
+  time.Sleep(1 * time.Second)
+}

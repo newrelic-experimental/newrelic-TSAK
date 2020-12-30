@@ -1,0 +1,22 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+time = import("time")
+zabbix = import("protocols/zabbix")
+
+fmt.Println(zabbix.Key("agent.ping"))
+fmt.Println(zabbix.Key("vfs.fs.size[/, pfree]"))
+key, args = zabbix.Key("vfs.fs.size[/, pfree]")
+fmt.Println("Key",key)
+for k,v in args {
+  fmt.Println(k,v)
+}
+fmt.Println(zabbix.Key("some.key[ ]"))
+fmt.Println(zabbix.Key("some.other.key[]"))
+fmt.Println(zabbix.Key("some.other.key.with.empty.params[,,, ,,,]"))
+fmt.Println(zabbix.Key(`some.other.key.with.non.empty.params["a b c",d]`))
+fmt.Println(zabbix.Key(`some.other.key.with.non.empty.params[,,,"boo",,,]`))
+fmt.Println(zabbix.Key("some.other.key.with.non.empty.params[,,, \"with trimmed leading space\",,,]"))
+fmt.Println(zabbix.Key("some.other.key.with.non.empty.params[,,, with trimmed leading space too,,,]"))
+fmt.Println(zabbix.Key(`net.if.out[eth0]`))
+fmt.Println(zabbix.Key(`system.swap.in[/dev/sda1]`))
+fmt.Println(zabbix.Key(`vfs.fs.size[/, pfree]`))

@@ -1,0 +1,52 @@
+fmt = import("fmt")
+json = import("json/hjson")
+
+data=`
+//
+// This is Human-friendly JSON
+//
+{
+  network: [
+    {
+      host: "test host"
+      ip: 10.0.0.162:10050
+    }
+  ]
+  hosts: [
+    "test host"
+  ]
+  items: [
+    agent.ping
+    agent.version
+  ]
+  query: [
+    {
+      host: "test host"
+      item: vfs.fs.size[/,pfree]
+    }
+    {
+      host: "test host"
+      item: vfs.fs.size[/,pused]
+    }
+  ]
+}
+`
+
+g,err = json.Parse(data)
+if err == nil {
+  fmt.Println(g.String())
+  try {
+    fmt.Println("Discovering hosts")
+    for h in g.Path("hosts").Data() {
+      fmt.Println(h)
+    }
+    fmt.Println("Discovering items")
+    for h in g.Path("items").Data() {
+      fmt.Println(h)
+    }
+  } catch {
+    fmt.Println("Dude, you've got an error")
+  }
+} else {
+  fmt.Println("Ouch!", err)
+}

@@ -1,0 +1,11 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+nsnmp = import("protocols/snmp")
+snmp = import("protocols/snmp/client")
+log = import("tlog")
+
+nsnmp.InitMib("/usr/share/snmp/mibs")
+nsnmp.LoadModule("IF-MIB")
+fmt.Println("Got from SNMPv1", snmp.Getv1("ec2-3-131-36-207.us-east-2.compute.amazonaws.com:10161", "public", "1.3.6.1.2.1.1.1.0", 1))
+fmt.Println("Got from SNMPv2c", snmp.Getv2c("ec2-3-131-36-207.us-east-2.compute.amazonaws.com:10161", "public", nsnmp.IsOID("1.3.6.1.2.1.1.1.0"), 1))
+fmt.Println("Got from SNMPv2c", snmp.Getv2c("ec2-3-131-36-207.us-east-2.compute.amazonaws.com:10161", "public", nsnmp.IsOID("1.3.6.1.2.1.1.1.0"), 1))

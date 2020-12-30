@@ -25,6 +25,7 @@ func init() {
     "Temperature":        reflect.ValueOf(host.SensorsTemperatures),
     "BootTime":           reflect.ValueOf(host.BootTime),
     "HostID":             reflect.ValueOf(host.HostID),
+    "HostInfo":           reflect.ValueOf(host.Info),
     "Architecture":       reflect.ValueOf(host.KernelArch),
     "Kernel":             reflect.ValueOf(host.KernelVersion),
     "Platform":           reflect.ValueOf(host.PlatformInformation),
@@ -41,5 +42,6 @@ func init() {
     "ConnectionStat":           reflect.TypeOf(net.ConnectionStat{}),
     "ConntrackStat":            reflect.TypeOf(net.ConntrackStat{}),
     "InterfaceStat":            reflect.TypeOf(net.InterfaceStat{}),
+    "InfoStat":                 reflect.TypeOf(host.InfoStat{}),
   }
 }

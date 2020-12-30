@@ -1,5 +1,5 @@
 fmt = import("fmt")
-snmp = import("snmp")
+snmp = import("protocols/snmp")
 
 snmp.InitMib("/usr/share/snmp/mibs")
 snmp.LoadModule("IF-MIB")

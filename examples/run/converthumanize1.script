@@ -1,0 +1,10 @@
+fmt = import("fmt")
+h = import("convert/humanize")
+
+
+fmt.Printf("That file is %s.\n", h.Bytes(82854982))
+fmt.Printf("That file is %s.\n", h.Bytes(82))
+fmt.Printf("That file is %s.\n", h.Bytes(82854982000000))
+fmt.Printf("This is a %s customer in line\n", h.Ordinal(82854982))
+fmt.Printf("That how we count dollars %s.\n", h.Comma(1000000))
+fmt.Printf("Disk spinning at %s.\n", h.SI(82854982, "rpm"))

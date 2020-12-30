@@ -1,0 +1,281 @@
+//
+// TSAK Zabbix Data Proxy
+//
+fmt     = import("fmt")
+net     = import("net")
+os      = import("os")
+zabbix  = import("protocols/zabbix")
+log     = import("tlog")
+stdlib  = import("stdlib")
+time    = import("time")
+djson   = import("djson")
+ioutil  = import("io/ioutil")
+bc      = import("bc")
+strconv = import("strconv")
+h       = import("convert/humanize")
+
+
+C = 0
+
+
+func ServerHB() {
+  log.Trace("Server heartbeat")
+  snd = zabbix.Request("proxy heartbeat", PROXYNAME, COMPRESS)
+  if ! zabbix.TwoWay(SERVER, snd, TIMEOUT) {
+    log.Error("ZABBIX server heartbeat failed", {"proxy":PROXYNAME, "server":SERVER})
+  } else {
+    log.Info("ZABBIX server heartbeat OK")
+  }
+}
+
+
+if VMNAME == "in" {
+  //
+  // Data/Configuration acquisition
+  //
+  func DataAcq() {
+    dataA.Acquire(stdlib.TODO(), 1)
+    C += 1
+    if C > 15 {
+      log.Trace("15-th iteration of data acquisition started")
+      C = 0
+    }
+    snd = zabbix.Request("proxy data", PROXYNAME, COMPRESS)
+    rsp = zabbix.Response("success", VERSION, COMPRESS)
+    res = zabbix.ThreeWay(PROXY, snd, rsp, TIMEOUT)
+    if res != nil {
+      if DATAFORWARD {
+        dataCH <- res.String()
+      }
+      stdlib.To(stdlib.INCH, res.String())
+    }
+    dataA.Release(1)
+  }
+
+  func DataForward() {
+    dataS.Acquire(stdlib.TODO(), 1)
+    for len(dataCH) > 0 {
+      data = djson.Parse(<-dataCH)
+      if DATAFORWARD {
+        // Do an actual data forwarding
+        log.Trace("Iteration of data forwarding started")
+        zpkt = zabbix.Data("proxy data", data.String(), PROXYNAME, COMPRESS)
+        res  = zabbix.TwoWay(SERVER, zpkt, TIMEOUT)
+        if ! res {
+          log.Error("ZABBIX data forwarding delivery failed")
+        }
+      }
+    }
+    dataS.Release(1)
+  }
+  func ConfAcq() {
+    confA.Acquire(stdlib.TODO(), 1)
+    log.Trace("Configuration acquisition started")
+    snd = zabbix.Request("proxy config", PROXYNAME, COMPRESS)
+    rsp = zabbix.Response("success", VERSION, COMPRESS)
+    res = zabbix.ThreeWay(SERVER, snd, rsp, TIMEOUT)
+    if res != nil {
+      confCH <- res.String()
+      stdlib.To(stdlib.INCH, res.String())
+    } else {
+      log.Error("ZABBIX server failed to provide a proxy configuration", {"proxy":PROXYNAME, "server":SERVER})
+    }
+    confA.Release(1)
+  }
+
+  func ConfDelivery() {
+    confD.Acquire(stdlib.TODO(), 1)
+    log.Trace("Configuration delivery started")
+    conf = djson.Parse(<-confCH)
+    zpkt = zabbix.Data("proxy config", conf.String(), PROXYNAME, COMPRESS)
+    res  = zabbix.TwoWay(PROXY, zpkt, TIMEOUT)
+    if res {
+      log.Info("ZABBIX proxy configuration delivery OK")
+    } else {
+      log.Error("ZABBIX proxy configuration delivery failed")
+    }
+    db, err = bc.Open(CONFDBPATH)
+    if err != nil {
+      log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", CONFDBPATH, err))
+      return
+    }
+    db.Put("conf", conf.String())
+    db.Sync()
+    db.Close()
+    confD.Release(1)
+  }
+  //
+  // Set-up CRONTAB functions
+  //
+  confCH = make(chan string, DISTCHANNELS)
+  dataCH = make(chan string, DISTCHANNELS)
+  dataA = stdlib.Semaphore(1)
+  dataS = stdlib.Semaphore(1)
+  confA = stdlib.Semaphore(1)
+  confD = stdlib.Semaphore(1)
+  stdlib.Cron(CONFACQCRON,      ConfAcq)
+  stdlib.Cron(CONFDELIVERYCRON, ConfDelivery)
+  stdlib.Cron(SERVERHBCRON,     ServerHB)
+  // stdlib.Cron(DATAACQCRON,      DataAcq)
+  stdlib.Cron(DATAFORWARDCRON,  DataForward)
+  for ! stdlib.ExitRequested() {
+    DataAcq()
+    time.Sleep(INLOOPWAIT * time.Second)
+  }
+
+} else if VMNAME == "proc" {
+  //
+  // Data processor
+  //
+  func ConfProcessor(pkt, dbhost, dbitem, dbitemh) {
+    log.Trace("PROC/ConfProcessor processor started")
+    size = len(pkt.String())
+    log.Trace(fmt.Sprintf("Configuration data %v bytes received", size))
+    hosts, _ = pkt.S("hosts", "data").Children()
+    items, _ = pkt.S("items", "data").Children()
+    log.Trace("Syncing HOST relations")
+    for h in hosts {
+      host = h.Data()
+      if host[2] == 0 {
+        hostid = strconv.FormatUint(host[0], 10)
+        log.Trace(fmt.Sprintf("ZABBIX Conf.Host: %s->%s", hostid, host[1]))
+        dbhost.Put(hostid, host[1])
+      }
+    }
+    log.Trace("Syncing ITEM,ITEMH relations")
+    for i in items {
+      item = i.Data()
+      itemid = strconv.FormatUint(item[0], 10)
+      hostid = strconv.FormatUint(item[3], 10)
+      dbitem.Put(itemid, item[4])
+      dbitemh.Put(itemid, hostid)
+    }
+    log.Trace("Flushing CONFIGURATION data")
+    dbhost.Sync()
+    dbitem.Sync()
+    dbitemh.Sync()
+    log.Trace("PROC/ConfProcessor processor done")
+  }
+
+  func DataProcessor(pkt, dbhost, dbitem, dbitemh) {
+
+    func ConvertValue(val) {
+      data, err = strconv.ParseFloat(val, 10)
+      if err == nil {
+        return data
+      }
+      data, err = strconv.ParseBool(val)
+      if err == nil {
+        return data
+      }
+      return data
+    }
+    log.Trace("PROC/DataProcessor started")
+    data, _ = pkt.S("history data").Children()
+    for d in data {
+      telemetry = d.Data()
+      itemid = strconv.FormatUint(telemetry["itemid"], 10)
+      clock  = telemetry["clock"]
+      value  = ConvertValue(telemetry["value"])
+      _hostid, ok = dbitemh.Get(itemid)
+      if ok != nil {
+        continue
+      }
+      hostid = stdlib.String(_hostid)
+      _host, _   = dbhost.Get(hostid)
+      host = stdlib.String(_host)
+      _zitem, _  = dbitem.Get(itemid)
+      zitem = stdlib.String(_zitem)
+      name, args = zabbix.Key(zitem)
+      j = djson.New()
+      j.Set(SOURCE,     "eventType")
+      j.Set(clock,      "timestamp")
+      j.Set(PROXYNAME,  "proxyName")
+      j.Set(value,      "value")
+      j.Set(host,       "hostname")
+      j.Set(zitem,      "item")
+      j.Set(name,       "name")
+      for k,v in args {
+        j.Set(v, k)
+      }
+      stdlib.To(stdlib.OUTCH, j.String())
+    }
+    log.Trace("PROC/DataProcessor finishes")
+  }
+
+  dbhost, err = bc.Open(HOSTDBPATH)
+  if err != nil {
+    log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", HOSTDBPATH, err))
+    stdlib.ExitRequest()
+  }
+  dbitem, err = bc.Open(ITEMDBPATH)
+  if err != nil {
+    log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", ITEMDBPATH, err))
+    stdlib.ExitRequest()
+  }
+  dbitemh, err = bc.Open(ITEMHDBPATH)
+  if err != nil {
+    log.Error(fmt.Sprintf("ZABBIX DB(%s)=%s", ITEMHDBPATH, err))
+    stdlib.ExitRequest()
+  }
+  time.Sleep(1 * time.Second)
+  for ! stdlib.ExitRequested() {
+    for stdlib.Len(stdlib.INCH) > 0 {
+      data = stdlib.From(stdlib.INCH)
+      pkt = djson.Parse(data)
+      if pkt.Exists("history data") {
+        // History data
+        DataProcessor(pkt, dbhost, dbitem, dbitemh)
+      } else if pkt.Exists("globalmacro") {
+        // Conf data
+        ConfProcessor(pkt, dbhost, dbitem, dbitemh)
+      } else {
+        log.Error("Unknown packet type on processor input")
+      }
+    }
+    // log.Trace("PROC() is cooled down")
+    time.Sleep(PROCLOOPWAIT * time.Second)
+  }
+  log.Trace("PROC() syncing and closig databases")
+  dbhost.Sync()
+  dbitem.Sync()
+  dbhost.Close()
+  dbitem.Close()
+  log.Trace("PROC() databases are OK")
+} else if VMNAME == "out" {
+  //
+  // Data delivery
+  //
+  time.Sleep(1 * time.Second)
+  for ! stdlib.ExitRequested() {
+    N = 0
+    pkg = djson.New()
+    pkg.Array()
+    for stdlib.Len(stdlib.OUTCH) > 0 {
+      if N > INBATCH {
+        break
+      }
+      data = stdlib.From(stdlib.OUTCH)
+      dpkt = djson.Parse(data)
+      pkg.ArrayAppend(dpkt.Data())
+      N += 1
+    }
+    if N > 0 {
+      sndres, err, resp = log.SendEvent(pkg.String())
+      if sndres && err == nil {
+        usize = h.Bytes(len(pkg.String()))
+        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        log.Info(msg)
+      } else {
+        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+      }
+    }
+    time.Sleep(OUTLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "house" {
+  //
+  // Housekeeper
+  //
+} else {
+  log.Trace("If you see this message, please open a bug report")
+}

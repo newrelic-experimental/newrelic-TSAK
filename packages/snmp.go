@@ -61,13 +61,14 @@ func InitAndLoadAll(mibdirpath string) int {
 }
 
 func init() {
-  env.Packages["snmp"] = map[string]reflect.Value{
+  env.Packages["protocols/snmp"] = map[string]reflect.Value{
     "ParseTrap":  reflect.ValueOf(UnmarshalTrap),
-    "ParseTrap3":  reflect.ValueOf(UnmarshalTrap3),
+    "ParseTrap3": reflect.ValueOf(UnmarshalTrap3),
     "InitMib":    reflect.ValueOf(snmp.InitMib),
     "LoadModule": reflect.ValueOf(snmp.LoadModule),
     "LoadAll":    reflect.ValueOf(InitAndLoadAll),
     "OID":        reflect.ValueOf(snmp.OID),
+    "IsOID":      reflect.ValueOf(snmp.IsOID),
     "SYMBOL":     reflect.ValueOf(snmp.SYMBOL),
     "Client":     reflect.ValueOf(snmplib.NewSNMP),
     "SNMPv1":     reflect.ValueOf(snmplib.SNMPv1),
@@ -75,7 +76,7 @@ func init() {
     "SNMPv3":     reflect.ValueOf(snmplib.SNMPv3),
     "ParseOID":   reflect.ValueOf(snmplib.MustParseOid),
   }
-  env.PackageTypes["snmp"] = map[string]reflect.Type{
+  env.PackageTypes["protocols/snmp"] = map[string]reflect.Type{
     "SNMP":           reflect.TypeOf(snmplib.SNMP{}),
     "V3user":         reflect.TypeOf(snmplib.V3user{}),
   }

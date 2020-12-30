@@ -1,0 +1,13 @@
+fmt = import("fmt")
+conf = import("conf")
+
+if len(conf.Args()) > 0 {
+  fmt.Println("Yes, positional arguments has been passed")
+  fmt.Println("First one:", conf.Args()[0])
+  fmt.Println("The rest of them")
+  for i in conf.Args()[1:] {
+    fmt.Println(":",i)
+  }
+} else {
+  fmt.Println("No positional arguments. Try to pass something.")
+}

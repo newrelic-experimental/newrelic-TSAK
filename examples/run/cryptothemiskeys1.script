@@ -1,0 +1,15 @@
+stdlib = import("stdlib")
+fmt = import("fmt")
+key = import("crypto/themis/keys")
+
+skey, err = key.Symmetric()
+if err == nil {
+  fmt.Println("Generated symmetric key", skey.Value)
+}
+pair, err = key.New(key.TypeRSA)
+if err == nil {
+  pri = pair.Private.Value
+  pub = pair.Public.Value
+  fmt.Println("Generated private key", pri)
+  fmt.Println("Generated public key", pub)
+}

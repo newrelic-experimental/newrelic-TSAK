@@ -1,0 +1,17 @@
+fmt       = import("fmt")
+stdlib    = import("stdlib")
+kv        = import("kv/pogreb")
+
+db, err = kv.Open("/tmp/test.db", nil)
+if err == nil {
+  db.Put("answer", "42")
+  res, err = db.Get("answer")
+  if err == nil {
+    fmt.Println(stdlib.String(res))
+  } else {
+    fmt.Println("Ouch! ", err)
+  }
+  db.Close()
+} else {
+  fmt.Println("Ouch! ", err)
+}

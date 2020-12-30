@@ -1,0 +1,11 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+market  = import("nostdlib/finance/quote")
+ffmt    = import("nostdlib/finance/fmt")
+
+newr, err = market.Ticker("NEWR")
+if err == nil {
+  f = ffmt.Default("$", 2)
+  fmt.Println("Symbol:", newr.Symbol)
+  fmt.Println("Market open/high/low/change:", f.FormatMoney(newr.RegularMarketOpen), f.FormatMoney(newr.RegularMarketDayHigh), f.FormatMoney(newr.RegularMarketDayLow), f.FormatMoney(newr.RegularMarketChange))
+}
