@@ -11,6 +11,7 @@ require (
 	github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af
 	github.com/akrylysov/pogreb v0.9.1
 	github.com/alitto/pond v1.4.0
+	github.com/antchfx/htmlquery v1.2.3
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
 	github.com/bitfield/script v0.18.0
 	github.com/blacked/go-zabbix v0.0.0-20170118040903-3c6a95ec4fdc
@@ -35,7 +36,7 @@ require (
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/google/uuid v1.1.2
-	github.com/goreleaser/goreleaser v0.150.0 // indirect
+	github.com/goreleaser/goreleaser v0.151.1 // indirect
 	github.com/hallidave/mibtool v0.2.0
 	github.com/hjson/hjson-go v3.1.0+incompatible
 	github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5 // indirect
@@ -69,6 +70,7 @@ require (
 	github.com/trivago/tgo v1.0.7 // indirect
 	github.com/valyala/fasttemplate v1.2.1
 	github.com/vulogov/go-zabbix-get v0.0.7
+	github.com/wcharczuk/go-chart v2.0.1+incompatible
 	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9 // indirect
 	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
 	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9

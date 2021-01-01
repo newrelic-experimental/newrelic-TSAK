@@ -1,0 +1,15 @@
+fmt       = import("fmt")
+os        = import("os")
+html      = import("formats/html")
+
+doc, err = html.LoadURL("https://www.newrelic.com")
+if err != nil {
+  fmt.Println("Ouch!:", err)
+  return
+}
+
+a = html.Find(doc, "//a")
+fmt.Println("<a> elements on https://www.newrelic.com")
+for i in a {
+  fmt.Println(i)
+}
