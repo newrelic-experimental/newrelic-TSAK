@@ -8,7 +8,7 @@ if err == nil {
   series = charts.Series(1)
   x = []float64{1,2,3}
   y = []float64{1,2,3}
-  // chart.ContinuousSeries{}
+  chart.ContinuousSeries{}
   // chart, err   = charts.Chart("Hello from TSAK", series)
   // f.Write(chart)
   f.Close()

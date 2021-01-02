@@ -11,5 +11,9 @@ if err != nil {
 a = html.Find(doc, "//a")
 fmt.Println("<a> elements on https://www.newrelic.com")
 for i in a {
-  fmt.Println(i)
+  for j in html.Find(&i, "//a") {
+    for k in html.Find(&j, "//*") {
+      fmt.Println(k)
+    }
+  }
 }

@@ -10,6 +10,10 @@ import (
 
 func Run() {
   nr.RecordEvidence("Run() checkpoint is reached")
+  if conf.IsInteractive {
+    TsakShell()
+    return
+  }
   if conf.Run != "" {
     signal.Reserve(1)
     nr.RecordEvidence("Exclsive Run() checkpoint reached")

@@ -33,6 +33,7 @@ var EventType string
 var AppPath string
 var IsVersion bool
 var IsStop bool
+var IsInteractive bool
 var Ver = "0.4-pre1"
 var VerMaj = 0
 var VerMin = 4
