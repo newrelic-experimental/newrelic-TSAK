@@ -30,6 +30,7 @@ require (
 	github.com/fujiwara/go-zabbix-get v0.0.7 // indirect
 	github.com/ganbarodigital/go_glob v1.0.0
 	github.com/geoffgarside/ber v1.1.0 // indirect
+	github.com/gizak/termui/v3 v3.1.0
 	github.com/goburrow/modbus v0.1.0
 	github.com/goburrow/serial v0.1.0 // indirect
 	github.com/goccy/go-graphviz v0.0.9
