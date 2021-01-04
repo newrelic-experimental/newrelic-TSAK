@@ -91,6 +91,8 @@ func init() {
     "TODO":           reflect.ValueOf(StdlibTODO),
     "BACKGROUND":     reflect.ValueOf(StdlibBG),
     "ToValue":        reflect.ValueOf(stdlib.ToValue),
+    "SleepForASecond":reflect.ValueOf(stdlib.SleepForASecond),
+    "SleepFor":       reflect.ValueOf(stdlib.SleepFor),
   }
   env.PackageTypes["stdlib"] = map[string]reflect.Type{
     "WeightedSemaphore":     reflect.TypeOf(semaphore.Weighted{}),

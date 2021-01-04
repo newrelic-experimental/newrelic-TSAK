@@ -24,3 +24,11 @@ func ToValue(repr string) interface{} {
   }
   return repr
 }
+
+func SleepForASecond() {
+  time.Sleep(1 * time.Second)
+}
+
+func SleepFor(n int) {
+  time.Sleep(time.Duration(n) * time.Second)
+}

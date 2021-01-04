@@ -5,7 +5,7 @@ djson  = import("djson")
 
 pkt = djson.New()
 pkt.Set(42, "value")
-tdb.Add("answer", pkt)
+tdb.Set("answer", pkt)
 dpkt, err = tdb.Get("answer")
 if err == nil {
   fmt.Println("Value of the Metric answer is", dpkt.String())
