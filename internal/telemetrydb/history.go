@@ -37,6 +37,52 @@ func TDBHistoryAdd(key string, pkt *gabs.Container) bool {
   return false
 }
 
+func TDBHistoryInsert(pkt *gabs.Container) bool {
+  var stamp = stdlib.NowMilliseconds()
+  if TDB != nil {
+    tx, err := TDB.Begin()
+    if err != nil {
+      log.Error(fmt.Sprintf("Error building history/insert transaction:", err))
+      return false
+    }
+    stmt, err := tx.Prepare("insert into History(timestamp,key,value) values(?,?,?)")
+    if err != nil {
+      log.Error(fmt.Sprintf("Error building history/insert query:", err))
+      return false
+    }
+    childs, err := pkt.S("data").Children()
+    if err != nil {
+      tx.Commit()
+      stmt.Close()
+      return false
+    }
+    for _, item := range childs {
+      key := item.Path("key").Data()
+      value := gabs.New()
+      value.Set(item.Path("value").Data(), "value")
+      cmap, err := item.S().ChildrenMap()
+      if err != nil {
+        log.Error(fmt.Sprintf("Error scan history/insert dataset:", err))
+        continue
+      }
+      for attrkey, attrval := range cmap {
+        if attrkey == "key" {
+          continue
+        }
+        value.Set(attrval.Data(), attrkey)
+      }
+      _, err = stmt.Exec(stamp, key, value.String())
+      if err != nil {
+        log.Error(fmt.Sprintf("Error execute history/insert query:", err))
+      }
+    }
+    tx.Commit()
+    stmt.Close()
+    return true
+  }
+  return false
+}
+
 func TDBHistoryLast(key string) (res *gabs.Container, err error) {
   var pkt []byte
   n, err := TDBCount(2, key)
