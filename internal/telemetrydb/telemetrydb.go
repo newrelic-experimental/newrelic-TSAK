@@ -25,12 +25,14 @@ func Telemetrydb_Init() *sql.DB {
       log.Error(fmt.Sprintf("TDB initialization failure: %v", err))
     }
   }
+  log.Trace("TDB tables created")
   for _, i := range TDB_IX_CREATE {
     err = TDBExec(i)
     if err != nil {
       log.Error(fmt.Sprintf("TDB index initialization failure: %v", err))
     }
   }
+  log.Trace("TDB indexes created")
   return TDB
 }
 
@@ -108,6 +110,64 @@ func TDBValue(table int, key string) (res interface{}, err error) {
       }
     }
   }
+  return
+}
+
+
+func TelemetrydbHousekeeping(n int) (before int64, after int64) {
+  var keys []string
+  var key string
+  keys = make([]string, 0)
+  if TDB != nil {
+    var stmt *sql.Stmt
+    stmt, err := TDB.Prepare("select count(*) from History")
+    if err != nil {
+      log.Error(fmt.Sprintf("Error building #1 housekeeping query: %v", err))
+      return
+    }
+    err = stmt.QueryRow().Scan(&before)
+    stmt.Close()
+    if err != nil {
+      log.Error(fmt.Sprintf("Error discovering housekeeping state: %v", err))
+      return
+    }
+    rows, err := TDB.Query(`select distinct key from History`)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error discovering keys in housekeeper: %v", err))
+      return
+    }
+    for rows.Next() {
+      rows.Scan(&key)
+      keys = append(keys, key)
+    }
+    rows.Close()
+    for _, dkey := range keys {
+      tx, err := TDB.Begin()
+      if err != nil {
+        log.Error(fmt.Sprintf("Error initiating housekeeper transaction: %v", err))
+        return
+      }
+      dstmt, err := tx.Prepare(`delete from History where id <= (select id from (select id from History where key = ? order by timestamp desc limit 1 offset ?))`)
+      if err != nil {
+        log.Error(fmt.Sprintf("Error preparing housekeeper query: %v", err))
+        return
+      }
+      _, err = dstmt.Exec(dkey, n)
+      if err != nil {
+        log.Error(fmt.Sprintf("Error executing housekeeper transaction: %v", err))
+      }
+      tx.Commit()
+      dstmt.Close()
+    }
+  }
+  stmt, err := TDB.Prepare("select count(*) from History")
+  if err != nil {
+    log.Error(fmt.Sprintf("Error building #2 housekeeping query: %v", err))
+    return
+  }
+  err = stmt.QueryRow().Scan(&after)
+  stmt.Close()
+  log.Trace(fmt.Sprintf("Housekeeper finished. Before %v, after %v", before, after))
   return
 }
 

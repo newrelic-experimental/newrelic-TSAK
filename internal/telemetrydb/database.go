@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS Metric (
 `
 var TDB_HISTORY_CREATE=`
 CREATE TABLE IF NOT EXISTS History (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   key         TEXT,
   timestamp   INTEGER,
   value       TEXT

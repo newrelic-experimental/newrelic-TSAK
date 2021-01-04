@@ -11,6 +11,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/script"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/cron"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
 )
 
 var HOUSE_EVERY = (1 * time.Second)
@@ -52,6 +53,9 @@ func housekeeper() {
       housekeeperReport()
       if conf.House != "" {
         script.RunScript("house", conf.House)
+      }
+      if conf.Hkeep > 0 {
+        telemetrydb.TelemetrydbHousekeeping(conf.Hkeep)
       }
       c = 0
     } else {

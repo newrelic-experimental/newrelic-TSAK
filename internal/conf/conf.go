@@ -29,6 +29,7 @@ var House string
 var Clips string
 var Script string
 var Every int
+var Hkeep int
 var EventType string
 var AppPath string
 var TelemetryDB string

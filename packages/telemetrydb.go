@@ -17,6 +17,7 @@ func init() {
     "Last":                   reflect.ValueOf(telemetrydb.TDBHistoryLast),
     "History":                reflect.ValueOf(telemetrydb.TDBHistoryGet),
     "Insert":                 reflect.ValueOf(telemetrydb.TDBHistoryInsert),
+    "Housekeeper":            reflect.ValueOf(telemetrydb.TelemetrydbHousekeeping),
   }
   env.PackageTypes["telemetrydb"] = map[string]reflect.Type{
   }
