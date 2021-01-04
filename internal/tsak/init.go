@@ -10,6 +10,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/signal"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/script"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/clips"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   "github.com/google/uuid"
   "github.com/erikdubbelboer/gspt"
   "github.com/common-nighthawk/go-figure"
@@ -21,6 +22,7 @@ func Init() {
   flag.BoolVar(&conf.IsVersion, "version", false, "Display TSAK version")
   flag.BoolVar(&conf.IsInteractive, "interactive", false, "Run TSAK in interactive mode")
   flag.StringVar(&conf.AppPath, "appdir", "/tmp", "Directory for an application and temporary files")
+  flag.StringVar(&conf.TelemetryDB, "telemetrydb", "file:telemetry&mode=memory&cache=shared", "DSN string for opening an embedded telemetry DB")
   flag.BoolVar(&conf.Debug, "debug", false, "Enable debug output")
   flag.BoolVar(&conf.Error, "error", false, "Enable ERROR outpout")
   flag.BoolVar(&conf.Warning, "warning", false, "Enable WARNING outpout")
@@ -97,6 +99,7 @@ func Init() {
   signal.InitSignal()
   script.InitScript()
   clips.InitClips()
+  telemetrydb.Telemetrydb_Init()
   if flag.NArg() > 0 {
     log.Trace(fmt.Sprintf("%v positional arguments have been passed to TSAK", flag.NArg()))
     for _, a := range flag.Args() {

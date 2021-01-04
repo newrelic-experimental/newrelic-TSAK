@@ -31,6 +31,7 @@ var Script string
 var Every int
 var EventType string
 var AppPath string
+var TelemetryDB string
 var IsVersion bool
 var IsStop bool
 var IsInteractive bool

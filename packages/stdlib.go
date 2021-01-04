@@ -20,9 +20,6 @@ import (
 )
 
 
-func NowMilliseconds() int64 {
-    return time.Now().UnixNano() / int64(time.Millisecond)
-}
 
 func UUID() string {
   uid, _ := uuid.NewUUID()
@@ -74,7 +71,7 @@ func init() {
     "ExitRequest":    reflect.ValueOf(signal.ExitRequest),
     "ExitRequested":  reflect.ValueOf(signal.ExitRequested),
     "Release":        reflect.ValueOf(signal.Release),
-    "NowMilliseconds":reflect.ValueOf(NowMilliseconds),
+    "NowMilliseconds":reflect.ValueOf(stdlib.NowMilliseconds),
     "Cron":           reflect.ValueOf(cron.AddToCron),
     "UUID":           reflect.ValueOf(UUID),
     "From":           reflect.ValueOf(piping.From),

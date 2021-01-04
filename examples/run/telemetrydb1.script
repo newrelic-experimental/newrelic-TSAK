@@ -1,0 +1,5 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+tdb  = import("telemetrydb")
+
+fmt.Println("Telemetrydb core version", tdb.Version())

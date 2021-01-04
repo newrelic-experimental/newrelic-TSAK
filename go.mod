@@ -51,6 +51,7 @@ require (
 	github.com/lib/pq v1.9.0 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
+	github.com/mattn/go-sqlite3 v1.9.0
 	github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/olekukonko/tablewriter v0.0.4

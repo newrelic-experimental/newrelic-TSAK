@@ -1,0 +1,27 @@
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+ui      = import("stdlib/termui")
+
+
+err = ui.New()
+if err != nil {
+  fmt.Printlf("Ouch!", err)
+  return
+}
+plotData = make([][]float64, 2)
+plotData[0] = [1,2,3,4,2,3]
+plotData[1] = [2,3,4,5,6,1]
+ch = ui.NewPlot()
+ch.Title = "Hello from TSAK. Here is a plot"
+ch.SetRect(0,0,50,15)
+ch.AxesColor = ui.ColorWhite
+ch.TitleStyle.Fg = ui.ColorCyan
+ch.Data = plotData
+ch.HorizontalScale=8
+ui.Render(ch)
+for e in ui.PollEvents() {
+  if e.Type == ui.KeyboardEvent {
+    break
+  }
+}
+ui.Close()

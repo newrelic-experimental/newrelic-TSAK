@@ -18,6 +18,8 @@ func init() {
     "NewParagraph":     reflect.ValueOf(widgets.NewParagraph),
     "NewBarChart":      reflect.ValueOf(widgets.NewBarChart),
     "NewPieChart":      reflect.ValueOf(widgets.NewPieChart),
+    "NewGauge":         reflect.ValueOf(widgets.NewGauge),
+    "NewPlot":          reflect.ValueOf(widgets.NewPlot),
     "ColorYellow":      reflect.ValueOf(ui.ColorYellow),
     "ColorWhite":       reflect.ValueOf(ui.ColorWhite),
     "ColorBlack":       reflect.ValueOf(ui.ColorBlack),
@@ -28,6 +30,8 @@ func init() {
   }
   env.PackageTypes["stdlib/termui"] = map[string]reflect.Type{
     "PieChart":         reflect.TypeOf(widgets.PieChart{}),
+    "Gauge":            reflect.TypeOf(widgets.Gauge{}),
+    "Plot":             reflect.TypeOf(widgets.Plot{}),
     "Paragraph":        reflect.TypeOf(widgets.Paragraph{}),
     "BarChart":         reflect.TypeOf(widgets.BarChart{}),
   }
