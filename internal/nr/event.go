@@ -10,6 +10,7 @@ import (
   "github.com/sirupsen/logrus"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/si"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   "github.com/Jeffail/gabs"
 )
 
@@ -73,6 +74,7 @@ func event(nrikey, _url string, _payload []byte) (*gabs.Container, error) {
       if err != nil {
         return nil, err
       }
+      telemetrydb.Counter("tsak.NR.events")
       return r, nil
    } else {
       return nil, err

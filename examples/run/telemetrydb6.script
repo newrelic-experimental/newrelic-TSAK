@@ -15,7 +15,7 @@ for N < 15 {
   N++
 }
 fmt.Println("Run this script with -hkeep 10")
-fmt.Println("Now waiting how TSAK housekeeper will scrup a History")
+fmt.Println("Now waiting how TSAK housekeeper will scrub a History")
 stdlib.SleepFor(30)
 v, err = tdb.Last("abc.abc")
 if err == nil {

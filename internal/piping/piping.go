@@ -4,6 +4,7 @@ import (
   "fmt"
   "bytes"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   zmq "github.com/pebbe/zmq4"
 )
 
@@ -29,32 +30,44 @@ func To(dst int, _data []byte) {
   var data = bytes.NewBuffer(_data)
 
   if dst == INCH {
+    telemetrydb.Counter("tsak.INCH.sent")
     pipeIn <- data.String()
   } else if dst == OUTCH {
+    telemetrydb.Counter("tsak.OUTCH.sent")
     pipeOut <- data.String()
   } else if dst == CLIPS {
+    telemetrydb.Counter("tsak.CLIPS.sent")
     clipsIn <- data.String()
   } else if dst == FACTS {
+    telemetrydb.Counter("tsak.FACTS.sent")
     factsIn <- data.String()
   } else if dst == EVAL {
+    telemetrydb.Counter("tsak.EVAL.sent")
     evalIn <- data.String()
   } else {
+    telemetrydb.Counter("tsak.TO.errors")
     log.Error("Trying to send data to non-existent pipeline")
   }
 }
 
 func From(src int) []byte {
   if src == INCH && len(pipeIn) > 0 {
+    telemetrydb.Counter("tsak.INCH.recv")
     return []byte(<-pipeIn)
   } else if src == OUTCH && len(pipeOut) > 0 {
+    telemetrydb.Counter("tsak.OUTCH.recv")
     return []byte(<-pipeOut)
   } else if src == CLIPS && len (clipsIn) > 0 {
+    telemetrydb.Counter("tsak.CLIPS.recv")
     return []byte(<-clipsIn)
   } else if src == FACTS && len (factsIn) > 0 {
+    telemetrydb.Counter("tsak.FACTS.recv")
     return []byte(<-factsIn)
   } else if src == EVAL && len (evalIn) > 0 {
+    telemetrydb.Counter("tsak.EVAL.recv")
     return []byte(<-evalIn)
   } else {
+    telemetrydb.Counter("tsak.FROM.errors")
     return []byte("")
   }
 }

@@ -4,57 +4,52 @@ import (
   "fmt"
   "errors"
   "github.com/Jeffail/gabs"
-  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/stdlib"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
 )
 
-func TDBHistoryAdd(key string, pkt *gabs.Container) bool {
+func TDBHistoryAdd(key string, pkt *gabs.Container) (bool, error) {
   var stamp = stdlib.NowMilliseconds()
   var data = pkt.String()
   if TDB != nil {
     tx, err := TDB.Begin()
     if err != nil {
-      log.Error(fmt.Sprintf("Error building history/add transaction:", err))
-      return false
+      return false, err
     }
     stmt, err := tx.Prepare("insert into History(timestamp,key,value) values(?,?,?)")
     if err != nil {
-      log.Error(fmt.Sprintf("Error building history/add query:", err))
+      return false, err
     } else {
       _, err = stmt.Exec(stamp, key, data)
       if err != nil {
         stmt.Close()
-        log.Error(fmt.Sprintf("Error executing metric/add query:", err))
-        return false
+        return false, err
       } else {
         tx.Commit()
         stmt.Close()
       }
-      return true
+      return true, nil
     }
   }
-  return false
+  return false, nil
 }
 
-func TDBHistoryInsert(pkt *gabs.Container) bool {
+func TDBHistoryInsert(pkt *gabs.Container) (bool, error) {
   var stamp = stdlib.NowMilliseconds()
   if TDB != nil {
     tx, err := TDB.Begin()
     if err != nil {
-      log.Error(fmt.Sprintf("Error building history/insert transaction:", err))
-      return false
+      return false, err
     }
     stmt, err := tx.Prepare("insert into History(timestamp,key,value) values(?,?,?)")
     if err != nil {
-      log.Error(fmt.Sprintf("Error building history/insert query:", err))
-      return false
+      return false, err
     }
     childs, err := pkt.S("data").Children()
     if err != nil {
       tx.Commit()
       stmt.Close()
-      return false
+      return false, err
     }
     for _, item := range childs {
       key := item.Path("key").Data()
@@ -62,8 +57,7 @@ func TDBHistoryInsert(pkt *gabs.Container) bool {
       value.Set(item.Path("value").Data(), "value")
       cmap, err := item.S().ChildrenMap()
       if err != nil {
-        log.Error(fmt.Sprintf("Error scan history/insert dataset:", err))
-        continue
+        return false, err
       }
       for attrkey, attrval := range cmap {
         if attrkey == "key" {
@@ -73,14 +67,14 @@ func TDBHistoryInsert(pkt *gabs.Container) bool {
       }
       _, err = stmt.Exec(stamp, key, value.String())
       if err != nil {
-        log.Error(fmt.Sprintf("Error execute history/insert query:", err))
+        return false, err
       }
     }
     tx.Commit()
     stmt.Close()
-    return true
+    return true, nil
   }
-  return false
+  return false, nil
 }
 
 func TDBHistoryLast(key string) (res *gabs.Container, err error) {
@@ -92,13 +86,9 @@ func TDBHistoryLast(key string) (res *gabs.Container, err error) {
   dbpkt, err := TDBValue(2, key)
   pkt = dbpkt.([]byte)
   if err != nil {
-    log.Error(fmt.Sprintf("Error executing histroy/last query:", err))
     return
   }
   res, err = gabs.ParseJSON(pkt)
-  if err != nil {
-    log.Error(fmt.Sprintf("Error parsing history/last result:", err))
-  }
   return
 }
 
@@ -108,12 +98,10 @@ func TDBHistoryGet(key string) (res *gabs.Container, err error) {
   res.Array("data")
   stmt, err := TDB.Prepare("select timestamp,value from History where key = ? order by timestamp desc")
   if err != nil {
-    log.Error(fmt.Sprintf("Error building history/get query:", err))
     return
   }
   rows, err := stmt.Query(key)
   if err != nil {
-    log.Error(fmt.Sprintf("Error executing history/get query:", err))
     return
   }
   for rows.Next() {

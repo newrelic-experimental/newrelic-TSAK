@@ -1,6 +1,7 @@
 package tsak
 
 import (
+  "fmt"
   "sync"
   "time"
   "github.com/sirupsen/logrus"
@@ -55,7 +56,14 @@ func housekeeper() {
         script.RunScript("house", conf.House)
       }
       if conf.Hkeep > 0 {
-        telemetrydb.TelemetrydbHousekeeping(conf.Hkeep)
+        before, after, err := telemetrydb.TelemetrydbHousekeeping(conf.Hkeep)
+        if err != nil {
+          log.Error(fmt.Sprintf("Housekeeper returned an error: %v", err))
+        } else {
+          log.Trace(fmt.Sprintf("Housekeeper before: %v, after: %v", before, after))
+          telemetrydb.Metric("tsak.TDB.HOUSEKEEPER.before", before)
+          telemetrydb.Metric("tsak.TDB.HOUSEKEEPER.after", after)
+        }
       }
       c = 0
     } else {
@@ -66,6 +74,13 @@ func housekeeper() {
 }
 
 func housekeeperReport() {
-  nr.RecordValue("tsak.INCH.size", "Number of elements in TSAK pipes", piping.Len(piping.INCH))
-  nr.RecordValue("tsak.OUTCH.size", "Number of elements in TSAK pipes", piping.Len(piping.OUTCH))
+  telemetrydb.Metric("tsak.INCH.size", piping.Len(piping.INCH))
+  telemetrydb.Metric("tsak.OUTCH.size", piping.Len(piping.OUTCH))
+  telemetrydb.Metric("tsak.CLIPS.size", piping.Len(piping.CLIPS))
+  telemetrydb.Metric("tsak.FACTS.size", piping.Len(piping.FACTS))
+  telemetrydb.Metric("tsak.EVAL.size", piping.Len(piping.EVAL))
+  if conf.MetricsToNR {
+    nr.RecordValue("tsak.INCH.size", "Number of elements in TSAK pipes", piping.Len(piping.INCH))
+    nr.RecordValue("tsak.OUTCH.size", "Number of elements in TSAK pipes", piping.Len(piping.OUTCH))
+  }
 }

@@ -2,8 +2,6 @@ package telemetrydb
 
 import (
   "database/sql"
-	"fmt"
-  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -12,27 +10,23 @@ var TDB *sql.DB
 
 func Telemetrydb_Init() *sql.DB {
   var err error
-  log.Trace(fmt.Sprintf("TelemetryDB opens at: %v", conf.TelemetryDB))
+
   TDB, err = sql.Open("sqlite3", conf.TelemetryDB)
   if err != nil {
-    log.Error(fmt.Sprintf("TelemetryDB opens failure: %v", err))
     return nil
   }
-  log.Trace(fmt.Sprintf("SQLITE version is %v", TDBVersion()))
   for _, s := range TDB_CREATE {
     err = TDBExec(s)
     if err != nil {
-      log.Error(fmt.Sprintf("TDB initialization failure: %v", err))
+      return nil
     }
   }
-  log.Trace("TDB tables created")
   for _, i := range TDB_IX_CREATE {
     err = TDBExec(i)
     if err != nil {
-      log.Error(fmt.Sprintf("TDB index initialization failure: %v", err))
+      return nil
     }
   }
-  log.Trace("TDB indexes created")
   return TDB
 }
 
@@ -40,11 +34,9 @@ func TDBExec(sql string) error {
   if TDB != nil {
     _, err := TDB.Exec(sql)
     if err != nil {
-      log.Error(fmt.Sprintf("TelemetryDB exec failure on \"%v\": %v", sql, err))
       return err
     }
   } else {
-    log.Error("Access to an unititialized TelemetryDB")
     return nil
   }
   return nil
@@ -79,7 +71,7 @@ func TDBCount(table int, key string) (res int, err error) {
       stmt, err = TDB.Prepare("select count(*) from History where key = ? ")
     }
     if err != nil {
-      log.Error(fmt.Sprintf("Error building count query:", err))
+      return
     } else {
       err = stmt.QueryRow(key).Scan(&res)
     }
@@ -101,12 +93,10 @@ func TDBValue(table int, key string) (res interface{}, err error) {
       stmt, err = TDB.Prepare("select value from History where key = ? order by timestamp desc limit 1")
     }
     if err != nil {
-      log.Error(fmt.Sprintf("Error building value query:", err))
+      return
     } else {
       if stmt != nil {
         err = stmt.QueryRow(key).Scan(&res)
-      } else {
-        log.Error("Attempt to call an empty statemement")
       }
     }
   }
@@ -114,26 +104,24 @@ func TDBValue(table int, key string) (res interface{}, err error) {
 }
 
 
-func TelemetrydbHousekeeping(n int) (before int64, after int64) {
+func TelemetrydbHousekeeping(n int) (before int64, after int64, merr error) {
   var keys []string
   var key string
+  var stmt *sql.Stmt
   keys = make([]string, 0)
   if TDB != nil {
-    var stmt *sql.Stmt
     stmt, err := TDB.Prepare("select count(*) from History")
     if err != nil {
-      log.Error(fmt.Sprintf("Error building #1 housekeeping query: %v", err))
       return
     }
     err = stmt.QueryRow().Scan(&before)
     stmt.Close()
     if err != nil {
-      log.Error(fmt.Sprintf("Error discovering housekeeping state: %v", err))
       return
     }
     rows, err := TDB.Query(`select distinct key from History`)
     if err != nil {
-      log.Error(fmt.Sprintf("Error discovering keys in housekeeper: %v", err))
+      merr = err
       return
     }
     for rows.Next() {
@@ -144,17 +132,19 @@ func TelemetrydbHousekeeping(n int) (before int64, after int64) {
     for _, dkey := range keys {
       tx, err := TDB.Begin()
       if err != nil {
-        log.Error(fmt.Sprintf("Error initiating housekeeper transaction: %v", err))
+        merr = err
         return
       }
       dstmt, err := tx.Prepare(`delete from History where id <= (select id from (select id from History where key = ? order by timestamp desc limit 1 offset ?))`)
       if err != nil {
-        log.Error(fmt.Sprintf("Error preparing housekeeper query: %v", err))
+        merr = err
         return
       }
       _, err = dstmt.Exec(dkey, n)
       if err != nil {
-        log.Error(fmt.Sprintf("Error executing housekeeper transaction: %v", err))
+        dstmt.Close()
+        merr = err
+        return
       }
       tx.Commit()
       dstmt.Close()
@@ -162,17 +152,15 @@ func TelemetrydbHousekeeping(n int) (before int64, after int64) {
   }
   stmt, err := TDB.Prepare("select count(*) from History")
   if err != nil {
-    log.Error(fmt.Sprintf("Error building #2 housekeeping query: %v", err))
+    merr = err
     return
   }
   err = stmt.QueryRow().Scan(&after)
   stmt.Close()
-  log.Trace(fmt.Sprintf("Housekeeper finished. Before %v, after %v", before, after))
   return
 }
 
 func Telemetrydb_Fin() {
-  log.Trace(fmt.Sprintf("TelemetryDB closes at: %v", conf.TelemetryDB))
   if TDB != nil {
     TDB.Close()
   }

@@ -1,35 +1,35 @@
 package telemetrydb
 
 import (
-  "fmt"
-  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/stdlib"
 )
 
-func TDBCounterAdd(key string) bool {
+func TDBCounterAdd(key string) (bool,error) {
   if TDB != nil {
     tx, err := TDB.Begin()
     if err != nil {
-      log.Error(fmt.Sprintf("Error building counter/add transaction:", err))
-      return false
+      return false, err
     }
     stmt, err := tx.Prepare("insert into Counters(timestamp,key,value) values(?,?,1) on conflict(key) do update set timestamp=?, value=value+1")
     if err != nil {
-      log.Error(fmt.Sprintf("Error building counter/add query:", err))
+      return false, err
     } else {
       _, err = stmt.Exec(stdlib.NowMilliseconds(), key, stdlib.NowMilliseconds())
       if err != nil {
         stmt.Close()
-        log.Error(fmt.Sprintf("Error executing counter/add query:", err))
-        return false
+        return false, err
       } else {
         tx.Commit()
         stmt.Close()
       }
-      return true
+      return true, nil
     }
   }
-  return false
+  return false, nil
+}
+
+func Counter(key string) (bool,error) {
+  return TDBCounterAdd(key)
 }
 
 func TDBCounterGet(key string) (res int64, err error) {

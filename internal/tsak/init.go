@@ -31,6 +31,7 @@ func Init() {
   flag.BoolVar(&conf.TraceNR, "tracenr", false, "Send TSAK traces as logs to New Relic")
   flag.BoolVar(&conf.Production, "production", false, "Running Ushell in production mode")
   flag.BoolVar(&conf.IsStop, "stop", false, "If -stop is passed, tsak will try to kill tsak process with same ID")
+  flag.BoolVar(&conf.MetricsToNR, "nrspy", false, "Send an internal TSAK performance and stability metrics to New Relic")
   flag.StringVar(&conf.Nrapi, "nrapi", os.Getenv("NEW_RELIC_LICENSE_KEY"), "New Relic Insert API key")
   flag.StringVar(&conf.Nrapiq, "nrapiq", os.Getenv("NEW_RELIC_Q_LICENSE_KEY"), "New Relic Query API key")
   flag.StringVar(&conf.Logfile, "log", "", "Name of the log file")
@@ -101,6 +102,8 @@ func Init() {
   script.InitScript()
   clips.InitClips()
   telemetrydb.Telemetrydb_Init()
+  log.Trace(fmt.Sprintf("TelemetryDB opens at: %v", conf.TelemetryDB))
+  log.Trace(fmt.Sprintf("SQLITE version is %v", telemetrydb.TDBVersion()))
   if flag.NArg() > 0 {
     log.Trace(fmt.Sprintf("%v positional arguments have been passed to TSAK", flag.NArg()))
     for _, a := range flag.Args() {
