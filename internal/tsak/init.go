@@ -22,7 +22,7 @@ func Init() {
   flag.BoolVar(&conf.IsVersion, "version", false, "Display TSAK version")
   flag.BoolVar(&conf.IsInteractive, "interactive", false, "Run TSAK in interactive mode")
   flag.StringVar(&conf.AppPath, "appdir", "/tmp", "Directory for an application and temporary files")
-  flag.StringVar(&conf.TelemetryDB, "telemetrydb", "file:telemetry&mode=memory&cache=shared", "DSN string for opening an embedded telemetry DB")
+  flag.StringVar(&conf.TelemetryDB, "telemetrydb", ":memory:", "DSN string for opening an embedded telemetry DB")
   flag.BoolVar(&conf.Debug, "debug", false, "Enable debug output")
   flag.BoolVar(&conf.Error, "error", false, "Enable ERROR outpout")
   flag.BoolVar(&conf.Warning, "warning", false, "Enable WARNING outpout")
