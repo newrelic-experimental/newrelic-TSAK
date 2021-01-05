@@ -11,6 +11,7 @@ require (
 	github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af
 	github.com/akrylysov/pogreb v0.9.1
 	github.com/alitto/pond v1.4.0
+	github.com/allegro/bigcache/v2 v2.2.5
 	github.com/antchfx/htmlquery v1.2.3
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
 	github.com/bitfield/script v0.18.0
