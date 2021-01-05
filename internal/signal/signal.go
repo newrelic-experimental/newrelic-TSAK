@@ -7,6 +7,7 @@ import (
   "syscall"
   "sync"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
 )
 
 var wg sync.WaitGroup
@@ -18,6 +19,7 @@ func signalHandler() {
   c := make(chan os.Signal, 1)
   signal.Notify(c, os.Interrupt, os.Kill, syscall.SIGTERM)
   <- c
+  piping.ClearZMQINTRR()
   log.Info(fmt.Sprintf("Interruption signal detected. N=%d", ng))
   for i := 0; i < ng; i++ {
     exitChan <- true

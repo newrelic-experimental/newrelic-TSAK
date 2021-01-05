@@ -11,6 +11,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/script"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/clips"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
   "github.com/google/uuid"
   "github.com/erikdubbelboer/gspt"
   "github.com/common-nighthawk/go-figure"
@@ -21,6 +22,7 @@ func Init() {
   flag.BoolVar(&conf.Nocolor, "nocolor", false, "Disable colors in terminal output")
   flag.BoolVar(&conf.IsVersion, "version", false, "Display TSAK version")
   flag.BoolVar(&conf.IsInteractive, "interactive", false, "Run TSAK in interactive mode")
+  flag.BoolVar(&conf.IPv6, "ipv6", false, "Enable IPv6 support")
   flag.StringVar(&conf.AppPath, "appdir", "/tmp", "Directory for an application and temporary files")
   flag.StringVar(&conf.TelemetryDB, "telemetrydb", ":memory:", "DSN string for opening an embedded telemetry DB")
   flag.BoolVar(&conf.Debug, "debug", false, "Enable debug output")
@@ -100,6 +102,7 @@ func Init() {
     log.Trace(RunVerification())
   }
   signal.InitSignal()
+  piping.Init()
   script.InitScript()
   clips.InitClips()
   telemetrydb.Telemetrydb_Init()

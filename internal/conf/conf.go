@@ -38,6 +38,7 @@ var IsVersion bool
 var IsStop bool
 var IsInteractive bool
 var MetricsToNR bool
+var IPv6 bool
 var Ver = "0.4-pre2"
 var VerMaj = 0
 var VerMin = 4

@@ -4,6 +4,7 @@ import (
   "fmt"
   "bytes"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   zmq "github.com/pebbe/zmq4"
 )
@@ -25,6 +26,11 @@ var zmqS = make(map[string]*zmq.Socket)
 var zmqCtx,_ = zmq.NewContext()
 var zmqErr int64
 
+func ClearZMQINTRR () {
+  log.Trace("Disabling RetryAfterEINTR for ZMQ core")
+  zmq.SetRetryAfterEINTR(false)
+  zmqCtx.SetRetryAfterEINTR(false)
+}
 
 func To(dst int, _data []byte) {
   var data = bytes.NewBuffer(_data)
@@ -86,6 +92,14 @@ func Len(src int) int {
   } else {
     return 0
   }
+}
+
+func Init() {
+  log.Trace("Initializing Pipelines")
+  if conf.IPv6 {
+    log.Trace("IPv6 was enabled for ZMQ")
+  }
+  zmq.SetIpv6(conf.IPv6)
 }
 
 func Shutdown() {
