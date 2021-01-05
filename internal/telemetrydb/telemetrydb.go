@@ -103,8 +103,49 @@ func TDBValue(table int, key string) (res interface{}, err error) {
   return
 }
 
-
 func TelemetrydbHousekeeping(n int) (before int64, after int64, merr error) {
+  before1, after1, err := TelemetrydbHousekeepingHistory(n)
+  if err != nil {
+    return before1, after1, err
+  }
+  before2, after2, err := TelemetrydbHousekeepingLog(n)
+  return before1+before2, after1+after2, err
+}
+
+func TelemetrydbHousekeepingLog(n int) (before int64, after int64, merr error) {
+  stmt, err := TDB.Prepare("select count(*) from History")
+  if err != nil {
+    return
+  }
+  err = stmt.QueryRow().Scan(&before)
+  stmt.Close()
+  tx, err := TDB.Begin()
+  if err != nil {
+    merr = err
+    return
+  }
+  stmt, err = tx.Prepare(`delete from Log where id <= (select id from (select id from Log order by timestamp desc limit 1 offset ?))`)
+  if err != nil {
+    merr = err
+    return
+  }
+  _, err = stmt.Exec(n)
+  if err != nil {
+    merr = err
+    return
+  }
+  tx.Commit()
+  stmt.Close()
+  stmt, err = TDB.Prepare("select count(*) from History")
+  if err != nil {
+    return
+  }
+  err = stmt.QueryRow().Scan(&after)
+  stmt.Close()
+  return
+}
+
+func TelemetrydbHousekeepingHistory(n int) (before int64, after int64, merr error) {
   var keys []string
   var key string
   var stmt *sql.Stmt

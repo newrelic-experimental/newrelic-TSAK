@@ -32,6 +32,7 @@ func Init() {
   flag.BoolVar(&conf.Production, "production", false, "Running Ushell in production mode")
   flag.BoolVar(&conf.IsStop, "stop", false, "If -stop is passed, tsak will try to kill tsak process with same ID")
   flag.BoolVar(&conf.MetricsToNR, "nrspy", false, "Send an internal TSAK performance and stability metrics to New Relic")
+  flag.BoolVar(&conf.TelemetryLog, "notelemetrylog", true, "Disable sending TSAK logs to telemetrydb")
   flag.StringVar(&conf.Nrapi, "nrapi", os.Getenv("NEW_RELIC_LICENSE_KEY"), "New Relic Insert API key")
   flag.StringVar(&conf.Nrapiq, "nrapiq", os.Getenv("NEW_RELIC_Q_LICENSE_KEY"), "New Relic Query API key")
   flag.StringVar(&conf.Logfile, "log", "", "Name of the log file")

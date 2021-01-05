@@ -8,6 +8,7 @@ import (
   "gopkg.in/natefinch/lumberjack.v2"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
 )
 
 type Fields logrus.Fields
@@ -84,6 +85,11 @@ func InitLog() {
   if conf.Nrapi != "" {
     Trace(fmt.Sprintf("NRAPI Enabled"))
   }
+  if conf.TelemetryLog {
+    Trace(fmt.Sprintf("Storing logs into a telemetryDB %v is enabled", conf.TelemetryDB))
+  } else {
+    Trace("Storing logs into a telemetryDB is disabled")
+  }
   Trace("Log subsystem initialized")
 }
 
@@ -97,6 +103,7 @@ func Trace(msg string, ctx ...logrus.Fields) {
       c = logrus.Fields{}
     }
     Log().WithFields(c).Trace(msg)
+    telemetrydb.Log("trace", msg)
     if conf.TraceNR {
       if conf.Nrapi != "" {
         if conf.Production {
@@ -116,6 +123,7 @@ func Info(msg string, ctx ...logrus.Fields) {
       c = logrus.Fields{}
     }
     Log().WithFields(c).Info(msg)
+    telemetrydb.Log("info", msg)
     if conf.Nrapi != "" {
       if conf.Production {
         nr.Log(msg, "info", c)
@@ -133,6 +141,7 @@ func Warning(msg string, ctx ...logrus.Fields) {
       c = logrus.Fields{}
     }
     Log().WithFields(c).Warning(msg)
+    telemetrydb.Log("warning", msg)
     if conf.Nrapi != "" {
       if conf.Production {
         nr.Log(msg, "warning", c)
@@ -150,6 +159,7 @@ func Error(msg string, ctx ...logrus.Fields) {
       c = logrus.Fields{}
     }
     Log().WithFields(c).Error(msg)
+    telemetrydb.Log("error", msg)
     if conf.Nrapi != "" {
       if conf.Production {
         nr.Log(msg, "error", c)
