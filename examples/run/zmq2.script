@@ -1,0 +1,39 @@
+fmt     = import("fmt")
+time    = import("time")
+stdlib  = import("stdlib")
+zmq     = import("stdlib/zmq")
+
+
+if VMNAME == "in" {
+  rep = zmq.Rep("worker")
+  rep.Connect("ipc://be.ipc")
+  N = 0
+  for ! stdlib.ExitRequested() && N < 6 {
+    msgr, err = rep.Recv(zmq.DONTWAIT)
+    if err == nil {
+      fmt.Println("RECV[W]:", msgr)
+      msg = fmt.Sprintf("WORKER MSG: %v", N)
+      rep.Send(msg, 0)
+      N++
+    }
+  }
+} else if VMNAME == "proc" {
+  zmq.RepReqBroker("ipc://fe.ipc", "ipc://be.ipc")
+} else if VMNAME == "out" {
+  req = zmq.Req("client")
+  req.Connect("ipc://fe.ipc")
+  N=0
+  for ! stdlib.ExitRequested()  {
+    msg = fmt.Sprintf("CLIENT MSG: %v", N)
+    req.Send(msg, 0)
+    msgr, err = req.Recv(zmq.DONTWAIT)
+    if err == nil {
+      fmt.Println("RECV[C]:", msgr)
+      N++
+    }
+  }
+} else if VMNAME == "house" {
+  fmt.Println("This code will be executed periodically by housekeeper")
+} else {
+  fmt.Println("This code will be executed in some other VM")
+}

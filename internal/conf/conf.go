@@ -12,6 +12,7 @@ var TelemetryLog bool
 var Logfile string
 var Maxsize int
 var Maxage int
+var Timeout int
 var Name string
 var ID string
 var Account string

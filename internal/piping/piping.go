@@ -29,7 +29,25 @@ var zmqErr int64
 func ClearZMQINTRR () {
   log.Trace("Disabling RetryAfterEINTR for ZMQ core")
   zmq.SetRetryAfterEINTR(false)
-  zmqCtx.SetRetryAfterEINTR(false)
+  if zmqCtx != nil {
+    zmqCtx.SetRetryAfterEINTR(false)
+  }
+}
+
+func ZS(name string) (res *zmq.Socket) {
+  var ok bool
+  if res, ok = zmqS[name]; ok {
+    return
+  }
+  res = nil
+  return
+}
+
+func Z(name string, s *zmq.Socket) {
+  if res, ok := zmqS[name]; ok {
+    res.Close()
+  }
+  zmqS[name] = s
 }
 
 func To(dst int, _data []byte) {
@@ -96,14 +114,18 @@ func Len(src int) int {
 
 func Init() {
   log.Trace("Initializing Pipelines")
+  zmaj, zmin, zpatch := zmq.Version()
+  log.Trace(fmt.Sprintf("ZMQ version %v.%v.%v", zmaj, zmin, zpatch))
   if conf.IPv6 {
     log.Trace("IPv6 was enabled for ZMQ")
   }
   zmq.SetIpv6(conf.IPv6)
+  zmqCtx.SetIpv6(conf.IPv6)
 }
 
 func Shutdown() {
   log.Trace("Terminating Pipelines")
+  ClearZMQINTRR()
   if zmqS != nil {
     log.Trace("Closing ZMQ sockets")
     for k, v := range zmqS {

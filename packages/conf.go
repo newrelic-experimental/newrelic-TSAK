@@ -62,6 +62,7 @@ func init() {
     "VersionMajor":    reflect.ValueOf(conf.VerMaj),
     "VersionMinor":    reflect.ValueOf(conf.VerMin),
     "VersionPrerelease":reflect.ValueOf(conf.VerPrerelease),
+    "Timeout":          reflect.ValueOf(conf.Timeout),
   }
   env.PackageTypes["conf"] = map[string]reflect.Type{
 
