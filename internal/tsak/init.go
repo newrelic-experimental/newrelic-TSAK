@@ -97,7 +97,7 @@ func Init() {
     StartWithPid()
   }
   if conf.Script != "" {
-    log.Trace(fmt.Sprintf("Universal script %s will be used for -in/-out/-proc/-housekeeper"))
+    log.Trace(fmt.Sprintf("Universal script %s will be used for -in/-out/-proc/-housekeeper", conf.Script))
   }
   if ! conf.Production {
     log.Trace(RunVerification())

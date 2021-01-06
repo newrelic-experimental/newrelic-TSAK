@@ -121,9 +121,22 @@ func Init() {
   }
   zmq.SetIpv6(conf.IPv6)
   zmqCtx.SetIpv6(conf.IPv6)
+  log.Trace("Creating proxy control publisher")
+  pxyctl := Publisher("proxycontrol")
+  if pxyctl != nil {
+    pxyctl.Bind("ipc://proxycontrol.ipc")
+    pxyctl.Send("RESUME", 0)
+  }
 }
 
 func Shutdown() {
+  log.Trace("Terminating Proxies")
+  pxyctl := ZS("proxycontrol")
+  if pxyctl != nil {
+    for N := 0; N < 5; N++ {
+      pxyctl.Send("TERMINATE", 0)
+    }
+  }
   log.Trace("Terminating Pipelines")
   ClearZMQINTRR()
   if zmqS != nil {
