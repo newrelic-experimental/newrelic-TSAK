@@ -40,8 +40,8 @@ var IsStop bool
 var IsInteractive bool
 var MetricsToNR bool
 var IPv6 bool
-var Ver = "0.4-pre2"
+var Ver = "0.4-pre3"
 var VerMaj = 0
 var VerMin = 4
-var VerPrerelease = 2
+var VerPrerelease = 3
 var Args []string
