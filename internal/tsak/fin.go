@@ -9,6 +9,7 @@ import (
 )
 
 func Fin() {
+  P2PShutdown()
   telemetrydb.Telemetrydb_Fin()
   piping.Shutdown()
   clips.Shutdown()

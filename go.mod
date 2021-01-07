@@ -57,6 +57,7 @@ require (
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/olekukonko/tablewriter v0.0.4
 	github.com/pebbe/zmq4 v1.2.1
+	github.com/perlin-network/noise v1.1.3
 	github.com/pion/dtls/v2 v2.0.3
 	github.com/piquette/finance-go v1.0.0
 	github.com/prologic/bitcask v0.3.6
@@ -76,14 +77,17 @@ require (
 	github.com/vulogov/go-zabbix-get v0.0.7
 	github.com/wcharczuk/go-chart v2.0.1+incompatible
 	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9 // indirect
+	golang.org/x/mod v0.4.0 // indirect
 	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
 	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
 	golang.org/x/sys v0.0.0-20201207223542-d4d67f95c62d
+	golang.org/x/tools v0.0.0-20201208233053-a543418bbed2 // indirect
 	gonum.org/v1/gonum v0.7.0
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/h2non/gentleman.v2 v2.0.4
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
+	honnef.co/go/tools v0.0.1-2020.1.6 // indirect
 	syreclabs.com/go/faker v1.2.2
 )

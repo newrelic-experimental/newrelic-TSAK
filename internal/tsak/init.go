@@ -59,6 +59,17 @@ func Init() {
   flag.StringVar(&conf.Conf, "conf", "", "Configuration file")
   flag.StringVar(&conf.House, "housekeeper", "", "Housekeeper periodic script")
   flag.StringVar(&conf.Clips, "clips", "", "Name of non-exclusive main script executed in CLIPS environment")
+  // P2P flags
+  flag.StringVar(&conf.P2PExternalAddress, "p2pexternal", "", "External address for incoming P2P traffic")
+  flag.StringVar(&conf.P2PBind, "p2pbind", "0.0.0.0", "Bind address for P2P traffic")
+  flag.IntVar(&conf.P2PBindPort, "p2pport", 10090, "Bind port for P2P traffic")
+  flag.IntVar(&conf.P2PIdleTimeout, "p2ptimeout", 3, "P2P idle timeout")
+  flag.IntVar(&conf.P2PMaxInbound, "p2pmaxinbound", 10000, "Maximum number of P2P inbound connections")
+  flag.IntVar(&conf.P2PMaxOutbound, "p2pmaxoutbound", 10000, "Maximum number of P2P outbound connections")
+  flag.IntVar(&conf.P2PDiscovery, "p2pdiscovery", 30, "Seconds between P2P discovery")
+  flag.BoolVar(&conf.IsP2P, "p2p", false, "Enable P2P capabilities")
+  flag.Var(&conf.P2PBootstrap, "bootstrap",  "P2P bootstrap nodes")
+  // End of flags
   flag.Parse()
   if conf.In == "" && conf.Out == "" && conf.Proc == "" && conf.Script == "" && conf.Run == "" && ! conf.IsStop && ! conf.IsVersion && ! conf.IsInteractive {
     banner := figure.NewFigure(fmt.Sprintf("TSAK %s:> ", conf.Ver), "", true)
@@ -107,6 +118,7 @@ func Init() {
   script.InitScript()
   clips.InitClips()
   telemetrydb.Telemetrydb_Init()
+  InitP2P()
   log.Trace(fmt.Sprintf("TelemetryDB opens at: %v", conf.TelemetryDB))
   log.Trace(fmt.Sprintf("SQLITE version is %v", telemetrydb.TDBVersion()))
   if flag.NArg() > 0 {

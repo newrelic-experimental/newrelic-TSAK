@@ -1,5 +1,17 @@
 package conf
 
+
+type arrayFlags []string
+
+func (i *arrayFlags) String() string {
+    return ""
+}
+
+func (i *arrayFlags) Set(value string) error {
+    *i = append(*i, value)
+    return nil
+}
+
 var Debug bool
 var Error bool
 var Info bool
@@ -40,6 +52,18 @@ var IsStop bool
 var IsInteractive bool
 var MetricsToNR bool
 var IPv6 bool
+// P2P options
+var IsP2P bool
+var P2PExternalAddress string
+var P2PBind string
+var P2PBindPort int
+var P2PIdleTimeout int
+var P2PMaxInbound int
+var P2PMaxOutbound int
+var P2PDiscovery int
+var P2PBootstrap = make(arrayFlags, 0)
+
+// Versions
 var Ver = "0.4-pre3"
 var VerMaj = 0
 var VerMin = 4

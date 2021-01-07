@@ -40,6 +40,7 @@ func Run() {
       piping.To(piping.CLIPS, []byte(fmt.Sprintf(`(batch* "%s")`, conf.Clips)))
     }
   }
+  P2Pproc()
   nr.RecordEvidence("Running Housekeeping() code")
   signal.Reserve(1)
   HouseProc()

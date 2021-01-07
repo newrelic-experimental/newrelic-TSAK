@@ -16,3 +16,20 @@ if [ -f /etc/redhat-release ]; then
   echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf
   ldconfig -v > /dev/null
 fi
+if [[ `uname -s` == "Darwin" ]]; then
+  echo "Configuring TSAK for OSX"
+  if [ ! -x /usr/local/bin/brew ]; then
+    echo "Installing brew tool"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "Updating brew"
+    brew update
+  fi
+  echo "Installing requirements"
+  brew tap cossacklabs/tap
+  brew install libthemis
+  brew search leveldb
+  brew install graphviz
+  brew install sqlite3
+  brew install zeromq
+  echo "Requirements installed"
+fi
