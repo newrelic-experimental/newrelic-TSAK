@@ -10,7 +10,8 @@ import (
   "github.com/shirou/gopsutil/v3/load"
   "github.com/shirou/gopsutil/v3/process"
   "github.com/shirou/gopsutil/v3/net"
-
+  "github.com/h2non/filetype"
+  "github.com/h2non/filetype/types"
 )
 
 
@@ -36,6 +37,7 @@ func init() {
     "Connections":        reflect.ValueOf(net.Connections),
     "ConntrackStats":     reflect.ValueOf(net.ConntrackStats),
     "Interfaces":         reflect.ValueOf(net.Interfaces),
+    "Filetype":           reflect.ValueOf(filetype.MatchFile),
   }
   env.PackageTypes["stdlib/system"] = map[string]reflect.Type{
     "Process":                  reflect.TypeOf(process.Process{}),
@@ -43,5 +45,7 @@ func init() {
     "ConntrackStat":            reflect.TypeOf(net.ConntrackStat{}),
     "InterfaceStat":            reflect.TypeOf(net.InterfaceStat{}),
     "InfoStat":                 reflect.TypeOf(host.InfoStat{}),
+    "Type":                     reflect.TypeOf(types.Type{}),
+    "MIME":                     reflect.TypeOf(types.MIME{}),
   }
 }

@@ -1,0 +1,125 @@
+//
+// TSAK "HelloWorld" Pipeline
+//  This script demonstrates not only how you are building scripts that collecting or
+//  generating some data, but also post-processing this data and sending to a New Relic
+//  as an event.
+//
+//  This demo pipeline, will collect a single metric - CPU[lavg1]average, then store last 100 Values
+//  calculate standard deviation and send a telemetry with standard deviation
+//  as a NR event.
+//
+//  I will be using a "Universal script", which combine all three parts of the processing
+//  in a single file
+//
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+time    = import("time")
+log     = import("tlog")
+djson   = import("djson")
+ioutil  = import("io/ioutil")
+strconv = import("strconv")
+h       = import("convert/humanize")
+system  = import("stdlib/system")
+ring    = import("stdlib/ringbuffer")
+stat    = import("num/stat")
+conf    = import("conf")
+
+
+if VMNAME == "in" {
+  //
+  // Data/Configuration acquisition
+  //
+  for ! stdlib.ExitRequested() {
+    lavg, err = system.Load(true)
+    if err != nil {
+      log.Error(fmt.Sprintf("Can not initialize CPU status reading: %v", err))
+      return
+    }
+    pkt = djson.New()
+    pkt.Set(lavg.Load1, "value")
+    stdlib.To(stdlib.INCH, pkt.String())
+    time.Sleep(INLOOPWAIT * time.Second)
+  }
+
+} else if VMNAME == "proc" {
+  //
+  // Data processor
+  //
+  func add2ring(r, v) {
+    err = r.Add(v)
+    if err != nil {
+      r.Push(v)
+    }
+  }
+  func exportRing(r) {
+    d = make([]float64, HISTORYSIZE)
+    c = 0
+    for c < HISTORYSIZE {
+      val,err = r.Get(c)
+      if err != nil {
+        break
+      }
+      d[c] = val
+      c++
+    }
+    return d
+  }
+  r = ring.New(HISTORYSIZE)
+  for ! stdlib.ExitRequested() {
+    for stdlib.Len(stdlib.INCH) > 0 {
+      data = stdlib.From(stdlib.INCH)
+      pkt = djson.Parse(data)
+      add2ring(r,pkt.Path("value").Data())
+      re = exportRing(r)
+      mean, stddev = stat.MeanStdDev(re, nil)
+      mval, mcount = stat.Mode(re, nil)
+      dpkt = djson.New()
+      dpkt.Set(pkt.Path("value").Data(), "value")
+      dpkt.Set(mean, "mean")
+      dpkt.Set(stddev, "stddev")
+      dpkt.Set(mval, "mode")
+      dpkt.Set(mcount, "modeCount")
+      dpkt.Set(stat.Skew(re, nil), "skew")
+      dpkt.Set(stat.Variance(re, nil), "variance")
+      dpkt.Set(stdlib.NowMilliseconds(), "timestamp")
+      dpkt.Set(SOURCE,  "eventType")
+      stdlib.To(stdlib.OUTCH, dpkt.String())
+    }
+    time.Sleep(PROCLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "out" {
+  //
+  // Data delivery
+  //
+  for ! stdlib.ExitRequested() {
+    N = 0
+    pkg = djson.New()
+    pkg.Array()
+    for stdlib.Len(stdlib.OUTCH) > 0 {
+      if N > INBATCH {
+        break
+      }
+      data = stdlib.From(stdlib.OUTCH)
+      dpkt = djson.Parse(data)
+      pkg.ArrayAppend(dpkt.Data())
+      N += 1
+    }
+    if N > 0 {
+      sndres, err, resp = log.SendEvent(pkg.String())
+      if sndres && err == nil {
+        usize = h.Bytes(len(pkg.String()))
+        msg = fmt.Sprintf("ZABBIX.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        log.Info(msg)
+      } else {
+        log.Error(fmt.Sprintf("ZABBIX.Out sending error: %s", err))
+      }
+    }
+    time.Sleep(OUTLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "house" {
+  //
+  // Housekeeper
+  //
+} else {
+  log.Trace("If you see this message, please open a bug report")
+}

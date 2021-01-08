@@ -52,6 +52,12 @@ func InitP2P() {
 }
 
 func P2Pproc() {
+  if ! conf.IsP2P {
+    log.Trace("p2p() thread skipped")
+    return
+  } else {
+    log.Trace("p2p() thread initiating")
+  }
   var start = nr.NowMillisec()
   signal.Reserve(1)
   go func(wg *sync.WaitGroup) {

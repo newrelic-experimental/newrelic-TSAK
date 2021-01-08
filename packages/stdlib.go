@@ -93,8 +93,10 @@ func init() {
     "ToValue":        reflect.ValueOf(stdlib.ToValue),
     "SleepForASecond":reflect.ValueOf(stdlib.SleepForASecond),
     "SleepFor":       reflect.ValueOf(stdlib.SleepFor),
+    "Tracker":        reflect.ValueOf(stdlib.MakeThreadTracker),
   }
   env.PackageTypes["stdlib"] = map[string]reflect.Type{
     "WeightedSemaphore":     reflect.TypeOf(semaphore.Weighted{}),
+    "ThreadTracker":         reflect.TypeOf(stdlib.ThreadTracker{}),
   }
 }

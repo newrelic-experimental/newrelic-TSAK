@@ -1,0 +1,5 @@
+fmt = import("fmt")
+system = import("stdlib/system")
+
+ft, err = system.Filetype("documentation/images/clipslogo.png")
+fmt.Println("clipslogo.png is", ft.MIME.Value)

@@ -9,6 +9,7 @@ installbundles/*
 tmp/*
 gvtest.png
 *.db
+*.ipc
 
 # Test binary, built with `go test -c`
 *.test
