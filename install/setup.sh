@@ -10,6 +10,8 @@ if [ -f /etc/redhat-release ]; then
   yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
   echo "Installing ZeroMQ pre-requirement"
   yum -y install zeromq-devel
+  echo "Installing SQLITE"
+  yum -y unstall sqlite3-devel
   echo "Configuring/installing crypto library prerequirement"
   wget -qO - https://pkgs-ce.cossacklabs.com/stable/centos/cossacklabs.repo | tee /etc/yum.repos.d/cossacklabs.repo
   yum -y install libthemis-devel
@@ -27,7 +29,7 @@ if [[ `uname -s` == "Darwin" ]]; then
   echo "Installing requirements"
   brew tap cossacklabs/tap
   brew install libthemis
-  brew search leveldb
+  brew install leveldb
   brew install graphviz
   brew install sqlite3
   brew install zeromq

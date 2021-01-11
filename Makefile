@@ -36,6 +36,7 @@ build-install:
 	@mkdir ./tmp ./installbundles
 	@cp ./bin/${GOOS}/tsak ./tmp
 	@cp ./install/setup.sh ./tmp
+	@cp ./install/uninstall-tsak.sh ./tmp
 	@cp /usr/local/lib/libclips.so ./tmp
 	@echo "Preparing installation bundle"
 	@makeself ./tmp ./installbundles/tsak-install-${GOOS}-${GEN_KERNEL}.sh "TSAK installation for ${GOOS}" ./setup.sh

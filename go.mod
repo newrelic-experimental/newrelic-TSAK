@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go v0.72.0 // indirect
 	github.com/Jeffail/gabs v1.4.0
 	github.com/Microsoft/go-winio v0.4.16 // indirect
+	github.com/Showmax/go-fqdn v1.0.0
 	github.com/VictoriaMetrics/fastcache v1.5.7
 	github.com/aaronjan/hunch v1.1.2
 	github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af

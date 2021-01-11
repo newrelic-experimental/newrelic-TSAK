@@ -1,11 +1,7 @@
 stdlib  = import("stdlib")
 fmt     = import("fmt")
 
-tt, err = stdlib.Tracker()
-// if err != nil {
-//   fmt.Println("Ouch!", err)
-//   return
-// }
+tt = stdlib.Tracker()
 
 for N=0;N<10;N++{
   err = tt.TriggerGoroutine(func (i) {

@@ -1,0 +1,9 @@
+fmt       = import("fmt")
+stdlib    = import("stdlib")
+
+hostname, err = stdlib.FQDN()
+if err == nil {
+  fmt.Println(hostname)
+} else {
+  fmt.Println("Error:", err)
+}

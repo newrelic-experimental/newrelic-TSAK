@@ -17,6 +17,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/stdlib"
   "github.com/teris-io/shortid"
   "golang.org/x/sync/semaphore"
+  "github.com/Showmax/go-fqdn"
 )
 
 
@@ -94,6 +95,7 @@ func init() {
     "SleepForASecond":reflect.ValueOf(stdlib.SleepForASecond),
     "SleepFor":       reflect.ValueOf(stdlib.SleepFor),
     "Tracker":        reflect.ValueOf(stdlib.MakeThreadTracker),
+    "FQDN":           reflect.ValueOf(fqdn.FqdnHostname),
   }
   env.PackageTypes["stdlib"] = map[string]reflect.Type{
     "WeightedSemaphore":     reflect.TypeOf(semaphore.Weighted{}),
