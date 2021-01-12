@@ -1,0 +1,5728 @@
+{
+  1.3.6.1.4.1.318.1.1.1.2.2.6.0:
+  {
+    device: apc
+    name: upsAdvBatteryNumOfBadBattPacks
+    mib: POWERNET-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.2.2.4.0:
+  {
+    device: apc
+    name: upsAdvBatteryReplaceIndicator
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.2.2.3.0:
+  {
+    device: apc
+    name: upsAdvBatteryRunTimeRemaining
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.2.2.2.0:
+  {
+    device: apc
+    name: upsAdvBatteryTemperature
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.2.2.1.0:
+  {
+    device: apc
+    name: upsAdvBatteryCapacity
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.3.3.4.0:
+  {
+    device: apc
+    name: upsHighPrecInputFrequency
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.3.3.1.0:
+  {
+    device: apc
+    name: upsHighPrecInputLineVoltage
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.4.3.4.0:
+  {
+    device: apc
+    name: upsHighPrecOutputCurrent
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.3.2.5.0:
+  {
+    device: apc
+    name: upsAdvInputLineFailCause
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.4.2.3.0:
+  {
+    device: apc
+    name: upsAdvOutputLoad
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.2.1.2.0:
+  {
+    device: apc
+    name: upsBasicBatteryTimeOnBattery
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.7.2.3.0:
+  {
+    device: apc
+    name: upsAdvTestDiagnosticsResults
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.11.1.1.0:
+  {
+    device: apc
+    name: upsBasicStateOutputState
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.12.1.2.1.2:
+  {
+    device: apc
+    name: upsOutletGroupStatusName
+    mib: PowerNet-MIB
+    tag: outlet_group_name
+  }
+  1.3.6.1.4.1.318.1.1.1.12.1.2.1.3:
+  {
+    device: apc
+    name: upsOutletGroupStatusGroupState
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.4.1.318.1.1.1.1.1.1.0:
+  {
+    device: apc
+    name: upsBasicIdentModel
+    mib: UNKNOWN-MIB
+    tag: model
+  }
+  1.3.6.1.4.1.318.1.1.1.1.2.3.0:
+  {
+    device: apc
+    name: upsAdvIdentSerialNumber
+    mib: UNKNOWN-MIB
+    tag: serial_num
+  }
+  1.3.6.1.4.1.318.1.1.1.1.2.1.0:
+  {
+    device: apc
+    name: upsAdvIdentFirmwareRevision
+    mib: UNKNOWN-MIB
+    tag: firmware_version
+  }
+  1.3.6.1.4.1.318.1.1.1.1.1.2.0:
+  {
+    device: apc
+    name: upsBasicIdentName
+    mib: UNKNOWN-MIB
+    tag: ups_name
+  }
+  1.3.6.1.2.1.1.5.0:
+  {
+    device: generic
+    name: sysName
+    mib: UNKNOWN-MIB
+    tag: snmp_host
+  }
+  1.3.6.1.2.1.6.5.0:
+  {
+    device: generic
+    name: tcpActiveOpens
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.6.0:
+  {
+    device: generic
+    name: tcpPassiveOpens
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.7.0:
+  {
+    device: generic
+    name: tcpAttemptFails
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.8.0:
+  {
+    device: generic
+    name: tcpEstabResets
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.9.0:
+  {
+    device: generic
+    name: tcpCurrEstab
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.17.0:
+  {
+    device: generic
+    name: tcpHCInSegs
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.18.0:
+  {
+    device: generic
+    name: tcpHCOutSegs
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.12.0:
+  {
+    device: generic
+    name: tcpRetransSegs
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.14.0:
+  {
+    device: generic
+    name: tcpInErrs
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.6.15.0:
+  {
+    device: generic
+    name: tcpOutRsts
+    mib: TCP-MIB
+  }
+  1.3.6.1.2.1.7.8.0:
+  {
+    device: generic
+    name: udpHCInDatagrams
+    mib: UDP-MIB
+  }
+  1.3.6.1.2.1.7.2.0:
+  {
+    device: generic
+    name: udpNoPorts
+    mib: UDP-MIB
+  }
+  1.3.6.1.2.1.7.3.0:
+  {
+    device: generic
+    name: udpInErrors
+    mib: UDP-MIB
+  }
+  1.3.6.1.2.1.7.9.0:
+  {
+    device: generic
+    name: udpHCOutDatagrams
+    mib: UDP-MIB
+  }
+  1.3.6.1.2.1.99.1.1.1.1:
+  {
+    device: arista
+    name: entPhySensorType
+    mib: ENTITY-SENSOR-MIB
+    tag: sensor_type
+  }
+  1.3.6.1.2.1.99.1.1.1.4:
+  {
+    device: arista
+    name: entPhySensorValue
+    mib: ENTITY-SENSOR-MIB
+  }
+  1.3.6.1.2.1.99.1.1.1.5:
+  {
+    device: arista
+    name: entPhySensorOperStatus
+    mib: ENTITY-SENSOR-MIB
+  }
+  1.3.6.1.4.1.30065.3.6.1.1.1.1:
+  {
+    device: arista
+    name: aristaIngressIfIndex
+    mib: ARISTA-QUEUE-MIB
+    tag: interface_index
+  }
+  1.3.6.1.4.1.30065.3.6.1.1.1.2:
+  {
+    device: arista
+    name: aristaIngressQueueIndex
+    mib: ARISTA-QUEUE-MIB
+    tag: queue_index
+  }
+  1.3.6.1.4.1.30065.3.6.1.1.1.3:
+  {
+    device: arista
+    name: aristaIngressQueuePktsDropped
+    mib: ARISTA-QUEUE-MIB
+  }
+  1.3.6.1.4.1.30065.3.6.1.2.1.1:
+  {
+    device: arista
+    name: aristaEgressIfIndex
+    mib: ARISTA-QUEUE-MIB
+    tag: interface_index
+  }
+  1.3.6.1.4.1.30065.3.6.1.2.1.2:
+  {
+    device: arista
+    name: aristaEgressQueueIndex
+    mib: ARISTA-QUEUE-MIB
+    tag: queue_index
+  }
+  1.3.6.1.4.1.30065.3.6.1.2.1.6:
+  {
+    device: arista
+    name: aristaEgressQueuePktsDropped
+    mib: ARISTA-QUEUE-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.1:
+  {
+    device: generic
+    name: ifName
+    mib: IF-MIB
+    tag: interface
+  }
+  1.3.6.1.2.1.31.1.1.1.18:
+  {
+    device: generic
+    name: ifAlias
+    mib: IF-MIB
+    tag: interface_alias
+  }
+  1.3.6.1.2.1.2.2.1.14:
+  {
+    device: generic
+    name: ifInErrors
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.2.2.1.13:
+  {
+    device: generic
+    name: ifInDiscards
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.2.2.1.20:
+  {
+    device: generic
+    name: ifOutErrors
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.2.2.1.19:
+  {
+    device: generic
+    name: ifOutDiscards
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.2.2.1.7:
+  {
+    device: generic
+    name: ifAdminStatus
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.2.2.1.8:
+  {
+    device: generic
+    name: ifOperStatus
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.2.2.1.5:
+  {
+    device: generic
+    name: ifSpeed
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.7:
+  {
+    device: generic
+    name: ifHCInUcastPkts
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.8:
+  {
+    device: generic
+    name: ifHCInMulticastPkts
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.9:
+  {
+    device: generic
+    name: ifHCInBroadcastPkts
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.11:
+  {
+    device: generic
+    name: ifHCOutUcastPkts
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.12:
+  {
+    device: generic
+    name: ifHCOutMulticastPkts
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.13:
+  {
+    device: generic
+    name: ifHCOutBroadcastPkts
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.6:
+  {
+    device: generic
+    name: ifHCInOctets
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.10:
+  {
+    device: generic
+    name: ifHCOutOctets
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1.1.15:
+  {
+    device: generic
+    name: ifHighSpeed
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.4:
+  {
+    device: generic
+    name: ipSystemStatsHCInReceives
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.6:
+  {
+    device: generic
+    name: ipSystemStatsHCInOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.7:
+  {
+    device: generic
+    name: ipSystemStatsInHdrErrors
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.8:
+  {
+    device: generic
+    name: ipSystemStatsInNoRoutes
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.9:
+  {
+    device: generic
+    name: ipSystemStatsInAddrErrors
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.10:
+  {
+    device: generic
+    name: ipSystemStatsInUnknownProtos
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.11:
+  {
+    device: generic
+    name: ipSystemStatsInTruncatedPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.13:
+  {
+    device: generic
+    name: ipSystemStatsHCInForwDatagrams
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.14:
+  {
+    device: generic
+    name: ipSystemStatsReasmReqds
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.15:
+  {
+    device: generic
+    name: ipSystemStatsReasmOKs
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.16:
+  {
+    device: generic
+    name: ipSystemStatsReasmFails
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.17:
+  {
+    device: generic
+    name: ipSystemStatsInDiscards
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.19:
+  {
+    device: generic
+    name: ipSystemStatsHCInDelivers
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.21:
+  {
+    device: generic
+    name: ipSystemStatsHCOutRequests
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.22:
+  {
+    device: generic
+    name: ipSystemStatsOutNoRoutes
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.24:
+  {
+    device: generic
+    name: ipSystemStatsHCOutForwDatagrams
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.25:
+  {
+    device: generic
+    name: ipSystemStatsOutDiscards
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.26:
+  {
+    device: generic
+    name: ipSystemStatsOutFragReqds
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.27:
+  {
+    device: generic
+    name: ipSystemStatsOutFragOKs
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.28:
+  {
+    device: generic
+    name: ipSystemStatsOutFragFails
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.29:
+  {
+    device: generic
+    name: ipSystemStatsOutFragCreates
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.31:
+  {
+    device: generic
+    name: ipSystemStatsHCOutTransmits
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.33:
+  {
+    device: generic
+    name: ipSystemStatsHCOutOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.35:
+  {
+    device: generic
+    name: ipSystemStatsHCInMcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.37:
+  {
+    device: generic
+    name: ipSystemStatsHCInMcastOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.39:
+  {
+    device: generic
+    name: ipSystemStatsHCOutMcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.41:
+  {
+    device: generic
+    name: ipSystemStatsHCOutMcastOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.43:
+  {
+    device: generic
+    name: ipSystemStatsHCInBcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.1.1.45:
+  {
+    device: generic
+    name: ipSystemStatsHCOutBcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.6:
+  {
+    device: generic
+    name: ipIfStatsHCInOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.7:
+  {
+    device: generic
+    name: ipIfStatsInHdrErrors
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.8:
+  {
+    device: generic
+    name: ipIfStatsInNoRoutes
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.9:
+  {
+    device: generic
+    name: ipIfStatsInAddrErrors
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.10:
+  {
+    device: generic
+    name: ipIfStatsInUnknownProtos
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.11:
+  {
+    device: generic
+    name: ipIfStatsInTruncatedPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.13:
+  {
+    device: generic
+    name: ipIfStatsHCInForwDatagrams
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.14:
+  {
+    device: generic
+    name: ipIfStatsReasmReqds
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.15:
+  {
+    device: generic
+    name: ipIfStatsReasmOKs
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.16:
+  {
+    device: generic
+    name: ipIfStatsReasmFails
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.17:
+  {
+    device: generic
+    name: ipIfStatsInDiscards
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.19:
+  {
+    device: generic
+    name: ipIfStatsHCInDelivers
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.21:
+  {
+    device: generic
+    name: ipIfStatsHCOutRequests
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.24:
+  {
+    device: generic
+    name: ipIfStatsHCOutForwDatagrams
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.25:
+  {
+    device: generic
+    name: ipIfStatsOutDiscards
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.26:
+  {
+    device: generic
+    name: ipIfStatsOutFragReqds
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.27:
+  {
+    device: generic
+    name: ipIfStatsOutFragOKs
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.28:
+  {
+    device: generic
+    name: ipIfStatsOutFragFails
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.29:
+  {
+    device: generic
+    name: ipIfStatsOutFragCreates
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.31:
+  {
+    device: generic
+    name: ipIfStatsHCOutTransmits
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.33:
+  {
+    device: generic
+    name: ipIfStatsHCOutOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.35:
+  {
+    device: generic
+    name: ipIfStatsHCInMcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.37:
+  {
+    device: generic
+    name: ipIfStatsHCInMcastOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.39:
+  {
+    device: generic
+    name: ipIfStatsHCOutMcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.41:
+  {
+    device: generic
+    name: ipIfStatsHCOutMcastOctets
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.43:
+  {
+    device: generic
+    name: ipIfStatsHCInBcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3.1.45:
+  {
+    device: generic
+    name: ipIfStatsHCOutBcastPkts
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.25.1.1.0:
+  {
+    device: generic
+    name: hrSystemUptime
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.1.5.0:
+  {
+    device: generic
+    name: hrSystemNumUsers
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.1.6.0:
+  {
+    device: generic
+    name: hrSystemProcesses
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.1.7.0:
+  {
+    device: generic
+    name: hrSystemMaxProcesses
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.2.3.1.3:
+  {
+    device: generic
+    name: hrStorageDescr
+    mib: HOST-RESOURCES-MIB
+    tag: storagedesc
+  }
+  1.3.6.1.2.1.25.2.3.1.2:
+  {
+    device: generic
+    name: hrStorageType
+    mib: HOST-RESOURCES-MIB
+    tag: storagetype
+  }
+  1.3.6.1.2.1.25.2.3.1.4:
+  {
+    device: generic
+    name: hrStorageAllocationUnits
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.2.3.1.5:
+  {
+    device: generic
+    name: hrStorageSize
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.2.3.1.6:
+  {
+    device: generic
+    name: hrStorageUsed
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.2.3.1.7:
+  {
+    device: generic
+    name: hrStorageAllocationFailures
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.3.3.1.1:
+  {
+    device: generic
+    name: hrProcessorFrwID
+    mib: HOST-RESOURCES-MIB
+    tag: processorid
+  }
+  1.3.6.1.2.1.25.3.3.1.2:
+  {
+    device: generic
+    name: hrProcessorLoad
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.14.10.1.3:
+  {
+    device: generic
+    name: ospfNbrRtrId
+    mib: OSPF-MIB
+    tag: neighbor_id
+  }
+  1.3.6.1.2.1.14.10.1.1:
+  {
+    device: generic
+    name: ospfNbrIpAddr
+    mib: OSPF-MIB
+    tag: neighbor_ip
+  }
+  1.3.6.1.2.1.14.10.1.6:
+  {
+    device: generic
+    name: ospfNbrState
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.10.1.7:
+  {
+    device: generic
+    name: ospfNbrEvents
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.10.1.8:
+  {
+    device: generic
+    name: ospfNbrLsRetransQLen
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.11.1.3:
+  {
+    device: generic
+    name: ospfVirtNbrIpAddr
+    mib: OSPF-MIB
+    tag: neighbor_ip
+  }
+  1.3.6.1.2.1.14.11.1.2:
+  {
+    device: generic
+    name: ospfVirtNbrRtrId
+    mib: OSPF-MIB
+    tag: neighbor_id
+  }
+  1.3.6.1.2.1.14.11.1.5:
+  {
+    device: generic
+    name: ospfVirtNbrState
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.11.1.6:
+  {
+    device: generic
+    name: ospfVirtNbrEvents
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.11.1.7:
+  {
+    device: generic
+    name: ospfVirtNbrLsRetransQLen
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.7.1.1:
+  {
+    device: generic
+    name: ospfIfIpAddress
+    mib: OSPF-MIB
+    tag: ospf_ip_addr
+  }
+  1.3.6.1.2.1.14.7.1.8:
+  {
+    device: generic
+    name: ospfIfRetransInterval
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.7.1.12:
+  {
+    device: generic
+    name: ospfIfState
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.7.1.21:
+  {
+    device: generic
+    name: ospfIfLsaCount
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.9.1.4:
+  {
+    device: generic
+    name: ospfVirtIfRetransInterval
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.9.1.7:
+  {
+    device: generic
+    name: ospfVirtIfState
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.9.1.12:
+  {
+    device: generic
+    name: ospfVirtIfLsaCount
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.15.3.1.7:
+  {
+    device: generic
+    name: bgpPeerRemoteAddr
+    mib: BGP4-MIB
+    tag: neighbor
+  }
+  1.3.6.1.2.1.15.3.1.3:
+  {
+    device: generic
+    name: bgpPeerAdminStatus
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.4:
+  {
+    device: generic
+    name: bgpPeerNegotiatedVersion
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.9:
+  {
+    device: generic
+    name: bgpPeerRemoteAs
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.2:
+  {
+    device: generic
+    name: bgpPeerState
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.10:
+  {
+    device: generic
+    name: bgpPeerInUpdates
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.11:
+  {
+    device: generic
+    name: bgpPeerOutUpdates
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.12:
+  {
+    device: generic
+    name: bgpPeerInTotalMessages
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.13:
+  {
+    device: generic
+    name: bgpPeerOutTotalMessages
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.15:
+  {
+    device: generic
+    name: bgpPeerFsmEstablishedTransitions
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.16:
+  {
+    device: generic
+    name: bgpPeerFsmEstablishedTime
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.17:
+  {
+    device: generic
+    name: bgpPeerConnectRetryInterval
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.18:
+  {
+    device: generic
+    name: bgpPeerHoldTime
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.19:
+  {
+    device: generic
+    name: bgpPeerKeepAlive
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.20:
+  {
+    device: generic
+    name: bgpPeerHoldTimeConfigured
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.21:
+  {
+    device: generic
+    name: bgpPeerKeepAliveConfigured
+    mib: BGP4-MIB
+  }
+  1.3.6.1.2.1.15.3.1.22:
+  {
+    device: generic
+    name: bgpPeerMinASOriginationInterval
+    mib: BGP4-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.17.1.1:
+  {
+    device: aruba
+    name: sysExtFanIndex
+    mib: WLSX-SYSTEMEXT-MIB
+    tag: fan_index
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.17.1.2:
+  {
+    device: aruba
+    name: sysExtFanStatus
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.18.1.1:
+  {
+    device: aruba
+    name: sysExtPowerSupplyIndex
+    mib: WLSX-SYSTEMEXT-MIB
+    tag: powersupply_index
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.18.1.2:
+  {
+    device: aruba
+    name: sysExtPowerSupplyStatus
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.13.1.1:
+  {
+    device: aruba
+    name: sysExtProcessorID
+    mib: WLSX-SYSTEMEXT-MIB
+    tag: processor_index
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.13.1.3:
+  {
+    device: aruba
+    name: sysExtProcessorLoad
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.15.1.1:
+  {
+    device: aruba
+    name: sysExtMemoryIndex
+    mib: WLSX-SYSTEMEXT-MIB
+    tag: memory_index
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.15.1.2:
+  {
+    device: aruba
+    name: sysExtMemorySize
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.15.1.3:
+  {
+    device: aruba
+    name: sysExtMemoryUsed
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.15.1.4:
+  {
+    device: aruba
+    name: sysExtMemoryFree
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.32.0:
+  {
+    device: aruba
+    name: wlsxSysExtPacketLossPercent
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.2.58.2.0:
+  {
+    device: chatsworth
+    name: pduRole
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.2.58.12.0:
+  {
+    device: chatsworth
+    name: outOfService
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.8.1.0:
+  {
+    device: chatsworth
+    name: temperatureProbe1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.8.2.0:
+  {
+    device: chatsworth
+    name: temperatureProbe2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.9.1.0:
+  {
+    device: chatsworth
+    name: humidityProbe1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.9.2.0:
+  {
+    device: chatsworth
+    name: humidityProbe2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.13.1.0:
+  {
+    device: chatsworth
+    name: line1curr
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.13.2.0:
+  {
+    device: chatsworth
+    name: line2curr
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.13.3.0:
+  {
+    device: chatsworth
+    name: line3curr
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.1.1.0:
+  {
+    device: chatsworth
+    name: currentxy1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.1.2.0:
+  {
+    device: chatsworth
+    name: currentyz1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.1.3.0:
+  {
+    device: chatsworth
+    name: currentzx1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.1.4.0:
+  {
+    device: chatsworth
+    name: currentxy2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.1.5.0:
+  {
+    device: chatsworth
+    name: currentyz2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.1.6.0:
+  {
+    device: chatsworth
+    name: currentzx2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.2.1.0:
+  {
+    device: chatsworth
+    name: voltagexy1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.2.2.0:
+  {
+    device: chatsworth
+    name: voltageyz1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.2.3.0:
+  {
+    device: chatsworth
+    name: voltagezx1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.2.4.0:
+  {
+    device: chatsworth
+    name: voltagexy2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.2.5.0:
+  {
+    device: chatsworth
+    name: voltageyz2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.2.6.0:
+  {
+    device: chatsworth
+    name: voltagezx2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.3.1.0:
+  {
+    device: chatsworth
+    name: powerxy1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.3.2.0:
+  {
+    device: chatsworth
+    name: poweryz1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.3.3.0:
+  {
+    device: chatsworth
+    name: powerzx1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.3.4.0:
+  {
+    device: chatsworth
+    name: powerxy2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.3.5.0:
+  {
+    device: chatsworth
+    name: poweryz2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.3.6.0:
+  {
+    device: chatsworth
+    name: powerzx2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.4.1.0:
+  {
+    device: chatsworth
+    name: powerFactxy1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.4.2.0:
+  {
+    device: chatsworth
+    name: powerFactyz1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.4.3.0:
+  {
+    device: chatsworth
+    name: powerFactzx1
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.4.4.0:
+  {
+    device: chatsworth
+    name: powerFactxy2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.4.5.0:
+  {
+    device: chatsworth
+    name: powerFactyz2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.4.6.0:
+  {
+    device: chatsworth
+    name: powerFactzx2
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.11.1.0:
+  {
+    device: chatsworth
+    name: energyxy1s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.11.2.0:
+  {
+    device: chatsworth
+    name: energyyz1s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.11.3.0:
+  {
+    device: chatsworth
+    name: energyzx1s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.11.4.0:
+  {
+    device: chatsworth
+    name: energyxy2s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.11.5.0:
+  {
+    device: chatsworth
+    name: energyyz2s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.11.6.0:
+  {
+    device: chatsworth
+    name: energyzx2s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.1.0:
+  {
+    device: chatsworth
+    name: outlet1Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.2.0:
+  {
+    device: chatsworth
+    name: outlet2Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.3.0:
+  {
+    device: chatsworth
+    name: outlet3Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.4.0:
+  {
+    device: chatsworth
+    name: outlet4Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.5.0:
+  {
+    device: chatsworth
+    name: outlet5Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.6.0:
+  {
+    device: chatsworth
+    name: outlet6Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.7.0:
+  {
+    device: chatsworth
+    name: outlet7Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.8.0:
+  {
+    device: chatsworth
+    name: outlet8Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.9.0:
+  {
+    device: chatsworth
+    name: outlet9Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.10.0:
+  {
+    device: chatsworth
+    name: outlet10Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.11.0:
+  {
+    device: chatsworth
+    name: outlet11Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.12.0:
+  {
+    device: chatsworth
+    name: outlet12Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.13.0:
+  {
+    device: chatsworth
+    name: outlet13Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.14.0:
+  {
+    device: chatsworth
+    name: outlet14Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.15.0:
+  {
+    device: chatsworth
+    name: outlet15Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.16.0:
+  {
+    device: chatsworth
+    name: outlet16Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.17.0:
+  {
+    device: chatsworth
+    name: outlet17Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.18.0:
+  {
+    device: chatsworth
+    name: outlet18Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.19.0:
+  {
+    device: chatsworth
+    name: outlet19Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.20.0:
+  {
+    device: chatsworth
+    name: outlet20Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.21.0:
+  {
+    device: chatsworth
+    name: outlet21Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.22.0:
+  {
+    device: chatsworth
+    name: outlet22Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.23.0:
+  {
+    device: chatsworth
+    name: outlet23Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.5.24.0:
+  {
+    device: chatsworth
+    name: outlet24Current
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.1.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet1s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.2.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet2s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.3.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet3s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.4.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet4s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.5.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet5s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.6.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet6s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.7.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet7s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.8.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet8s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.9.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet9s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.10.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet10s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.11.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet11s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.12.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet12s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.13.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet13s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.14.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet14s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.15.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet15s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.16.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet16s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.17.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet17s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.18.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet18s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.19.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet19s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.20.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet20s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.21.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet21s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.22.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet22s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.23.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet23s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.3.12.24.0:
+  {
+    device: chatsworth
+    name: receptacleEnergyoutlet24s
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.1:
+  {
+    device: chatsworth
+    name: cpiPduMac
+    mib: CPI-UNITY-MIB
+    tag: pdu_macaddress
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.2:
+  {
+    device: chatsworth
+    name: cpiPduModel
+    mib: CPI-UNITY-MIB
+    tag: pdu_model
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.3:
+  {
+    device: chatsworth
+    name: cpiPduName
+    mib: CPI-UNITY-MIB
+    tag: pdu_name
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.11:
+  {
+    device: chatsworth
+    name: cpiPduVersion
+    mib: CPI-UNITY-MIB
+    tag: pdu_version
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.14:
+  {
+    device: chatsworth
+    name: cpiPduIp
+    mib: CPI-UNITY-MIB
+    tag: pdu_ipaddress
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.17:
+  {
+    device: chatsworth
+    name: cpiPduCabinetId
+    mib: CPI-UNITY-MIB
+    tag: pdu_cabinetid
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.8:
+  {
+    device: chatsworth
+    name: cpiPduNumberBranches
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.9:
+  {
+    device: chatsworth
+    name: cpiPduNumberOutlets
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.10:
+  {
+    device: chatsworth
+    name: cpiPduOutOfService
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.12:
+  {
+    device: chatsworth
+    name: cpiPduUpgrade
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.13:
+  {
+    device: chatsworth
+    name: cpiPduChainRole
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10.1.16:
+  {
+    device: chatsworth
+    name: cpiPduTotalPower
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.7.100.1.2:
+  {
+    device: chatsworth
+    name: cpiPduLockId
+    mib: CPI-UNITY-MIB
+    tag: lock_id
+  }
+  1.3.6.1.4.1.30932.1.10.1.7.100.1.3:
+  {
+    device: chatsworth
+    name: cpiPduEasStatus
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.7.100.1.4:
+  {
+    device: chatsworth
+    name: cpiPduDoorStatus
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.7.100.1.5:
+  {
+    device: chatsworth
+    name: cpiPduLockStatus
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.5.10.1.2:
+  {
+    device: chatsworth
+    name: cpiPduSensorId
+    mib: CPI-UNITY-MIB
+    tag: sensor_index
+  }
+  1.3.6.1.4.1.30932.1.10.1.5.10.1.3:
+  {
+    device: chatsworth
+    name: cpiPduSensorName
+    mib: CPI-UNITY-MIB
+    tag: sensor_name
+  }
+  1.3.6.1.4.1.30932.1.10.1.5.10.1.4:
+  {
+    device: chatsworth
+    name: cpiPduSensorType
+    mib: CPI-UNITY-MIB
+    tag: sensor_type
+  }
+  1.3.6.1.4.1.30932.1.10.1.5.10.1.5:
+  {
+    device: chatsworth
+    name: cpiPduSensorValue
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.10.1.2:
+  {
+    device: chatsworth
+    name: cpiPduLineId
+    mib: CPI-UNITY-MIB
+    tag: line_id
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.10.1.3:
+  {
+    device: chatsworth
+    name: cpiPduLineCurrent
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.2:
+  {
+    device: chatsworth
+    name: cpiPduBranchId
+    mib: CPI-UNITY-MIB
+    tag: branch_id
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.3:
+  {
+    device: chatsworth
+    name: cpiPduBranchCurrent
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.4:
+  {
+    device: chatsworth
+    name: cpiPduBranchMaxCurrent
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.5:
+  {
+    device: chatsworth
+    name: cpiPduBranchVoltage
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.6:
+  {
+    device: chatsworth
+    name: cpiPduBranchPower
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.7:
+  {
+    device: chatsworth
+    name: cpiPduBranchPowerFactor
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.8:
+  {
+    device: chatsworth
+    name: cpiPduBranchStatus
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110.1.9:
+  {
+    device: chatsworth
+    name: cpiPduBranchEnergy
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.2:
+  {
+    device: chatsworth
+    name: cpiPduOutletId
+    mib: CPI-UNITY-MIB
+    tag: outlet_id
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.4:
+  {
+    device: chatsworth
+    name: cpiPduOutletName
+    mib: CPI-UNITY-MIB
+    tag: outlet_name
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.3:
+  {
+    device: chatsworth
+    name: cpiPduOutletBranchId
+    mib: CPI-UNITY-MIB
+    tag: outlet_branchid
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.6:
+  {
+    device: chatsworth
+    name: cpiPduOutletCurrent
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.7:
+  {
+    device: chatsworth
+    name: cpiPduOutletVoltage
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.8:
+  {
+    device: chatsworth
+    name: cpiPduOutletPower
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.9:
+  {
+    device: chatsworth
+    name: cpiPduOutletStatus
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10.1.10:
+  {
+    device: chatsworth
+    name: cpiPduOutletEnergy
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.1.2.40.0:
+  {
+    device: chatsworth
+    name: pduName
+    mib: UNKNOWN-MIB
+    tag: legacy_pdu_name
+  }
+  1.3.6.1.4.1.30932.1.1.1.1.0:
+  {
+    device: chatsworth
+    name: version
+    mib: UNKNOWN-MIB
+    tag: legacy_pdu_version
+  }
+  1.3.6.1.4.1.30932.1.1.1.2.0:
+  {
+    device: chatsworth
+    name: modelCode
+    mib: UNKNOWN-MIB
+    tag: legacy_pdu_model
+  }
+  1.3.6.1.4.1.30932.1.1.1.3.0:
+  {
+    device: chatsworth
+    name: hwAddress
+    mib: UNKNOWN-MIB
+    tag: legacy_pdu_macaddress
+  }
+  1.3.6.1.4.1.2620.1.6.7.5.1.1:
+  {
+    device: checkpoint
+    name: multiProcIndex
+    mib: CHECKPOINT-MIB
+    tag: cpu_core
+  }
+  1.3.6.1.4.1.2620.1.6.7.5.1.2:
+  {
+    device: checkpoint
+    name: multiProcUserTime
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.5.1.3:
+  {
+    device: checkpoint
+    name: multiProcSystemTime
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.5.1.4:
+  {
+    device: checkpoint
+    name: multiProcIdleTime
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.5.1.5:
+  {
+    device: checkpoint
+    name: multiProcUsage
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.2.7.0:
+  {
+    device: checkpoint
+    name: procNum
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.4.3.0:
+  {
+    device: checkpoint
+    name: memTotalReal64
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.4.4.0:
+  {
+    device: checkpoint
+    name: memActiveReal64
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.4.5.0:
+  {
+    device: checkpoint
+    name: memFreeReal64
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.4.1.0:
+  {
+    device: checkpoint
+    name: memTotalVirtual64
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.4.2.0:
+  {
+    device: checkpoint
+    name: memActiveVirtual64
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.1:
+  {
+    device: checkpoint
+    name: multiDiskIndex
+    mib: CHECKPOINT-MIB
+    tag: disk_index
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.2:
+  {
+    device: checkpoint
+    name: multiDiskName
+    mib: CHECKPOINT-MIB
+    tag: disk_name
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.3:
+  {
+    device: checkpoint
+    name: multiDiskSize
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.4:
+  {
+    device: checkpoint
+    name: multiDiskUsed
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.5:
+  {
+    device: checkpoint
+    name: multiDiskFreeTotalBytes
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.7:
+  {
+    device: checkpoint
+    name: multiDiskFreeAvailableBytes
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.6:
+  {
+    device: checkpoint
+    name: multiDiskFreeTotalPercent
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6.1.8:
+  {
+    device: checkpoint
+    name: multiDiskFreeAvailablePercent
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.2.1.1:
+  {
+    device: checkpoint
+    name: fanSpeedSensorIndex
+    mib: CHECKPOINT-MIB
+    tag: sensor_index
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.2.1.2:
+  {
+    device: checkpoint
+    name: fanSpeedSensorName
+    mib: CHECKPOINT-MIB
+    tag: sensor_name
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.2.1.3:
+  {
+    device: checkpoint
+    name: fanSpeedSensorValue
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.2.1.6:
+  {
+    device: checkpoint
+    name: fanSpeedSensorStatus
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.1.1.1:
+  {
+    device: checkpoint
+    name: tempertureSensorIndex
+    mib: CHECKPOINT-MIB
+    tag: sensor_index
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.1.1.2:
+  {
+    device: checkpoint
+    name: tempertureSensorName
+    mib: CHECKPOINT-MIB
+    tag: sensor_name
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.1.1.3:
+  {
+    device: checkpoint
+    name: tempertureSensorValue
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.1.1.6:
+  {
+    device: checkpoint
+    name: tempertureSensorStatus
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.1.4.0:
+  {
+    device: checkpoint
+    name: fwAccepted
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.1.6.0:
+  {
+    device: checkpoint
+    name: fwDropped
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.1.5.0:
+  {
+    device: checkpoint
+    name: fwRejected
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.1.25.3.0:
+  {
+    device: checkpoint
+    name: fwNumConn
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.1.25.4.0:
+  {
+    device: checkpoint
+    name: fwPeakNumConn
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.9.9.117.1.1.2.1.1:
+  {
+    device: generic
+    name: cefcFRUPowerAdminStatus
+    mib: CISCO-ENTITY-FRU-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.117.1.1.2.1.2:
+  {
+    device: generic
+    name: cefcFRUPowerOperStatus
+    mib: CISCO-ENTITY-FRU-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.117.1.1.2.1.3:
+  {
+    device: generic
+    name: cefcFRUCurrent
+    mib: CISCO-ENTITY-FRU-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.109.1.1.1.1.10:
+  {
+    device: generic
+    name: cpmCPUTotalMonIntervalValue
+    mib: CISCO-PROCESS-MIB
+  }
+  1.3.6.1.4.1.9.9.109.1.1.1.1.12:
+  {
+    device: generic
+    name: cpmCPUMemoryUsed
+    mib: CISCO-PROCESS-MIB
+  }
+  1.3.6.1.4.1.9.9.109.1.1.1.1.13:
+  {
+    device: generic
+    name: cpmCPUMemoryFree
+    mib: CISCO-PROCESS-MIB
+  }
+  1.3.6.1.4.1.9.9.109.1.1.1.1.7:
+  {
+    device: generic
+    name: cpmCPUTotal1minRev
+    mib: CISCO-PROCESS-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.2.1.1:
+  {
+    device: generic
+    name: cieIfResetCount
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.4.1.9.9.13.1.3.1.6:
+  {
+    device: generic
+    name: ciscoEnvMonTemperatureState
+    mib: CISCO-ENVMON-MIB
+    tag: temp_state
+  }
+  1.3.6.1.4.1.9.9.13.1.3.1.3:
+  {
+    device: generic
+    name: ciscoEnvMonTemperatureStatusValue
+    mib: CISCO-ENVMON-MIB
+  }
+  1.3.6.1.4.1.9.9.13.1.5.1.4:
+  {
+    device: generic
+    name: ciscoEnvMonSupplySource
+    mib: CISCO-ENVMON-MIB
+    tag: power_source
+  }
+  1.3.6.1.4.1.9.9.13.1.5.1.2:
+  {
+    device: generic
+    name: ciscoEnvMonSupplyStatusDescr
+    mib: CISCO-ENVMON-MIB
+    tag: power_status_descr
+  }
+  1.3.6.1.4.1.9.9.13.1.5.1.3:
+  {
+    device: generic
+    name: ciscoEnvMonSupplyState
+    mib: CISCO-ENVMON-MIB
+  }
+  1.3.6.1.4.1.9.9.13.1.4.1.1:
+  {
+    device: generic
+    name: ciscoEnvMonFanStatusIndex
+    mib: CISCO-ENVMON-MIB
+    tag: fan_status_index
+  }
+  1.3.6.1.4.1.9.9.13.1.4.1.3:
+  {
+    device: generic
+    name: ciscoEnvMonFanState
+    mib: CISCO-ENVMON-MIB
+  }
+  1.3.6.1.4.1.9.9.500.1.2.2.1.1:
+  {
+    device: generic
+    name: cswStackPortOperStatus
+    mib: CISCO-STACKWISE-MIB
+  }
+  1.3.6.1.4.1.9.9.500.1.2.1.1.7:
+  {
+    device: generic
+    name: cswSwitchMacAddress
+    mib: CISCO-STACKWISE-MIB
+    tag: mac_addr
+  }
+  1.3.6.1.2.1.47.1.1.1.1.7:
+  {
+    device: generic
+    name: entPhysicalName
+    mib: CISCO-STACKWISE-MIB
+    tag: entity_name
+  }
+  1.3.6.1.4.1.9.9.500.1.2.1.1.6:
+  {
+    device: generic
+    name: cswSwitchState
+    mib: CISCO-STACKWISE-MIB
+  }
+  1.3.6.1.4.1.9.9.117.1.4.1.1.1:
+  {
+    device: generic
+    name: cefcFanTrayOperStatus
+    mib: CISCO-ENTITY-FRU-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.48.1.1.1.2:
+  {
+    device: generic
+    name: ciscoMemoryPoolName
+    mib: CISCO-MEMORY-POOL-MIB
+    tag: mem_pool_name
+  }
+  1.3.6.1.4.1.9.9.48.1.1.1.5:
+  {
+    device: generic
+    name: ciscoMemoryPoolUsed
+    mib: CISCO-MEMORY-POOL-MIB
+  }
+  1.3.6.1.4.1.9.9.48.1.1.1.6:
+  {
+    device: generic
+    name: ciscoMemoryPoolFree
+    mib: CISCO-MEMORY-POOL-MIB
+  }
+  1.3.6.1.4.1.9.9.48.1.1.1.7:
+  {
+    device: generic
+    name: ciscoMemoryPoolLargestFree
+    mib: CISCO-MEMORY-POOL-MIB
+  }
+  1.3.6.1.4.1.9.9.147.1.2.2.2.1.2:
+  {
+    device: generic
+    name: cfwConnectionStatType
+    mib: CISCO-FIREWALL-MIB
+    tag: connection_type
+  }
+  1.3.6.1.4.1.9.9.147.1.2.2.2.1.4:
+  {
+    device: generic
+    name: cfwConnectionStatCount
+    mib: CISCO-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.9.9.147.1.2.1.1.1.2:
+  {
+    device: generic
+    name: cfwHardwareInformation
+    mib: CISCO-FIREWALL-MIB
+    tag: hardware_desc
+  }
+  1.3.6.1.4.1.9.9.147.1.2.1.1.1.3:
+  {
+    device: generic
+    name: cfwHardwareStatusValue
+    mib: CISCO-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.9.9.388.1.2.2.1.1:
+  {
+    device: generic
+    name: cvsChassisSwitchID
+    mib: CISCO-VIRTUAL-SWITCH-MIB
+    tag: chassis_switch_id
+  }
+  1.3.6.1.4.1.9.9.388.1.2.2.1.3:
+  {
+    device: generic
+    name: cvsChassisUpTime
+    mib: CISCO-VIRTUAL-SWITCH-MIB
+  }
+  1.3.6.1.4.1.9.9.42.1.2.9.1.10:
+  {
+    device: generic
+    name: rttMonCtrlOperState
+    mib: CISCO-RTTMON-MIB
+    tag: rtt_state
+  }
+  1.3.6.1.4.1.9.9.42.1.2.1.1.4:
+  {
+    device: generic
+    name: rttMonCtrlAdminRttType
+    mib: CISCO-RTTMON-MIB
+    tag: rtt_type
+  }
+  1.3.6.1.4.1.9.9.42.1.2.10.1.1:
+  {
+    device: generic
+    name: rttMonLatestRttOperCompletionTime
+    mib: CISCO-RTTMON-MIB
+  }
+  1.3.6.1.4.1.9.9.42.1.2.10.1.2:
+  {
+    device: generic
+    name: rttMonLatestRttOperSense
+    mib: CISCO-RTTMON-MIB
+  }
+  1.3.6.1.4.1.9.9.42.1.2.9.1.6:
+  {
+    device: generic
+    name: rttMonCtrlOperTimeoutOccurred
+    mib: CISCO-RTTMON-MIB
+  }
+  1.3.6.1.4.1.9.9.91.1.1.1.1.1:
+  {
+    device: generic
+    name: entSensorType
+    mib: CISCO-ENTITY-SENSOR-MIB
+    tag: sensor_type
+  }
+  1.3.6.1.4.1.9.9.91.1.1.1.1.4:
+  {
+    device: generic
+    name: entSensorValue
+    mib: CISCO-ENTITY-SENSOR-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.1.1.1:
+  {
+    device: generic
+    name: cieIfLastInTime
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.1.1.2:
+  {
+    device: generic
+    name: cieIfLastOutTime
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.1.1.10:
+  {
+    device: generic
+    name: cieIfInputQueueDrops
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.1.1.11:
+  {
+    device: generic
+    name: cieIfOutputQueueDrops
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.4.1.9.9.147.1.2.2.2.1.5:
+  {
+    device: generic
+    name: cfwConnectionStatValue
+    mib: CISCO-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.9.9.392.1.4.1.2.0:
+  {
+    device: generic
+    name: crasNumDeclinedSessions
+    mib: CISCO-REMOTE-ACCESS-MONITOR-MIB
+  }
+  1.3.6.1.4.1.9.9.392.1.3.1.0:
+  {
+    device: generic
+    name: crasNumSessions
+    mib: CISCO-REMOTE-ACCESS-MONITOR-MIB
+  }
+  1.3.6.1.4.1.9.9.392.1.3.3.0:
+  {
+    device: generic
+    name: crasNumUsers
+    mib: CISCO-REMOTE-ACCESS-MONITOR-MIB
+  }
+  1.3.6.1.4.1.9.9.392.1.4.1.3.0:
+  {
+    device: generic
+    name: crasNumSetupFailInsufResources
+    mib: CISCO-REMOTE-ACCESS-MONITOR-MIB
+  }
+  1.3.6.1.4.1.9.9.171.1.3.1.1.0:
+  {
+    device: generic
+    name: cipSecGlobalActiveTunnels
+    mib: CISCO-IPSEC-FLOW-MONITOR-MIB
+  }
+  1.3.6.1.4.1.9.9.171.1.3.1.4.0:
+  {
+    device: generic
+    name: cipSecGlobalHcInOctets
+    mib: CISCO-IPSEC-FLOW-MONITOR-MIB
+  }
+  1.3.6.1.4.1.9.9.171.1.3.1.17.0:
+  {
+    device: generic
+    name: cipSecGlobalHcOutOctets
+    mib: CISCO-IPSEC-FLOW-MONITOR-MIB
+  }
+  1.3.6.1.2.1.25.4.2.1.1:
+  {
+    device: generic
+    name: hrSWRunIndex
+    mib: HOST-RESOURCES-MIB
+    tag: run_index
+  }
+  1.3.6.1.2.1.25.5.1.1.2:
+  {
+    device: generic
+    name: hrSWRunPerfMem
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.5.1.1.1:
+  {
+    device: generic
+    name: hrSWRunPerfCPU
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.4.2.1.7:
+  {
+    device: generic
+    name: hrSWRunStatus
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.5.1.1.1:
+  {
+    device: generic
+    name: ccvpServiceIndex
+    mib: CISCO-CVP-MIB
+    tag: service_index
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1.1.5:
+  {
+    device: generic
+    name: ccvpSipIntAvgLatency1
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1.1.6:
+  {
+    device: generic
+    name: ccvpSipIntAvgLatency2
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1.1.4:
+  {
+    device: generic
+    name: ccvpSipIntConnectsRcv
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1.1.3:
+  {
+    device: generic
+    name: ccvpSipIntNewCalls
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1.1.1:
+  {
+    device: generic
+    name: ccvpSipRtActiveCalls
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1.1.2:
+  {
+    device: generic
+    name: ccvpSipRtTotalCallLegs
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.2.12.0:
+  {
+    device: generic
+    name: ccvpLicAggMaxPortsInUse
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.2.2.0:
+  {
+    device: generic
+    name: ccvpLicRtPortsInUse
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.156.1.5.8.0:
+  {
+    device: generic
+    name: ccmRegisteredGateways
+    mib: CISCO-CCM-MIB
+  }
+  1.3.6.1.4.1.9.9.156.1.5.5.0:
+  {
+    device: generic
+    name: ccmRegisteredPhones
+    mib: CISCO-CCM-MIB
+  }
+  1.3.6.1.4.1.9.9.156.1.5.7.0:
+  {
+    device: generic
+    name: ccmRejectedPhones
+    mib: CISCO-CCM-MIB
+  }
+  1.3.6.1.4.1.9.9.156.1.5.6.0:
+  {
+    device: generic
+    name: ccmUnregisteredPhones
+    mib: CISCO-CCM-MIB
+  }
+  1.3.6.1.4.1.9.9.63.1.3.8.5.1.1:
+  {
+    device: generic
+    name: cvCallVolMediaIncomingCalls
+    mib: CISCO-VOICE-DIAL-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.63.1.3.8.5.1.2:
+  {
+    device: generic
+    name: cvCallVolMediaOutgoingCalls
+    mib: CISCO-VOICE-DIAL-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.63.1.3.8.4.1.1:
+  {
+    device: generic
+    name: cvCallVolPeerIncomingCalls
+    mib: CISCO-VOICE-DIAL-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.63.1.3.8.4.1.2:
+  {
+    device: generic
+    name: cvCallVolPeerOutgoingCalls
+    mib: CISCO-VOICE-DIAL-CONTROL-MIB
+  }
+  1.3.6.1.2.1.10.21.1.2.2.1.5:
+  {
+    device: generic
+    name: dialCtlPeerStatsAcceptCalls
+    mib: DIAL-CONTROL-MIB
+  }
+  1.3.6.1.2.1.10.21.1.2.2.1.4:
+  {
+    device: generic
+    name: dialCtlPeerStatsFailCalls
+    mib: DIAL-CONTROL-MIB
+  }
+  1.3.6.1.2.1.10.21.1.2.2.1.6:
+  {
+    device: generic
+    name: dialCtlPeerStatsRefuseCalls
+    mib: DIAL-CONTROL-MIB
+  }
+  1.3.6.1.2.1.10.21.1.2.2.1.3:
+  {
+    device: generic
+    name: dialCtlPeerStatsSuccessCalls
+    mib: DIAL-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.473.1.3.6.1.1:
+  {
+    device: generic
+    name: cccaPimNumber
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+    tag: pim_num
+  }
+  1.3.6.1.4.1.9.9.473.1.3.6.1.2:
+  {
+    device: generic
+    name: cccaPimPeripheralName
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+    tag: pim_name
+  }
+  1.3.6.1.4.1.9.9.473.1.3.6.1.5:
+  {
+    device: generic
+    name: cccaPimPeripheralHostName
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+    tag: pim_host
+  }
+  1.3.6.1.4.1.9.9.473.1.3.6.1.4:
+  {
+    device: generic
+    name: cccaPimStatus
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+  }
+  1.3.6.1.4.1.9.9.473.1.3.1.1.3:
+  {
+    device: generic
+    name: cccaRouterAgentsLoggedOn
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+  }
+  1.3.6.1.4.1.9.9.473.1.3.1.1.4:
+  {
+    device: generic
+    name: cccaRouterCallsInProgress
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+  }
+  1.3.6.1.4.1.9.9.473.1.3.1.1.8:
+  {
+    device: generic
+    name: cccaRouterCallsInQueue
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+  }
+  1.3.6.1.4.1.674.10892.1.400.20.1.1:
+  {
+    device: dell
+    name: operatingSystemMemorychassisIndex
+    mib: MIB-Dell-10892
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.1.400.20.1.6:
+  {
+    device: dell
+    name: operatingSystemMemoryAvailablePhysicalSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.400.20.1.7:
+  {
+    device: dell
+    name: operatingSystemMemoryTotalPageFileSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.400.20.1.8:
+  {
+    device: dell
+    name: operatingSystemMemoryAvailablePageFileSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.400.20.1.9:
+  {
+    device: dell
+    name: operatingSystemMemoryTotalVirtualSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.400.20.1.10:
+  {
+    device: dell
+    name: operatingSystemMemoryAvailableVirtualSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.600.12.1.1:
+  {
+    device: dell
+    name: powerSupplychassisIndex
+    mib: MIB-Dell-10892
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.1.600.12.1.2:
+  {
+    device: dell
+    name: powerSupplyIndex
+    mib: MIB-Dell-10892
+    tag: index
+  }
+  1.3.6.1.4.1.674.10892.1.600.12.1.5:
+  {
+    device: dell
+    name: powerSupplyStatus
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.600.12.1.6:
+  {
+    device: dell
+    name: powerSupplyOutputWatts
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.600.12.1.9:
+  {
+    device: dell
+    name: powerSupplyMaximumInputVoltage
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.600.12.1.16:
+  {
+    device: dell
+    name: powerSupplyCurrentInputVoltage
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.700.20.1.1:
+  {
+    device: dell
+    name: temperatureProbechassisIndex
+    mib: MIB-Dell-10892
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.1.700.20.1.2:
+  {
+    device: dell
+    name: temperatureProbeIndex
+    mib: MIB-Dell-10892
+    tag: index
+  }
+  1.3.6.1.4.1.674.10892.1.700.20.1.5:
+  {
+    device: dell
+    name: temperatureProbeStatus
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.700.20.1.6:
+  {
+    device: dell
+    name: temperatureProbeReading
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.30.1.1:
+  {
+    device: dell
+    name: processorDevicechassisIndex
+    mib: MIB-Dell-10892
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.1.1100.30.1.2:
+  {
+    device: dell
+    name: processorDeviceIndex
+    mib: MIB-Dell-10892
+    tag: index
+  }
+  1.3.6.1.4.1.674.10892.1.1100.30.1.5:
+  {
+    device: dell
+    name: processorDeviceStatus
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.30.1.19:
+  {
+    device: dell
+    name: processorDeviceThreadCount
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.40.1.1:
+  {
+    device: dell
+    name: cacheDevicechassisIndex
+    mib: MIB-Dell-10892
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.1.1100.40.1.2:
+  {
+    device: dell
+    name: cacheDeviceIndex
+    mib: MIB-Dell-10892
+    tag: index
+  }
+  1.3.6.1.4.1.674.10892.1.1100.40.1.5:
+  {
+    device: dell
+    name: cacheDeviceStatus
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.40.1.12:
+  {
+    device: dell
+    name: cacheDeviceMaximumSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.40.1.13:
+  {
+    device: dell
+    name: cacheDeviceCurrentSize
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.50.1.1:
+  {
+    device: dell
+    name: memoryDevicechassisIndex
+    mib: MIB-Dell-10892
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.50.1.2:
+  {
+    device: dell
+    name: memoryDeviceIndex
+    mib: MIB-Dell-10892
+    tag: device_index
+  }
+  1.3.6.1.4.1.674.10892.1.1100.50.1.23:
+  {
+    device: dell
+    name: memoryDeviceSerialNumberName
+    mib: MIB-Dell-10892
+    tag: serial_number_name
+  }
+  1.3.6.1.4.1.674.10892.1.1100.50.1.5:
+  {
+    device: dell
+    name: memoryDeviceStatus
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.50.1.20:
+  {
+    device: dell
+    name: memoryDeviceFailureModes
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.90.1.11:
+  {
+    device: dell
+    name: networkDeviceIPAddress
+    mib: MIB-Dell-10892
+    tag: ip_address
+  }
+  1.3.6.1.4.1.674.10892.1.1100.90.1.3:
+  {
+    device: dell
+    name: networkDeviceStatus
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.1:
+  {
+    device: generic
+    name: systemStatechassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.4:
+  {
+    device: generic
+    name: systemStateChassisStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.6:
+  {
+    device: generic
+    name: systemStatePowerUnitStatusRedundancy
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.9:
+  {
+    device: generic
+    name: systemStatePowerSupplyStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.15:
+  {
+    device: generic
+    name: systemStateAmperageStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.18:
+  {
+    device: generic
+    name: systemStateCoolingUnitStatusRedundancy
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.21:
+  {
+    device: generic
+    name: systemStateCoolingDeviceStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.24:
+  {
+    device: generic
+    name: systemStateTemperatureStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.27:
+  {
+    device: generic
+    name: systemStateMemoryDeviceStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.30:
+  {
+    device: generic
+    name: systemStateChassisIntrusionStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.42:
+  {
+    device: generic
+    name: systemStatePowerUnitStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.44:
+  {
+    device: generic
+    name: systemStateCoolingUnitStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.50:
+  {
+    device: generic
+    name: systemStateProcessorDeviceStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10.1.63:
+  {
+    device: generic
+    name: systemStateTemperatureStatisticsStatusCombined
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.4.1.2:
+  {
+    device: generic
+    name: physicalDiskName
+    mib: IDRAC-MIB-SMIv2
+    tag: disk_name
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.4.1.4:
+  {
+    device: generic
+    name: physicalDiskState
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.4.1.11:
+  {
+    device: generic
+    name: physicalDiskCapacityInMB
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.4.1.17:
+  {
+    device: generic
+    name: physicalDiskUsedSpaceInMB
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.4.1.19:
+  {
+    device: generic
+    name: physicalDiskFreeSpaceInMB
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.9.1.2:
+  {
+    device: generic
+    name: enclosurePowerSupplyName
+    mib: IDRAC-MIB-SMIv2
+    tag: supply_name
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.9.1.4:
+  {
+    device: generic
+    name: enclosurePowerSupplyState
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.15.1.21:
+  {
+    device: generic
+    name: batteryDisplayName
+    mib: IDRAC-MIB-SMIv2
+    tag: battery_name
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.15.1.4:
+  {
+    device: generic
+    name: batteryState
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.1.1.2:
+  {
+    device: generic
+    name: controllerName
+    mib: IDRAC-MIB-SMIv2
+    tag: controller_name
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.1.1.37:
+  {
+    device: generic
+    name: controllerRollUpStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.80.1.9:
+  {
+    device: generic
+    name: pCIDeviceDescriptionName
+    mib: IDRAC-MIB-SMIv2
+    tag: device_descr_name
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.80.1.1:
+  {
+    device: generic
+    name: pCIDevicechassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.80.1.5:
+  {
+    device: generic
+    name: pCIDeviceStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1200.10.1.8:
+  {
+    device: generic
+    name: systemSlotSlotExternalSlotName
+    mib: IDRAC-MIB-SMIv2
+    tag: slot_name
+  }
+  1.3.6.1.4.1.674.10892.5.4.1200.10.1.1:
+  {
+    device: generic
+    name: systemSlotchassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.1200.10.1.5:
+  {
+    device: generic
+    name: systemSlotStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.90.1.1:
+  {
+    device: generic
+    name: networkDeviceChassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.90.1.16:
+  {
+    device: generic
+    name: networkDevicePermanentMACAddress
+    mib: IDRAC-MIB-SMIv2
+    tag: mac_addr
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.90.1.30:
+  {
+    device: generic
+    name: networkDeviceFQDD
+    mib: IDRAC-MIB-SMIv2
+    tag: device_fqdd
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.90.1.3:
+  {
+    device: generic
+    name: networkDeviceStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.300.50.1.1:
+  {
+    device: generic
+    name: systemBIOSchassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.300.50.1.5:
+  {
+    device: generic
+    name: systemBIOSStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.30.1.7:
+  {
+    device: generic
+    name: amperageProbeType
+    mib: IDRAC-MIB-SMIv2
+    tag: probe_type
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.30.1.1:
+  {
+    device: generic
+    name: amperageProbechassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.30.1.5:
+  {
+    device: generic
+    name: amperageProbeStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.30.1.6:
+  {
+    device: generic
+    name: amperageProbeReading
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.20.1.1:
+  {
+    device: generic
+    name: voltageProbechassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.20.1.7:
+  {
+    device: generic
+    name: voltageProbeType
+    mib: IDRAC-MIB-SMIv2
+    tag: probe_type
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.20.1.5:
+  {
+    device: generic
+    name: voltageProbeStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.20.1.6:
+  {
+    device: generic
+    name: voltageProbeReading
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.50.1.7:
+  {
+    device: generic
+    name: memoryDeviceType
+    mib: IDRAC-MIB-SMIv2
+    tag: device_type
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.50.1.1:
+  {
+    device: generic
+    name: memoryDevicechassisIndex
+    mib: IDRAC-MIB-SMIv2
+    tag: chassis_index
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.50.1.5:
+  {
+    device: generic
+    name: memoryDeviceStatus
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.2.3.1.9.0:
+  {
+    device: generic
+    name: drsCMCCurrStatus
+    mib: DELL-RAC-MIB
+  }
+  1.3.6.1.4.1.674.10892.2.3.1.1.0:
+  {
+    device: generic
+    name: drsGlobalCurrStatus
+    mib: DELL-RAC-MIB
+  }
+  1.3.6.1.4.1.674.10892.2.3.1.5.0:
+  {
+    device: generic
+    name: drsPowerCurrStatus
+    mib: DELL-RAC-MIB
+  }
+  1.3.6.1.4.1.674.10892.2.3.1.4.0:
+  {
+    device: generic
+    name: drsRedCurrStatus
+    mib: DELL-RAC-MIB
+  }
+  1.3.6.1.4.1.674.10892.2.2.1.0:
+  {
+    device: generic
+    name: drsGlobalSystemStatus
+    mib: DELL-RAC-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.1.1.2:
+  {
+    device: generic
+    name: adapterName
+    mib: INTEL-LAN-ADAPTERS-MIB
+    tag: adapter
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.1:
+  {
+    device: generic
+    name: adapterRxPackets
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.2:
+  {
+    device: generic
+    name: adapterTxPackets
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.3:
+  {
+    device: generic
+    name: adapterRxBytes
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.4:
+  {
+    device: generic
+    name: adapterTxBytes
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.5:
+  {
+    device: generic
+    name: adapterRxErrors
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.6:
+  {
+    device: generic
+    name: adapterTxErrors
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.7:
+  {
+    device: generic
+    name: adapterRxDropped
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.8:
+  {
+    device: generic
+    name: adapterTxDropped
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.9:
+  {
+    device: generic
+    name: adapterRxMulticast
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3.1.10:
+  {
+    device: generic
+    name: adapterCollisions
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.1.44.0:
+  {
+    device: f5
+    name: sysStatMemoryTotal
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.1.45.0:
+  {
+    device: f5
+    name: sysStatMemoryUsed
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.21.28.0:
+  {
+    device: f5
+    name: sysGlobalTmmStatMemoryTotal
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.21.29.0:
+  {
+    device: f5
+    name: sysGlobalTmmStatMemoryUsed
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.20.44.0:
+  {
+    device: f5
+    name: sysGlobalHostOtherMemoryTotal
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.20.45.0:
+  {
+    device: f5
+    name: sysGlobalHostOtherMemoryUsed
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.20.46.0:
+  {
+    device: f5
+    name: sysGlobalHostSwapTotal
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.20.47.0:
+  {
+    device: f5
+    name: sysGlobalHostSwapUsed
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.3:
+  {
+    device: f5
+    name: sysMultiHostCpuId
+    mib: F5-BIGIP-SYSTEM-MIB
+    tag: cpu
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.4:
+  {
+    device: f5
+    name: sysMultiHostCpuUser
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.5:
+  {
+    device: f5
+    name: sysMultiHostCpuNice
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.6:
+  {
+    device: f5
+    name: sysMultiHostCpuSystem
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.7:
+  {
+    device: f5
+    name: sysMultiHostCpuIdle
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.8:
+  {
+    device: f5
+    name: sysMultiHostCpuIrq
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.9:
+  {
+    device: f5
+    name: sysMultiHostCpuSoftirq
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2.1.10:
+  {
+    device: f5
+    name: sysMultiHostCpuIowait
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.2.0:
+  {
+    device: f5
+    name: sysTcpStatOpen
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.3.0:
+  {
+    device: f5
+    name: sysTcpStatCloseWait
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.4.0:
+  {
+    device: f5
+    name: sysTcpStatFinWait
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.5.0:
+  {
+    device: f5
+    name: sysTcpStatTimeWait
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.6.0:
+  {
+    device: f5
+    name: sysTcpStatAccepts
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.7.0:
+  {
+    device: f5
+    name: sysTcpStatAcceptfails
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.8.0:
+  {
+    device: f5
+    name: sysTcpStatConnects
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.12.9.0:
+  {
+    device: f5
+    name: sysTcpStatConnfails
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.13.2.0:
+  {
+    device: f5
+    name: sysUdpStatOpen
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.13.3.0:
+  {
+    device: f5
+    name: sysUdpStatAccepts
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.13.4.0:
+  {
+    device: f5
+    name: sysUdpStatAcceptfails
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.13.5.0:
+  {
+    device: f5
+    name: sysUdpStatConnects
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.13.6.0:
+  {
+    device: f5
+    name: sysUdpStatConnfails
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.9.2.0:
+  {
+    device: f5
+    name: sysClientsslStatCurConns
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.9.10.0:
+  {
+    device: f5
+    name: sysClientsslStatEncryptedBytesIn
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.9.11.0:
+  {
+    device: f5
+    name: sysClientsslStatEncryptedBytesOut
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.9.12.0:
+  {
+    device: f5
+    name: sysClientsslStatDecryptedBytesIn
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.9.13.0:
+  {
+    device: f5
+    name: sysClientsslStatDecryptedBytesOut
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.1.2.9.29.0:
+  {
+    device: f5
+    name: sysClientsslStatHandshakeFailures
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.1.1:
+  {
+    device: f5
+    name: ltmVirtualServNumber
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.1.2.1.1:
+  {
+    device: f5
+    name: ltmVirtualServName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: server
+  }
+  1.3.6.1.4.1.3375.2.2.10.1.2.1.9:
+  {
+    device: f5
+    name: ltmVirtualServEnabled
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.1.2.1.10:
+  {
+    device: f5
+    name: ltmVirtualServConnLimit
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.1:
+  {
+    device: f5
+    name: ltmVirtualServStatName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: server
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.6:
+  {
+    device: f5
+    name: ltmVirtualServStatClientPktsIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.7:
+  {
+    device: f5
+    name: ltmVirtualServStatClientBytesIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.8:
+  {
+    device: f5
+    name: ltmVirtualServStatClientPktsOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.9:
+  {
+    device: f5
+    name: ltmVirtualServStatClientBytesOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.12:
+  {
+    device: f5
+    name: ltmVirtualServStatClientCurConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.31:
+  {
+    device: f5
+    name: ltmVirtualServStatVsUsageRatio5s
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.32:
+  {
+    device: f5
+    name: ltmVirtualServStatVsUsageRatio1m
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.33:
+  {
+    device: f5
+    name: ltmVirtualServStatVsUsageRatio5m
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.34:
+  {
+    device: f5
+    name: ltmVirtualServStatCurrentConnsPerSec
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.35:
+  {
+    device: f5
+    name: ltmVirtualServStatDurationRateExceeded
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.5:
+  {
+    device: f5
+    name: ltmVirtualServStatNoNodesErrors
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.11:
+  {
+    device: f5
+    name: ltmVirtualServStatClientTotConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.27:
+  {
+    device: f5
+    name: ltmVirtualServStatTotRequests
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.40:
+  {
+    device: f5
+    name: ltmVirtualServStatClientEvictedConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3.1.41:
+  {
+    device: f5
+    name: ltmVirtualServStatClientSlowKilled
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.1:
+  {
+    device: f5
+    name: ltmNodeAddrNumber
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.17:
+  {
+    device: f5
+    name: ltmNodeAddrName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: node
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.3:
+  {
+    device: f5
+    name: ltmNodeAddrConnLimit
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.4:
+  {
+    device: f5
+    name: ltmNodeAddrRatio
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.5:
+  {
+    device: f5
+    name: ltmNodeAddrDynamicRatio
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.6:
+  {
+    device: f5
+    name: ltmNodeAddrMonitorState
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.7:
+  {
+    device: f5
+    name: ltmNodeAddrMonitorStatus
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2.1.10:
+  {
+    device: f5
+    name: ltmNodeAddrSessionStatus
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.20:
+  {
+    device: f5
+    name: ltmNodeAddrStatNodeName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: node
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.3:
+  {
+    device: f5
+    name: ltmNodeAddrStatServerPktsIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.4:
+  {
+    device: f5
+    name: ltmNodeAddrStatServerBytesIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.5:
+  {
+    device: f5
+    name: ltmNodeAddrStatServerPktsOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.6:
+  {
+    device: f5
+    name: ltmNodeAddrStatServerBytesOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.9:
+  {
+    device: f5
+    name: ltmNodeAddrStatServerCurConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.21:
+  {
+    device: f5
+    name: ltmNodeAddrStatCurSessions
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.22:
+  {
+    device: f5
+    name: ltmNodeAddrStatCurrentConnsPerSec
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.23:
+  {
+    device: f5
+    name: ltmNodeAddrStatDurationRateExceeded
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.8:
+  {
+    device: f5
+    name: ltmNodeAddrStatServerTotConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3.1.17:
+  {
+    device: f5
+    name: ltmNodeAddrStatTotRequests
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.1.1:
+  {
+    device: f5
+    name: ltmPoolNumber
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.1.2.1.1:
+  {
+    device: f5
+    name: ltmPoolName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: pool
+  }
+  1.3.6.1.4.1.3375.2.2.5.1.2.1.8:
+  {
+    device: f5
+    name: ltmPoolActiveMemberCnt
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.1.2.1.16:
+  {
+    device: f5
+    name: ltmPoolDynamicRatioSum
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.1.2.1.23:
+  {
+    device: f5
+    name: ltmPoolMemberCnt
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.1:
+  {
+    device: f5
+    name: ltmPoolStatName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: pool
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.2:
+  {
+    device: f5
+    name: ltmPoolStatServerPktsIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.3:
+  {
+    device: f5
+    name: ltmPoolStatServerBytesIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.4:
+  {
+    device: f5
+    name: ltmPoolStatServerPktsOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.5:
+  {
+    device: f5
+    name: ltmPoolStatServerBytesOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.8:
+  {
+    device: f5
+    name: ltmPoolStatServerCurConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.18:
+  {
+    device: f5
+    name: ltmPoolStatConnqDepth
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.19:
+  {
+    device: f5
+    name: ltmPoolStatConnqAgeHead
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.31:
+  {
+    device: f5
+    name: ltmPoolStatCurSessions
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.7:
+  {
+    device: f5
+    name: ltmPoolStatServerTotConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.23:
+  {
+    device: f5
+    name: ltmPoolStatConnqServiced
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3.1.30:
+  {
+    device: f5
+    name: ltmPoolStatTotRequests
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.1:
+  {
+    device: f5
+    name: ltmPoolMemberNumber
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.1:
+  {
+    device: f5
+    name: ltmPoolMemberPoolName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: pool
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.19:
+  {
+    device: f5
+    name: ltmPoolMemberNodeName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: node
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.5:
+  {
+    device: f5
+    name: ltmPoolMemberConnLimit
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.6:
+  {
+    device: f5
+    name: ltmPoolMemberRatio
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.9:
+  {
+    device: f5
+    name: ltmPoolMemberDynamicRatio
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.10:
+  {
+    device: f5
+    name: ltmPoolMemberMonitorState
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.11:
+  {
+    device: f5
+    name: ltmPoolMemberMonitorStatus
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2.1.13:
+  {
+    device: f5
+    name: ltmPoolMemberSessionStatus
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.1:
+  {
+    device: f5
+    name: ltmPoolMemberStatPoolName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: pool
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.28:
+  {
+    device: f5
+    name: ltmPoolMemberStatNodeName
+    mib: F5-BIGIP-LOCAL-MIB
+    tag: node
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.5:
+  {
+    device: f5
+    name: ltmPoolMemberStatServerPktsIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.6:
+  {
+    device: f5
+    name: ltmPoolMemberStatServerBytesIn
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.7:
+  {
+    device: f5
+    name: ltmPoolMemberStatServerPktsOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.8:
+  {
+    device: f5
+    name: ltmPoolMemberStatServerBytesOut
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.11:
+  {
+    device: f5
+    name: ltmPoolMemberStatServerCurConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.22:
+  {
+    device: f5
+    name: ltmPoolMemberStatConnqDepth
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.23:
+  {
+    device: f5
+    name: ltmPoolMemberStatConnqAgeHead
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.29:
+  {
+    device: f5
+    name: ltmPoolMemberStatCurSessions
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.30:
+  {
+    device: f5
+    name: ltmPoolMemberStatCurrentConnsPerSec
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.31:
+  {
+    device: f5
+    name: ltmPoolMemberStatDurationRateExceeded
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.10:
+  {
+    device: f5
+    name: ltmPoolMemberStatServerTotConns
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.19:
+  {
+    device: f5
+    name: ltmPoolMemberStatTotRequests
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3.1.27:
+  {
+    device: f5
+    name: ltmPoolMemberStatConnqServiced
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.3.0:
+  {
+    device: fortinet
+    name: fgSysCpuUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.4.2.1.1:
+  {
+    device: fortinet
+    name: fgProcessorEntIndex
+    mib: FORTINET-FORTIGATE-MIB
+    tag: processor_index
+  }
+  1.3.6.1.4.1.12356.101.4.4.2.1.6:
+  {
+    device: fortinet
+    name: fgProcessorPktRxCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.4.2.1.7:
+  {
+    device: fortinet
+    name: fgProcessorPktTxCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.4.2.1.8:
+  {
+    device: fortinet
+    name: fgProcessorPktDroppedCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.4.2.1.2:
+  {
+    device: fortinet
+    name: fgProcessorUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.4.2.1.10:
+  {
+    device: fortinet
+    name: fgProcessorSysUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.4.0:
+  {
+    device: fortinet
+    name: fgSysMemUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.5.0:
+  {
+    device: fortinet
+    name: fgSysMemCapacity
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.9.0:
+  {
+    device: fortinet
+    name: fgSysLowMemUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.10.0:
+  {
+    device: fortinet
+    name: fgSysLowMemCapacity
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.6.0:
+  {
+    device: fortinet
+    name: fgSysDiskUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.7.0:
+  {
+    device: fortinet
+    name: fgSysDiskCapacity
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.1:
+  {
+    device: fortinet
+    name: fgVdEntIndex
+    mib: FORTINET-FORTIGATE-MIB
+    tag: virtualdomain_index
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.2:
+  {
+    device: fortinet
+    name: fgVdEntName
+    mib: FORTINET-FORTIGATE-MIB
+    tag: virtualdomain_name
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.3:
+  {
+    device: fortinet
+    name: fgVdEntOpMode
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.4:
+  {
+    device: fortinet
+    name: fgVdEntHaState
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.5:
+  {
+    device: fortinet
+    name: fgVdEntCpuUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.6:
+  {
+    device: fortinet
+    name: fgVdEntMemUsage
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.7:
+  {
+    device: fortinet
+    name: fgVdEntSesCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1.1.8:
+  {
+    device: fortinet
+    name: fgVdEntSesRate
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.1.1.0:
+  {
+    device: fortinet
+    name: fgVdNumber
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.1.2.0:
+  {
+    device: fortinet
+    name: fgVdMaxVdoms
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.7.2.1.1.1:
+  {
+    device: fortinet
+    name: fgIntfEntVdom
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.8.0:
+  {
+    device: fortinet
+    name: fgSysSesCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.11.0:
+  {
+    device: fortinet
+    name: fgSysSesRate1
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.15.0:
+  {
+    device: fortinet
+    name: fgSysSes6Count
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.1.16.0:
+  {
+    device: fortinet
+    name: fgSysSes6Rate1
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.10.100.4.0:
+  {
+    device: fortinet
+    name: fgApHTTPConnections
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.10.100.5.0:
+  {
+    device: fortinet
+    name: fgApHTTPMaxConnections
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.1.1.1:
+  {
+    device: fortinet
+    name: fgFwPolID
+    mib: FORTINET-FORTIGATE-MIB
+    tag: policy_index
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.1.1.2:
+  {
+    device: fortinet
+    name: fgFwPolPktCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.1.1.3:
+  {
+    device: fortinet
+    name: fgFwPolByteCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.2.1.1:
+  {
+    device: fortinet
+    name: fgFwPol6ID
+    mib: FORTINET-FORTIGATE-MIB
+    tag: policy6_index
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.2.1.2:
+  {
+    device: fortinet
+    name: fgFwPol6PktCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.2.1.3:
+  {
+    device: fortinet
+    name: fgFwPol6ByteCount
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.232.9.2.2.32:
+  {
+    device: hp
+    name: cpqSm2CntlrServerPowerState
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.2.5:
+  {
+    device: hp
+    name: cpqSm2CntlrBatteryStatus
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.2.6:
+  {
+    device: hp
+    name: cpqSm2CntlrBatteryPercentCharged
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.2.9:
+  {
+    device: hp
+    name: cpqSm2CntlrSelfTestErrors
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.2.16:
+  {
+    device: hp
+    name: cpqSm2CntlrRemoteSessionStatus
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.2.17:
+  {
+    device: hp
+    name: cpqSm2CntlrInterfaceStatus
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.3.1:
+  {
+    device: hp
+    name: cpqSm2EventTotalEntries
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.1:
+  {
+    device: hp
+    name: cpqSm2NicStatsLocation
+    mib: CPQSM2-MIB
+    tag: nic_stats_location
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.2:
+  {
+    device: hp
+    name: cpqSm2NicXmitBytes
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.3:
+  {
+    device: hp
+    name: cpqSm2NicXmitTotalPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.6:
+  {
+    device: hp
+    name: cpqSm2NicXmitDiscardPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.7:
+  {
+    device: hp
+    name: cpqSm2NicXmitErrorPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.8:
+  {
+    device: hp
+    name: cpqSm2NicXmitQueueLength
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.9:
+  {
+    device: hp
+    name: cpqSm2NicRecvBytes
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.10:
+  {
+    device: hp
+    name: cpqSm2NicRecvTotalPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.13:
+  {
+    device: hp
+    name: cpqSm2NicRecvDiscardPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.14:
+  {
+    device: hp
+    name: cpqSm2NicRecvErrorPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2.1.15:
+  {
+    device: hp
+    name: cpqSm2NicRecvUnknownPackets
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.39:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterName
+    mib: CPQNIC-MIB
+    tag: interface
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.16:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterGoodTransmits
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.17:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterGoodReceives
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.18:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterBadTransmits
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.19:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterBadReceives
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.37:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterInOctets
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.38:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterOutOctets
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.33:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterSpeed
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.36:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterSpeedMbps
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.5.3:
+  {
+    device: hp
+    name: cpqNicVtVirusActivity
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.6.2.8.1.0:
+  {
+    device: generic
+    name: cpqHeSysUtilLifeTime
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.8.2.0:
+  {
+    device: generic
+    name: cpqHeSysUtilEisaBusMin
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.2.2.0:
+  {
+    device: generic
+    name: cpqHeCritLogCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.3.1.0:
+  {
+    device: generic
+    name: cpqHeCorrMemLogStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.3.2.0:
+  {
+    device: generic
+    name: cpqHeCorrMemLogCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.3.3.0:
+  {
+    device: generic
+    name: cpqHeCorrMemTotalErrs
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.5.1.0:
+  {
+    device: generic
+    name: cpqHeAsrStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.5.6.0:
+  {
+    device: generic
+    name: cpqHeAsrPost
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.5.10.0:
+  {
+    device: generic
+    name: cpqHeAsrRebootCount
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.5.17.0:
+  {
+    device: generic
+    name: cpqHeAsrCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.5.21.0:
+  {
+    device: generic
+    name: cpqHeAsrNetworkAccessStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.3.0:
+  {
+    device: generic
+    name: cpqHeThermalTempStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.4.0:
+  {
+    device: generic
+    name: cpqHeThermalSystemFanStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.5.0:
+  {
+    device: generic
+    name: cpqHeThermalCpuFanStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.8.1.3:
+  {
+    device: generic
+    name: cpqHeTemperatureIndex
+    mib: CPQHLTH-MIB
+    tag: temperature_index
+  }
+  1.3.6.1.4.1.232.6.2.6.8.1.4:
+  {
+    device: generic
+    name: cpqHeTemperatureCelsius
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.8.1.6:
+  {
+    device: generic
+    name: cpqHeTemperatureCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.15.3.0:
+  {
+    device: generic
+    name: cpqHePowerMeterCurrReading
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.17.2.1.2:
+  {
+    device: generic
+    name: cpqHeSysBatteryIndex
+    mib: CPQHLTH-MIB
+    tag: battery_index
+  }
+  1.3.6.1.4.1.232.6.2.17.2.1.4:
+  {
+    device: generic
+    name: cpqHeSysBatteryCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.17.2.1.5:
+  {
+    device: generic
+    name: cpqHeSysBatteryStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.1.0:
+  {
+    device: generic
+    name: cpqHeThermalCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.9.2.0:
+  {
+    device: generic
+    name: cpqHeFltTolPwrSupplyStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.14.13.1.15:
+  {
+    device: generic
+    name: cpqHeResMem2ModuleCellTablePtr
+    mib: CPQHLTH-MIB
+    tag: mem_board_index
+  }
+  1.3.6.1.4.1.232.6.2.14.13.1.20:
+  {
+    device: generic
+    name: cpqHeResMem2ModuleCondition
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.9.3.1.1:
+  {
+    device: generic
+    name: cpqHeFltTolPowerSupplyChassis
+    mib: CPQHLTH-MIB
+    tag: chassis_num
+  }
+  1.3.6.1.4.1.232.6.2.9.3.1.5:
+  {
+    device: generic
+    name: cpqHeFltTolPowerSupplyStatus
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.9.3.1.7:
+  {
+    device: generic
+    name: cpqHeFltTolPowerSupplyCapacityUsed
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.9.3.1.8:
+  {
+    device: generic
+    name: cpqHeFltTolPowerSupplyCapacityMaximum
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.1:
+  {
+    device: generic
+    name: cpqDaPhyDrvCntlrIndex
+    mib: CPQIDA-MIB
+    tag: drive_cntrl_idx
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.2:
+  {
+    device: generic
+    name: cpqDaPhyDrvIndex
+    mib: CPQIDA-MIB
+    tag: drive_index
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.8:
+  {
+    device: generic
+    name: cpqDaPhyDrvUsedReallocs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.9:
+  {
+    device: generic
+    name: cpqDaPhyDrvRefHours
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.16:
+  {
+    device: generic
+    name: cpqDaPhyDrvHardReadErrs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.17:
+  {
+    device: generic
+    name: cpqDaPhyDrvRecvReadErrs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.18:
+  {
+    device: generic
+    name: cpqDaPhyDrvHardWriteErrs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.19:
+  {
+    device: generic
+    name: cpqDaPhyDrvRecvWriteErrs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.20:
+  {
+    device: generic
+    name: cpqDaPhyDrvHSeekErrs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.21:
+  {
+    device: generic
+    name: cpqDaPhyDrvSeekErrs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.6:
+  {
+    device: generic
+    name: cpqDaPhyDrvStatus
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.7:
+  {
+    device: generic
+    name: cpqDaPhyDrvFactReallocs
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.22:
+  {
+    device: generic
+    name: cpqDaPhyDrvSpinupTime
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.45:
+  {
+    device: generic
+    name: cpqDaPhyDrvSize
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.57:
+  {
+    device: generic
+    name: cpqDaPhyDrvSmartStatus
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1.1.70:
+  {
+    device: generic
+    name: cpqDaPhyDrvCurrentTemperature
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.1:
+  {
+    device: hp
+    name: cpqSeCpuUnitIndex
+    mib: CPQSTDEQ-MIB
+    tag: cpu_index
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.2:
+  {
+    device: hp
+    name: cpqSeCpuSlot
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.4:
+  {
+    device: hp
+    name: cpqSeCpuSpeed
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.6:
+  {
+    device: hp
+    name: cpqSeCpuStatus
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.7:
+  {
+    device: hp
+    name: cpqSeCpuExtSpeed
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.15:
+  {
+    device: hp
+    name: cpqSeCpuCore
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.25:
+  {
+    device: hp
+    name: cpqSeCPUCoreMaxThreads
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1.1.27:
+  {
+    device: hp
+    name: cpqSeCpuPrimary
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.11.2.3.1.1.1:
+  {
+    device: hp
+    name: cpqHoCpuUtilUnitIndex
+    mib: CPQHOST-MIB
+    tag: cpu_unit_index
+  }
+  1.3.6.1.4.1.232.11.2.3.1.1.2:
+  {
+    device: hp
+    name: cpqHoCpuUtilMin
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.3.1.1.3:
+  {
+    device: hp
+    name: cpqHoCpuUtilFiveMin
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.3.1.1.4:
+  {
+    device: hp
+    name: cpqHoCpuUtilThirtyMin
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.3.1.1.5:
+  {
+    device: hp
+    name: cpqHoCpuUtilHour
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.1:
+  {
+    device: hp
+    name: cpqHoFileSysIndex
+    mib: CPQHOST-MIB
+    tag: file_sys_index
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.3:
+  {
+    device: hp
+    name: cpqHoFileSysSpaceTotal
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.4:
+  {
+    device: hp
+    name: cpqHoFileSysSpaceUsed
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.5:
+  {
+    device: hp
+    name: cpqHoFileSysPercentSpaceUsed
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.6:
+  {
+    device: hp
+    name: cpqHoFileSysAllocUnitsTotal
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.7:
+  {
+    device: hp
+    name: cpqHoFileSysAllocUnitsUsed
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1.1.8:
+  {
+    device: hp
+    name: cpqHoFileSysStatus
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.1:
+  {
+    device: hp
+    name: cpqSiMemBoardIndex
+    mib: CPQSINFO-MIB
+    tag: mem_board_index
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.2:
+  {
+    device: hp
+    name: cpqSiMemModuleIndex
+    mib: CPQSINFO-MIB
+    tag: mem_module_index
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.3:
+  {
+    device: hp
+    name: cpqSiMemModuleSize
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.4:
+  {
+    device: hp
+    name: cpqSiMemModuleType
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.5:
+  {
+    device: hp
+    name: cpqSiMemModuleSpeed
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.6:
+  {
+    device: hp
+    name: cpqSiMemModuleTechnology
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.11:
+  {
+    device: hp
+    name: cpqSiMemModuleECCStatus
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.13:
+  {
+    device: hp
+    name: cpqSiMemModuleFrequency
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5.1.15:
+  {
+    device: hp
+    name: cpqSiMemModuleCellStatus
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.4:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterMACAddress
+    mib: CPQNIC-MIB
+    tag: adapter_mac_addr
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.13:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterState
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1.1.14:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterStatus
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.3.2.2.1.1.1:
+  {
+    device: hp
+    name: cpqDaCntlrIndex
+    mib: CPQIDA-MIB
+    tag: controller_index
+  }
+  1.3.6.1.4.1.232.3.2.2.1.1.6:
+  {
+    device: hp
+    name: cpqDaCntlrCondition
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.12124.2.53.1.2:
+  {
+    device: dell
+    name: fanName
+    mib: ISILON-MIB
+    tag: fan_name
+  }
+  1.3.6.1.4.1.12124.2.53.1.1:
+  {
+    device: dell
+    name: fanNumber
+    mib: ISILON-MIB
+    tag: fan_number
+  }
+  1.3.6.1.4.1.12124.2.53.1.4:
+  {
+    device: dell
+    name: fanSpeed
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.1.2.0:
+  {
+    device: dell
+    name: clusterHealth
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.2.1.1.0:
+  {
+    device: dell
+    name: clusterIfsInBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.2.1.3.0:
+  {
+    device: dell
+    name: clusterIfsOutBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.3.2.0:
+  {
+    device: dell
+    name: ifsUsedBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.3.1.0:
+  {
+    device: dell
+    name: ifsTotalBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.1.2.0:
+  {
+    device: dell
+    name: nodeHealth
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.1.1.0:
+  {
+    device: dell
+    name: nodeIfsInBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.1.3.0:
+  {
+    device: dell
+    name: nodeIfsOutBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.52.1.5:
+  {
+    device: dell
+    name: diskStatus
+    mib: ISILON-MIB
+    tag: disk_status
+  }
+  1.3.6.1.4.1.12124.2.52.1.1:
+  {
+    device: dell
+    name: diskBay
+    mib: ISILON-MIB
+    tag: disk_bay
+  }
+  1.3.6.1.4.1.12124.2.52.1.9:
+  {
+    device: dell
+    name: diskSizeBytes
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.10.1.1:
+  {
+    device: dell
+    name: protocolName
+    mib: ISILON-MIB
+    tag: protocol_name
+  }
+  1.3.6.1.4.1.12124.2.2.10.1.3:
+  {
+    device: dell
+    name: protocolOpsPerSecond
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.10.1.14:
+  {
+    device: dell
+    name: latencyMin
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.10.1.15:
+  {
+    device: dell
+    name: latencyMax
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.10.1.16:
+  {
+    device: dell
+    name: latencyAverage
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.12.1.1.2:
+  {
+    device: dell
+    name: quotaType
+    mib: ISILON-MIB
+    tag: quota_type
+  }
+  1.3.6.1.4.1.12124.1.12.1.1.3:
+  {
+    device: dell
+    name: quotaID
+    mib: ISILON-MIB
+    tag: quota_id
+  }
+  1.3.6.1.4.1.12124.1.12.1.1.7:
+  {
+    device: dell
+    name: quotaHardThreshold
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.12.1.1.9:
+  {
+    device: dell
+    name: quotaSoftThreshold
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.12.1.1.13:
+  {
+    device: dell
+    name: quotaUsage
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.12.1.1.11:
+  {
+    device: dell
+    name: quotaAdvisoryThreshold
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.1.1.0:
+  {
+    device: dell
+    name: clusterName
+    mib: UNKNOWN-MIB
+    tag: cluster_name
+  }
+  1.3.6.1.4.1.12124.2.1.1.0:
+  {
+    device: dell
+    name: nodeName
+    mib: UNKNOWN-MIB
+    tag: node_name
+  }
+  1.3.6.1.4.1.12124.2.1.3.0:
+  {
+    device: dell
+    name: nodeType
+    mib: UNKNOWN-MIB
+    tag: node_type
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.2:
+  {
+    device: generic
+    name: jnxVirtualChassisPortName
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+    tag: port_name
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.5:
+  {
+    device: generic
+    name: jnxVirtualChassisPortInPkts
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.6:
+  {
+    device: generic
+    name: jnxVirtualChassisPortOutPkts
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.7:
+  {
+    device: generic
+    name: jnxVirtualChassisPortInOctets
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.8:
+  {
+    device: generic
+    name: jnxVirtualChassisPortOutOctets
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.9:
+  {
+    device: generic
+    name: jnxVirtualChassisPortInMcasts
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.10:
+  {
+    device: generic
+    name: jnxVirtualChassisPortOutMcasts
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.15:
+  {
+    device: generic
+    name: jnxVirtualChassisPortCarrierTrans
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.16:
+  {
+    device: generic
+    name: jnxVirtualChassisPortInCRCAlignErrors
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.17:
+  {
+    device: generic
+    name: jnxVirtualChassisPortUndersizePkts
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.18:
+  {
+    device: generic
+    name: jnxVirtualChassisPortCollisions
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.11:
+  {
+    device: generic
+    name: jnxVirtualChassisPortInPkts1secRate
+    mib: UNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.12:
+  {
+    device: generic
+    name: jnxVirtualChassisPortOutPkts1secRate
+    mib: UNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.13:
+  {
+    device: generic
+    name: jnxVirtualChassisPortInOctets1secRate
+    mib: UNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2.1.14:
+  {
+    device: generic
+    name: jnxVirtualChassisPortOutOctets1secRate
+    mib: UNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.6.2.1.2:
+  {
+    device: generic
+    name: jnxDcuStatsAddrFamily
+    mib: JUNIPER-DCU-MIB
+    tag: address_family
+  }
+  1.3.6.1.4.1.2636.3.6.2.1.3:
+  {
+    device: generic
+    name: jnxDcuStatsClassName
+    mib: JUNIPER-DCU-MIB
+    tag: destination_class_name
+  }
+  1.3.6.1.4.1.2636.3.6.2.1.4:
+  {
+    device: generic
+    name: jnxDcuStatsPackets
+    mib: JUNIPER-DCU-MIB
+  }
+  1.3.6.1.4.1.2636.3.6.2.1.5:
+  {
+    device: generic
+    name: jnxDcuStatsBytes
+    mib: JUNIPER-DCU-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.9.1.2:
+  {
+    device: generic
+    name: jnxCosIfsetDescr
+    mib: JUNIPER-COS-MIB
+    tag: interface
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.2:
+  {
+    device: generic
+    name: jnxCosIfsetQstatQueueNr
+    mib: JUNIPER-COS-MIB
+    tag: queue_number
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.3:
+  {
+    device: generic
+    name: jnxCosIfsetQstatQedPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.5:
+  {
+    device: generic
+    name: jnxCosIfsetQstatQedBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.7:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTxedPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.9:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTxedBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.11:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTailDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.13:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTotalRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.15:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpNonTcpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.17:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpTcpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.19:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpNonTcpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.21:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpTcpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.23:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTotalRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.25:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpNonTcpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.27:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpTcpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.29:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpNonTcpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.31:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpTcpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.33:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.35:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMLpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.37:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMHpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.39:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpRedDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.41:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.43:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMLpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.45:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMHpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.47:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpRedDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.49:
+  {
+    device: generic
+    name: jnxCosIfsetQstatRateLimitDropPkts
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.51:
+  {
+    device: generic
+    name: jnxCosIfsetQstatRateLimitDropBytes
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.4:
+  {
+    device: generic
+    name: jnxCosIfsetQstatQedPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.6:
+  {
+    device: generic
+    name: jnxCosIfsetQstatQedByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.8:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTxedPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.10:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTxedByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.12:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTailDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.14:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTotalRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.16:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpNonTcpRDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.18:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpTcpRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.20:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpNonTcpRDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.22:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpTcpRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.24:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTotalRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.26:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpNonTcpRDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.28:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpTcpRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.30:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpNonTcpRDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.32:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpTcpRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.34:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.36:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMLpRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.38:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMHpRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.40:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpRedDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.42:
+  {
+    device: generic
+    name: jnxCosIfsetQstatLpRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.44:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMLpRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.46:
+  {
+    device: generic
+    name: jnxCosIfsetQstatMHpRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.48:
+  {
+    device: generic
+    name: jnxCosIfsetQstatHpRedDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.50:
+  {
+    device: generic
+    name: jnxCosIfsetQstatRateLimitDropPktRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10.1.52:
+  {
+    device: generic
+    name: jnxCosIfsetQstatRateLimitDropByteRate
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.5.2.1.1:
+  {
+    device: generic
+    name: jnxFWCounterFilterName
+    mib: JUNIPER-FIREWALL-MIB
+    tag: firewall_filter_name
+  }
+  1.3.6.1.4.1.2636.3.5.2.1.2:
+  {
+    device: generic
+    name: jnxFWCounterName
+    mib: JUNIPER-FIREWALL-MIB
+    tag: counter_name
+  }
+  1.3.6.1.4.1.2636.3.5.2.1.3:
+  {
+    device: generic
+    name: jnxFWCounterType
+    mib: JUNIPER-FIREWALL-MIB
+    tag: counter_type
+  }
+  1.3.6.1.4.1.2636.3.5.2.1.4:
+  {
+    device: generic
+    name: jnxFWCounterPacketCount
+    mib: JUNIPER-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.2636.3.5.2.1.5:
+  {
+    device: generic
+    name: jnxFWCounterByteCount
+    mib: JUNIPER-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.2636.3.89.1.1.3.1.1:
+  {
+    device: generic
+    name: jnxUserFwLDAPDomain
+    mib: JUNIPER-USERFIREWALL-MIB
+    tag: ldap_domain_name
+  }
+  1.3.6.1.4.1.2636.3.89.1.1.3.1.2:
+  {
+    device: generic
+    name: jnxUserFwLDAPHost
+    mib: JUNIPER-USERFIREWALL-MIB
+    tag: ldap_host
+  }
+  1.3.6.1.4.1.2636.3.89.1.1.3.1.3:
+  {
+    device: generic
+    name: jnxUserFwLDAPTotalQuery
+    mib: JUNIPER-USERFIREWALL-MIB
+  }
+  1.3.6.1.4.1.2636.3.89.1.1.3.1.4:
+  {
+    device: generic
+    name: jnxUserFwLDAPFailedQuery
+    mib: JUNIPER-USERFIREWALL-MIB
+  }
+  1.3.6.1.4.1.2636.3.16.1.1.1.2:
+  {
+    device: generic
+    name: jnxScuStatsAddrFamily
+    mib: JUNIPER-SCU-MIB
+    tag: address_family
+  }
+  1.3.6.1.4.1.2636.3.16.1.1.1.4:
+  {
+    device: generic
+    name: jnxScuStatsPackets
+    mib: JUNIPER-SCU-MIB
+  }
+  1.3.6.1.4.1.2636.3.16.1.1.1.5:
+  {
+    device: generic
+    name: jnxScuStatsBytes
+    mib: JUNIPER-SCU-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.4.1.2:
+  {
+    device: meraki
+    name: devName
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+    tag: device
+  }
+  1.3.6.1.4.1.29671.1.1.4.1.9:
+  {
+    device: meraki
+    name: devProductCode
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+    tag: product
+  }
+  1.3.6.1.4.1.29671.1.1.4.1.11:
+  {
+    device: meraki
+    name: devNetworkName
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+    tag: network
+  }
+  1.3.6.1.4.1.29671.1.1.4.1.3:
+  {
+    device: meraki
+    name: devStatus
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.4.1.5:
+  {
+    device: meraki
+    name: devClientCount
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.5.1.3:
+  {
+    device: meraki
+    name: devInterfaceName
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+    tag: interface
+  }
+  1.3.6.1.4.1.29671.1.1.5.1.2:
+  {
+    device: meraki
+    name: devInterfaceIndex
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+    tag: index
+  }
+  1.3.6.1.4.1.29671.1.1.5.1.4:
+  {
+    device: meraki
+    name: devInterfaceSentPkts
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.5.1.5:
+  {
+    device: meraki
+    name: devInterfaceRecvPkts
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.5.1.6:
+  {
+    device: meraki
+    name: devInterfaceSentBytes
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.5.1.7:
+  {
+    device: meraki
+    name: devInterfaceRecvBytes
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.789.1.19.11.1.1:
+  {
+    device: netapp
+    name: svIndex
+    mib: NETAPP-MIB
+    tag: index
+  }
+  1.3.6.1.4.1.789.1.19.11.1.3:
+  {
+    device: netapp
+    name: svDst
+    mib: NETAPP-MIB
+    tag: destination
+  }
+  1.3.6.1.4.1.789.1.19.11.1.5:
+  {
+    device: netapp
+    name: svState
+    mib: NETAPP-MIB
+    tag: state
+  }
+  1.3.6.1.4.1.789.1.19.11.1.9:
+  {
+    device: netapp
+    name: svTotalFailures
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.9.20.1.1:
+  {
+    device: netapp
+    name: snapmirrorIndex
+    mib: NETAPP-MIB
+    tag: index
+  }
+  1.3.6.1.4.1.789.1.9.20.1.5:
+  {
+    device: netapp
+    name: snapmirrorState
+    mib: NETAPP-MIB
+    tag: state
+  }
+  1.3.6.1.4.1.789.1.9.20.1.6:
+  {
+    device: netapp
+    name: snapmirrorLag
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.9.20.1.9:
+  {
+    device: netapp
+    name: snapmirrorTotalFailures
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.5.4.1.1:
+  {
+    device: netapp
+    name: dfIndex
+    mib: NETAPP-MIB
+    tag: index
+  }
+  1.3.6.1.4.1.789.1.5.4.1.2:
+  {
+    device: netapp
+    name: dfFileSys
+    mib: NETAPP-MIB
+    tag: filesystem
+  }
+  1.3.6.1.4.1.789.1.5.4.1.14:
+  {
+    device: netapp
+    name: dfHighTotalKBytes
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.5.4.1.18:
+  {
+    device: netapp
+    name: dfHighAvailKBytes
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.5.4.1.7:
+  {
+    device: netapp
+    name: dfInodesUsed
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.5.4.1.8:
+  {
+    device: netapp
+    name: dfInodesFree
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.22.1.2.1.1:
+  {
+    device: netapp
+    name: netifIndex
+    mib: NETAPP-MIB
+    tag: index
+  }
+  1.3.6.1.4.1.789.1.22.1.2.1.2:
+  {
+    device: netapp
+    name: netifDescr
+    mib: NETAPP-MIB
+    tag: interface
+  }
+  1.3.6.1.4.1.789.1.22.1.2.1.3:
+  {
+    device: netapp
+    name: ifHighInOctets
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.1.0:
+  {
+    device: paloaltonetworks
+    name: panSessionUtilization
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.2.0:
+  {
+    device: paloaltonetworks
+    name: panSessionMax
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.3.0:
+  {
+    device: paloaltonetworks
+    name: panSessionActive
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.4.0:
+  {
+    device: paloaltonetworks
+    name: panSessionActiveTcp
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.5.0:
+  {
+    device: paloaltonetworks
+    name: panSessionActiveUdp
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.6.0:
+  {
+    device: paloaltonetworks
+    name: panSessionActiveICMP
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.7.0:
+  {
+    device: paloaltonetworks
+    name: panSessionActiveSslProxy
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.3.8.0:
+  {
+    device: paloaltonetworks
+    name: panSessionSslProxyUtilization
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.5.1.1.0:
+  {
+    device: paloaltonetworks
+    name: panGPGWUtilizationPct
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.5.1.2.0:
+  {
+    device: paloaltonetworks
+    name: panGPGWUtilizationMaxTunnels
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.2.1.2.5.1.3.0:
+  {
+    device: paloaltonetworks
+    name: panGPGWUtilizationActiveTunnels
+    mib: PAN-COMMON-MIB
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.1.2.0:
+  {
+    device: paloaltonetworks
+    name: panEntityTotalPowerUsed
+    mib: PAN-ENTITY-EXT-MIB
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.1.1.0:
+  {
+    device: paloaltonetworks
+    name: panEntityTotalPowerAvail
+    mib: PAN-ENTITY-EXT-MIB
+  }
+  1.3.6.1.2.1.47.1.1.1.1.2:
+  {
+    device: paloaltonetworks
+    name: entPhysicalDescr
+    mib: PAN-ENTITY-EXT-MIB
+    tag: ent_descr
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.2.1.1.1:
+  {
+    device: paloaltonetworks
+    name: panEntryFRUModulePowerUsed
+    mib: PAN-ENTITY-EXT-MIB
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.2.1.1.2:
+  {
+    device: paloaltonetworks
+    name: panEntryFRUModuleNumPorts
+    mib: PAN-ENTITY-EXT-MIB
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.3.1.1.1:
+  {
+    device: paloaltonetworks
+    name: panEntryFanTrayPowerUsed
+    mib: PAN-ENTITY-EXT-MIB
+  }
+}
