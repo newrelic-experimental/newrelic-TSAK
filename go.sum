@@ -313,6 +313,8 @@ github.com/fsnotify/fsnotify v1.4.9 h1:hsms1Qyu0jgnwNXIxa+/V/PDsU6CfLf6CNO8H7IWo
 github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4IgpuI1SZQ=
 github.com/fujiwara/go-zabbix-get v0.0.7 h1:nC/1b21Hj/mr759S7SwcdQ0739WYb+ApECV2Tq5TQ44=
 github.com/fujiwara/go-zabbix-get v0.0.7/go.mod h1:s9aXPBPhDwGVt+fzC9sTk9/Nh1KfZEEiKBh5rPD7kTE=
+github.com/gammazero/deque v0.0.0-20201010052221-3932da5530cc h1:F7BbnLACph7UYiz9ZHi6npcROwKaZUyviDjsNERsoMM=
+github.com/gammazero/deque v0.0.0-20201010052221-3932da5530cc/go.mod h1:IlBLfYXnuw9sspy1XS6ctu5exGb6WHGKQsyo4s7bOEA=
 github.com/ganbarodigital/go_glob v1.0.0 h1:WqTFArtji400U7e84N8qUmUM6L8Rgt2s8ynla6f4D+Q=
 github.com/ganbarodigital/go_glob v1.0.0/go.mod h1:6FIc7UJ1CEsvqMDBb5x5y4eY926Bcfbw4YUSbiBiiqM=
 github.com/geoffgarside/ber v1.1.0 h1:qTmFG4jJbwiSzSXoNJeHcOprVzZ8Ulde2Rrrifu5U9w=

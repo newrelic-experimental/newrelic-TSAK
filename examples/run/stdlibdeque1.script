@@ -1,0 +1,26 @@
+fmt = import("fmt")
+queue = import("stdlib/deque")
+
+q = make(queue.Deque, 1)
+for N=0;N<10;N++ {
+  q.PushBack(N)
+}
+fmt.Println("Queue")
+for q.Len() > 0 {
+  fmt.Println(q.PopFront())
+}
+for N=0;N<10;N++ {
+  q.PushBack(N)
+}
+fmt.Println("Stack")
+for q.Len() > 0 {
+  fmt.Println(q.PopBack())
+}
+for N=0;N<10;N++ {
+  q.PushBack(N)
+}
+fmt.Println("Get odd, then even")
+for q.Len() > 0 {
+  fmt.Println(q.PopBack())
+  q.Rotate(2)
+}

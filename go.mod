@@ -30,6 +30,7 @@ require (
 	github.com/facebookgo/atomicfile v0.0.0-20151019160806-2de1f203e7d5
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/fujiwara/go-zabbix-get v0.0.7 // indirect
+	github.com/gammazero/deque v0.0.0-20201010052221-3932da5530cc
 	github.com/ganbarodigital/go_glob v1.0.0
 	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gizak/termui/v3 v3.1.0
