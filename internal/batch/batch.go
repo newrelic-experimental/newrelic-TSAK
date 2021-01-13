@@ -18,3 +18,7 @@ func Configuration(data string) (res *gabs.Container, err error) {
   res, err = gabs.ParseJSON(b)
   return
 }
+
+func ParseJobs(cfg *gabs.Container) () {
+  
+}

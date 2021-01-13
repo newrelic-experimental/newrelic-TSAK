@@ -1,0 +1,13 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+snmp     = import("protocols/snmp")
+log     = import("tlog")
+
+s = snmp.Init("/usr/share/snmp/mibs", "./data/snmp/aliasing")
+fmt.Println(s.Symbol("1.3.6.1.4.1.9.9.91.1.1.1.1.1").String())
+fmt.Println("Resolving OID")
+fmt.Println(s.Resolve("1.3.6.1.4.1.9.9.91.1.1.1.1.1").String())
+fmt.Println("Resolving MIB symbol")
+fmt.Println(s.Resolve("SNMPv2-SMI::enterprises.9.9.91.1.1.1.1.1").String())
+fmt.Println("Resolving alias")
+fmt.Println(s.Resolve("entSensorType").String())
