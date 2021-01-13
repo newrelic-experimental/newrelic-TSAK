@@ -1,0 +1,17 @@
+bloom = import("filter/bloom")
+fmt = import("fmt")
+time = import("time")
+
+f = bloom.New(100, 200)
+N=100
+fmt.Println("Adding some strings to filter")
+for N<200 {
+  f.Add(fmt.Sprintf("%v", N))
+  fmt.Println(N)
+  N = N + 2
+}
+
+fmt.Println("100 in filter?", f.Test("100"))
+fmt.Println("101 in filter?", f.Test("101"))
+fmt.Println("102 in filter?", f.Test("102"))
+fmt.Println("147 in filter?", f.Test("147"))

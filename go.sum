@@ -939,6 +939,8 @@ github.com/xitongsys/parquet-go-source v0.0.0-20190524061010-2b72cbee77d5/go.mod
 github.com/xitongsys/parquet-go-source v0.0.0-20200326031722-42b453e70c3b/go.mod h1:xxCx7Wpym/3QCo6JhujJX51dzSXrwmb0oH6FQb39SEA=
 github.com/xitongsys/parquet-go-source v0.0.0-20200509081216-8db33acb0acf/go.mod h1:EVm7J5W7X/BJsvlGnCaj81kYxgbNzssi/+LF16FoV2s=
 github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77/go.mod h1:aYKd//L2LvnjZzWKhF00oedf4jCCReLcmhLdhm1A27Q=
+github.com/yourbasic/bloom v0.0.0-20170602163913-04a87e707a81 h1:3xwAhXlsVgB73FD/vkbk/WiiKJC6yWJpZCD479tUw1Q=
+github.com/yourbasic/bloom v0.0.0-20170602163913-04a87e707a81/go.mod h1:agXvFaG1tjoCJrAD+5PtBJ0pd3DlAU62kKokkpUR/fY=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=

@@ -78,6 +78,7 @@ require (
 	github.com/valyala/fasttemplate v1.2.1
 	github.com/vulogov/go-zabbix-get v0.0.7
 	github.com/wcharczuk/go-chart v2.0.1+incompatible
+	github.com/yourbasic/bloom v0.0.0-20170602163913-04a87e707a81
 	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9 // indirect
 	golang.org/x/mod v0.4.0 // indirect
 	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
