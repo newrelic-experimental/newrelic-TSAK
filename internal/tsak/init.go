@@ -61,7 +61,7 @@ func Init() {
   flag.StringVar(&conf.Clips, "clips", "", "Name of non-exclusive main script executed in CLIPS environment")
   // P2P flags
   flag.StringVar(&conf.P2PExternalAddress, "p2pexternal", "", "External address for incoming P2P traffic")
-  flag.StringVar(&conf.P2PBind, "p2pbind", "0.0.0.0", "Bind address for P2P traffic")
+  flag.StringVar(&conf.P2PBind, "p2pbind", "127.0.0.1", "Bind address for P2P traffic")
   flag.IntVar(&conf.P2PBindPort, "p2pport", 10090, "Bind port for P2P traffic")
   flag.IntVar(&conf.P2PIdleTimeout, "p2ptimeout", 3, "P2P idle timeout")
   flag.IntVar(&conf.P2PMaxInbound, "p2pmaxinbound", 10000, "Maximum number of P2P inbound connections")
