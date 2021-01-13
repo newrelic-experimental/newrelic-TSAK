@@ -65,6 +65,7 @@ require (
 	github.com/prologic/bitcask v0.3.6
 	github.com/robfig/cron v1.2.0
 	github.com/rocketlaunchr/dataframe-go v0.0.0-20201007021539-67b046771f0b
+	github.com/seiflotfy/cuckoofilter v0.0.0-20201222105146-bc6005554a0c
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/shirou/gopsutil/v3 v3.20.10
 	github.com/shopspring/decimal v1.2.0 // indirect

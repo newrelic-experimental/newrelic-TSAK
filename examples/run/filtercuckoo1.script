@@ -1,0 +1,18 @@
+filter = import("filter/cuckoo")
+stdlib = import("stdlib")
+fmt = import("fmt")
+time = import("time")
+
+f = filter.New(100)
+N=100
+fmt.Println("Adding some strings to filter")
+for N<200 {
+  f.Insert(fmt.Sprintf("%v", N))
+  fmt.Println(N)
+  N = N + 2
+}
+
+fmt.Println("100 in filter?", f.Lookup("100"))
+fmt.Println("101 in filter?", f.Lookup("101"))
+fmt.Println("102 in filter?", f.Lookup("102"))
+fmt.Println("147 in filter?", f.Lookup("147"))
