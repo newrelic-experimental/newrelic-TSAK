@@ -41,7 +41,7 @@ require (
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/google/uuid v1.1.2
-	github.com/goreleaser/goreleaser v0.154.0 // indirect
+	github.com/goreleaser/goreleaser v0.155.0 // indirect
 	github.com/h2non/filetype v1.1.0
 	github.com/hallidave/mibtool v0.2.0
 	github.com/hjson/hjson-go v3.1.0+incompatible
@@ -73,8 +73,11 @@ require (
 	github.com/sirupsen/logrus v1.7.0
 	github.com/slack-go/slack v0.7.4
 	github.com/stretchr/objx v0.3.0 // indirect
+	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
+	github.com/tj/assert v0.0.3 // indirect
+	github.com/tj/go-naturaldate v1.3.0
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
 	github.com/valyala/fasttemplate v1.2.1
@@ -86,7 +89,7 @@ require (
 	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
 	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
 	golang.org/x/sys v0.0.0-20201207223542-d4d67f95c62d
-	golang.org/x/tools v0.0.0-20201208233053-a543418bbed2 // indirect
+	golang.org/x/tools v0.0.0-20210105210202-9ed45478a130 // indirect
 	gonum.org/v1/gonum v0.7.0
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/h2non/gentleman.v2 v2.0.4
