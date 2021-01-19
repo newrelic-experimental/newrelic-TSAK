@@ -2,4 +2,5 @@ fmt     = import("fmt")
 levenshtein  = import("strings/levenshtein")
 
 fmt.Println("Distance between ADVA-FSPR7-CFM-EXTENSION-MIB and ADVA",levenshtein.Distance("ADVA", "ADVA-FSPR7-CFM-EXTENSION-MIB"))
+fmt.Println("Distance between ADVA-FSPR7 and ADVA",levenshtein.Distance("ADVA", "ADVA-FSPR7"))
 fmt.Println("Distance between ADVA and ADVON",levenshtein.Distance("ADVA", "ADVON"))
