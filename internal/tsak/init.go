@@ -12,6 +12,7 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/clips"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/snmpdb"
   "github.com/google/uuid"
   "github.com/erikdubbelboer/gspt"
   "github.com/common-nighthawk/go-figure"
@@ -118,6 +119,7 @@ func Init() {
   script.InitScript()
   clips.InitClips()
   telemetrydb.Telemetrydb_Init()
+  snmpdb.Init()
   InitP2P()
   log.Trace(fmt.Sprintf("TelemetryDB opens at: %v", conf.TelemetryDB))
   log.Trace(fmt.Sprintf("SQLITE version is %v", telemetrydb.TDBVersion()))

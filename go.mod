@@ -17,6 +17,7 @@ require (
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
 	github.com/bitfield/script v0.18.0
 	github.com/blacked/go-zabbix v0.0.0-20170118040903-3c6a95ec4fdc
+	github.com/boltdb/bolt v1.3.1
 	github.com/buger/jsonparser v1.0.0
 	github.com/c-bata/go-prompt v0.2.3
 	github.com/codingsince1985/checksum v1.1.0
@@ -57,6 +58,7 @@ require (
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/mattn/go-sqlite3 v1.9.0
 	github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32 // indirect
+	github.com/newrelic-experimental/nri-snmpdb v0.0.0-20210125050917-b39588bb09f3
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/olekukonko/tablewriter v0.0.4
 	github.com/pebbe/zmq4 v1.2.1
