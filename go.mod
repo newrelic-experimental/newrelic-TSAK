@@ -17,6 +17,7 @@ require (
 	github.com/araddon/dateparse v0.0.0-20201001162425-8aadafed4dc4
 	github.com/bitfield/script v0.18.0
 	github.com/blacked/go-zabbix v0.0.0-20170118040903-3c6a95ec4fdc
+	github.com/bmizerany/perks v0.0.0-20141205001514-d9a9656a3a4b // indirect
 	github.com/boltdb/bolt v1.3.1
 	github.com/buger/jsonparser v1.0.0
 	github.com/c-bata/go-prompt v0.2.3
@@ -24,6 +25,7 @@ require (
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2
 	github.com/cossacklabs/themis/gothemis v0.13.1
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
+	github.com/dgryski/go-gk v0.0.0-20200319235926-a69029f61654 // indirect
 	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
 	github.com/dustin/go-humanize v0.0.0-20171111073723-bb3d318650d4
 	github.com/elastic/go-sysinfo v1.4.0
@@ -46,6 +48,7 @@ require (
 	github.com/h2non/filetype v1.1.0
 	github.com/hallidave/mibtool v0.2.0
 	github.com/hjson/hjson-go v3.1.0+incompatible
+	github.com/influxdata/tdigest v0.0.1 // indirect
 	github.com/jmoiron/sqlx v1.2.1-0.20190826204134-d7d95172beb5 // indirect
 	github.com/k-sone/snmpgo v3.2.0+incompatible
 	github.com/kamildrazkiewicz/go-flow v0.0.0-20170919072006-2a1d885f8ce4
@@ -54,6 +57,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/leekchan/accounting v1.0.0
 	github.com/lib/pq v1.9.0 // indirect
+	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/mattn/go-sqlite3 v1.9.0
@@ -74,6 +78,7 @@ require (
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
 	github.com/slack-go/slack v0.7.4
+	github.com/streadway/quantile v0.0.0-20150917103942-b0c588724d25 // indirect
 	github.com/stretchr/objx v0.3.0 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07
@@ -82,6 +87,7 @@ require (
 	github.com/tj/go-naturaldate v1.3.0
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
+	github.com/tsenart/vegeta v12.7.0+incompatible
 	github.com/valyala/fasttemplate v1.2.1
 	github.com/vulogov/go-zabbix-get v0.0.7
 	github.com/wcharczuk/go-chart v2.0.1+incompatible
