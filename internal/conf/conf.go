@@ -64,8 +64,8 @@ var P2PDiscovery int
 var P2PBootstrap = make(arrayFlags, 0)
 
 // Versions
-var Ver = "0.4-pre4"
+var Ver = "0.5"
 var VerMaj = 0
-var VerMin = 4
-var VerPrerelease = 4
+var VerMin = 5
+var VerPrerelease = 0
 var Args []string
