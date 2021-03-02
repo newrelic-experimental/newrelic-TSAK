@@ -28,6 +28,7 @@ if VMNAME == "in" {
     stock, err = market.Ticker(SYMBOL)
     if err != nil {
       log.Error(fmt.Sprintf("Error fetching %v: %v", SYMBOL, err))
+      time.Sleep(60 * time.Second)
       continue
     }
     pkt = djson.New()
@@ -88,28 +89,31 @@ if VMNAME == "in" {
         LAST = v
       }
       add2ring(rlast, v)
-      log.Trace(fmt.Sprintf("%v:%v=%v", r.Size(), rlast.Size(), v))
       dlast = exportRing(rlast)
       d     = exportRing(r)
-      if r.Size() == HISTORYSIZE && rlast.Size() == HISTORYSIZE {
-        val = stat.Correlation(dlast, d, nil)
-        if val != math.NaN() {
-          pkt.Set(val, "correlation100")
-        }
-        val = stat.Covariance(dlast, d, nil)
-        if val != math.NaN() {
-          pkt.Set(val, "covarfiance100")
-        }
-        val = stat.Skew(dlast, nil)
-        if val != math.NaN() {
-          pkt.Set(val, "skew100")
-        }
+      log.Trace(fmt.Sprintf("%v:%v=%v ", r.Size(), rlast.Size(), v))
+      val = stat.Correlation(dlast, d, nil)
+      if val != math.NaN() && val != math.Inf(1) && val != math.Inf(-1) {
+        pkt.Set(val, "correlation100")
+      } else {
+	      pkt.Set(0, "correlation100")
+      }
+      val = stat.Covariance(dlast, d, nil)
+      if val != math.NaN() && val != math.Inf(1) && val != math.Inf(-1) {
+        pkt.Set(val, "covariance100")
+      } else {
+    	  pkt.Set(0, "covariance100")
+      }
+      val = stat.Skew(dlast, nil)
+      if val != math.NaN() && val != math.Inf(1) && val != math.Inf(-1) {
+        pkt.Set(val, "skew100")
+      } else {
+	      pkt.Set(0, "skew100")
       }
       pkt.Set(stat.Mean(dlast, nil), "mean100")
       pkt.Set(stat.HarmonicMean(dlast, nil), "hmean100")
       pkt.Set(stat.StdDev(dlast, nil), "stddev100")
       pkt.Set(stat.Variance(dlast, nil), "variance100")
-      fmt.Println(pkt.String())
       stdlib.To(stdlib.OUTCH, pkt.String())
     }
     time.Sleep(PROCLOOPWAIT * time.Second)
