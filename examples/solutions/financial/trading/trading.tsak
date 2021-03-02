@@ -176,16 +176,21 @@ if VMNAME == "in" {
     pkt.Set(res[0], "stablePattern")
     pkt.Set(res[1], "upPattern")
     pkt.Set(res[2], "downPattern")
+    fmt.Println(pkt.Path("name").Data(), pkt.Path("value").Data())
+    fmt.Println(dlast[:5], ndata)
+    fmt.Println(res)
     return pkt
   }
 
   for ! stdlib.ExitRequested() {
     DJI = 0.0
-    stock, err = market.Ticker("DJI")
-    if err != nil {
-      DJI = 0.0
-    } else {
-      DJI = stock.RegularMarketPrice
+    if stdlib.Len(stdlib.INCH) > 0 {
+      stock, err = market.Ticker("DJI")
+      if err != nil {
+        DJI = 0.0
+      } else {
+        DJI = stock.RegularMarketPrice
+      }
     }
     for stdlib.Len(stdlib.INCH) > 0 {
       data = stdlib.From(stdlib.INCH)
