@@ -1,0 +1,716 @@
+{
+  1.3.6.1.4.1.318.1.1.1.12.1.2:
+  {
+    device: apc
+    name: upsOutletGroupStatusTable
+    mib: PowerNet-MIB
+  }
+  1.3.6.1.2.1.99.1.1.1:
+  {
+    device: arista
+    name: entPhySensorTable
+    mib: ENTITY-SENSOR-MIB
+  }
+  1.3.6.1.4.1.30065.3.6.1.1:
+  {
+    device: arista
+    name: aristaIngressQueueTable
+    mib: ARISTA-QUEUE-MIB
+  }
+  1.3.6.1.4.1.30065.3.6.1.2:
+  {
+    device: arista
+    name: aristaEgressQueueTable
+    mib: ARISTA-QUEUE-MIB
+  }
+  1.3.6.1.2.1.2.2:
+  {
+    device: generic
+    name: ifTable
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.31.1.1:
+  {
+    device: generic
+    name: ifXTable
+    mib: IF-MIB
+  }
+  1.3.6.1.2.1.4.31.1:
+  {
+    device: generic
+    name: ipSystemStatsTable
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.4.31.3:
+  {
+    device: generic
+    name: ipIfStatsTable
+    mib: IP-MIB
+  }
+  1.3.6.1.2.1.25.2.3:
+  {
+    device: generic
+    name: hrStorageTable
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.3.3:
+  {
+    device: generic
+    name: hrProcessorTable
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.14.10:
+  {
+    device: generic
+    name: ospfNbrTable
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.11:
+  {
+    device: generic
+    name: ospfVirtNbrTable
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.7:
+  {
+    device: generic
+    name: ospfIfTable
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.14.9:
+  {
+    device: generic
+    name: ospfVirtIfTable
+    mib: OSPF-MIB
+  }
+  1.3.6.1.2.1.15.3:
+  {
+    device: generic
+    name: bgpPeerTable
+    mib: BGP4-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.17:
+  {
+    device: aruba
+    name: wlsxSysExtFanTable
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.18:
+  {
+    device: aruba
+    name: wlsxSysExtPowerSupplyTable
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.13:
+  {
+    device: aruba
+    name: wlsxSysExtProcessorTable
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.14823.2.2.1.2.1.15.1:
+  {
+    device: aruba
+    name: wlsxSysExtMemoryTable
+    mib: WLSX-SYSTEMEXT-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.2.10:
+  {
+    device: chatsworth
+    name: cpiPduTable
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.7.100:
+  {
+    device: chatsworth
+    name: cpiPduOutletTable
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.5.10:
+  {
+    device: chatsworth
+    name: cpiPduSensorTable
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.10:
+  {
+    device: chatsworth
+    name: cpiPduLineTable
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.3.110:
+  {
+    device: chatsworth
+    name: cpiPduBranchTable
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.30932.1.10.1.4.10:
+  {
+    device: chatsworth
+    name: cpiPduOutletTable
+    mib: CPI-UNITY-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.5:
+  {
+    device: checkpoint
+    name: multiProcTable
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.6:
+  {
+    device: checkpoint
+    name: multiDiskTable
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.2:
+  {
+    device: checkpoint
+    name: fanSpeedSensorTable
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.2620.1.6.7.8.1:
+  {
+    device: checkpoint
+    name: tempertureSensorTable
+    mib: CHECKPOINT-MIB
+  }
+  1.3.6.1.4.1.9.9.117.1.1.2:
+  {
+    device: generic
+    name: cefcFRUPowerStatusTable
+    mib: CISCO-ENTITY-FRU-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.109.1.1.1:
+  {
+    device: generic
+    name: cpmCPUTotalTable
+    mib: CISCO-PROCESS-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.2:
+  {
+    device: generic
+    name: cieIfInterfaceTable
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.4.1.9.9.13.1.3:
+  {
+    device: generic
+    name: ciscoEnvMonTemperatureStatusTable
+    mib: CISCO-ENVMON-MIB
+  }
+  1.3.6.1.4.1.9.9.13.1.5:
+  {
+    device: generic
+    name: ciscoEnvMonSupplyStatusTable
+    mib: CISCO-ENVMON-MIB
+  }
+  1.3.6.1.4.1.9.9.13.1.4:
+  {
+    device: generic
+    name: ciscoEnvMonFanStatusTable
+    mib: CISCO-ENVMON-MIB
+  }
+  1.3.6.1.4.1.9.9.500.1.2.2:
+  {
+    device: generic
+    name: cswStackPortInfoTable
+    mib: CISCO-STACKWISE-MIB
+  }
+  1.3.6.1.4.1.9.9.500.1.2.1:
+  {
+    device: generic
+    name: cswSwitchInfoTable
+    mib: CISCO-STACKWISE-MIB
+  }
+  1.3.6.1.4.1.9.9.117.1.4.1:
+  {
+    device: generic
+    name: cefcFanTrayStatusTable
+    mib: CISCO-ENTITY-FRU-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.48.1.1:
+  {
+    device: generic
+    name: ciscoMemoryPoolTable
+    mib: CISCO-MEMORY-POOL-MIB
+  }
+  1.3.6.1.4.1.9.9.147.1.2.2.2:
+  {
+    device: generic
+    name: cfwConnectionStatTable
+    mib: CISCO-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.9.9.147.1.2.1.1:
+  {
+    device: generic
+    name: cfwHardwareStatusTable
+    mib: CISCO-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.9.9.388.1.2.2:
+  {
+    device: generic
+    name: cvsChassisTable
+    mib: CISCO-VIRTUAL-SWITCH-MIB
+  }
+  1.3.6.1.4.1.9.9.42.1.2.10:
+  {
+    device: generic
+    name: rttMonLatestRttOperTable
+    mib: CISCO-RTTMON-MIB
+  }
+  1.3.6.1.4.1.9.9.42.1.2.9:
+  {
+    device: generic
+    name: rttMonCtrlOperTable
+    mib: CISCO-RTTMON-MIB
+  }
+  1.3.6.1.4.1.9.9.91.1.1.1:
+  {
+    device: generic
+    name: entSensorValueTable
+    mib: CISCO-ENTITY-SENSOR-MIB
+  }
+  1.3.6.1.4.1.9.9.276.1.1.1:
+  {
+    device: generic
+    name: cieIfPacketStatsTable
+    mib: CISCO-IF-EXTENSION-MIB
+  }
+  1.3.6.1.2.1.99.1.1:
+  {
+    device: generic
+    name: entPhySensorTable
+    mib: ENTITY-SENSOR-MIB
+  }
+  1.3.6.1.2.1.25.5.1:
+  {
+    device: generic
+    name: hrSWRunPerfTable
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.2.1.25.4.2:
+  {
+    device: generic
+    name: hrSWRunTable
+    mib: HOST-RESOURCES-MIB
+  }
+  1.3.6.1.4.1.9.9.590.1.6.1:
+  {
+    device: generic
+    name: ccvpSipTable
+    mib: CISCO-CVP-MIB
+  }
+  1.3.6.1.4.1.9.9.63.1.3.8.5:
+  {
+    device: generic
+    name: cvCallVolIfTable
+    mib: CISCO-VOICE-DIAL-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.63.1.3.8.4:
+  {
+    device: generic
+    name: cvCallVolPeerTable
+    mib: CISCO-VOICE-DIAL-CONTROL-MIB
+  }
+  1.3.6.1.2.1.10.21.1.2.2:
+  {
+    device: generic
+    name: dialCtlPeerStatsTable
+    mib: DIAL-CONTROL-MIB
+  }
+  1.3.6.1.4.1.9.9.473.1.3.6:
+  {
+    device: generic
+    name: cccaPimTable
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+  }
+  1.3.6.1.4.1.9.9.473.1.3.1:
+  {
+    device: generic
+    name: cccaRouterTable
+    mib: CISCO-CONTACT-CENTER-APPS-MIB
+  }
+  1.3.6.1.4.1.674.10892.1.400.20:
+  {
+    device: dell
+    name: operatingSystemMemoryTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.600.12:
+  {
+    device: dell
+    name: powerSupplyTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.700.20:
+  {
+    device: dell
+    name: temperatureProbeTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.30:
+  {
+    device: dell
+    name: processorDeviceTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.40:
+  {
+    device: dell
+    name: cacheDeviceTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.50:
+  {
+    device: dell
+    name: memoryDeviceTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.1.1100.90:
+  {
+    device: dell
+    name: networkDeviceTable
+    mib: MIB-Dell-10892
+  }
+  1.3.6.1.4.1.674.10892.5.4.200.10:
+  {
+    device: generic
+    name: systemStateTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.4:
+  {
+    device: generic
+    name: physicalDiskTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.9:
+  {
+    device: generic
+    name: enclosurePowerSupplyTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.15:
+  {
+    device: generic
+    name: batteryTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.5.1.20.130.1:
+  {
+    device: generic
+    name: controllerTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.80:
+  {
+    device: generic
+    name: pCIDeviceTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1200.10:
+  {
+    device: generic
+    name: systemSlotTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.90:
+  {
+    device: generic
+    name: networkDeviceTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.300.50:
+  {
+    device: generic
+    name: systemBIOSTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.30:
+  {
+    device: generic
+    name: amperageProbeTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.600.20:
+  {
+    device: generic
+    name: voltageProbeTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.674.10892.5.4.1100.50:
+  {
+    device: generic
+    name: memoryDeviceTable
+    mib: IDRAC-MIB-SMIv2
+  }
+  1.3.6.1.4.1.343.2.7.2.2.1.3:
+  {
+    device: generic
+    name: genericAdaptersTrafficStatsAttrTable
+    mib: INTEL-LAN-ADAPTERS-MIB
+  }
+  1.3.6.1.4.1.3375.2.1.7.5.2:
+  {
+    device: f5
+    name: sysMultiHostCpuTable
+    mib: F5-BIGIP-SYSTEM-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.1.2:
+  {
+    device: f5
+    name: ltmVirtualServTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.10.2.3:
+  {
+    device: f5
+    name: ltmVirtualServStatTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.1.2:
+  {
+    device: f5
+    name: ltmNodeAddrTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.4.2.3:
+  {
+    device: f5
+    name: ltmNodeAddrStatTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.1.2:
+  {
+    device: f5
+    name: ltmPoolTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.2.3:
+  {
+    device: f5
+    name: ltmPoolStatTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.3.2:
+  {
+    device: f5
+    name: ltmPoolMemberTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.3375.2.2.5.4.3:
+  {
+    device: f5
+    name: ltmPoolMemberStatTable
+    mib: F5-BIGIP-LOCAL-MIB
+  }
+  1.3.6.1.4.1.12356.101.4.4.2:
+  {
+    device: fortinet
+    name: fgProcessorTable
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.3.2.1:
+  {
+    device: fortinet
+    name: fgVdTable
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.7.2.1:
+  {
+    device: fortinet
+    name: fgIntfTable
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.1:
+  {
+    device: fortinet
+    name: fgFwPolStatsTable
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.12356.101.5.1.2.2:
+  {
+    device: fortinet
+    name: fgFwPol6StatsTable
+    mib: FORTINET-FORTIGATE-MIB
+  }
+  1.3.6.1.4.1.232.9.2.5.2:
+  {
+    device: hp
+    name: cpqSm2NicStatsTable
+    mib: CPQSM2-MIB
+  }
+  1.3.6.1.4.1.232.18.2.3.1:
+  {
+    device: hp
+    name: cpqNicIfPhysAdapterTable
+    mib: CPQNIC-MIB
+  }
+  1.3.6.1.4.1.232.6.2.6.8:
+  {
+    device: generic
+    name: cpqHeTemperatureTable
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.17.2:
+  {
+    device: generic
+    name: cpqHeSysBatteryTable
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.14.13:
+  {
+    device: generic
+    name: cpqHeResMem2ModuleTable
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.6.2.9.3:
+  {
+    device: generic
+    name: cpqHeFltTolPowerSupplyTable
+    mib: CPQHLTH-MIB
+  }
+  1.3.6.1.4.1.232.3.2.5.1:
+  {
+    device: generic
+    name: cpqDaPhyDrvTable
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.232.1.2.2.1:
+  {
+    device: hp
+    name: cpqSeCpuTable
+    mib: CPQSTDEQ-MIB
+  }
+  1.3.6.1.4.1.232.11.2.3.1:
+  {
+    device: hp
+    name: cpqHoCpuUtilTable
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.11.2.4.1:
+  {
+    device: hp
+    name: cpqHoFileSysTable
+    mib: CPQHOST-MIB
+  }
+  1.3.6.1.4.1.232.2.2.4.5:
+  {
+    device: hp
+    name: cpqSiMemModuleTable
+    mib: CPQSINFO-MIB
+  }
+  1.3.6.1.4.1.232.3.2.2.1:
+  {
+    device: hp
+    name: cpqDaCntlrTable
+    mib: CPQIDA-MIB
+  }
+  1.3.6.1.4.1.12124.2.53:
+  {
+    device: dell
+    name: fanTable
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.52:
+  {
+    device: dell
+    name: diskTable
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.2.2.10:
+  {
+    device: dell
+    name: nodeProtocolPerfTable
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.12124.1.12.1:
+  {
+    device: dell
+    name: quotaTable
+    mib: ISILON-MIB
+  }
+  1.3.6.1.4.1.2636.3.40.1.4.1.2:
+  {
+    device: generic
+    name: jnxVirtualChassisPortTable
+    mib: JUNIPER-VIRTUALCHASSIS-MIB
+  }
+  1.3.6.1.4.1.2636.3.6.2:
+  {
+    device: generic
+    name: jnxDcuStatsTable
+    mib: JUNIPER-DCU-MIB
+  }
+  1.3.6.1.4.1.2636.3.15.10:
+  {
+    device: generic
+    name: jnxCosIfsetQstatTable
+    mib: JUNIPER-COS-MIB
+  }
+  1.3.6.1.4.1.2636.3.5.2:
+  {
+    device: generic
+    name: jnxFirewallCounterTable
+    mib: JUNIPER-FIREWALL-MIB
+  }
+  1.3.6.1.4.1.2636.3.89.1.1.3:
+  {
+    device: generic
+    name: jnxUserFwLDAPTable
+    mib: JUNIPER-USERFIREWALL-MIB
+  }
+  1.3.6.1.4.1.2636.3.16.1.1:
+  {
+    device: generic
+    name: jnxScuStatsTable
+    mib: JUNIPER-SCU-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.4:
+  {
+    device: meraki
+    name: devTable
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.29671.1.1.5:
+  {
+    device: meraki
+    name: devInterfaceTable
+    mib: MERAKI-CLOUD-CONTROLLER-MIB
+  }
+  1.3.6.1.4.1.789.1.19.11:
+  {
+    device: netapp
+    name: snapvaultStatusTable
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.9.20:
+  {
+    device: netapp
+    name: snapmirrorStatusTable
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.5.4:
+  {
+    device: netapp
+    name: dfTable
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.789.1.22.1.2:
+  {
+    device: netapp
+    name: netifTable
+    mib: NETAPP-MIB
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.2.1:
+  {
+    device: paloaltonetworks
+    name: panEntityFRUModuleTable
+    mib: PAN-ENTITY-EXT-MIB
+  }
+  1.3.6.1.4.1.25461.1.1.7.1.3.1:
+  {
+    device: paloaltonetworks
+    name: panEntityFanTrayTable
+    mib: PAN-ENTITY-EXT-MIB
+  }
+}

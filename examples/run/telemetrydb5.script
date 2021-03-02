@@ -1,0 +1,22 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+tdb  = import("telemetrydb")
+djson  = import("djson")
+
+N = 0
+dpkt = djson.New()
+dpkt.Array("data")
+fmt.Println("Adding 15 values for a heck of it")
+for N < 15 {
+  pkt = djson.New()
+  pkt.Set(N, "value")
+  pkt.Set("abc.abc", "key")
+  dpkt.ArrayAppend(pkt.Data(), "data")
+  N++
+}
+tdb.Insert(dpkt)
+dpkt, err = tdb.History("abc.abc")
+if err == nil {
+  fmt.Println("And this is history")
+  fmt.Println(dpkt.String())
+}

@@ -1,0 +1,11 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+tdb  = import("telemetrydb")
+djson  = import("djson")
+
+
+dpkt, err = tdb.Logs("trace")
+if err == nil {
+  fmt.Println("And this is trace log")
+  fmt.Println(dpkt.String())
+}

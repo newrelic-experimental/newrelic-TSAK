@@ -1,0 +1,22 @@
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+batch   = import("stdlib/batch")
+time    = import("time")
+log     = import("tlog")
+djson   = import("djson")
+ioutil  = import("io/ioutil")
+ioutil  = import("io/ioutil")
+h       = import("convert/humanize")
+conf    = import("conf")
+
+cfg, err = ioutil.ReadFile("./examples/demo/batch/batch_A_B_Job.conf")
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+bcfg, _ = batch.Configuration(stdlib.String(cfg))
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+fmt.Println(bcfg.String())

@@ -1,0 +1,24 @@
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+ui      = import("stdlib/termui")
+
+
+err = ui.New()
+if err != nil {
+  fmt.Printlf("Ouch!", err)
+  return
+}
+ch = ui.NewGauge()
+ch.Title = "Hello from TSAK. Here is progess-bar type gauge"
+ch.SetRect(0,0,60,3)
+ch.Percent = 60
+ch.BarColor = ui.ColorBlue
+ch.BorderStyle.Fg = ui.ColorWhite
+ch.TitleStyle.Fg = ui.ColorCyan
+ui.Render(ch)
+for e in ui.PollEvents() {
+  if e.Type == ui.KeyboardEvent {
+    break
+  }
+}
+ui.Close()

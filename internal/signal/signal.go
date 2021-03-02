@@ -73,4 +73,7 @@ func Release(n int) {
 
 func Loop() {
   wg.Wait()
+  // for ! ExitRequested() {
+  //   stdlib.SleepForASecond()
+  // }
 }

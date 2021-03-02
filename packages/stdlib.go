@@ -17,12 +17,10 @@ import (
   "github.com/newrelic-experimental/newrelic-TSAK/internal/stdlib"
   "github.com/teris-io/shortid"
   "golang.org/x/sync/semaphore"
+  "github.com/Showmax/go-fqdn"
 )
 
 
-func NowMilliseconds() int64 {
-    return time.Now().UnixNano() / int64(time.Millisecond)
-}
 
 func UUID() string {
   uid, _ := uuid.NewUUID()
@@ -74,7 +72,7 @@ func init() {
     "ExitRequest":    reflect.ValueOf(signal.ExitRequest),
     "ExitRequested":  reflect.ValueOf(signal.ExitRequested),
     "Release":        reflect.ValueOf(signal.Release),
-    "NowMilliseconds":reflect.ValueOf(NowMilliseconds),
+    "NowMilliseconds":reflect.ValueOf(stdlib.NowMilliseconds),
     "Cron":           reflect.ValueOf(cron.AddToCron),
     "UUID":           reflect.ValueOf(UUID),
     "From":           reflect.ValueOf(piping.From),
@@ -94,8 +92,13 @@ func init() {
     "TODO":           reflect.ValueOf(StdlibTODO),
     "BACKGROUND":     reflect.ValueOf(StdlibBG),
     "ToValue":        reflect.ValueOf(stdlib.ToValue),
+    "SleepForASecond":reflect.ValueOf(stdlib.SleepForASecond),
+    "SleepFor":       reflect.ValueOf(stdlib.SleepFor),
+    "Tracker":        reflect.ValueOf(stdlib.MakeThreadTracker),
+    "FQDN":           reflect.ValueOf(fqdn.FqdnHostname),
   }
   env.PackageTypes["stdlib"] = map[string]reflect.Type{
     "WeightedSemaphore":     reflect.TypeOf(semaphore.Weighted{}),
+    "ThreadTracker":         reflect.TypeOf(stdlib.ThreadTracker{}),
   }
 }

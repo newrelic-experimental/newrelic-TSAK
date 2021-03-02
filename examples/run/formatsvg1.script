@@ -1,0 +1,9 @@
+fmt   = import("fmt")
+os    = import("os")
+svg   = import("formats/svg")
+
+canvas = svg.New(os.Stdout)
+canvas.Start(500, 500)
+canvas.Circle(250, 250, 150)
+canvas.Text(250, 250, "Hello from TSAK", "text-anchor:middle;font-size:30px;fill:white")
+canvas.End()

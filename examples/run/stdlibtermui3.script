@@ -1,0 +1,22 @@
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+ui      = import("stdlib/termui")
+
+
+err = ui.New()
+if err != nil {
+  fmt.Printlf("Ouch!", err)
+  return
+}
+pieData = []float64{3, 2, 5}
+ch = ui.NewPieChart()
+ch.Title = "Hello from TSAK. Here is Pie chart"
+ch.SetRect(0,0,60,30)
+ch.Data = pieData
+ui.Render(ch)
+for e in ui.PollEvents() {
+  if e.Type == ui.KeyboardEvent {
+    break
+  }
+}
+ui.Close()

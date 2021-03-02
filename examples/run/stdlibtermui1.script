@@ -1,0 +1,20 @@
+fmt     = import("fmt")
+stdlib  = import("stdlib")
+ui      = import("stdlib/termui")
+
+
+err = ui.New()
+if err != nil {
+  fmt.Printlf("Ouch!", err)
+  return
+}
+msg = ui.NewParagraph()
+msg.Text = "Hello from TSAK. Press any key"
+msg.SetRect(0,0,45,5)
+ui.Render(msg)
+for e in ui.PollEvents() {
+  if e.Type == ui.KeyboardEvent {
+    break
+  }
+}
+ui.Close()

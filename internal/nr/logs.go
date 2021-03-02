@@ -10,6 +10,7 @@ import (
   "github.com/sirupsen/logrus"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/si"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   "github.com/Jeffail/gabs"
 )
 
@@ -100,6 +101,7 @@ func logs(nrikey string, url string, compress bool, _payload []byte) bool {
   } else {
     // fmt.Printf("NR Log ingestion success: %v %v\n", resp, err)
     ioutil.ReadAll(resp.Body)
+    telemetrydb.Counter("tsak.NR.logs")
     return true
   }
 }

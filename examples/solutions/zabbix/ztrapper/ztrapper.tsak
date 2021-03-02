@@ -37,7 +37,6 @@ if VMNAME == "in" {
   //
   // Data processor
   //
-  snmp.LoadAll(MIBSDB)
   for ! stdlib.ExitRequested() {
     for stdlib.Len(stdlib.INCH) > 0 {
       data = stdlib.From(stdlib.INCH)

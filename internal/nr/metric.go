@@ -9,6 +9,7 @@ import (
   "github.com/sirupsen/logrus"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/si"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   "github.com/Jeffail/gabs"
 )
 
@@ -61,5 +62,6 @@ func metrics(nrikey string, url string, compress bool, _payload []byte) bool {
     return false
   }
   ioutil.ReadAll(resp.Body)
+  telemetrydb.Counter("tsak.NR.metrics")
   return true
 }

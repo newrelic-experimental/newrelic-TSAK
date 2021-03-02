@@ -1,0 +1,28 @@
+fmt       = import("fmt")
+stdlib    = import("stdlib")
+kv        = import("kv/bolt")
+
+db, err = kv.Open("/tmp/testbolt.db", 511, nil)
+if err != nil {
+  fmt.Println("Ouch:", err)
+  return
+}
+db.Update(func(tx){
+  b, err = tx.CreateBucket(stdlib.Bytes("TEST"))
+  if err != nil {
+    fmt.Printf("Ouch:", err)
+    return err
+  }
+  b.Put(stdlib.Bytes("answer"), stdlib.Bytes("42"))
+  return nil
+})
+db.View(func(tx){
+  b = tx.Bucket("TEST")
+  c = b.Cursor()
+  k,v = c.First()
+  for k != nil {
+    fmt.Println(stdlib.String(k),"=",stdlib.String(v))
+    k,v = c.Next()
+  }
+})
+db.Close()

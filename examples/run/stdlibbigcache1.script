@@ -1,0 +1,29 @@
+fmt = import("fmt")
+stdlib = import("stdlib")
+time = import("time")
+cache = import("stdlib/bigcache")
+djson = import("djson")
+
+
+c, err = cache.New(cache.DefaultConfig(10*time.Minute))
+if err == nil {
+  fmt.Println("Cache size before", c.Len())
+  fmt.Println("Cache capacity before", c.Capacity())
+  N = 0
+  for N < 1000000 {
+    k = fmt.Sprintf("%v", N)
+    v = djson.New()
+    v.Set(N, "value")
+    c.Set(k, v.String())
+    N++
+  }
+  fmt.Println("Cache size after", c.Len())
+  fmt.Println("Cache capacity after", c.Capacity())
+  d , err = c.Get("42")
+  fmt.Println("And 42 is", stdlib.String(d))
+  stat = c.Stats()
+  fmt.Println(stat)
+  c.Close()
+} else {
+  fmr.Println("Ouch!", err)
+}

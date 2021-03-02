@@ -2,7 +2,12 @@ package stdlib
 
 import (
   "strconv"
+  "time"
 )
+
+func NowMilliseconds() int64 {
+    return time.Now().UnixNano() / int64(time.Millisecond)
+}
 
 func ToValue(repr string) interface{} {
   vb, err := strconv.ParseBool(repr)
@@ -18,4 +23,12 @@ func ToValue(repr string) interface{} {
     return vf
   }
   return repr
+}
+
+func SleepForASecond() {
+  time.Sleep(1 * time.Second)
+}
+
+func SleepFor(n int) {
+  time.Sleep(time.Duration(n) * time.Second)
 }

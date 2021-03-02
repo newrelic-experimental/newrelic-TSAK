@@ -1,0 +1,15 @@
+os      = import("os")
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+charts  = import("utils/charts")
+
+f, err = os.Create("graphdemo.png")
+if err == nil {
+  series = charts.Series(1)
+  x = []float64{1,2,3}
+  y = []float64{1,2,3}
+  chart.ContinuousSeries{}
+  // chart, err   = charts.Chart("Hello from TSAK", series)
+  // f.Write(chart)
+  f.Close()
+}

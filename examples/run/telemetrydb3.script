@@ -1,0 +1,21 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+tdb  = import("telemetrydb")
+djson  = import("djson")
+
+pkt = djson.New()
+pkt.Set(42, "value")
+tdb.Set("answer", pkt)
+dpkt, err = tdb.Get("answer")
+if err == nil {
+  fmt.Println("Value of the Metric answer is", dpkt.String())
+} else {
+  fmt.Println("Ouch!", err)
+}
+fmt.Println("Now, searching for non-existing metric not.answer")
+_, err = tdb.Get("not.answer")
+if err == nil {
+  fmt.Println("Report an error!")
+} else {
+  fmt.Println("Ouch!", err)
+}

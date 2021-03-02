@@ -4,6 +4,8 @@ import (
   "fmt"
   "bytes"
   "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/telemetrydb"
   zmq "github.com/pebbe/zmq4"
 )
 
@@ -24,37 +26,72 @@ var zmqS = make(map[string]*zmq.Socket)
 var zmqCtx,_ = zmq.NewContext()
 var zmqErr int64
 
+func ClearZMQINTRR () {
+  log.Trace("Disabling RetryAfterEINTR for ZMQ core")
+  zmq.SetRetryAfterEINTR(false)
+  if zmqCtx != nil {
+    zmqCtx.SetRetryAfterEINTR(false)
+  }
+}
+
+func ZS(name string) (res *zmq.Socket) {
+  var ok bool
+  if res, ok = zmqS[name]; ok {
+    return
+  }
+  res = nil
+  return
+}
+
+func Z(name string, s *zmq.Socket) {
+  if res, ok := zmqS[name]; ok {
+    res.Close()
+  }
+  zmqS[name] = s
+}
 
 func To(dst int, _data []byte) {
   var data = bytes.NewBuffer(_data)
 
   if dst == INCH {
+    telemetrydb.Counter("tsak.INCH.sent")
     pipeIn <- data.String()
   } else if dst == OUTCH {
+    telemetrydb.Counter("tsak.OUTCH.sent")
     pipeOut <- data.String()
   } else if dst == CLIPS {
+    telemetrydb.Counter("tsak.CLIPS.sent")
     clipsIn <- data.String()
   } else if dst == FACTS {
+    telemetrydb.Counter("tsak.FACTS.sent")
     factsIn <- data.String()
   } else if dst == EVAL {
+    telemetrydb.Counter("tsak.EVAL.sent")
     evalIn <- data.String()
   } else {
+    telemetrydb.Counter("tsak.TO.errors")
     log.Error("Trying to send data to non-existent pipeline")
   }
 }
 
 func From(src int) []byte {
   if src == INCH && len(pipeIn) > 0 {
+    telemetrydb.Counter("tsak.INCH.recv")
     return []byte(<-pipeIn)
   } else if src == OUTCH && len(pipeOut) > 0 {
+    telemetrydb.Counter("tsak.OUTCH.recv")
     return []byte(<-pipeOut)
   } else if src == CLIPS && len (clipsIn) > 0 {
+    telemetrydb.Counter("tsak.CLIPS.recv")
     return []byte(<-clipsIn)
   } else if src == FACTS && len (factsIn) > 0 {
+    telemetrydb.Counter("tsak.FACTS.recv")
     return []byte(<-factsIn)
   } else if src == EVAL && len (evalIn) > 0 {
+    telemetrydb.Counter("tsak.EVAL.recv")
     return []byte(<-evalIn)
   } else {
+    telemetrydb.Counter("tsak.FROM.errors")
     return []byte("")
   }
 }
@@ -75,8 +112,33 @@ func Len(src int) int {
   }
 }
 
+func Init() {
+  log.Trace("Initializing Pipelines")
+  zmaj, zmin, zpatch := zmq.Version()
+  log.Trace(fmt.Sprintf("ZMQ version %v.%v.%v", zmaj, zmin, zpatch))
+  if conf.IPv6 {
+    log.Trace("IPv6 was enabled for ZMQ")
+  }
+  zmq.SetIpv6(conf.IPv6)
+  zmqCtx.SetIpv6(conf.IPv6)
+  log.Trace("Creating proxy control publisher")
+  pxyctl := Publisher("proxycontrol")
+  if pxyctl != nil {
+    pxyctl.Bind("ipc://proxycontrol.ipc")
+    pxyctl.Send("RESUME", 0)
+  }
+}
+
 func Shutdown() {
+  log.Trace("Terminating Proxies")
+  pxyctl := ZS("proxycontrol")
+  if pxyctl != nil {
+    for N := 0; N < 5; N++ {
+      pxyctl.Send("TERMINATE", 0)
+    }
+  }
   log.Trace("Terminating Pipelines")
+  ClearZMQINTRR()
   if zmqS != nil {
     log.Trace("Closing ZMQ sockets")
     for k, v := range zmqS {

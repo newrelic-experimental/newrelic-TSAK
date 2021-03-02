@@ -40,6 +40,21 @@ func InitScript() {
 
 }
 
+func RunString(ename string, script string) string {
+  if _, ok := e[ename]; ok {
+    res, err := vm.Execute(e[ename], nil, script)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error executing %[1]s", script))
+      fmt.Println(err)
+      return "FAIL"
+    }
+    return fmt.Sprintf("%v", res)
+  } else {
+    log.Error(fmt.Sprintf("No VM registered %[1]s", ename))
+    return "FAIL"
+  }
+}
+
 func RunScript(ename string, fname string) string {
   if fname == "" {
     log.Error(fmt.Sprintf("Script file not specified"))

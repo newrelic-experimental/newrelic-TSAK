@@ -10,6 +10,10 @@ import (
 
 func Run() {
   nr.RecordEvidence("Run() checkpoint is reached")
+  if conf.IsInteractive {
+    TsakShell()
+    return
+  }
   if conf.Run != "" {
     signal.Reserve(1)
     nr.RecordEvidence("Exclsive Run() checkpoint reached")
@@ -36,6 +40,7 @@ func Run() {
       piping.To(piping.CLIPS, []byte(fmt.Sprintf(`(batch* "%s")`, conf.Clips)))
     }
   }
+  P2Pproc()
   nr.RecordEvidence("Running Housekeeping() code")
   signal.Reserve(1)
   HouseProc()

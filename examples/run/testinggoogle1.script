@@ -1,0 +1,9 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+test    = import("testing/vegeta")
+
+duration = 1
+got, want = test.Get("https://www.google.com", 2, duration)
+fmt.Println("Test duration", duration)
+fmt.Println("Responces received", got)
+fmt.Println("Responces per second expected", got)

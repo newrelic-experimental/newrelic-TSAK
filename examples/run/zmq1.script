@@ -1,0 +1,45 @@
+fmt     = import("fmt")
+time    = import("time")
+stdlib  = import("stdlib")
+zmq     = import("stdlib/zmq")
+
+
+if VMNAME == "in" {
+  N = 0
+  pub = zmq.Publisher("publisher")
+  pub.SetSndhwm(1100000)
+  pub.Bind("ipc://test.ipc")
+  for ! stdlib.ExitRequested() && N < 6 {
+    stdlib.SleepForASecond()
+    msg = fmt.Sprintf("MSG: %v", N)
+    pub.Send(msg, 0)
+    fmt.Println("SENT:", msg)
+    N++
+  }
+} else if VMNAME == "proc" {
+  sub = zmq.Subscriber("subscriber1")
+  res = sub.Connect("ipc://test.ipc")
+  sub.SetSubscribe("")
+  for ! stdlib.ExitRequested() {
+    msg, err = sub.Recv(1)
+    if err == nil {
+      fmt.Println("RECV1:", msg)
+    }
+    stdlib.SleepForASecond()
+  }
+} else if VMNAME == "out" {
+  sub = zmq.Subscriber("subscriber2")
+  res = sub.Connect("ipc://test.ipc")
+  sub.SetSubscribe("")
+  for ! stdlib.ExitRequested() {
+    msg, err = sub.Recv(1)
+    if err == nil {
+      fmt.Println("RECV2:", msg)
+    }
+    stdlib.SleepForASecond()
+  }
+} else if VMNAME == "house" {
+  fmt.Println("This code will be executed periodically by housekeeper")
+} else {
+  fmt.Println("This code will be executed in some other VM")
+}

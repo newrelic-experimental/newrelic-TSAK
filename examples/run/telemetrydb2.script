@@ -1,0 +1,12 @@
+stdlib  = import("stdlib")
+fmt     = import("fmt")
+tdb  = import("telemetrydb")
+
+tdb.Increase("abc.abc")
+tdb.Increase("abc.abc")
+count, err = tdb.Counter("abc.abc")
+if err == nil {
+  fmt.Println("After two calls of Increase(), Counter value is", count)
+} else {
+  fmt.Println("Ouch!", err)
+}

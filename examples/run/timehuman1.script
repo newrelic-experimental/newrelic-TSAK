@@ -1,0 +1,6 @@
+fmt     = import("fmt")
+time  = import("time/human")
+
+fmt.Println("3 seconds from now", time.AsOfNow("3 seconds from now"))
+fmt.Println("tomorrow", time.AsOfNow("tomorrow"))
+fmt.Println("15 minutes ago", time.AsOfNow("15 minutes ago"))
