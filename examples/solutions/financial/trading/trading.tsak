@@ -1,0 +1,243 @@
+//
+// Fetching stock quotes
+//    This script stock information from Yahoo for the specific tickedr symbol
+//    and sending data to New Relic
+//
+fmt     = import("fmt")
+net     = import("net")
+os      = import("os")
+log     = import("tlog")
+stdlib  = import("stdlib")
+time    = import("time")
+djson   = import("djson")
+strconv = import("strconv")
+h       = import("convert/humanize")
+market  = import("nostdlib/finance/quote")
+ring    = import("stdlib/ringbuffer")
+conf    = import("conf")
+stat    = import("num/stat")
+math    = import("math")
+ioutil  = import("io/ioutil")
+json    = import("json/hjson")
+pond    = import("stdlib/pond")
+cache   = import("stdlib/cache")
+brain   = import("ai/ml/simple")
+norm    = import("num/norm")
+
+trainData = [][][]float64{
+  [[0.0, 0.0, 0.0, 0.0, 0.0],[1,0,0]],
+  [[0.5, 0.5, 0.5, 0.5, 0.5],[1,0,0]],
+  [[1.0, 1.0, 1.0, 1.0, 1.0],[1,0,0]],
+  [[0.0, 0.1, 0.5, 0.7, 0.9],[0,1,0]],
+  [[0.1, 0.2, 0.3, 0.5, 0.6],[0,1,0]],
+  [[0.1, 0.2, 0.3, 0.3, 0.7],[0,1,0]],
+  [[0.1, 0.2, 0.4, 0.8, 0.9],[0,1,0]],
+  [[0.9, 0.8, 0.6, 0.4, 0.1],[0,0,1]],
+  [[0.7, 0.6, 0.3, 0.1, 0.1],[0,0,1]],
+  [[0.9, 0.8, 0.7, 0.6, 0.1],[0,0,1]],
+  [[0.5, 0.4, 0.2, 0.1, 0.1],[0,0,1]],
+}
+
+
+if VMNAME == "in" {
+  //
+  // Data/Configuration acquisition
+  //
+
+  func DbReader(fn) {
+    data, err = ioutil.ReadFile(fn)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error reading SYMBOL DB file: %v", err))
+      return nil
+    }
+    g,err = json.Parse(data)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error parsing SYMBOL DB file: %v", err))
+      return nil
+    }
+    return g.S("symbols").Children()
+  }
+
+  func SymbolGet(symb) {
+    log.Trace(fmt.Sprintf("%v symbol is requested", symb))
+    stock, err = market.Ticker(symb)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error fetching %v: %v", SYMBOL, err))
+      time.Sleep(60 * time.Second)
+      continue
+    }
+    pkt = djson.New()
+    pkt.Set(stdlib.NowMilliseconds(),     "timestamp")
+    pkt.Set(EVENTSOURCE,                  "eventType")
+    pkt.Set(PROXYNAME,                    "proxyName")
+    pkt.Set(symb,                         "name")
+    pkt.Set(stock.RegularMarketPrice,             "value")
+    pkt.Set(stock.RegularMarketPreviousClose,     "close")
+    pkt.Set(stock.RegularMarketOpen,              "open")
+    pkt.Set(stock.RegularMarketDayHigh,           "dayHigh")
+    pkt.Set(stock.RegularMarketDayLow,            "dayLow")
+    pkt.Set(stock.MarketState,                    "marketState")
+    pkt.Set(stock.RegularMarketVolume,            "volume")
+    pkt.Set(stock.PreMarketPrice,                 "preMarketPrice")
+    pkt.Set(stock.PostMarketPrice,                "postMarketPrice")
+    pkt.Set(stock.QuoteDelay,                     "delay")
+    pkt.Set(stock.FiftyDayAverage,                "fiftyDay")
+    pkt.Set(stock.FiftyTwoWeekLow,                "fiftytwoWeekLow")
+    pkt.Set(stock.FiftyTwoWeekHigh,               "fiftytwoWeekHigh")
+    pkt.Set(stock.TwoHundredDayAverage,           "twohundreddayAvg")
+    stdlib.To(stdlib.INCH, pkt.String())
+  }
+
+  pipeline = make(chan string, PIPESIZE)
+
+  for ! stdlib.ExitRequested() {
+    time.Sleep(INLOOPWAIT * time.Second)
+    pool = pond.New(WORKERS, TASKS , pond.IdleTimeout(100 * time.Millisecond))
+    symbols, err = DbReader(SYMBOLDB)
+    if err != nil {
+      log.Error(fmt.Sprintf("Error getting symbols: %v", err))
+      stdlib.ExitRequest()
+      break
+    }
+    c = 0
+    for s in symbols {
+      symb = stdlib.String(s.Data())
+      pipeline <- symb
+      c += 1
+    }
+    log.Trace(fmt.Sprintf("Pipeline preloaded with %v jobs", c))
+    // Process pipeline
+    i = 0
+    for i < c {
+      pool.Submit(func() {
+        li = i
+        if len(pipeline) == 0 {
+          log.Trace(fmt.Sprintf("%v exited due to an empty pipeline", li))
+          return
+        }
+        data = <- pipeline
+        SymbolGet(data)
+      })
+      i++
+    }
+    log.Trace("Waiting for jobs to finish")
+    pool.StopAndWait()
+    log.Trace("All jobs are done")
+  }
+
+} else if VMNAME == "proc" {
+  //
+  // Data processor
+  //
+  d = map[string]interface{}
+
+  func add2ring(d, symb, value) {
+    db = d[symb]
+    if db != nil {
+      err = db.Add(value)
+      if err != nil {
+        db.Push(value)
+      }
+    } else {
+      db = ring.New(HISTORYSIZE)
+      d[symb] = db
+      db.Add(value)
+    }
+  }
+
+  func exportRing(d, symb) {
+    db = d[symb]
+    if db == nil {
+      return make([]float64, 0)
+    }
+    res = make([]float64, db.Size())
+    c = 0
+    for c < HISTORYSIZE {
+      val,err = db.Get(c)
+      if err != nil {
+        break
+      }
+      res[c] = val
+      c++
+    }
+    fmt.Println(symb, res)
+    return res
+  }
+
+  func patternSearch(trainData, dlast, pkt) {
+    ff  = brain.New(5,7,3)
+    ff.Configure(1000, 0.6, 0.4, true)
+    if ! ff.Configured() {
+      return
+    }
+    err = ff.Train(trainData)
+    ndata = norm.Normalize(dlast[:5])
+    res = ff.Update(ndata)
+    pkt.Set(res[0], "stablePattern")
+    pkt.Set(res[1], "upPattern")
+    pkt.Set(res[2], "downPattern")
+    return pkt
+  }
+
+  for ! stdlib.ExitRequested() {
+    DJI = 0.0
+    stock, err = market.Ticker("DJI")
+    if err != nil {
+      DJI = 0.0
+    } else {
+      DJI = stock.RegularMarketPrice
+    }
+    for stdlib.Len(stdlib.INCH) > 0 {
+      data = stdlib.From(stdlib.INCH)
+      pkt = djson.Parse(data)
+      v = pkt.Path("value").Data()
+      n = pkt.Path("name").Data()
+      add2ring(d, n, v)
+      dlast = exportRing(d, n)
+      pkt.Set(DJI, "dji")
+      pkt.Set(stat.Mean(dlast, nil), "mean100")
+      pkt.Set(stat.HarmonicMean(dlast, nil), "hmean100")
+      pkt.Set(stat.StdDev(dlast, nil), "stddev100")
+      pkt.Set(stat.Variance(dlast, nil), "variance100")
+      pkt = patternSearch(trainData, dlast, pkt)
+      stdlib.To(stdlib.OUTCH, pkt.String())
+      // fmt.Println(pkt.String())
+    }
+    time.Sleep(PROCLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "out" {
+  //
+  // Data delivery
+  //
+  for ! stdlib.ExitRequested() {
+    N = 0
+    pkg = djson.New()
+    pkg.Array()
+    for stdlib.Len(stdlib.OUTCH) > 0 {
+      if N > INBATCH {
+        break
+      }
+      data = stdlib.From(stdlib.OUTCH)
+      dpkt = djson.Parse(data)
+      pkg.ArrayAppend(dpkt.Data())
+      N += 1
+    }
+    if N > 0 {
+      sndres, err, resp = log.SendEvent(pkg.String())
+      if sndres && err == nil {
+        usize = h.Bytes(len(pkg.String()))
+        msg = fmt.Sprintf("TICKER.Out %v elements in batch, %s uncompressed, UUID=%s", N, usize, resp.Path("uuid").Data())
+        log.Info(msg)
+      } else {
+        log.Error(fmt.Sprintf("TICKER.Out sending error: %s", err))
+      }
+    }
+    time.Sleep(OUTLOOPWAIT * time.Second)
+  }
+} else if VMNAME == "house" {
+  //
+  // Housekeeper
+  //
+} else {
+  log.Trace("If you see this message, please open a bug report")
+}

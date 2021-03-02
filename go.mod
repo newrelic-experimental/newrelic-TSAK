@@ -44,7 +44,7 @@ require (
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/google/uuid v1.1.2
-	github.com/goreleaser/goreleaser v0.155.0 // indirect
+	github.com/goreleaser/goreleaser v0.158.0 // indirect
 	github.com/h2non/filetype v1.1.0
 	github.com/hallidave/mibtool v0.2.0
 	github.com/hjson/hjson-go v3.1.0+incompatible

@@ -1,0 +1,14 @@
+//
+// Trading agent database
+//
+{
+  symbols: [
+    NEWR
+    DDOG
+    T
+    CSCO
+    AMZN
+    MSFT
+    GOOGL
+  ]
+}

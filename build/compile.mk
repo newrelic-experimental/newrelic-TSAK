@@ -23,9 +23,11 @@ compile-clean:
 	@echo "=== $(PROJECT_NAME) === [ compile-clean    ]: removing binaries..."
 	@rm -rfv $(BUILD_DIR)/*
 
-compile: deps compile-only
+# compile: deps compile-only
+compile: compile-only
 
-compile-all: deps-only
+# compile-all: deps-only
+compile-all:
 	@echo "=== $(PROJECT_NAME) === [ compile          ]: building commands:"
 	@mkdir -p $(BUILD_DIR)/$(GOOS)
 	@for b in $(BINS); do \
@@ -36,7 +38,8 @@ compile-all: deps-only
 		done \
 	done
 
-compile-only: deps-only
+#compile-only: deps-only
+compile-only:
 	@echo "=== $(PROJECT_NAME) === [ compile          ]: building commands:"
 	@mkdir -p $(BUILD_DIR)/$(GOOS)
 	@for b in $(BINS); do \

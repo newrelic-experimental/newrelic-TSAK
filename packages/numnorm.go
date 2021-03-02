@@ -12,8 +12,14 @@ func NumNorm(data []float64) []float64 {
   xmin := floats.Min(data)
   xmax := floats.Max(data)
   diff := xmax-xmin
-  for i:=0;i<len(data);i++ {
-    res[i] = (data[i] - xmin)/diff
+  if diff == 0 {
+    for i:=0;i<len(data);i++ {
+      res[i] = 0.0
+    }
+  } else {
+    for i:=0;i<len(data);i++ {
+      res[i] = (data[i] - xmin)/diff
+    }
   }
   return res
 }

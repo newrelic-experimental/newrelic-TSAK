@@ -26,9 +26,9 @@ all: build
 build: clean compile
 
 include build/compile.mk
-include build/deps.mk
+# include build/deps.mk
 include build/util.mk
-include build/release.mk
+# include build/release.mk
 
 build-install:
 	@echo "Preparing files in temporary directory"
