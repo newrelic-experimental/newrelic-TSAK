@@ -1,5 +1,6 @@
 fmt = import("fmt")
 pcap = import("protocols/pcap")
+stdlib = import("stdlib")
 
 df, err   = pcap.Defragmenter()
 pc, err   = pcap.New("en0", "")
@@ -24,6 +25,6 @@ for p, err in pc.Packets() {
   if np.Protocol == pcap.TCP {
     fmt.Println(np.NetworkFlow())
     nt = p.Layer(pcap.LayerTCP)
-    fmt.Println(nt.SrcPort, nt.DstPort)
+    fmt.Println(nt.SrcPort, nt.DstPort, nt.Payload)
   }
 }

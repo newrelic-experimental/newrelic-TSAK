@@ -66,7 +66,7 @@ require (
 	github.com/newrelic-experimental/nri-snmpdb v0.0.0-20210125050917-b39588bb09f3
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/olekukonko/tablewriter v0.0.4
-	github.com/pebbe/zmq4 v1.2.1
+	github.com/pebbe/zmq4 v1.2.5
 	github.com/perlin-network/noise v1.1.3
 	github.com/pion/dtls/v2 v2.0.3
 	github.com/piquette/finance-go v1.0.0

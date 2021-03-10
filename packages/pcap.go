@@ -27,9 +27,18 @@ func init() {
     "New":                    reflect.ValueOf(PcapNew),
     "Defragmenter":           reflect.ValueOf(ip4defrag.NewIPv4Defragmenter),
     "LayerIPv4":              reflect.ValueOf(layers.LayerTypeIPv4),
+    "LayerIPv6":              reflect.ValueOf(layers.LayerTypeIPv6),
     "LayerTCP":               reflect.ValueOf(layers.LayerTypeTCP),
+    "LayerUDP":               reflect.ValueOf(layers.LayerTypeUDP),
+    "LayerICMPv4":            reflect.ValueOf(layers.LayerTypeICMPv4),
+    "LayerICMPv6":            reflect.ValueOf(layers.LayerTypeICMPv6),
+    "LayerARP":               reflect.ValueOf(layers.LayerTypeARP),
     "IPv4":                   reflect.ValueOf(layers.IPProtocolIPv4),
+    "IPv6":                   reflect.ValueOf(layers.IPProtocolIPv6),
     "TCP":                    reflect.ValueOf(layers.IPProtocolTCP),
+    "UDP":                    reflect.ValueOf(layers.IPProtocolUDP),
+    "ICMPv4":                 reflect.ValueOf(layers.IPProtocolICMPv4),
+    "ICMPv6":                 reflect.ValueOf(layers.IPProtocolICMPv6),
   }
   env.PackageTypes["protocols/pcap"] = map[string]reflect.Type{
     "Handle":                 reflect.TypeOf(pcap.Handle{}),
