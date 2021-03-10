@@ -1,0 +1,29 @@
+fmt = import("fmt")
+pcap = import("protocols/pcap")
+
+df, err   = pcap.Defragmenter()
+pc, err   = pcap.New("en0", "")
+if err != nil {
+  fmt.Println("Ouch!", err)
+  return
+}
+c = 0
+for p, err in pc.Packets() {
+  fmt.Println("----------------------------------------")
+  if c > 2 {
+    break
+  }
+  c++
+  if err != nil {
+    fmt.Println("OUCH!", err)
+    break
+  }
+  ip4p = p.Layer(pcap.LayerIPv4)
+  np, err = df.DefragIPv4(ip4p)
+  fmt.Printf("%d, %s, %s\n", np.Protocol, np.SrcIP, np.DstIP)
+  if np.Protocol == pcap.TCP {
+    fmt.Println(np.NetworkFlow())
+    nt = p.Layer(pcap.LayerTCP)
+    fmt.Println(nt.SrcPort, nt.DstPort)
+  }
+}

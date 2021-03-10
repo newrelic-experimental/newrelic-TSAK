@@ -43,6 +43,7 @@ require (
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.4 // indirect
+	github.com/google/gopacket v1.1.19
 	github.com/google/uuid v1.1.2
 	github.com/goreleaser/goreleaser v0.158.0 // indirect
 	github.com/h2non/filetype v1.1.0
