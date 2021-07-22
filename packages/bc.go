@@ -3,7 +3,7 @@ package packages
 import (
   "reflect"
   "github.com/mattn/anko/env"
-  "github.com/prologic/bitcask"
+  "git.mills.io/prologic/bitcask"
 )
 
 func init() {
