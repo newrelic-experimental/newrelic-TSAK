@@ -69,7 +69,7 @@ require (
 	github.com/perlin-network/noise v1.1.3
 	github.com/pion/dtls/v2 v2.0.3
 	github.com/piquette/finance-go v1.0.0
-	github.com/prologic/bitcask v0.3.6
+	git.mills.io/prologic/bitcask v0.3.6
 	github.com/robfig/cron v1.2.0
 	github.com/rocketlaunchr/dataframe-go v0.0.0-20201007021539-67b046771f0b
 	github.com/seiflotfy/cuckoofilter v0.0.0-20201222105146-bc6005554a0c
